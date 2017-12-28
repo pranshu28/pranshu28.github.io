@@ -6,6 +6,13 @@
 		"tags": ["C++","Python","R"]
 	},
 	{
+		"name": "Graphical interpretation using ArangoDB",
+		"image": "arango.jpg",
+		"url": "https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb",
+		"date": "July 2017",
+		"tags": ["ArangoDB","RESTful API","Java","Apache JMeter"]
+	},
+	{
 		"name": "Play with RNN",
 		"image": "rnn.png",
 		"url": "https://github.com/pranshumalviya2/playwith_rnn",
