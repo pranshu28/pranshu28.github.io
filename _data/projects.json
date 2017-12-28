@@ -6,13 +6,6 @@
 		"tags": ["C++","Python","R"]
 	},
 	{
-		"name": "Graphical interpretation using ArangoDB",
-		"image": "arango.jpg",
-		"url": "https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb",
-		"date": "July 2017",
-		"tags": ["ArangoDB","RESTful API","Java","Apache JMeter"]
-	},
-	{
 		"name": "Play with RNN",
 		"image": "rnn.png",
 		"url": "https://github.com/pranshumalviya2/playwith_rnn",
@@ -20,21 +13,28 @@
 		"tags": ["Keras","LSTM","Python"]
 	},
 	{
+		"name": "Graphical interpretation using ArangoDB",
+		"image": "arango.png",
+		"url": "https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb",
+		"date": "July 2017",
+		"tags": ["ArangoDB","Java","Apache JMeter"]
+	},
+	{
 		"name": "Classify Species with CNN",
 		"image": "cnn.jpg",
 		"url": "https://github.com/pranshumalviya2/image_classification",
 		"date": "April 2017",
-		"tags": ["Python","Tensorflow","Android","BeautifulSoup"]
+		"tags": ["Python","Tensorflow","Android"]
 	},
 	{
-		"name": "Music Recommendation",
+		"name": "Music Recommendation System",
 		"image": "music.png",
 		"url": "https://github.com/YashSinha1996/Music-Recommendation",
 		"date": "January 2017",
 		"tags": ["mfcc","scipy","Python"]
 	},
 	{
-		"name": "Multi-kernel in SVR",
+		"name": "Multi-kernel in SVR on Commodity prices",
 		"image": "kernel.png",
 		"url": "https://github.com/pranshumalviya2/mksvm_price",
 		"date": "November 2016",
