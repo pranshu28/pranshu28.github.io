@@ -5,9 +5,166 @@
     <description>Portfolio</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 28 Dec 2017 17:40:08 +0530</pubDate>
-    <lastBuildDate>Thu, 28 Dec 2017 17:40:08 +0530</lastBuildDate>
+    <pubDate>Thu, 28 Dec 2017 20:59:41 +0530</pubDate>
+    <lastBuildDate>Thu, 28 Dec 2017 20:59:41 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Internship at IITM</title>
+        <description>&lt;p&gt;Will start working as a research intern in RISE-lab at IIT Madras from January 2018 to April 2018.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Dec 2017 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2017/12/28/iitm.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2017/12/28/iitm.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Minesweeper AI</title>
+        <description>&lt;p&gt;Paper on “Building AI for minesweeper as CSP and MDP” submitted for review.&lt;/p&gt;
+
+&lt;p&gt;It was a mini-project that I an Yash Pratyush Sinha started in Feb, 2016. Thanks to Prof. Rupaj Kumar Nayak for his guidance and taking this project to another level.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Dec 2017 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2017/12/27/minesweeper.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2017/12/27/minesweeper.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Summer Project, 2017</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb&quot;&gt;Blog&lt;/a&gt; on graphical interpretation with ArangoDB and performance testing.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Jul 2017 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2017/07/25/arangodb.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2017/07/25/arangodb.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Visited Coimbatore, India for Smart India Hackathon 2017</title>
+        <description>&lt;p&gt;Finalist as a team of 6 members in Smart India Hackathon 2017 organized by Government of India under the Ministry of Environment, Forests &amp;amp; Climate Change.
+Built a real-time application that identifies species of butterfly using hybrid model of haar-cascade and pre-trained convolutional neural network - inception v3 for classification with dataset scrapped from Internet.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 06 Apr 2017 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2017/04/06/smart-india-hackathon.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2017/04/06/smart-india-hackathon.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Top 10 in GE Healthhack 2017</title>
+        <description>&lt;p&gt;Selected among top 10 finalists in the 24hr Hackathon for building a Contextual Care Protocol using weighted decision trees and neural networks. Such a protocol had many features like:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Used existing data and methods to leverage itself for optimal solutions&lt;/li&gt;
+  &lt;li&gt;Could learn while running the protocol using corrections from experts.&lt;/li&gt;
+  &lt;li&gt;Still be accurate in diagnosis.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As one of the challenges was to directly edit the decision tree and have the decision tree understandable by humans, we had to implement our own method of decision trees.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 13 Feb 2017 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2017/02/13/ge.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2017/02/13/ge.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Workshop on Data Science</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;Organized a three day workshop for more than 150 students in order to promote data science and help them get started with machine learning.&lt;/li&gt;
+  &lt;li&gt;Followed by an online data analysis competition.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 03 Feb 2017 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2017/02/03/workshop-data-science.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2017/02/03/workshop-data-science.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>ACM-ICPC</title>
+        <description>&lt;p&gt;Attending onsite ACM-ICPC Regionals at IIT-Kharagpur.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 16 Dec 2016 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2016/12/16/acm-icpc.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2016/12/16/acm-icpc.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Summer Internship, 2016</title>
+        <description>&lt;p&gt;Starting internship at Winsoft Technologies in Pune, India.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 21 May 2016 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2016/05/21/winsoft.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2016/05/21/winsoft.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Introduction to Machine learning</title>
+        <description>&lt;p&gt;Tried out some famous machine learning algorithms in python using scikit-learn (&lt;a href=&quot;https://github.com/pranshumalviya2/ML-Algorithms&quot;&gt;here&lt;/a&gt;) after understanding from &lt;a href=&quot;https://www.youtube.com/watch?v=UzxYlbK2c7E&quot;&gt;lectures&lt;/a&gt; on Introduction to Machine Learning by Andrew Ng. Pretty cool!!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 23 Dec 2015 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2015/12/23/ml-algo.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2015/12/23/ml-algo.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Coding 4 All</title>
+        <description>&lt;p&gt;Joined Coding 4 all in IIIT Bhubaneswar.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 16 Jul 2015 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2015/07/16/c4a.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2015/07/16/c4a.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Robotryst-2015</title>
+        <description>&lt;p&gt;Attended a two-day workshop on Arduino by Robosapiens Technologies Pvt. Ltd.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 15 Feb 2015 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2015/02/15/robotryst.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2015/02/15/robotryst.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
     
       <item>
         <title>Pursuing B.Tech. in IIIT Bhubaneswar</title>

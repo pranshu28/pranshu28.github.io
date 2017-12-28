@@ -6,8 +6,8 @@
 }
 .full{ font-size: 16px; }
 .logo-img {
-    width: 56px;
-    height: 56px;
+    width: 120px;
+    height: 120px;
     border-radius: 60px;
     margin: 0 auto;
 }
@@ -23,8 +23,8 @@
 }
 .row-picture {
     display: inline-block;
-    vertical-align: top;
-    margin-right: 10px;
+    vertical-align: middle;
+    margin-right: 15px;
 }
 .row-details {
     display: inline-block;
@@ -47,7 +47,7 @@ p.info a {
     height: auto;
 }
 .social-icons {
-    margin: 20px 0 0;
+    margin: 10px 0 0;
 }
 .icon {
     background: rgba(255, 255, 255, 0.63);
