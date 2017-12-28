@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Summer Project on Graph database using ArangoDB",
+    "image": "placeholder.jpg",
+    "location": "Indore, Madhya Pradesh, India",
+    "url": "https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb-8d8e5ef7c622",
+    "date": "May, 2017 - June 2017",
+    "tags": ["ArangoDB","Java","RESTful API","Apache Jmeter"]
+  },
+  {
+    "name": "Project Trainee at Winsoft Technologies",
+    "image": "placeholder.jpg",
+    "location": "Pune, Maharashtra, India",
+    "url": "#",
+    "date": "May, 2016 - July, 2016",
+    "tags": ["MySQL","Java","UML","jsp-servlet","AngularJS"]
+  }
+]

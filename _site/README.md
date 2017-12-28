@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## HCZ Material theme
 
 This is a simple personal material theme, best suited for personal authors, programmars, bloggers. 
@@ -21,6 +20,3 @@ This is a simple personal material theme, best suited for personal authors, prog
 #### Screenshot
 
 ![Screenshot Home Page](https://raw.githubusercontent.com/ashutosh2k12/jekyllthemes/master/thumbnails/hcz-material.png  "Screenshot Home Page")
-=======
-[Page](https://pranshu28.github.io/)
->>>>>>> 1c4a874fced853394950ec7d06d9c261f2c4e8a9

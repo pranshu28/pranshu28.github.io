@@ -1,0 +1,57 @@
+[
+	{
+		"name": "Minesweeper AI",
+		"image": "mine.png",
+		"date": "December 2017",
+		"tags": ["C++","Python","R"]
+	},
+	{
+		"name": "Play with RNN",
+		"image": "rnn.png",
+		"url": "https://github.com/pranshumalviya2/playwith_rnn",
+		"date": "August 2017",
+		"tags": ["Keras","LSTM","Python"]
+	},
+	{
+		"name": "Classify Species with CNN",
+		"image": "cnn.jpg",
+		"url": "https://github.com/pranshumalviya2/image_classification",
+		"date": "April 2017",
+		"tags": ["Python","Tensorflow","Android","BeautifulSoup"]
+	},
+	{
+		"name": "Music Recommendation",
+		"image": "music.png",
+		"url": "https://github.com/YashSinha1996/Music-Recommendation",
+		"date": "January 2017",
+		"tags": ["mfcc","scipy","Python"]
+	},
+	{
+		"name": "Multi-kernel in SVR",
+		"image": "kernel.png",
+		"url": "https://github.com/pranshumalviya2/mksvm_price",
+		"date": "November 2016",
+		"tags": ["R","Python"]
+	},
+	{
+		"name": "Gray-scale Colorization",
+		"image": "gray.jpg",
+		"url": "https://github.com/pranshumalviya2/lets-colorize",
+		"date": "September 2016",
+		"tags": ["OpenCV","Python","scipy"]
+	},
+	{	
+		"name": "Hospital Management System",
+		"image": "rdbms.png",
+		"url": "https://github.com/pranshumalviya2/hospital_rdbms",
+		"date": "August 2016",
+		"tags": ["Java","AWT","MySQL"]
+	},
+	{	
+		"name": "LIGO Gravitational waves signal analysis",
+		"image": "ligo.jpg",
+		"url": "https://github.com/pranshumalviya2/noisygravsignals",
+		"date": "March 2016",
+		"tags": ["Julia","hdf5"]
+	}
+]

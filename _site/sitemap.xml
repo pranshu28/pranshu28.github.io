@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pranshu Malviya</title>
+    <description>Portfolio</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 28 Dec 2017 16:31:08 +0530</pubDate>
+    <lastBuildDate>Thu, 28 Dec 2017 16:31:08 +0530</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Pursuing B.Tech. in IIIT Bhubaneswar</title>
+        <description>&lt;h3 id=&quot;iiit-bhubaneswar&quot;&gt;IIIT Bhubaneswar&lt;/h3&gt;
+&lt;h5 id=&quot;odisha-india&quot;&gt;Odisha, India.&lt;/h5&gt;
+&lt;h4 id=&quot;btech-in-computer-science-and-engineering&quot;&gt;B.Tech. in Computer Science and Engineering.&lt;/h4&gt;
+&lt;h4 id=&quot;current-cpga-80710&quot;&gt;Current CPGA: 8.07/10&lt;/h4&gt;
+&lt;h5 id=&quot;2014-present&quot;&gt;(2014-Present)&lt;/h5&gt;
+</description>
+        <pubDate>Wed, 27 Aug 2014 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2014/08/27/btech-at-iiit.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2014/08/27/btech-at-iiit.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+      <item>
+        <title>Higher Secondary Education</title>
+        <description>&lt;h3 id=&quot;indore-public-school&quot;&gt;Indore Public School&lt;/h3&gt;
+&lt;h5 id=&quot;indore-mp-india&quot;&gt;Indore, M.P., India.&lt;/h5&gt;
+
+&lt;h4 id=&quot;percentage-884&quot;&gt;Percentage: 88.4%&lt;/h4&gt;
+&lt;h5 id=&quot;2012-2014&quot;&gt;(2012-2014)&lt;/h5&gt;
+</description>
+        <pubDate>Fri, 30 May 2014 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/others/2014/05/30/higher-secondary-education.html</link>
+        <guid isPermaLink="true">http://localhost:4000/others/2014/05/30/higher-secondary-education.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
+    
+    
+      <item>
+        <title>Minesweeper AI</title>
+        <description>Minesweeper AI</description>
+        <link>http://localhost:4000</link>
+        <pubDate>Fri, 01 Dec 2017 00:00:00 +0530</pubDate>
+        
+        <category>C++</category>
+        
+        <category>Python</category>
+        
+        <category>R</category>
+        
+      </item>
+    
+      <item>
+        <title>Play with RNN</title>
+        <description>Play with RNN</description>
+        <link>http://localhost:4000https://github.com/pranshumalviya2/playwith_rnn</link>
+        <pubDate>Tue, 01 Aug 2017 00:00:00 +0530</pubDate>
+        
+        <category>Keras</category>
+        
+        <category>LSTM</category>
+        
+        <category>Python</category>
+        
+      </item>
+    
+      <item>
+        <title>Classify Species with CNN</title>
+        <description>Classify Species with CNN</description>
+        <link>http://localhost:4000https://github.com/pranshumalviya2/image_classification</link>
+        <pubDate>Sat, 01 Apr 2017 00:00:00 +0530</pubDate>
+        
+        <category>Python</category>
+        
+        <category>Tensorflow</category>
+        
+        <category>Android</category>
+        
+        <category>BeautifulSoup</category>
+        
+      </item>
+    
+      <item>
+        <title>Music Recommendation</title>
+        <description>Music Recommendation</description>
+        <link>http://localhost:4000https://github.com/YashSinha1996/Music-Recommendation</link>
+        <pubDate>Sun, 01 Jan 2017 00:00:00 +0530</pubDate>
+        
+        <category>mfcc</category>
+        
+        <category>scipy</category>
+        
+        <category>Python</category>
+        
+      </item>
+    
+      <item>
+        <title>Multi-kernel in SVR</title>
+        <description>Multi-kernel in SVR</description>
+        <link>http://localhost:4000https://github.com/pranshumalviya2/mksvm_price</link>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0530</pubDate>
+        
+        <category>R</category>
+        
+        <category>Python</category>
+        
+      </item>
+    
+      <item>
+        <title>Gray-scale Colorization</title>
+        <description>Gray-scale Colorization</description>
+        <link>http://localhost:4000https://github.com/pranshumalviya2/lets-colorize</link>
+        <pubDate>Thu, 01 Sep 2016 00:00:00 +0530</pubDate>
+        
+        <category>OpenCV</category>
+        
+        <category>Python</category>
+        
+        <category>scipy</category>
+        
+      </item>
+    
+      <item>
+        <title>Hospital Management System</title>
+        <description>Hospital Management System</description>
+        <link>http://localhost:4000https://github.com/pranshumalviya2/hospital_rdbms</link>
+        <pubDate>Mon, 01 Aug 2016 00:00:00 +0530</pubDate>
+        
+        <category>Java</category>
+        
+        <category>AWT</category>
+        
+        <category>MySQL</category>
+        
+      </item>
+    
+      <item>
+        <title>LIGO Gravitational waves signal analysis</title>
+        <description>LIGO Gravitational waves signal analysis</description>
+        <link>http://localhost:4000https://github.com/pranshumalviya2/noisygravsignals</link>
+        <pubDate>Tue, 01 Mar 2016 00:00:00 +0530</pubDate>
+        
+        <category>Julia</category>
+        
+        <category>hdf5</category>
+        
+      </item>
+    
+    
+      <item>
+        <title>Summer Project on Graph database using ArangoDB</title>
+        <description>Summer Project on Graph database using ArangoDB</description>
+        <link>http://localhost:4000https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb-8d8e5ef7c622</link>
+        <pubDate>Mon, 01 May 2017 00:00:00 +0530</pubDate>
+        
+        <category>ArangoDB</category>
+        
+        <category>Java</category>
+        
+        <category>RESTful API</category>
+        
+        <category>Apache Jmeter</category>
+        
+      </item>
+    
+      <item>
+        <title>Project Trainee at Winsoft Technologies</title>
+        <description>Project Trainee at Winsoft Technologies</description>
+        <link>http://localhost:4000#</link>
+        <pubDate>Sun, 01 May 2016 00:00:00 +0530</pubDate>
+        
+        <category>MySQL</category>
+        
+        <category>Java</category>
+        
+        <category>UML</category>
+        
+        <category>jsp-servlet</category>
+        
+        <category>AngularJS</category>
+        
+      </item>
+    
+    
+  </channel>
+</rss>
