@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Visited Coimbatore, India for Smart India Hackathon 2017"
+title:  "Minesweeper AI"
 date:   2017-12-27
 categories: others
 ---

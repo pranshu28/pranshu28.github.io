@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Workshop"
+title:  "Workshop on Data Science"
 date:   2017-02-03
 categories: others
 ---
