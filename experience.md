@@ -13,7 +13,7 @@ permalink: /experience/
 * Built a generic api for miscellaneous json data for graph visualization with ArangoDB.
 * Discovered new relationships in graphDB using ArangoQL.
 * Performance testing of ArangoQL using RESTful api and Spring-boot with Apache JMeter.
-* Check this [medium](goo.gl/wWLbmV) blog for more details.
+* Check this [medium](http://goo.gl/wWLbmV) blog for more details.
 
 
 
