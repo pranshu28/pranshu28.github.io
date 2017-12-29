@@ -27,7 +27,7 @@ permalink: /extra/
 
 * Finalist, Smart India Hackathon, Coimbatore, India. *2017*.
 * Top 10, GE Healthhack, Bangalore, India. *2017*
-* Qualified, ACM-ICPC 2017 Regionals Round, IIT Kharagpur, India. *2017*
+* Qualified, ACM-ICPC 2016 Regionals Round, IIT Kharagpur, India. *2016*
 * Runner up, Blueprint Coding Competition, Advaita IIIT-Bh, India. *2016*
 * Top 7%, Project Euler - Mathematical programming platform
 
