@@ -5,8 +5,8 @@
     <description>Portfolio</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 28 Dec 2017 21:45:47 +0530</pubDate>
-    <lastBuildDate>Thu, 28 Dec 2017 21:45:47 +0530</lastBuildDate>
+    <pubDate>Fri, 29 Dec 2017 11:55:15 +0530</pubDate>
+    <lastBuildDate>Fri, 29 Dec 2017 11:55:15 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -39,7 +39,7 @@
     
       <item>
         <title>Summer Project, 2017</title>
-        <description>&lt;p&gt;&lt;a href=&quot;https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb&quot;&gt;Blog&lt;/a&gt; on graphical interpretation with ArangoDB and performance testing.&lt;/p&gt;
+        <description>&lt;p&gt;Check &lt;a href=&quot;goo.gl/wWLbmV&quot;&gt;blog&lt;/a&gt; on graphical interpretation with ArangoDB and performance testing.&lt;/p&gt;
 </description>
         <pubDate>Tue, 25 Jul 2017 00:00:00 +0530</pubDate>
         <link>http://localhost:4000/others/2017/07/25/arangodb.html</link>
@@ -232,7 +232,7 @@ Built a real-time application that identifies species of butterfly using hybrid 
       <item>
         <title>Graphical interpretation using ArangoDB</title>
         <description>Graphical interpretation using ArangoDB</description>
-        <link>http://localhost:4000https://medium.com/@pranshumalviya/graphical-interpretation-of-data-using-arangodb</link>
+        <link>http://localhost:4000https://goo.gl/wWLbmV</link>
         <pubDate>Sat, 01 Jul 2017 00:00:00 +0530</pubDate>
         
         <category>ArangoDB</category>

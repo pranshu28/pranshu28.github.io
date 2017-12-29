@@ -102,7 +102,6 @@ li.current-menu-item:before {
 h2.blog-title-pro{color: #fff;}
 h2.blog-title-pro:after {
     content: "";
-    display: block;
     width: 70px;
     height: 4px;
     margin-top: 16px;
