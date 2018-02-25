@@ -4,6 +4,13 @@ title: Experience
 permalink: /experience/
 ---
 
+## Internship at RISE-Lab, IIT Madras
+###### Chennai, Tamil Nadu, India 
+--------------------------------------------------
+#### January, 2018 - April, 2018
+
+* Tuning Hyperparameters using Bayesian Optimization.
+
 ## Summer Project on Graph database using ArangoDB
 ###### Indore, Madhya Pradesh, India 
 --------------------------------------------------
