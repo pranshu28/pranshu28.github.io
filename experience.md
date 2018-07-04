@@ -17,7 +17,7 @@ permalink: /experience/
 --------------------------------------------------
 #### January, 2018 - April, 2018
 
-* A research project on parametertuning of Apache Hadoop using Bayesian Optimization and Deep Learning to improve overall performance.
+* A research project on parameter tuning of Apache Hadoop using Bayesian Optimization and Deep Learning to improve overall performance.
 * Comparing advantages of Apache Spark, Hadoop and Mesos in big-data environments and benchmarking them on AWS by setting up Ambari cluster.
 
 
