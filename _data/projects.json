@@ -1,9 +1,21 @@
 [
 	{
+		"name": "Instacart Recommendation System",
+		"image": "insta.png",
+		"date": "June 2018",
+		"tags": ["Java","Spark","ArangoDB"]
+	},
+	{
+		"name": "Hadoop paramenter optimization",
+		"image": "hadoop.jpg",
+		"date": "April 2018",
+		"tags": ["Hadoop","Python","Hive","Keras"]
+	},
+	{
 		"name": "Minesweeper AI",
 		"image": "mine.png",
 		"date": "December 2017",
-		"tags": ["C++","Python","R"]
+		"tags": ["C++","Python","R","Keras"]
 	},
 	{
 		"name": "Play with RNN",

@@ -4,12 +4,22 @@ title: Experience
 permalink: /experience/
 ---
 
+## Project Associate at RBCDSAI, IIT Madras
+###### Chennai, Tamil Nadu, India 
+--------------------------------------------------
+#### June, 2018 - Present
+
+* Working with time-series data
+
+
 ## Internship at RISE-Lab, IIT Madras
 ###### Chennai, Tamil Nadu, India 
 --------------------------------------------------
 #### January, 2018 - April, 2018
 
-* Tuning Hyperparameters using Bayesian Optimization.
+* A research project on parametertuning of Apache Hadoop using Bayesian Optimization and Deep Learning to improve overall performance.
+* Comparing advantages of Apache Spark, Hadoop and Mesos in big-data environments and benchmarking them on AWS by setting up Ambari cluster.
+
 
 ## Summer Project on Graph database using ArangoDB
 ###### Indore, Madhya Pradesh, India 

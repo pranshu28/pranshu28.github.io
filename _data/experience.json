@@ -1,5 +1,20 @@
 [
   {
+    "name": "Project Associate at RBCDSAI, IIT-Madras",
+    "image": "placeholder.jpg",
+    "location": "Chennai, Tamil Nadu, India",
+    "url": "#",
+    "date": "June, 2016 - Present",
+    "tags": []
+  }{
+    "name": "Internship at RISE-Lab, IIT-Madras",
+    "image": "placeholder.jpg",
+    "location": "Chennai, Tamil Nadu, India",
+    "url": "#",
+    "date": "Jan, 2018 - April, 2018",
+    "tags": ["Hadoop","Python","Keras","Hive","Spark"]
+  },
+  {
     "name": "Summer Project on Graph database using ArangoDB",
     "image": "placeholder.jpg",
     "location": "Indore, Madhya Pradesh, India",
