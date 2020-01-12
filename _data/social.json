@@ -18,5 +18,9 @@
   {
     "icon": "fa-envelope",
     "link": "mailto:pranshumalviya2@gmail.com"
+  },
+  {
+    "icon": "fa-phone",
+    "link": "tel:"
   }
 ]
