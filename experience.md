@@ -4,12 +4,29 @@ title: Experience
 permalink: /experience/
 ---
 
+## Teaching Assistant, IIT Madras
+###### Chennai, Tamil Nadu, India 
+--------------------------------------------------
+#### August, 2019 - Present
+
+1. Practical Machine Learning with Tensorflow ([NPTEL](https://swayam.gov.in/nd1_noc20_cs44/preview))
+    
+    Instructors: Dr. Ashish Tendulkar (Google), Prof. Balaraman Ravindran (IIT Madras)
+2. Big Data Lab (Dept. of CSE, IIT Madras)
+
+    Instructor: Prof. Balaraman Ravindran (IIT Madras)
+
 ## Project Associate at RBCDSAI, IIT Madras
 ###### Chennai, Tamil Nadu, India 
 --------------------------------------------------
-#### June, 2018 - Present
+#### June, 2018 - December, 2019 
 
-* Working with time-series data
+Guide: Prof. Balaraman Ravindran (Dept. of CSE, IIT Madras)
+
+Place: Robert Bosch Center for Data Science and Artificial Intelligence (RBCDSAI), IIT Madras.
+
+Collaboration: Applied Materials
+* About the project: It is based on exploring and understanding the implicit states that can be identified from semiconductor fab manufacturing process data. This work essentially touches domains like dynamic bayesian networks and deep learning etc. More recently, it involves score-based structure learning and attention-based causal discovery. 
 
 
 ## Internship at RISE-Lab, IIT Madras
