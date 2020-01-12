@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
  [Resume](https://goo.gl/CwL1xK) 
-| [CV](https://drive.google.com/open?id=1NQGMJNoKZuFQKdM7OX7LXxeex3UcRKnT)
+% | [CV](https://drive.google.com/open?id=1NQGMJNoKZuFQKdM7OX7LXxeex3UcRKnT)
 | [Twitter](https://twitter.com/pranshumalviya8)
 | [LinkedIn](https://www.linkedin.com/in/pranshumalviya2)
 | [Github](https://github.com/pranshu28)
