@@ -3,7 +3,7 @@ description: Portfolio
 author: Pranshu Malviya
 logo: /static/img/pranshu.jpg
 github: https://github.com/pranshu28
-about: CSE Student
+about: MS Student at IIT Madras
 
 baseurl: ""
 url: ""
@@ -26,5 +26,3 @@ per_page: 20
 paginate_path: "/page:num/"
 markdown: kramdown
 gems: [jekyll-paginate, jekyll-gist]
-
-theme: jekyll-theme-minimal
