@@ -8,5 +8,4 @@ categories: others
 ### IIIT Bhubaneswar 
 ##### Odisha, India.
 #### B.Tech. in Computer Science and Engineering.
-#### Current CPGA: 8.07/10
-##### (2014-Present)
+#### Current CPGA: 8.15/10
