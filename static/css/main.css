@@ -55,7 +55,7 @@ p.info a {
     text-align: center;
     line-height: 20px;
     font-size: 20px;
-    color: #000;
+    color: #000000;
     padding: 5px;
     width: 30px;
     height: 30px;
@@ -63,7 +63,7 @@ p.info a {
 }
 .icon:hover {
     color: rgba(255, 255, 255, 0.63);
-    background: #000;
+    background: #000000;
 }
 .menu ul li {
     list-style: none;
@@ -71,7 +71,7 @@ p.info a {
 }
 
 .menu ul li a:hover, .menu ul li a:focus, li.current-menu-item > a{
-    background: #007D72;
+    background: #000000;
 }
 li.current-menu-item:before {
     content: "";
@@ -96,7 +96,7 @@ li.current-menu-item:before {
     font-size: 26px;
     margin-bottom: 32px;
     margin-top: 5px;
-    color: #01c87b;
+    color: #000000;
     font-weight: 300;
 }
 h2.blog-title-pro{color: #fff;}
