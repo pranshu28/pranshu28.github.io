@@ -11,7 +11,7 @@ permalink: /publication/
 ###### Submitted to [https://facctconference.org](the ACM Conference on Fairness, Accountability, and Transparency (ACM FAccT))
 --------------------------------------------------
 
-## [https://arxiv.org/abs/2007.05516](A Causal Linear Model to Quantify Edge and Cumulative Unfairness for Unfair Edge Prioritization and Discrimination Removal)
+## [A Causal Linear Model to Quantify Edge and Cumulative Unfairness for Unfair Edge Prioritization and Discrimination Removal](https://arxiv.org/abs/2007.05516)
 ##### [P. Ravishankar](https://sites.google.com/view/pavanravishankar/home), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
 #### [https://sites.google.com/view/icml-law-and-ml-2020/](Workshop on Law and Machine Learning), [https://icml.cc](ICML)
 ##### 2020
@@ -19,7 +19,7 @@ permalink: /publication/
 
 --------------------------------------------------
 
-## [https://arxiv.org/pdf/1811.06437](Contextual Care Protocol using Neural Networks and Decision Trees)
+## [Contextual Care Protocol using Neural Networks and Decision Trees](https://arxiv.org/pdf/1811.06437)
 ##### [Y. P. Sinha](https://in.linkedin.com/in/yash-pratyush-sinha-0b4756ba), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [M. Panda](https://in.linkedin.com/in/minerva-panda-22b04593), [S. M. Ali](https://www.linkedin.com/in/syedmohdali121/)
 #### [http://reva.edu.in/icaecc2018/](Second International Conference on Advances in Electronics, Computer and Communications (IEEE Xplore))
 ##### 2018
