@@ -4,13 +4,6 @@ title: Publications/Conference Papers
 permalink: /publication/
 ---
 
-## A Causal Model to Quantify Edge and Cumulative Unfairness for Unfair Edge Prioritization and Discrimination Removal
-##### [P. Ravishankar](https://sites.google.com/view/pavanravishankar/home), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
-#### Under Review 
-##### 2021
-###### Submitted to the [ACM Conference on Fairness, Accountability, and Transparency (ACM FAccT)](https://facctconference.org)
---------------------------------------------------
-
 ## [A Causal Linear Model to Quantify Edge and Cumulative Unfairness for Unfair Edge Prioritization and Discrimination Removal](https://arxiv.org/abs/2007.05516)
 ##### [P. Ravishankar](https://sites.google.com/view/pavanravishankar/home), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
 #### [Workshop on Law and Machine Learning](https://sites.google.com/view/icml-law-and-ml-2020/), [ICML](https://icml.cc)
