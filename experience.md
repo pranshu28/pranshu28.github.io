@@ -11,17 +11,20 @@ permalink: /experience/
 
 1. Practical Machine Learning with Tensorflow ([NPTEL](https://swayam.gov.in/nd1_noc20_cs44/preview))
     
-    Instructors: Dr. Ashish Tendulkar (Google), Prof. Balaraman Ravindran (IIT Madras)
-2. Big Data Lab (Dept. of CSE, IIT Madras)
+    Instructors: [Dr. Ashish Tendulkar (Google)](https://www.linkedin.com/in/ashishtendulkar), [Prof. Balaraman Ravindran](http://www.cse.iitm.ac.in/~ravi/) (IIT Madras)
+2. Big Data Lab ([Dept. of CSE](https://www.cse.iitm.ac.in/course_details.php?arg=MTQw), IIT Madras)
 
-    Instructor: Prof. Balaraman Ravindran (IIT Madras)
+    Instructor: [Prof. Balaraman Ravindran](http://www.cse.iitm.ac.in/~ravi/) (IIT Madras) and [Prof. Arun Rajkumar](https://sites.google.com/view/arun-rajkumar) (IIT Madras).
+3. Reinforcement Learning ([NPTEL](https://swayam.gov.in/nd1_noc21_cs71/preview))
+
+    Instructor: [Prof. Balaraman Ravindran](http://www.cse.iitm.ac.in/~ravi/) (IIT Madras)
 
 ## Project Associate at RBCDSAI, IIT Madras
 ###### Chennai, Tamil Nadu, India 
 --------------------------------------------------
 #### June, 2018 - December, 2019 
 
-Guide: Prof. Balaraman Ravindran (Dept. of CSE, IIT Madras)
+Guide: [Prof. Balaraman Ravindran](http://www.cse.iitm.ac.in/~ravi/) (Dept. of CSE, IIT Madras)
 
 Place: Robert Bosch Center for Data Science and Artificial Intelligence (RBCDSAI), IIT Madras.
 
