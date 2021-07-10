@@ -4,6 +4,13 @@ title: Publications/Conference Papers
 permalink: /publication/
 ---
 
+## [TAG: Task-based Accumulated Gradients for Lifelong learning](https://arxiv.org/abs/2105.05155)
+##### [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [S. Chandar](http://sarathchandar.in), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
+#### [Workshop on Theory and Foundation of Continual Learning](https://sites.google.com/view/cl-theory-icml2021/home), [ICML](https://icml.cc)
+##### 2021
+###### Abstract: When an agent encounters a continual stream of new tasks in the lifelong learning setting, it leverages the knowledge it gained from the earlier tasks to help learn the new tasks better. In such a scenario, identifying an efficient knowledge representation becomes a challenging problem. Most research works propose to either store a subset of examples from the past tasks in a replay buffer, dedicate a separate set of parameters to each task or penalize excessive updates over parameters by introducing a regularization term. While existing methods employ the general task-agnostic stochastic gradient descent update rule, we propose a task-aware optimizer that adapts the learning rate based on the relatedness among tasks. We utilize the directions taken by the parameters during the updates by additively accumulating the gradients specific to each task. These task-based accumulated gradients act as a knowledge base that is maintained and updated throughout the stream. We empirically show that our proposed adaptive learning rate not only accounts for catastrophic forgetting but also exhibits knowledge transfer. We also show that our method performs better than several state-of-the-art methods in lifelong learning on complex datasets. Moreover, our method can also be combined with the existing methods and achieve substantial improvement in performance. 
+
+--------------------------------------------------
 ## [A Causal Linear Model to Quantify Edge and Cumulative Unfairness for Unfair Edge Prioritization and Discrimination Removal](https://arxiv.org/abs/2007.05516)
 ##### [P. Ravishankar](https://sites.google.com/view/pavanravishankar/home), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
 #### [Workshop on Law and Machine Learning](https://sites.google.com/view/icml-law-and-ml-2020/), [ICML](https://icml.cc)
