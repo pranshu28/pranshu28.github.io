@@ -2,7 +2,7 @@
 layout: post
 title:  "Higher Secondary Education"
 date:   2014-05-30
-categories: others
+categories: education
 ---
 
 ### Indore Public School

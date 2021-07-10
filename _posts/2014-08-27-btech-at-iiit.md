@@ -2,7 +2,7 @@
 layout: post
 title:  "Pursuing B.Tech. in IIIT Bhubaneswar"
 date:   2014-08-27
-categories: others
+categories: education
 ---
 
 ### IIIT Bhubaneswar 
