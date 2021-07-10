@@ -1,5 +1,12 @@
 [
 	{
+		"name": "Molecules Property prediction with activity against SARS-CoV-2",
+		"image": "covid.png",
+		"url": "https://rbcdsai.iitm.ac.in/covid19/drug_design.html",
+		"date": "May 2020",
+		"tags": ["Python","Pytorch"]
+	},
+	{
 		"name": "Instacart Recommendation System",
 		"image": "insta.png",
 		"date": "June 2018",
