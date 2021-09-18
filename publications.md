@@ -1,8 +1,16 @@
 ---
 layout: default
-title: Publications/Conference Papers
+title: Publications/Conference/Workshop Papers
 permalink: /publication/
 ---
+
+## A Causal Approach for Unfair Edge Prioritization and Discrimination Removal
+##### [P. Ravishankar](https://sites.google.com/view/pavanravishankar/home), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
+#### [The 13th Asian Conference on Machine Learning (ACML)](http://www.acml-conf.org/2021/)
+##### 2021
+###### Abstract: In budget-constrained settings aimed at mitigating unfairness, like law enforcement, it is essential to prioritize the sources of unfairness before taking measures to mitigate them in the real world. Unlike previous works, which only serve as a caution against possible discrimination and de-bias data after data generation, this work provides a toolkit to mitigate unfairness in the real world. We assume that a non-parametric Markovian causal model representative of the data generation procedure is given. The edges emanating from the sensitive nodes in the causal graph, such as race, are assumed to be the sources of unfairness. We first quantify Edge Flow in any edge X --> Y, which is the belief of observing a specific value of Y due to the influence of a specific value of X along X --> Y. We then quantify Edge Unfairness by formulating a non-parametric model in terms of edge flows. We then prove that cumulative unfairness towards sensitive groups in a decision, like race in a bail decision, is non-existent when edge unfairness is absent. We prove this result for the non-trivial non-parametric model setting when the cumulative unfairness cannot be expressed in terms of edge unfairness. We then measure the Potential to mitigate the Cumulative Unfairness when edge unfairness is decreased. Based on these measurements, we propose the Unfair Edge Prioritization algorithm that can then be used by policymakers. We also propose the Discrimination Removal Procedure that de-biases a data distribution by eliminating optimization constraints that grow exponentially in the number of sensitive attributes and values taken by them. Extensive experiments validate the theorem and specifications used for quantifying the above measures.
+
+--------------------------------------------------
 
 ## [TAG: Task-based Accumulated Gradients for Lifelong learning](https://arxiv.org/abs/2105.05155)
 ##### [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [S. Chandar](http://sarathchandar.in), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
