@@ -7,7 +7,7 @@ permalink: /experience/
 ## Teaching Assistant at [IIT Madras](https://www.iitm.ac.in)
 ###### Chennai, Tamil Nadu, India 
 --------------------------------------------------
-#### January, 2019 - Present
+#### January, 2019 - December, 2021
 
 1. Practical Machine Learning with Tensorflow ([NPTEL](https://swayam.gov.in/nd1_noc20_cs44/preview))
     
