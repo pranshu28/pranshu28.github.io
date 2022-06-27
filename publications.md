@@ -4,7 +4,23 @@ title: Publications/Conference/Workshop Papers
 permalink: /publication/
 ---
 
-## A Causal Approach for Unfair Edge Prioritization and Discrimination Removal
+## Feature diversity in self-supervised learning
+##### [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [A. V. Sudhakar](https://in.linkedin.com/in/innovatorarjun)
+#### [Conference on Lifelong Learning Agents (CoLLAs) - Workshop Track](https://lifelong-ml.cc) 
+##### 2022
+###### Abstract: Many studies on scaling laws consider basic factors such as model size, model shape, dataset size, and compute power. These factors are easily tunable and represent the fundamental elements of any machine learning setup. But researchers have also employed more complex factors to estimate the test error and generalization performance with high predictability. These factors are generally specific to the domain or application. For example, feature diversity was primarily used for promoting syn-to-real transfer by Chen et al. (2021). With numerous scaling factors defined in previous works, it would be interesting to investigate how these factors may affect overall generalization performance in the context of self-supervised learning with CNN models. How do individual factors promote generalization, which includes varying depth, width, or the number of training epochs with early stopping? For example, does higher feature diversity result in higher accuracy held in complex settings other than a syn-to-real transfer? How do these factors depend on each other? We found that the last layer is the most diversified throughout the training. However, while the model's test error increases with increasing epochs, its diversity drops. We also discovered that diversity is directly related to model width.
+
+--------------------------------------------------
+
+## [TAG: Task-based Accumulated Gradients for Lifelong learning](https://arxiv.org/abs/2105.05155)
+##### [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/), [S. Chandar](http://sarathchandar.in)
+#### [Conference on Lifelong Learning Agents (CoLLAs)](https://lifelong-ml.cc) 2022
+#### [Workshop on Theory and Foundation of Continual Learning](https://sites.google.com/view/cl-theory-icml2021/home), [ICML](https://icml.cc) 2021
+###### Abstract: When an agent encounters a continual stream of new tasks in the lifelong learning setting, it leverages the knowledge it gained from the earlier tasks to help learn the new tasks better. In such a scenario, identifying an efficient knowledge representation becomes a challenging problem. Most research works propose to either store a subset of examples from the past tasks in a replay buffer, dedicate a separate set of parameters to each task or penalize excessive updates over parameters by introducing a regularization term. While existing methods employ the general task-agnostic stochastic gradient descent update rule, we propose a task-aware optimizer that adapts the learning rate based on the relatedness among tasks. We utilize the directions taken by the parameters during the updates by additively accumulating the gradients specific to each task. These task-based accumulated gradients act as a knowledge base that is maintained and updated throughout the stream. We empirically show that our proposed adaptive learning rate not only accounts for catastrophic forgetting but also exhibits knowledge transfer. We also show that our method performs better than several state-of-the-art methods in lifelong learning on complex datasets. Moreover, our method can also be combined with the existing methods and achieve substantial improvement in performance. 
+
+--------------------------------------------------
+
+## [A Causal Approach for Unfair Edge Prioritization and Discrimination Removal](https://arxiv.org/abs/2111.14348)
 ##### [P. Ravishankar](https://sites.google.com/view/pavanravishankar/home), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
 #### [The 13th Asian Conference on Machine Learning (ACML)](http://www.acml-conf.org/2021/)
 ##### 2021
@@ -12,13 +28,6 @@ permalink: /publication/
 
 --------------------------------------------------
 
-## [TAG: Task-based Accumulated Gradients for Lifelong learning](https://arxiv.org/abs/2105.05155)
-##### [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [S. Chandar](http://sarathchandar.in), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
-#### [Workshop on Theory and Foundation of Continual Learning](https://sites.google.com/view/cl-theory-icml2021/home), [ICML](https://icml.cc)
-##### 2021
-###### Abstract: When an agent encounters a continual stream of new tasks in the lifelong learning setting, it leverages the knowledge it gained from the earlier tasks to help learn the new tasks better. In such a scenario, identifying an efficient knowledge representation becomes a challenging problem. Most research works propose to either store a subset of examples from the past tasks in a replay buffer, dedicate a separate set of parameters to each task or penalize excessive updates over parameters by introducing a regularization term. While existing methods employ the general task-agnostic stochastic gradient descent update rule, we propose a task-aware optimizer that adapts the learning rate based on the relatedness among tasks. We utilize the directions taken by the parameters during the updates by additively accumulating the gradients specific to each task. These task-based accumulated gradients act as a knowledge base that is maintained and updated throughout the stream. We empirically show that our proposed adaptive learning rate not only accounts for catastrophic forgetting but also exhibits knowledge transfer. We also show that our method performs better than several state-of-the-art methods in lifelong learning on complex datasets. Moreover, our method can also be combined with the existing methods and achieve substantial improvement in performance. 
-
---------------------------------------------------
 ## [A Causal Linear Model to Quantify Edge and Cumulative Unfairness for Unfair Edge Prioritization and Discrimination Removal](https://arxiv.org/abs/2007.05516)
 ##### [P. Ravishankar](https://sites.google.com/view/pavanravishankar/home), [P. Malviya](https://in.linkedin.com/in/pranshumalviya2), [B. Ravindran](http://www.cse.iitm.ac.in/~ravi/)
 #### [Workshop on Law and Machine Learning](https://sites.google.com/view/icml-law-and-ml-2020/), [ICML](https://icml.cc)
