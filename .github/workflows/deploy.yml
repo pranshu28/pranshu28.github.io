@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [master, redesign-nextjs, main]
   workflow_dispatch:
 
 permissions:
@@ -31,7 +31,10 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # Optional: set repo variable PHOTOS_CDN_BASE (e.g. https://cdn.example.com) to mirror public/photos on a CDN
       - run: pnpm build
+        env:
+          NEXT_PUBLIC_PHOTOS_CDN: ${{ vars.PHOTOS_CDN_BASE }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

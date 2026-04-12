@@ -10,7 +10,10 @@
         "education": "Education",
         "workExperience": "Experience",
         "awards": "Honors & Activities",
-        "academicServices": "Academic Services",
+        "academicServices": "Service & Teaching",
+        "serviceReviewer": "Reviewer",
+        "serviceTeachingAssistant": "Teaching assistant",
+        "serviceVolunteering": "Volunteering",
         "news": {
             "title": "Latest News"
         },

@@ -2,7 +2,8 @@
 
 import { BLUR_FADE_DELAY } from "@/data/site";
 import { BlurFade } from "@/components/ui/blur-fade";
-import Link from "next/link";
+import { Link as I18nLink } from "@/i18n/routing";
+import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 import { useState } from "react";
 
 type Photo = { src: string; alt: string };
@@ -121,7 +122,7 @@ function GalleryTile({
         style={{ aspectRatio: "3 / 2" }}
       >
         <img
-          src={gallery.cover}
+          src={resolvePhotoSrc(gallery.cover)}
           alt={gallery.title}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading={index < 4 ? "eager" : "lazy"}
@@ -149,7 +150,7 @@ function SketchesTile({ index, onClick }: { index: number; onClick: () => void }
         style={{ aspectRatio: "3 / 2" }}
       >
         <img
-          src="/photos/sketches/horse.jpg"
+          src={resolvePhotoSrc("/photos/sketches/horse.jpg")}
           alt="Sketches"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
@@ -193,7 +194,7 @@ function GalleryDetail({
           <BlurFade key={photo.src} delay={BLUR_FADE_DELAY * (i + 1)}>
             <div className="mb-4 break-inside-avoid">
               <img
-                src={photo.src}
+                src={resolvePhotoSrc(photo.src)}
                 alt={photo.alt}
                 className="w-full rounded-lg object-cover"
                 loading={i < 3 ? "eager" : "lazy"}
@@ -228,12 +229,12 @@ export default function PhotosPage() {
         ) : (
           <>
             <BlurFade delay={0}>
-              <Link
+              <I18nLink
                 href="/"
                 className="text-muted-foreground hover:text-foreground mb-8 inline-block text-sm transition-colors"
               >
                 &larr; Back
-              </Link>
+              </I18nLink>
               <h1 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">
                 Life
               </h1>

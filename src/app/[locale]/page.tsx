@@ -113,6 +113,19 @@ export default async function Page(props: {
     description: string;
   }>("work.items");
 
+  const preprintItems = getCollectionItems<{
+    title: string;
+    dates: string;
+    authors: string;
+    href?: string;
+  }>("preprints.items");
+
+  const serviceData = (t.raw("service") as {
+    reviewing: string[];
+    teaching: string[];
+    volunteering: string[];
+  }) ?? { reviewing: [], teaching: [], volunteering: [] };
+
   return (
     <main className="mx-auto flex min-h-dvh max-w-7xl flex-col space-y-8 px-6 py-8 pb-24 sm:space-y-10 sm:px-16 md:px-20 md:py-16 md:pt-14 lg:px-24 lg:py-20 xl:px-32 xl:py-24">
       {/* Hero Section */}
@@ -201,6 +214,41 @@ export default async function Page(props: {
               desktopDisplayCount={6}
               showAllText={t("showAll")}
             />
+
+            {/* Preprints / Working Papers */}
+            {preprintItems.length > 0 && (
+              <div className="mt-8">
+                <h3 className="text-muted-foreground mb-4 text-sm font-medium uppercase tracking-wider">
+                  Preprints & Workshop Papers
+                </h3>
+                <div className="space-y-3">
+                  {preprintItems.map((p, i) => (
+                    <BlurFade key={i} delay={BLUR_FADE_DELAY * (i + 1)}>
+                      <div className="text-sm">
+                        {p.href ? (
+                          <Link
+                            href={p.href}
+                            className="font-medium underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
+                            target="_blank"
+                          >
+                            {p.title}
+                          </Link>
+                        ) : (
+                          <span className="font-medium">{p.title}</span>
+                        )}
+                        <span className="text-muted-foreground">
+                          {" — "}
+                          <CustomReactMarkdown>{p.authors}</CustomReactMarkdown>
+                        </span>
+                        <span className="text-muted-foreground ml-1 text-xs">
+                          ({p.dates})
+                        </span>
+                      </div>
+                    </BlurFade>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -226,6 +274,45 @@ export default async function Page(props: {
           </div>
         </section>
       )}
+
+      {/* Service & Teaching Section */}
+      <section id="service">
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <div className="flex min-h-0 flex-col gap-y-4">
+            <h2 className="text-xl font-bold">
+              {t("sections.academicServices")}
+            </h2>
+            <div className="text-muted-foreground space-y-4 text-sm">
+              <div>
+                <span className="text-foreground mb-1 block font-medium">
+                  {t("sections.serviceReviewer")}
+                </span>
+                <span>{serviceData.reviewing.join(" · ")}</span>
+              </div>
+              <div>
+                <span className="text-foreground mb-1 block font-medium">
+                  {t("sections.serviceTeachingAssistant")}
+                </span>
+                <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-0.5">
+                  {serviceData.teaching.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span className="text-foreground mb-1 block font-medium">
+                  {t("sections.serviceVolunteering")}
+                </span>
+                <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-0.5">
+                  {serviceData.volunteering.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </BlurFade>
+      </section>
 
       {/* Earlier Work Section */}
       {projectsItems && projectsItems.length > 0 && (
@@ -253,15 +340,10 @@ export default async function Page(props: {
         <div className="grid w-full items-center justify-center gap-4 px-4 py-12 text-center md:px-6">
           <Contact
             emailUrl={socialData.email.url}
-            calendlyUrl={socialData.calendly?.url}
             contactLabel={t("sections.contact")}
             getInTouch={t("sections.getInTouch")}
             contactDescription={t("sections.contactDescription")}
             viaEmail={t("sections.viaEmail")}
-            askQuestions={t("sections.askQuestions")}
-            exploreCollaboration={t("sections.exploreCollaboration")}
-            coffeeChat={t("sections.coffeeChat")}
-            schedule={t("sections.schedule")}
           />
         </div>
       </section>
