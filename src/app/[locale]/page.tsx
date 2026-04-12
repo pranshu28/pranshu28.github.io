@@ -144,7 +144,6 @@ export default async function Page(props: {
             name={t("name.full")}
             firstName={t("name.given")}
             surname={t("name.family")}
-            initials={t("name.initials")}
             subtitle={t("subtitle")}
             description={t("headline")}
             avatarUrl={siteConfig.avatarUrl}

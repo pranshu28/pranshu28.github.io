@@ -16,7 +16,11 @@ def main() -> None:
     listed = sorted(
         re.findall(r'src:\s*"/photos/frames/([^"]+)"', text),
     )
-    on_disk = sorted(p.name for p in FRAMES_DIR.iterdir() if p.is_file())
+    on_disk = sorted(
+        p.name
+        for p in FRAMES_DIR.iterdir()
+        if p.is_file() and p.name != ".DS_Store"
+    )
 
     only_catalog = sorted(set(listed) - set(on_disk))
     only_disk = sorted(set(on_disk) - set(listed))

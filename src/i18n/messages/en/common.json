@@ -67,7 +67,14 @@
         "breadcrumbRoot": "Beyond work",
         "albumsSection": "Albums",
         "backToAlbums": "All albums",
-        "loading": "Loading…"
+        "loading": "Loading…",
+        "sortLabel": "Sort",
+        "sortCatalog": "Gallery order",
+        "sortPlace": "Place",
+        "sortDate": "Date",
+        "sortRandom": "Shuffle",
+        "sortAz": "Title A–Z",
+        "reshuffle": "New shuffle"
     },
     "blog": {
         "title": "Blog",

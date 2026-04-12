@@ -11,6 +11,7 @@ import {
   useRef,
 } from "react";
 
+import { JustifiedAlbumGrid } from "@/components/photos/justified-album-grid";
 import { BlurFade } from "@/components/ui/blur-fade";
 import {
   type ActiveGallery,
@@ -22,6 +23,11 @@ import {
 import { BLUR_FADE_DELAY } from "@/data/site";
 import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
+import {
+  type GallerySortMode,
+  normalizeSortParam,
+  sortGalleryPhotos,
+} from "@/lib/sort-gallery-photos";
 import { cn } from "@/lib/utils";
 
 /** Shareable: `?g=<albumId>&p=<0-based index>` */
@@ -207,7 +213,7 @@ function PhotoLightbox({
         </button>
 
         <div
-          className="mx-1 flex max-h-[calc(100vh-14rem)] max-w-[min(100vw-8rem,1400px)] flex-1 items-center justify-center sm:mx-4"
+          className="mx-1 flex max-h-[calc(100vh-14rem)] max-w-[calc(100vw-2rem)] flex-1 items-center justify-center sm:mx-2"
           onClick={(e) => e.stopPropagation()}
         >
           <img
@@ -276,6 +282,9 @@ function PhotoLightbox({
 
 function AlbumDetail({
   gallery,
+  sortMode,
+  onSortChange,
+  onReshuffleRandom,
   lightboxOpen,
   lightboxIndex,
   onBack,
@@ -287,6 +296,9 @@ function AlbumDetail({
   backLabel,
 }: {
   gallery: ActiveGallery;
+  sortMode: GallerySortMode;
+  onSortChange: (mode: GallerySortMode) => void;
+  onReshuffleRandom: () => void;
   lightboxOpen: boolean;
   lightboxIndex: number;
   onBack: () => void;
@@ -298,10 +310,9 @@ function AlbumDetail({
   backLabel: string;
 }) {
   const tGallery = useTranslations("galleryPage");
-  const grid = gallery.photos.map((photo, photoIndex) => ({ photo, photoIndex }));
 
   return (
-    <div>
+    <div className="w-full min-w-0">
       <BlurFade delay={0}>
         <nav
           className="text-muted-foreground mb-2 text-xs font-medium tracking-wide uppercase"
@@ -314,49 +325,54 @@ function AlbumDetail({
         <button
           type="button"
           onClick={onBack}
-          className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors"
+          className="text-muted-foreground hover:text-foreground mb-4 inline-block text-sm transition-colors"
         >
           &larr; {backLabel}
         </button>
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3 sm:mb-5">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             {gallery.title}
           </h2>
           <LocationTag label={gallery.title} />
         </div>
+        <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5 sm:gap-3">
+          <label
+            htmlFor="gallery-sort"
+            className="text-muted-foreground text-xs font-semibold tracking-wide uppercase"
+          >
+            {tGallery("sortLabel")}
+          </label>
+          <select
+            id="gallery-sort"
+            value={sortMode}
+            onChange={(e) =>
+              onSortChange(e.target.value as GallerySortMode)
+            }
+            className="border-border bg-background text-foreground max-w-[min(100%,16rem)] rounded-md border px-2 py-1.5 text-sm"
+          >
+            <option value="catalog">{tGallery("sortCatalog")}</option>
+            <option value="place">{tGallery("sortPlace")}</option>
+            <option value="date">{tGallery("sortDate")}</option>
+            <option value="random">{tGallery("sortRandom")}</option>
+            <option value="az">{tGallery("sortAz")}</option>
+          </select>
+          {sortMode === "random" ? (
+            <button
+              type="button"
+              onClick={onReshuffleRandom}
+              className="text-muted-foreground hover:text-foreground text-xs font-medium underline-offset-2 hover:underline"
+            >
+              {tGallery("reshuffle")}
+            </button>
+          ) : null}
+        </div>
       </BlurFade>
 
-      <div
-        className="columns-2 gap-x-4 [column-fill:_balance] md:columns-3 xl:columns-4"
-        role="list"
-        aria-label={`${gallery.title} photos`}
-      >
-        {grid.map(({ photo, photoIndex }, visualI) => (
-          <div
-            role="listitem"
-            key={`${photo.src}-${photoIndex}`}
-            className="contents"
-          >
-            <BlurFade delay={BLUR_FADE_DELAY * Math.min(visualI + 1, 8)}>
-              <button
-                type="button"
-                data-photo-src={photo.src}
-                onClick={() => onOpenPhoto(photoIndex)}
-                className="group border-border relative mb-4 w-full break-inside-avoid overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <img
-                  src={resolvePhotoSrc(photo.src)}
-                  alt={photo.alt}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  loading={visualI < 8 ? "eager" : "lazy"}
-                  decoding="async"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
-              </button>
-            </BlurFade>
-          </div>
-        ))}
-      </div>
+      <JustifiedAlbumGrid
+        photos={gallery.photos}
+        onOpenPhoto={onOpenPhoto}
+        ariaLabel={`${gallery.title} photos`}
+      />
 
       <PhotoLightbox
         open={lightboxOpen}
@@ -384,8 +400,24 @@ function PhotosPageContent() {
     return resolveActiveGallery(g);
   }, [searchParams]);
 
+  const sortMode = useMemo(
+    () => normalizeSortParam(searchParams.get("sort")),
+    [searchParams],
+  );
+  const rs = searchParams.get("rs") ?? "0";
+
+  const sortedPhotos = useMemo(() => {
+    if (!active) return [];
+    return sortGalleryPhotos(active.photos, sortMode, `${active.id}:${rs}`);
+  }, [active, sortMode, rs]);
+
+  const displayGallery = useMemo((): ActiveGallery | null => {
+    if (!active) return null;
+    return { ...active, photos: sortedPhotos };
+  }, [active, sortedPhotos]);
+
   const { lightboxOpen, lightboxIndex } = useMemo(() => {
-    if (!active) {
+    if (!displayGallery) {
       return { lightboxOpen: false, lightboxIndex: 0 };
     }
     const raw = searchParams.get("p");
@@ -400,12 +432,12 @@ function PhotosPageContent() {
     if (
       !Number.isFinite(idx) ||
       idx < 0 ||
-      idx >= active.photos.length
+      idx >= displayGallery.photos.length
     ) {
       return { lightboxOpen: false, lightboxIndex: 0 };
     }
     return { lightboxOpen: true, lightboxIndex: idx };
-  }, [active, searchParams]);
+  }, [displayGallery, searchParams]);
 
   const replaceQuery = useCallback(
     (updates: Record<string, string | null | undefined>) => {
@@ -416,49 +448,64 @@ function PhotosPageContent() {
 
   const openAlbum = useCallback(
     (id: string) => {
-      replaceQuery({ g: id, p: null });
+      replaceQuery({ g: id, p: null, sort: null, rs: null });
     },
     [replaceQuery],
   );
 
   const backToAlbums = useCallback(() => {
-    replaceQuery({ g: null, p: null });
+    replaceQuery({ g: null, p: null, sort: null, rs: null });
+  }, [replaceQuery]);
+
+  const onSortChange = useCallback(
+    (m: GallerySortMode) => {
+      replaceQuery({
+        sort: m === "catalog" ? null : m,
+        p: null,
+        rs: m === "random" ? String(Date.now()) : null,
+      });
+    },
+    [replaceQuery],
+  );
+
+  const onReshuffleRandom = useCallback(() => {
+    replaceQuery({ rs: String(Date.now()), p: null });
   }, [replaceQuery]);
 
   const openPhoto = useCallback(
     (index: number) => {
-      if (!active) return;
-      replaceQuery({ g: active.id, p: String(index) });
+      if (!displayGallery) return;
+      replaceQuery({ g: displayGallery.id, p: String(index) });
     },
-    [active, replaceQuery],
+    [displayGallery, replaceQuery],
   );
 
   const closeLightbox = useCallback(() => {
-    if (!active) return;
+    if (!displayGallery) return;
     replaceQuery({ p: null });
-  }, [active, replaceQuery]);
+  }, [displayGallery, replaceQuery]);
 
   const stepPhoto = useCallback(
     (delta: number) => {
-      if (!active || !lightboxOpen) return;
-      const n = active.photos.length;
+      if (!displayGallery || !lightboxOpen) return;
+      const n = displayGallery.photos.length;
       const next = (lightboxIndex + delta + n) % n;
-      replaceQuery({ g: active.id, p: String(next) });
+      replaceQuery({ g: displayGallery.id, p: String(next) });
     },
-    [active, lightboxIndex, lightboxOpen, replaceQuery],
+    [displayGallery, lightboxIndex, lightboxOpen, replaceQuery],
   );
 
   const landingAlbums = getLandingAlbums();
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-7xl flex-col px-6 py-8 pb-24 sm:px-16 md:px-20 md:py-16 md:pt-14 lg:px-24 lg:py-20 xl:px-32 xl:py-24">
-      <section
-        className="mt-16 sm:mt-28"
-        aria-labelledby="photos-heading"
-      >
-        {active ? (
+    <main className="flex min-h-dvh w-full max-w-none flex-col pb-24 pl-[max(0.5rem,env(safe-area-inset-left))] pr-[max(0.5rem,env(safe-area-inset-right))] pt-10 sm:pl-[max(0.75rem,env(safe-area-inset-left))] sm:pr-[max(0.75rem,env(safe-area-inset-right))] sm:pt-14 md:pt-16">
+      <section className="w-full min-w-0" aria-labelledby="photos-heading">
+        {displayGallery ? (
           <AlbumDetail
-            gallery={active}
+            gallery={displayGallery}
+            sortMode={sortMode}
+            onSortChange={onSortChange}
+            onReshuffleRandom={onReshuffleRandom}
             lightboxOpen={lightboxOpen}
             lightboxIndex={lightboxIndex}
             onBack={backToAlbums}
@@ -474,7 +521,7 @@ function PhotosPageContent() {
             <BlurFade delay={0}>
               <I18nLink
                 href="/"
-                className="text-muted-foreground hover:text-foreground mb-8 inline-block text-sm transition-colors"
+                className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors sm:mb-8"
               >
                 &larr; Back to site
               </I18nLink>
@@ -483,14 +530,14 @@ function PhotosPageContent() {
               </p>
               <h1
                 id="photos-heading"
-                className="mb-10 text-3xl font-bold tracking-tight sm:text-4xl"
+                className="mb-6 text-3xl font-bold tracking-tight sm:mb-8 sm:text-4xl"
               >
                 {tGallery("title")}
               </h1>
             </BlurFade>
 
             <div
-              className="grid min-w-0 grid-cols-4 gap-2 sm:gap-3"
+              className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-2 md:grid-cols-4 md:gap-3 lg:grid-cols-5 xl:grid-cols-6"
               role="list"
               aria-label="Photo albums"
             >
@@ -515,7 +562,7 @@ export default function PhotosPage() {
   return (
     <Suspense
       fallback={
-        <main className="mx-auto flex min-h-dvh max-w-7xl flex-col items-center justify-center px-6 py-24">
+        <main className="flex min-h-dvh w-full max-w-none flex-col items-center justify-center px-4 py-24">
           <p className="text-muted-foreground text-sm">{tGallery("loading")}</p>
         </main>
       }

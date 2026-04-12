@@ -1,10 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from "next/image";
 
 export default function Brief({
   name,
   firstName,
   surname,
-  initials,
   subtitle,
   description,
   avatarUrl,
@@ -14,7 +13,6 @@ export default function Brief({
   name: string;
   firstName?: string;
   surname?: string;
-  initials: string;
   subtitle: string;
   description: string;
   avatarUrl: string;
@@ -51,10 +49,16 @@ export default function Brief({
           {description}
         </p>
       </div>
-      <Avatar className="bg-muted size-24 border sm:size-28 md:size-32 lg:size-36">
-        <AvatarImage alt={name} src={avatarUrl} />
-        <AvatarFallback>{initials}</AvatarFallback>
-      </Avatar>
+      <div className="relative isolate w-full shrink-0 overflow-hidden rounded-2xl border border-border/60 bg-muted shadow-sm sm:max-w-[min(100%,22rem)] md:max-w-[min(100%,26rem)] h-[min(48svh,420px)] sm:h-[min(52svh,440px)]">
+        <Image
+          src={avatarUrl}
+          alt={name}
+          fill
+          priority
+          className="object-cover object-[center_25%]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 360px, 416px"
+        />
+      </div>
     </div>
   );
 }

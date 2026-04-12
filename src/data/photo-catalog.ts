@@ -14,14 +14,54 @@ import { CORE_PHOTO_CATALOG } from "./photo-catalog-core";
 import { FRAME_PHOTOS } from "./photo-catalog-frames";
 import { SKETCH_PHOTOS } from "./photo-catalog-sketches";
 
-export type Photo = { src: string; alt: string };
+export type Photo = {
+  src: string;
+  alt: string;
+  /** ISO YYYY-MM-DD for date sort (optional). */
+  takenAt?: string;
+  /** Stable key for place sort (e.g. country slug); optional, inferred from tags when missing. */
+  sortPlace?: string;
+};
 
 export type TaggedPhoto = {
   readonly src: string;
   readonly alt: string;
   /** Slugs; a gallery includes this photo if its `tag` is present here. */
   readonly tags: readonly string[];
+  readonly takenAt?: string;
+  readonly sortPlace?: string;
 };
+
+/** First matching tag wins when building `Photo.sortPlace`. */
+const PLACE_TAGS_FOR_SORT: readonly string[] = [
+  "austria",
+  "brazil",
+  "canada",
+  "china",
+  "costa-rica",
+  "india",
+  "italy",
+  "jordan",
+  "mexico",
+  "peru",
+  "usa",
+];
+
+function inferSortPlace(tags: readonly string[]): string | undefined {
+  for (const p of PLACE_TAGS_FOR_SORT) {
+    if (tags.includes(p)) return p;
+  }
+  return undefined;
+}
+
+function toGalleryPhoto(p: TaggedPhoto): Photo {
+  return {
+    src: p.src,
+    alt: p.alt,
+    takenAt: p.takenAt,
+    sortPlace: p.sortPlace ?? inferSortPlace(p.tags),
+  };
+}
 
 export type Gallery = {
   id: string;
@@ -64,7 +104,7 @@ const LANDING_ALBUM_SPECS = [
     id: "hiking",
     title: "Hiking",
     tag: "hiking",
-    cover: "/photos/core/rainbow-mountain.jpg",
+    cover: "/photos/core/red-valley-peru.jpg",
   },
   {
     id: "travel",
@@ -148,7 +188,7 @@ function specToGallery(
     title: spec.title,
     cover: spec.cover,
     photos: PHOTO_CATALOG.filter((p) => p.tags.includes(spec.tag)).map(
-      ({ src, alt }) => ({ src, alt }),
+      toGalleryPhoto,
     ),
   };
 }

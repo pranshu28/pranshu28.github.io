@@ -1,17 +1,14 @@
 /**
  * Curated hero rasters under `public/photos/core/`. Listed before sketches and frames in
  * `PHOTO_CATALOG` so place albums surface these first.
+ *
+ * Wonders album (`wonder` tag): only your own photos here — no hotlinked or third-party image URLs.
  */
 export const CORE_PHOTO_CATALOG = [
   {
     src: "/photos/core/machu-picchu-mist.jpg",
     alt: "Machu Picchu",
     tags: ["peru", "wonder", "travel"],
-  },
-  {
-    src: "/photos/core/rainbow-mountain.jpg",
-    alt: "Rainbow Mountain",
-    tags: ["peru", "travel", "hiking"],
   },
   {
     src: "/photos/core/red-valley-peru.jpg",
@@ -52,11 +49,6 @@ export const CORE_PHOTO_CATALOG = [
     src: "/photos/core/desert-sunset.jpg",
     alt: "Sunset over Thar Desert",
     tags: ["india", "travel"],
-  },
-  {
-    src: "/photos/core/himalayas-meadow.jpg",
-    alt: "Mountain meadow, Himalayas",
-    tags: ["india", "travel", "hiking"],
   },
   {
     src: "/photos/core/chichen-itza.jpg",
@@ -102,4 +94,6 @@ export const CORE_PHOTO_CATALOG = [
   readonly src: string;
   readonly alt: string;
   readonly tags: readonly string[];
+  readonly takenAt?: string;
+  readonly sortPlace?: string;
 }>;

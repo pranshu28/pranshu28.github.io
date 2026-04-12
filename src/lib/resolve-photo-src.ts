@@ -1,10 +1,10 @@
 /**
- * Host large galleries off GitHub: set NEXT_PUBLIC_PHOTOS_CDN at build time to a URL
- * that mirrors paths under /public (e.g. upload `public/photos/**` to R2/S3 and set
- * NEXT_PUBLIC_PHOTOS_CDN=https://your-cdn.example.com so /photos/core/a.jpg (or frames/, sketches/)
- * becomes https://your-cdn.example.com/photos/core/a.jpg).
+ * Photo `src` values must be site-owned assets under `/public` (paths like `/photos/core/...`).
+ * Do not hotlink third-party or random website images in the catalog.
  *
- * Per-image external URLs: use a full https://... string as `src` in gallery data.
+ * Optional: set NEXT_PUBLIC_PHOTOS_CDN at build time to a base URL that mirrors `public/photos/**`
+ * on your own storage (e.g. R2/S3). Only `/photos/...` paths are passed here; the env is your CDN
+ * origin, not arbitrary image URLs.
  *
  * If removed or renamed files still appear on the live site: (1) redeploy a fresh `pnpm build`
  * (`out/` is not in git — GitHub Actions must run). (2) With a CDN, re-sync `public/photos/**`
@@ -13,7 +13,9 @@
  */
 export function resolvePhotoSrc(path: string): string {
   if (path.startsWith("http://") || path.startsWith("https://")) {
-    return path;
+    throw new Error(
+      "resolvePhotoSrc: external image URLs are not allowed; add the file under public/photos and use a /photos/... path.",
+    );
   }
   const base = process.env.NEXT_PUBLIC_PHOTOS_CDN?.replace(/\/$/, "") ?? "";
   const normalized = path.startsWith("/") ? path : `/${path}`;

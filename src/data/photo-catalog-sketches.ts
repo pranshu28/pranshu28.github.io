@@ -29,4 +29,6 @@ export const SKETCH_PHOTOS = [
   readonly src: string;
   readonly alt: string;
   readonly tags: readonly string[];
+  readonly takenAt?: string;
+  readonly sortPlace?: string;
 }>;
