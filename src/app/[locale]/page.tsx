@@ -229,6 +229,7 @@ export default async function Page(props: {
                 title={t("sections.publications.othersTitle")}
                 subtitle={t("sections.publications.othersSubtitle")}
                 showAllText={t("showAll")}
+                showLessText={t("showLess")}
                 delay={BLUR_FADE_DELAY}
                 initialVisible={4}
               />

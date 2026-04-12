@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -22,6 +22,7 @@ interface PreprintsOthersProps {
   readonly title: string;
   readonly subtitle: string;
   readonly showAllText: string;
+  readonly showLessText: string;
   readonly delay?: number;
   readonly initialVisible?: number;
 }
@@ -31,6 +32,7 @@ export default function PreprintsOthers({
   title,
   subtitle,
   showAllText,
+  showLessText,
   delay = 0,
   initialVisible = DEFAULT_VISIBLE,
 }: PreprintsOthersProps) {
@@ -90,17 +92,29 @@ export default function PreprintsOthers({
       <div className="space-y-3">
         {displayed.map((p, i) => row(p, i))}
       </div>
-      {hasMore && !showAll && (
+      {hasMore && (
         <div className="flex justify-center pt-3">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowAll(true)}
-            className="flex items-center gap-2"
-          >
-            <ChevronDown className="h-4 w-4" />
-            {showAllText}
-          </Button>
+          {!showAll ? (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowAll(true)}
+              className="flex items-center gap-2"
+            >
+              <ChevronDown className="h-4 w-4" />
+              {showAllText}
+            </Button>
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowAll(false)}
+              className="flex items-center gap-2"
+            >
+              <ChevronUp className="h-4 w-4" />
+              {showLessText}
+            </Button>
+          )}
         </div>
       )}
     </div>

@@ -289,7 +289,7 @@
         "badges": [],
         "location": "Montreal, Canada",
         "title": "Teaching Assistant",
-        "logoUrl": "/logos/polymtl.png",
+        "logoUrl": "/logos/polymtl.svg",
         "start": "2023",
         "end": "2025",
         "description": "TA for INF6953PE Deep Learning Dynamics (W2025) and INF8245E Machine Learning (F2023)."

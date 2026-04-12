@@ -41,6 +41,7 @@
         "schedule": "Schedule"
     },
     "showAll": "Show All",
+    "showLess": "Show Less",
     "navbar": {
         "items": [
             {
