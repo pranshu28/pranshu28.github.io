@@ -92,7 +92,10 @@ async function getSocialMediaUrls(
     }
   >;
   return Object.values(socialData)
-    .filter((social) => social.url && social.name !== "Email")
+    .filter(
+      (social) =>
+        social.url && social.name !== "Email" && social.name !== "CV",
+    )
     .map((social) => social.url);
 }
 

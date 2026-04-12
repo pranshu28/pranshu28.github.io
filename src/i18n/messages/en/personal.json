@@ -5,11 +5,11 @@
         "family": "Malviya",
         "initials": "PM"
     },
-    "subtitle": "AI/ML Researcher",
+    "subtitle": "",
     "headline": "AI Research Scientist Intern at DRW\nPhD Candidate at MILA / Polytechnique Montreal",
     "welcome": "",
     "ogImageUrl": "pranshu28.github.io",
-    "bioMarkdown": "I build things at the intersection of optimization and continual learning. Currently an AI Research Scientist Intern at [DRW](https://drw.com/) in Montreal, and a PhD candidate at [MILA](https://mila.quebec/en/) / [Polytechnique Montreal](https://www.polymtl.ca) under [Prof. Sarath Chandar](https://sarathchandar.in).\n\nMy research asks how models can keep learning without forgetting, and how optimizers can navigate loss landscapes more effectively. Some highlights: [Manifold Metric](https://arxiv.org/abs/2405.15895) (CoLLAs 2025, Oral), [Lookbehind-SAM](https://arxiv.org/abs/2307.16704) (ICML 2024), [Critical Momenta](https://arxiv.org/abs/2307.09638) (TMLR 2024), and [TAG](https://arxiv.org/abs/2105.05155) (CoLLAs 2022).\n\nBefore Montreal, I completed my MS at [IIT Madras](https://www.iitm.ac.in) working with [Prof. Balaraman Ravindran](https://www.cse.iitm.ac.in/~ravi/) and Prof. Chandar at [RBCDSAI](https://rbcdsai.iitm.ac.in).\n\nWhen not working: [sketching](/photos/), [hiking](/photos/), reading [non-fiction on Medium](https://medium.com/@pranshumalviya), cricket, and [travelling](/photos/) (4/7 wonders so far).",
+    "bioMarkdown": "I build things at the intersection of optimization and continual learning. Currently an AI Research Scientist Intern at [DRW](https://drw.com/) in Montreal, and a PhD candidate at [MILA](https://mila.quebec/en/) / [Polytechnique Montreal](https://www.polymtl.ca) under [Prof. Sarath Chandar](https://sarathchandar.in).\n\nMy research asks how models can keep learning without forgetting, and how optimizers can navigate loss landscapes more effectively. Some highlights: [Manifold Metric](https://arxiv.org/abs/2405.15895) (CoLLAs 2025, Oral), [Lookbehind-SAM](https://arxiv.org/abs/2307.16704) (ICML 2024), [Critical Momenta](https://arxiv.org/abs/2307.09638) (TMLR 2024), and [TAG](https://arxiv.org/abs/2105.05155) (CoLLAs 2022).\n\nBefore Montreal, I completed my MS at [IIT Madras](https://www.iitm.ac.in) working with [Prof. Balaraman Ravindran](https://www.cse.iitm.ac.in/~ravi/) and Prof. Chandar at [RBCDSAI](https://rbcdsai.iitm.ac.in).\n\nWhen not working: [sketching](/photos/), [hiking](/photos/), reading non-fiction, cricket, and [travelling](/photos/) (4/7 wonders so far).",
     "location": {
         "name": "Montreal, Canada",
         "mapUrl": "https://www.google.com/maps/place/montreal"

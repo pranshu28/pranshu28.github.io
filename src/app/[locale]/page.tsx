@@ -1,10 +1,11 @@
-import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 import Brief from "@/components/portfolio/brief";
 import Contact from "@/components/portfolio/contact";
 import Education from "@/components/portfolio/education";
 import NewsSection from "@/components/portfolio/news";
+import PreprintsOthers from "@/components/portfolio/preprints-others";
 import ProjectsSection from "@/components/portfolio/projects-section/projects-section";
 import SocialLinks from "@/components/portfolio/socallinks";
 import Work from "@/components/portfolio/work";
@@ -14,7 +15,11 @@ import { BLUR_FADE_DELAY, siteConfig } from "@/data/site";
 import { routing } from "@/i18n/routing";
 import { generatePersonJsonLd } from "@/lib/jsonld";
 import { transformSocialData } from "@/lib/social-icons";
-import { getIconComponent, jsonldScript } from "@/lib/utils";
+import {
+  getIconComponent,
+  jsonldScript,
+  sortByLatestYearDesc,
+} from "@/lib/utils";
 
 export default async function Page(props: {
   params: Promise<{ locale: string }>;
@@ -69,18 +74,6 @@ export default async function Page(props: {
     title: string;
     content: string;
   }>("news.items");
-  const projectsItems = getCollectionItems<{
-    title: string;
-    href?: string;
-    dates: string;
-    active: boolean;
-    description: string;
-    technologies: string[];
-    authors: string;
-    links?: Array<{ type: string; href: string; icon: string }>;
-    image?: string;
-    video?: string;
-  }>("projects.items");
   const publicationsItems = getCollectionItems<{
     title: string;
     href?: string;
@@ -119,6 +112,21 @@ export default async function Page(props: {
     authors: string;
     href?: string;
   }>("preprints.items");
+
+  const earlierWorkProjects = sortByLatestYearDesc(
+    getCollectionItems<{
+      title: string;
+      href?: string;
+      dates: string;
+      active: boolean;
+      description: string;
+      technologies: string[];
+      authors: string;
+      links?: Array<{ type: string; href: string; icon: string }>;
+      image?: string;
+      video?: string;
+    }>("projects.items"),
+  );
 
   const serviceData = (t.raw("service") as {
     reviewing: string[];
@@ -216,40 +224,14 @@ export default async function Page(props: {
             />
 
             {preprintItems.length > 0 && (
-              <div className="mt-8">
-                <h3 className="text-foreground mb-1 text-xl font-bold tracking-tight sm:text-2xl">
-                  {t("sections.publications.othersTitle")}
-                </h3>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  {t("sections.publications.othersSubtitle")}
-                </p>
-                <div className="space-y-3">
-                  {preprintItems.map((p, i) => (
-                    <BlurFade key={i} delay={BLUR_FADE_DELAY * (i + 1)}>
-                      <div className="text-sm">
-                        {p.href ? (
-                          <Link
-                            href={p.href}
-                            className="font-medium underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
-                            target="_blank"
-                          >
-                            {p.title}
-                          </Link>
-                        ) : (
-                          <span className="font-medium">{p.title}</span>
-                        )}
-                        <span className="text-muted-foreground">
-                          {" — "}
-                          <CustomReactMarkdown>{p.authors}</CustomReactMarkdown>
-                        </span>
-                        <span className="text-muted-foreground ml-1 text-xs">
-                          ({p.dates})
-                        </span>
-                      </div>
-                    </BlurFade>
-                  ))}
-                </div>
-              </div>
+              <PreprintsOthers
+                items={preprintItems}
+                title={t("sections.publications.othersTitle")}
+                subtitle={t("sections.publications.othersSubtitle")}
+                showAllText={t("showAll")}
+                delay={BLUR_FADE_DELAY}
+                initialVisible={4}
+              />
             )}
           </div>
         </section>
@@ -319,12 +301,12 @@ export default async function Page(props: {
       </section>
 
       {/* Earlier Work Section */}
-      {projectsItems && projectsItems.length > 0 && (
+      {earlierWorkProjects.length > 0 && (
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
             <h2 className="text-xl font-bold">{t("sections.earlierWork")}</h2>
             <ProjectsSection
-              projects={projectsItems.map((project) => ({
+              projects={earlierWorkProjects.map((project) => ({
                 ...project,
                 links: project.links?.map((link) => ({
                   ...link,
@@ -334,6 +316,7 @@ export default async function Page(props: {
               delay={BLUR_FADE_DELAY * 3}
               mobileDisplayCount={4}
               desktopDisplayCount={3}
+              showAllText={t("showAll")}
             />
           </div>
         </section>

@@ -41,7 +41,12 @@ type AvatarImageProps = {
 
 function AvatarImage({ src, alt, className, ...rest }: AvatarImageProps) {
   if (!src) return null;
-  const { props } = getImageProps({ src, alt, fill: true });
+  const { props } = getImageProps({
+    src,
+    alt,
+    fill: true,
+    style: { objectFit: "contain" },
+  });
   return <AvatarPrimitive.Image {...props} {...rest} className={className} />;
 }
 

@@ -45,6 +45,8 @@ export default function Navbar() {
       notebook: Icons.notebook,
       camera: Icons.camera,
       fileuser: Icons.fileuser,
+      paper: Icons.paper,
+      file: Icons.paper,
     };
     return iconMap[iconName] || Icons.home;
   };

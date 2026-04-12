@@ -44,12 +44,14 @@ export default function Brief({
             name
           )}
         </h1>
-        <p className="text-muted-foreground text-lg">{subtitle}</p>
+        {subtitle ? (
+          <p className="text-muted-foreground text-lg">{subtitle}</p>
+        ) : null}
         <p className="max-w-[600px] whitespace-pre-line md:text-xl">
           {description}
         </p>
       </div>
-      <Avatar className="size-24 border sm:size-28 md:size-32 lg:size-36">
+      <Avatar className="bg-muted size-24 border sm:size-28 md:size-32 lg:size-36">
         <AvatarImage alt={name} src={avatarUrl} />
         <AvatarFallback>{initials}</AvatarFallback>
       </Avatar>

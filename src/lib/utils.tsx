@@ -1,10 +1,37 @@
 import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 import React from "react";
+import { twMerge } from "tailwind-merge";
+
 import { Icons } from "@/components/icons";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+/** Latest 4-digit year in a label (e.g. `"2017 – 2019"` → 2019, `"CoLLAs 2024"` → 2024). */
+export function maxYearFromDatesLabel(dates: string): number {
+  const years =
+    dates.match(/\d{4}/g)?.map((y) => Number.parseInt(y, 10)) ?? [];
+  let max = 0;
+  for (const y of years) {
+    if (y > max) max = y;
+  }
+  return max;
+}
+
+/** Newest-first by `dates` year; stable when years tie. */
+export function sortByLatestYearDesc<T extends { dates: string }>(
+  items: readonly T[],
+): T[] {
+  return [...items]
+    .map((item, index) => ({ item, index }))
+    .sort((a, b) => {
+      const ya = maxYearFromDatesLabel(a.item.dates);
+      const yb = maxYearFromDatesLabel(b.item.dates);
+      if (yb !== ya) return yb - ya;
+      return a.index - b.index;
+    })
+    .map(({ item }) => item);
 }
 
 export function formatDate(date: string, locale: string = "en-US") {

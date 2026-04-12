@@ -74,20 +74,6 @@
         "video": ""
       },
       {
-        "title": "An Introduction to Lifelong Supervised Learning",
-        "href": "https://arxiv.org/abs/2207.04354",
-        "dates": "2022",
-        "active": false,
-        "description": "A comprehensive primer on lifelong/continual supervised learning — survey of the field covering task-incremental, class-incremental, and domain-incremental settings.",
-        "technologies": ["Continual Learning", "Survey"],
-        "authors": "",
-        "links": [
-          { "type": "Paper", "href": "https://arxiv.org/abs/2207.04354", "icon": "paper" }
-        ],
-        "image": "",
-        "video": ""
-      },
-      {
         "title": "Fast CSP and Learning-based Minesweeper Solver",
         "href": "/papers/minesweeper-csp.pdf",
         "dates": "2017 – 2019",
@@ -167,6 +153,20 @@
         "video": ""
       },
       {
+        "title": "An Introduction to Lifelong Supervised Learning",
+        "href": "https://arxiv.org/abs/2207.04354",
+        "dates": "arXiv 2022",
+        "active": true,
+        "description": "A comprehensive primer on lifelong/continual supervised learning — survey of the field covering task-incremental, class-incremental, and domain-incremental settings.",
+        "technologies": ["Continual Learning", "Survey"],
+        "authors": "**Authors:** S. Sodhani, M. Faramarzi, S.V. Mehta, **P. Malviya**, M. Abdelsalam, J. Rajendran, S. Chandar",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2207.04354", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
         "title": "A Causal Approach for Unfair Edge Prioritization and Discrimination Removal",
         "href": "https://arxiv.org/abs/2111.14348",
         "dates": "ACML 2021",
@@ -191,6 +191,12 @@
         "href": "https://arxiv.org/abs/2603.00253"
       },
       {
+        "title": "Torque-Aware Momentum",
+        "dates": "arXiv 2024",
+        "authors": "**P. Malviya**, G. Mordido, A. Baratin, R. Babanezhad, G.K. Dziugaite, R. Pascanu, S. Chandar",
+        "href": "https://arxiv.org/abs/2412.18790"
+      },
+      {
         "title": "Interpolate: How Resetting Active Neurons can also improve Generalizability in Online Learning",
         "dates": "Under review 2025",
         "authors": "**P. Malviya**, D. Patil, M. Hashemzadeh, Q. Fournier, S. Chandar"
@@ -201,21 +207,9 @@
         "authors": "D. Patil, **P. Malviya**, M. Hashemzadeh, S. Chandar"
       },
       {
-        "title": "Torque-Aware Momentum",
-        "dates": "arXiv 2024",
-        "authors": "**P. Malviya**, G. Mordido, A. Baratin, R. Babanezhad, G.K. Dziugaite, R. Pascanu, S. Chandar",
-        "href": "https://arxiv.org/abs/2412.18790"
-      },
-      {
         "title": "Exploring the Plasticity of Neural Network for NLP Tasks in Continual Learning",
         "dates": "CoLLAs Workshop 2024",
         "authors": "M. Hashemzadeh, **P. Malviya**\\*, D. Patil\\*, S. Chandar"
-      },
-      {
-        "title": "An Introduction to Lifelong Supervised Learning",
-        "dates": "arXiv 2022",
-        "authors": "S. Sodhani, M. Faramarzi, S.V. Mehta, **P. Malviya**, M. Abdelsalam, J. Rajendran, S. Chandar",
-        "href": "https://arxiv.org/abs/2207.04354"
       },
       {
         "title": "Feature Diversity in Self-Supervised Learning",
@@ -251,7 +245,7 @@
         "school": "Indian Institute of Technology Madras",
         "href": "https://www.iitm.ac.in/",
         "degree": "MS in Computer Science (Advisors: Prof. B. Ravindran & Prof. S. Chandar)",
-        "logoUrl": "/logos/iitm.png",
+        "logoUrl": "/logos/iitm.svg",
         "start": "2020",
         "end": "2021"
       },
@@ -328,7 +322,7 @@
         "badges": [],
         "location": "Chennai, India",
         "title": "Research Intern",
-        "logoUrl": "/logos/iitm.png",
+        "logoUrl": "/logos/iitm.svg",
         "start": "Jan 2018",
         "end": "Apr 2018",
         "description": "Bayesian optimization and deep learning for Hadoop parameter tuning."
@@ -350,14 +344,6 @@
     ]
   },
   "social": {
-    "CV": {
-      "name": "CV",
-      "url": "https://drive.google.com/file/d/1ACn7-bC97EFCd11ERkVJ5p2Eiiu9yLjE/view?usp=sharing",
-      "icon": "paper",
-      "navbar": false,
-      "content": true,
-      "footer": false
-    },
     "GoogleScholar": {
       "name": "Google Scholar",
       "url": "https://scholar.google.com/citations?user=VET8VMcAAAAJ",
