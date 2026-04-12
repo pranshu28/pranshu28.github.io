@@ -5,17 +5,13 @@
  * `public/photos/frames/` should contain only files listed here.
  * Do not tag `wonder` here — reserved for the four headline landmarks in `CORE_PHOTO_CATALOG`.
  * `hiking` only for clear trail / trek / backcountry on foot (not observation decks alone).
+ * Omit shots that duplicate a landmark already in `CORE_PHOTO_CATALOG` (same scene, different filename).
  */
 export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/0503549e-8280-4ff8-a086-3fa0a8d58f2d.jpg",
     alt: "Kunsthistorisches and Natural History Museum domes at night, Maria-Theresien-Platz, Vienna",
     tags: ["austria", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/1a50ce1b-c251-4152-870a-569cf742b99a.jpg",
-    alt: "Visitor in front of the Colosseum interior ruins and hypogeum, Rome, under a bright blue sky",
-    tags: ["italy", "travel", "frames"],
   },
   {
     src: "/photos/frames/20230611-123339.jpg",
@@ -28,19 +24,9 @@ export const FRAME_PHOTOS = [
     tags: ["austria", "nature", "travel", "frames"],
   },
   {
-    src: "/photos/frames/53c64963-f68c-42d5-82b0-6e7af9b274b4.jpg",
-    alt: "Visitor on the lawn of Piazza dei Miracoli with the Pisa Cathedral and Leaning Tower, Italy",
-    tags: ["italy", "travel", "frames"],
-  },
-  {
     src: "/photos/frames/55cf6453-4bc3-450e-a8b9-d15b53555894.jpg",
     alt: "Naples street at dusk",
     tags: ["italy", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/6c2730b1-3e6b-4f3d-ba8c-be5531d19be7-2.jpg",
-    alt: "Low-angle view of Fairmont Le Château Frontenac, Quebec City, with green copper roofs and red brick",
-    tags: ["canada", "travel", "frames"],
   },
   {
     src: "/photos/frames/75b1288e-77f8-40d0-9d59-44a3f2dfc669.jpg",
@@ -56,11 +42,6 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/a32eddce-58a1-4a3d-a17c-0292717362ae.jpg",
     alt: "Mountain sunset over layered ridges",
     tags: ["usa", "nature", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/b565410c-2c36-4d9e-b894-df7b1bb0301b.jpg",
-    alt: "Rainbow Mountain (Vinicunca) stripes with a visitor arms outstretched on a high-altitude path, Peru",
-    tags: ["peru", "nature", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/c5d78703-35fc-42fe-850f-dd75fcf341f3.jpg",
@@ -81,11 +62,6 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/e85decfe-f4b9-495f-a35e-0e7a219ec1e2.jpg",
     alt: "St. Stephen's Cathedral (Stephansdom), Vienna — Gothic spire and patterned tile roof",
     tags: ["austria", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/f49152c0-87da-478a-b842-b88106cdc466.jpg",
-    alt: "Canal in Venice with colorful façades, moored boats, and reflections under a clear sky",
-    tags: ["italy", "travel", "frames"],
   },
   {
     src: "/photos/frames/fjqq5987.jpg",
@@ -163,11 +139,6 @@ export const FRAME_PHOTOS = [
     tags: ["nature", "travel", "frames"],
   },
   {
-    src: "/photos/frames/img-3066.jpg",
-    alt: "Visitor in front of El Castillo (Temple of Kukulcán), Chichén Itzá, Mexico",
-    tags: ["mexico", "travel", "frames"],
-  },
-  {
     src: "/photos/frames/img-3143.jpeg",
     alt: "Cenote Ik Kil, Yucatán",
     tags: ["mexico", "travel", "frames"],
@@ -220,11 +191,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-5032.jpeg",
     alt: "Manarola, Cinque Terre — colorful houses on cliffs above the Mediterranean",
-    tags: ["italy", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-5053.jpg",
-    alt: "Visitor at a wooden railing above Manarola, Cinque Terre, and turquoise cove water",
     tags: ["italy", "travel", "frames"],
   },
   {
@@ -315,11 +281,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-6882-edit.jpg",
     alt: "Machu Picchu ruins and terraces in mist with Huayna Picchu behind",
-    tags: ["peru", "nature", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-6887.jpg",
-    alt: "Machu Picchu citadel, terraces, and Huayna Picchu rising into mist",
     tags: ["peru", "nature", "travel", "frames"],
   },
   {
