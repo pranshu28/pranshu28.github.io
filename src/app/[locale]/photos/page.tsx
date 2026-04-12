@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import {
   Suspense,
@@ -11,113 +12,27 @@ import {
 } from "react";
 
 import { BlurFade } from "@/components/ui/blur-fade";
+import {
+  type ActiveGallery,
+  type Gallery,
+  getAllGalleries,
+  type Photo,
+  resolveActiveGallery,
+} from "@/data/photo-catalog";
 import { BLUR_FADE_DELAY } from "@/data/site";
 import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 import { cn } from "@/lib/utils";
 
-type Photo = { src: string; alt: string };
+function masonryEntries(gallery: ActiveGallery): { photo: Photo; photoIndex: number }[] {
+  const { photos, cover } = gallery;
+  const withIdx = photos.map((photo, photoIndex) => ({ photo, photoIndex }));
+  if (!cover) return withIdx;
+  const filtered = withIdx.filter(({ photo }) => photo.src !== cover);
+  return filtered.length > 0 ? filtered : withIdx;
+}
 
-type Gallery = {
-  id: string;
-  title: string;
-  cover: string;
-  photos: Photo[];
-};
-
-const galleries: Gallery[] = [
-  {
-    id: "peru",
-    title: "Peru",
-    cover: "/photos/rainbow-mountain.jpg",
-    photos: [
-      { src: "/photos/machu-picchu-mist.jpg", alt: "Machu Picchu" },
-      { src: "/photos/rainbow-mountain.jpg", alt: "Rainbow Mountain" },
-      { src: "/photos/red-valley-peru.jpg", alt: "Red Valley" },
-      { src: "/photos/sacred-valley-peru.jpg", alt: "Sacred Valley" },
-      { src: "/photos/andes-panorama.jpg", alt: "Andes mountains" },
-    ],
-  },
-  {
-    id: "italy",
-    title: "Italy",
-    cover: "/photos/cinque-terre.jpg",
-    photos: [
-      { src: "/photos/colosseum-rome.jpg", alt: "Inside the Colosseum, Rome" },
-      { src: "/photos/cinque-terre.jpg", alt: "Cinque Terre" },
-      { src: "/photos/venice-canal.jpg", alt: "Murano canal, Venice" },
-      { src: "/photos/leaning-tower-pisa.jpg", alt: "Leaning Tower of Pisa" },
-    ],
-  },
-  {
-    id: "india",
-    title: "India",
-    cover: "/photos/taj-mahal.jpg",
-    photos: [
-      { src: "/photos/taj-mahal.jpg", alt: "Taj Mahal" },
-      { src: "/photos/desert-sunset.jpg", alt: "Sunset over Thar Desert" },
-      { src: "/photos/himalayas-forest.jpg", alt: "Himalayas" },
-      { src: "/photos/himalayas-meadow.jpg", alt: "Mountain meadow, Himalayas" },
-    ],
-  },
-  {
-    id: "mexico",
-    title: "Mexico",
-    cover: "/photos/chichen-itza.jpg",
-    photos: [{ src: "/photos/chichen-itza.jpg", alt: "Chichén Itzá" }],
-  },
-  {
-    id: "costa-rica",
-    title: "Costa Rica",
-    cover: "/photos/costa-rica-rainforest.jpg",
-    photos: [
-      { src: "/photos/mountain-sunset.jpg", alt: "Sunrise" },
-      { src: "/photos/costa-rica-rainforest.jpg", alt: "Rainforest trail" },
-    ],
-  },
-  {
-    id: "hawaii",
-    title: "Hawaii",
-    cover: "/photos/hawaii-beach-sunset.jpg",
-    photos: [
-      { src: "/photos/hawaii-beach-sunset.jpg", alt: "Beach sunset" },
-      { src: "/photos/hawaii-seashore.jpg", alt: "Seashore" },
-    ],
-  },
-  {
-    id: "canada",
-    title: "Canada",
-    cover: "/photos/chateau-frontenac.jpg",
-    photos: [
-      {
-        src: "/photos/chateau-frontenac.jpg",
-        alt: "Château Frontenac, Quebec City",
-      },
-      { src: "/photos/forest-pool.jpg", alt: "Forest pool" },
-      { src: "/photos/montreal-sunset.jpg", alt: "Sunset over Montreal" },
-    ],
-  },
-  {
-    id: "usa",
-    title: "USA",
-    cover: "/photos/nyc-skyline.jpg",
-    photos: [{ src: "/photos/nyc-skyline.jpg", alt: "Manhattan skyline at dusk" }],
-  },
-];
-
-const sketches: Photo[] = [
-  { src: "/photos/sketches/horse.jpg", alt: "Rearing horse" },
-  {
-    src: "/photos/sketches/elephant.jpg",
-    alt: "Elephant emerging from the forest",
-  },
-  { src: "/photos/sketches/solitude.jpg", alt: "Solitude" },
-  { src: "/photos/sketches/deer-in-snow.jpg", alt: "Deer in snow" },
-  { src: "/photos/sketches/trees-by-sea.jpg", alt: "Trees by the sea" },
-  { src: "/photos/sketches/cityscape-lens.jpg", alt: "Cityscape through a lens" },
-];
-
-/** Shareable photo URLs: ?g=<galleryId>&p=<0-based index> */
+/** Shareable photo URLs: `?g=<galleryId>&p=<0-based index>` */
 function buildPhotosHref(
   pathname: string,
   current: URLSearchParams,
@@ -130,18 +45,6 @@ function buildPhotosHref(
   }
   const q = sp.toString();
   return q ? `${pathname}?${q}` : pathname;
-}
-
-function resolveActiveGallery(
-  gParam: string | null,
-): { id: string; title: string; photos: Photo[] } | null {
-  if (gParam === "sketches") {
-    return { id: "sketches", title: "Sketches", photos: sketches };
-  }
-  const found = galleries.find((x) => x.id === gParam);
-  return found
-    ? { id: found.id, title: found.title, photos: found.photos }
-    : null;
 }
 
 function LocationTag({
@@ -169,66 +72,39 @@ function GalleryTile({
   index: number;
   onClick: () => void;
 }) {
+  const count = gallery.photos.length;
   return (
     <BlurFade delay={BLUR_FADE_DELAY * (index + 1)}>
-      <button
-        type="button"
-        onClick={onClick}
-        className="group border-border relative block w-full overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        style={{ aspectRatio: "4 / 3" }}
-      >
-        <img
-          src={resolvePhotoSrc(gallery.cover)}
-          alt={gallery.title}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          loading={index < 4 ? "eager" : "lazy"}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-        <div className="absolute left-3 top-3">
-          <LocationTag label={gallery.title} className="!bg-black/55 !text-white" />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-          <h3 className="text-left text-lg font-semibold text-white sm:text-xl">
-            {gallery.title}
-          </h3>
-          <p className="mt-0.5 text-left text-xs text-white/75">
-            {gallery.photos.length}{" "}
-            {gallery.photos.length === 1 ? "photo" : "photos"}
-          </p>
-        </div>
-      </button>
-    </BlurFade>
-  );
-}
-
-function SketchesTile({ index, onClick }: { index: number; onClick: () => void }) {
-  return (
-    <BlurFade delay={BLUR_FADE_DELAY * (index + 1)}>
-      <button
-        type="button"
-        onClick={onClick}
-        className="group border-border relative block w-full overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        style={{ aspectRatio: "4 / 3" }}
-      >
-        <img
-          src={resolvePhotoSrc("/photos/sketches/horse.jpg")}
-          alt="Sketches"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-        <div className="absolute left-3 top-3">
-          <LocationTag label="Sketches" className="!bg-black/55 !text-white" />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-          <h3 className="text-left text-lg font-semibold text-white sm:text-xl">
-            Sketches
-          </h3>
-          <p className="mt-0.5 text-left text-xs text-white/75">
-            {sketches.length} drawings
-          </p>
-        </div>
-      </button>
+      <div role="listitem" className="contents">
+        <button
+          type="button"
+          data-gallery-id={gallery.id}
+          onClick={onClick}
+          aria-label={`Open ${gallery.title} gallery, ${count} ${count === 1 ? "photo" : "photos"}`}
+          className="group border-border relative block w-full overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          style={{ aspectRatio: "4 / 3" }}
+        >
+          <img
+            src={resolvePhotoSrc(gallery.cover)}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            loading={index < 4 ? "eager" : "lazy"}
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+          <div className="absolute left-3 top-3">
+            <LocationTag label={gallery.title} className="!bg-black/55 !text-white" />
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+            <h3 className="text-left text-lg font-semibold text-white sm:text-xl">
+              {gallery.title}
+            </h3>
+            <p className="mt-0.5 text-left text-xs text-white/75">
+              {count} {count === 1 ? "photo" : "photos"}
+            </p>
+          </div>
+        </button>
+      </div>
     </BlurFade>
   );
 }
@@ -372,7 +248,7 @@ function PhotoLightbox({
         >
           {photos.map((ph, i) => (
             <button
-              key={ph.src}
+              key={`${ph.src}-${i}`}
               type="button"
               data-thumb-index={i}
               onClick={() => onSelectIndex(i)}
@@ -417,7 +293,7 @@ function GalleryDetail({
   onNextPhoto,
   onSelectPhoto,
 }: {
-  gallery: { id: string; title: string; photos: Photo[] };
+  gallery: ActiveGallery;
   lightboxOpen: boolean;
   lightboxIndex: number;
   onBack: () => void;
@@ -427,6 +303,9 @@ function GalleryDetail({
   onNextPhoto: () => void;
   onSelectPhoto: (index: number) => void;
 }) {
+  const tGallery = useTranslations("galleryPage");
+  const grid = masonryEntries(gallery);
+
   return (
     <div>
       <BlurFade delay={0}>
@@ -434,7 +313,7 @@ function GalleryDetail({
           className="text-muted-foreground mb-2 text-xs font-medium tracking-wide uppercase"
           aria-label="Breadcrumb"
         >
-          <span className="text-foreground">Life</span>
+          <span className="text-foreground">{tGallery("breadcrumbRoot")}</span>
           <span className="mx-1.5 opacity-50">/</span>
           <span>{gallery.title}</span>
         </nav>
@@ -453,23 +332,30 @@ function GalleryDetail({
         </div>
       </BlurFade>
 
-      <div className="columns-2 gap-x-3 sm:columns-3 md:columns-4 md:gap-x-4">
-        {gallery.photos.map((photo, i) => (
-          <BlurFade key={photo.src} delay={BLUR_FADE_DELAY * Math.min(i + 1, 8)}>
-            <button
-              type="button"
-              onClick={() => onOpenPhoto(i)}
-              className="group border-border relative mb-3 w-full break-inside-avoid overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <img
-                src={resolvePhotoSrc(photo.src)}
-                alt={photo.alt}
-                className="w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                loading={i < 8 ? "eager" : "lazy"}
-              />
-              <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
-            </button>
-          </BlurFade>
+      <div
+        className="columns-2 gap-x-3 sm:columns-3 md:columns-4 md:gap-x-4"
+        role="list"
+        aria-label={`${gallery.title} photos`}
+      >
+        {grid.map(({ photo, photoIndex }, visualI) => (
+          <div role="listitem" key={`${photo.src}-${photoIndex}`} className="contents">
+            <BlurFade delay={BLUR_FADE_DELAY * Math.min(visualI + 1, 8)}>
+              <button
+                type="button"
+                data-photo-src={photo.src}
+                onClick={() => onOpenPhoto(photoIndex)}
+                className="group border-border relative mb-3 w-full break-inside-avoid overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <img
+                  src={resolvePhotoSrc(photo.src)}
+                  alt={photo.alt}
+                  className="w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  loading={visualI < 8 ? "eager" : "lazy"}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
+              </button>
+            </BlurFade>
+          </div>
         ))}
       </div>
 
@@ -488,6 +374,7 @@ function GalleryDetail({
 }
 
 function PhotosPageContent() {
+  const tGallery = useTranslations("galleryPage");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -506,7 +393,11 @@ function PhotosPageContent() {
     if (raw === null || raw === "") {
       return { lightboxOpen: false, lightboxIndex: 0 };
     }
-    const idx = Number.parseInt(raw, 10);
+    let idx = Number.parseInt(raw, 10);
+    const gRaw = searchParams.get("g");
+    if (gRaw === "hawaii" && Number.isFinite(idx)) {
+      idx += 1;
+    }
     if (
       !Number.isFinite(idx) ||
       idx < 0 ||
@@ -558,9 +449,14 @@ function PhotosPageContent() {
     [active, lightboxIndex, lightboxOpen, replaceQuery],
   );
 
+  const allGalleries = getAllGalleries();
+
   return (
     <main className="mx-auto flex min-h-dvh max-w-7xl flex-col px-6 py-8 pb-24 sm:px-16 md:px-20 md:py-16 md:pt-14 lg:px-24 lg:py-20 xl:px-32 xl:py-24">
-      <section className="mt-16 sm:mt-28">
+      <section
+        className="mt-16 sm:mt-28"
+        aria-labelledby="photos-heading"
+      >
         {active ? (
           <GalleryDetail
             gallery={active}
@@ -585,19 +481,20 @@ function PhotosPageContent() {
               <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
                 Galleries
               </p>
-              <h1 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                Life
+              <h1
+                id="photos-heading"
+                className="mb-10 text-3xl font-bold tracking-tight sm:text-4xl"
+              >
+                {tGallery("title")}
               </h1>
-              <p className="text-muted-foreground mb-10 max-w-lg text-sm">
-                Open a gallery for a masonry grid; click a photo for full-screen
-                view with a filmstrip. Each photo has a shareable URL (
-                <code className="text-foreground/80 text-xs">?g=…&amp;p=…</code>
-                ). Keys: ← → Esc.
-              </p>
             </BlurFade>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {galleries.map((gallery, i) => (
+            <div
+              className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+              role="list"
+              aria-label="Photo galleries"
+            >
+              {allGalleries.map((gallery, i) => (
                 <GalleryTile
                   key={gallery.id}
                   gallery={gallery}
@@ -605,10 +502,6 @@ function PhotosPageContent() {
                   onClick={() => openGallery(gallery.id)}
                 />
               ))}
-              <SketchesTile
-                index={galleries.length}
-                onClick={() => openGallery("sketches")}
-              />
             </div>
           </>
         )}
