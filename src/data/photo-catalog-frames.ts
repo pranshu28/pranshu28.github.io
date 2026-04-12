@@ -6,7 +6,8 @@
  * `public/photos/frames/` should contain only files listed here.
  * Do not tag `wonder` here — reserved for the four headline landmarks in `CORE_PHOTO_CATALOG`.
  * `hiking` only for clear trail / trek / backcountry on foot (not observation decks alone).
- * Omit shots that duplicate a landmark already in `CORE_PHOTO_CATALOG` (same scene, different filename).
+ * Omit shots that duplicate `CORE_PHOTO_CATALOG` (same landmark or scene), including extra
+ * Rainbow Mountain / Red Valley frames when `rainbow-mountain.jpg` / `red-valley-peru.jpg` exist.
  * Alt text: describe place and scene; avoid third-person labels like “visitor” when the subject is you.
  */
 export const FRAME_PHOTOS = [
@@ -31,11 +32,6 @@ export const FRAME_PHOTOS = [
     tags: ["italy", "travel", "frames"],
   },
   {
-    src: "/photos/frames/75b1288e-77f8-40d0-9d59-44a3f2dfc669.jpg",
-    alt: "Red Valley, Peru — layered rust-red ridges and green pockets under a bright blue sky",
-    tags: ["peru", "nature", "travel", "hiking", "frames"],
-  },
-  {
     src: "/photos/frames/92ce3525-8bf5-4828-9ce4-950afc68cd2b.jpg",
     alt: "Manhattan skyline at night looking south, with the New York Life Building and One World Trade Center",
     tags: ["usa", "travel", "frames"],
@@ -44,11 +40,6 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/a32eddce-58a1-4a3d-a17c-0292717362ae.jpg",
     alt: "Mountain sunset over layered ridges",
     tags: ["usa", "nature", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/c5d78703-35fc-42fe-850f-dd75fcf341f3.jpg",
-    alt: "Rainbow Mountain (Vinicunca) — diagonal mineral stripes and a narrow trail under cumulus clouds, Peru",
-    tags: ["peru", "nature", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/ca53e79c-8932-4b49-bc73-2bc4abae8d3a.jpg",
@@ -258,11 +249,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-6683.jpg",
     alt: "Mirador Valle Rojo sign at 5045 m with the Red Valley below, Peru",
-    tags: ["peru", "nature", "travel", "hiking", "frames"],
-  },
-  {
-    src: "/photos/frames/img-6688.jpg",
-    alt: "Red Valley, Peru — rust-red slopes, green patches, and a winding trail under cumulus clouds",
     tags: ["peru", "nature", "travel", "hiking", "frames"],
   },
   {
