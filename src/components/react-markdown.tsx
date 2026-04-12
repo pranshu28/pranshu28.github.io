@@ -30,7 +30,8 @@ function MarkdownLink({
     );
   }
   let path = href;
-  if (path !== "/" && !path.endsWith("/")) {
+  const hasQueryOrHash = path.includes("?") || path.includes("#");
+  if (!hasQueryOrHash && path !== "/" && !path.endsWith("/")) {
     path = `${path}/`;
   }
   return (
