@@ -24,14 +24,6 @@ import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 import { cn } from "@/lib/utils";
 
-function masonryEntries(gallery: ActiveGallery): { photo: Photo; photoIndex: number }[] {
-  const { photos, cover } = gallery;
-  const withIdx = photos.map((photo, photoIndex) => ({ photo, photoIndex }));
-  if (!cover) return withIdx;
-  const filtered = withIdx.filter(({ photo }) => photo.src !== cover);
-  return filtered.length > 0 ? filtered : withIdx;
-}
-
 /** Shareable: `?g=<albumId>&p=<0-based index>` */
 function buildPhotosHref(
   pathname: string,
@@ -306,7 +298,7 @@ function AlbumDetail({
   backLabel: string;
 }) {
   const tGallery = useTranslations("galleryPage");
-  const grid = masonryEntries(gallery);
+  const grid = gallery.photos.map((photo, photoIndex) => ({ photo, photoIndex }));
 
   return (
     <div>

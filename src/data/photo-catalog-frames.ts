@@ -3,7 +3,7 @@
  * `public/photos/frames/` should contain only files listed here (no extra copies in git).
  * Shape matches `TaggedPhoto` in `photo-catalog.ts` (kept separate to avoid circular imports).
  * Omits shots whose subject already appears in `CORE_PHOTO_CATALOG` (same landmark / scene), and
- * one-off duplicates of the same edit series (e.g. img-2445 vs img-2445-edit).
+ * near-duplicates within the same trip/theme (one strong beach shot, one Venice icon, etc.).
  * Do not tag `wonder` here — that gallery is only the four headline landmarks in `CORE_PHOTO_CATALOG`.
  * All frames are travel captures; `hiking` only when the shot is clearly trail / trek /
  * backcountry on foot (not city views, generic peaks-at-sunset, or campus/park woods).
@@ -33,11 +33,6 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/djuf1669.jpg",
     alt: "Alpine meadow and peaks, Himachal Pradesh",
     tags: ["india", "nature", "travel", "hiking", "frames"],
-  },
-  {
-    src: "/photos/frames/ewln8980.jpg",
-    alt: "Forest trail rest, Pacific Northwest",
-    tags: ["usa", "nature", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/fjqq5987.jpg",
@@ -75,19 +70,9 @@ export const FRAME_PHOTOS = [
     tags: ["usa", "travel", "frames"],
   },
   {
-    src: "/photos/frames/img-2366.jpeg",
-    alt: "Tropical beach at dawn or dusk",
-    tags: ["usa", "travel", "frames"],
-  },
-  {
     src: "/photos/frames/img-2445.jpeg",
     alt: "Beach sunset with gathering clouds",
     tags: ["usa", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-2668.jpeg",
-    alt: "Sunbeams through evergreen forest",
-    tags: ["usa", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-2968.jpeg",
@@ -100,16 +85,6 @@ export const FRAME_PHOTOS = [
     tags: ["mexico", "travel", "frames"],
   },
   {
-    src: "/photos/frames/img-3176.jpeg",
-    alt: "Palm tree and pier, tropical coast",
-    tags: ["usa", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-3691.jpeg",
-    alt: "Silhouetted trees, sunset over ocean",
-    tags: ["usa", "travel", "frames"],
-  },
-  {
     src: "/photos/frames/img-4604.jpeg",
     alt: "Rialto Bridge and Grand Canal, Venice",
     tags: ["italy", "travel", "frames"],
@@ -120,11 +95,6 @@ export const FRAME_PHOTOS = [
     tags: ["italy", "travel", "frames"],
   },
   {
-    src: "/photos/frames/img-4786.jpeg",
-    alt: "Gondola on a narrow canal, Venice",
-    tags: ["italy", "travel", "frames"],
-  },
-  {
     src: "/photos/frames/img-4838.jpeg",
     alt: "Florence Cathedral and Giotto's Campanile",
     tags: ["italy", "travel", "frames"],
@@ -132,11 +102,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-5104.jpeg",
     alt: "Siena skyline and Duomo",
-    tags: ["italy", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-5109.jpeg",
-    alt: "Siena Cathedral facade",
     tags: ["italy", "travel", "frames"],
   },
   {
@@ -158,21 +123,6 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/img-5359.jpeg",
     alt: "Pompeii victim cast",
     tags: ["italy", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-5448.jpeg",
-    alt: "Naples apartments at sunset",
-    tags: ["italy", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-6924.jpg",
-    alt: "Andean peaks above the Sacred Valley",
-    tags: ["peru", "travel", "frames"],
-  },
-  {
-    src: "/photos/frames/img-7179.jpg",
-    alt: "Mountain layers at sunset",
-    tags: ["usa", "travel", "frames"],
   },
   {
     src: "/photos/frames/p1090170-22.jpg",

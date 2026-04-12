@@ -55,11 +55,6 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
     tags: ["peru", "travel"],
   },
   {
-    src: "/photos/andes-panorama.jpg",
-    alt: "Andes mountains",
-    tags: ["peru", "travel"],
-  },
-  {
     src: "/photos/colosseum-rome.jpg",
     alt: "Inside the Colosseum, Rome",
     tags: ["italy", "wonder", "travel"],
@@ -87,11 +82,6 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
     src: "/photos/desert-sunset.jpg",
     alt: "Sunset over Thar Desert",
-    tags: ["india", "travel"],
-  },
-  {
-    src: "/photos/himalayas-forest.jpg",
-    alt: "Himalayas",
     tags: ["india", "travel"],
   },
   {
@@ -139,11 +129,6 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
     alt: "Beach sunset, Hawaiʻi",
     tags: ["usa", "travel"],
   },
-  {
-    src: "/photos/hawaii-seashore.jpg",
-    alt: "Seashore, Hawaiʻi",
-    tags: ["usa", "travel"],
-  },
   { src: "/photos/sketches/horse.jpg", alt: "Rearing horse", tags: ["sketch"] },
   {
     src: "/photos/sketches/elephant.jpg",
@@ -176,6 +161,8 @@ export const PHOTO_CATALOG: readonly TaggedPhoto[] = [
 /**
  * SmugMug-style landing: a few albums only. Each `cover` is chosen to be visually
  * distinct from the others (overlapping photos inside albums are fine).
+ * Every `cover` path must be a real `src` in `PHOTO_CATALOG` with that album's `tag`
+ * so the hero image also appears inside the album grid.
  */
 const LANDING_ALBUM_SPECS = [
   {
