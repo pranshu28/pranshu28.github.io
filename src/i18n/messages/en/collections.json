@@ -112,7 +112,7 @@
         "dates": "arXiv 2026",
         "active": true,
         "description": "A benchmark for evaluating continual pretraining strategies in protein language models.",
-        "technologies": ["NLP", "Continual Learning"],
+        "technologies": ["Protein Language Models", "Continual Learning"],
         "authors": "**Authors:** D. Patil, **P. Malviya**, M. Reymond, Q. Fournier, S. Chandar",
         "links": [
           { "type": "Paper", "href": "https://arxiv.org/abs/2603.00253", "icon": "paper" }
@@ -126,7 +126,7 @@
         "dates": "CoLLAs 2025 (Oral)",
         "active": true,
         "description": "Using loss landscape geometry to predict model generalization without held-out data.",
-        "technologies": ["Optimization", "Loss Landscape"],
+        "technologies": ["Loss Landscape", "Architectures"],
         "authors": "**Authors:** **P. Malviya**, J. Huang, A. Baratin, Q. Fournier, S. Chandar",
         "links": [
           { "type": "Paper", "href": "https://arxiv.org/abs/2405.15895", "icon": "paper" }
@@ -156,7 +156,7 @@
         "dates": "TMLR 2024",
         "active": true,
         "description": "A memory-augmented optimizer that stores and retrieves critical momenta to promote exploration in the loss landscape.",
-        "technologies": ["Optimization", "Continual Learning"],
+        "technologies": ["Optimization"],
         "authors": "**Authors:** **P. Malviya**, G. Mordido, A. Baratin, R. Babanezhad, J. Huang, S. Lacoste-Julien, R. Pascanu, S. Chandar",
         "links": [
           { "type": "OpenReview", "href": "https://openreview.net/forum?id=sHSkJqyQgW", "icon": "paper" },
@@ -171,7 +171,7 @@
         "dates": "arXiv 2024",
         "active": true,
         "description": "Rethinking momentum through the lens of torque for improved optimization dynamics.",
-        "technologies": ["Optimization"],
+        "technologies": ["Optimization", "Non-stationarity"],
         "authors": "**Authors:** **P. Malviya**, G. Mordido, A. Baratin, R. Babanezhad, G.K. Dziugaite, R. Pascanu, S. Chandar",
         "links": [
           { "type": "Paper", "href": "https://arxiv.org/abs/2412.18790", "icon": "paper" }
@@ -185,7 +185,7 @@
         "dates": "CoLLAs 2022",
         "active": true,
         "description": "A gradient accumulation method for continual learning that prevents catastrophic forgetting. Also presented at ICML 2021 Workshop.",
-        "technologies": ["Continual Learning"],
+        "technologies": ["Continual Learning", "Optimization"],
         "authors": "**Authors:** **P. Malviya**, B. Ravindran, S. Chandar",
         "links": [
           { "type": "PMLR", "href": "https://proceedings.mlr.press/v199/malviya22a", "icon": "paper" },
