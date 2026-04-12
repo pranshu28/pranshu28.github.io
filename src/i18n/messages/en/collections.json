@@ -17,6 +17,16 @@
         "content": "A loss landscape approach for predicting model performance -- presented at the Conference on Lifelong Learning Agents."
       },
       {
+        "date": "2024.12",
+        "title": "Reviewing for **ICML 2025** and **ICLR 2025**",
+        "content": "Serving as reviewer for the International Conference on Machine Learning and International Conference on Learning Representations."
+      },
+      {
+        "date": "2024.09",
+        "title": "Awarded **PBEEE Doctoral Research Scholarship** by FRQNT Quebec",
+        "content": "Fonds de recherche du Québec — Nature et technologies doctoral scholarship."
+      },
+      {
         "date": "2024.05",
         "title": "Paper accepted at **ICML 2024**: [Lookbehind-SAM](https://arxiv.org/abs/2307.16704)",
         "content": "k steps back, 1 step forward -- sharpness-aware minimization with lookbehind."
@@ -47,14 +57,19 @@
         "content": "Working with Prof. Sarath Chandar on lifelong learning and optimization."
       },
       {
+        "date": "2024.05",
+        "title": "Joined [DRW](https://drw.com/) as ML Research Intern",
+        "content": "First internship at DRW, working on ML research in Montreal."
+      },
+      {
         "date": "2021.08",
         "title": "Co-organized [DEAADIGS Workshop](https://sites.google.com/view/deaadigs/) at **IJCAI 2021**",
         "content": "Workshop on Data-Efficient and Adversarial AI -- Design, Implementation, and Generalization Strategies."
       },
       {
-        "date": "2024.05",
-        "title": "Joined [DRW](https://drw.com/) as ML Research Intern",
-        "content": "First internship at DRW, working on ML research in Montreal."
+        "date": "2021.06",
+        "title": "Co-organized Workshop on Data Ethics at **ACM Web Science 2021**",
+        "content": "Workshop on Data Ethics, Algorithmic Accountability, and Digital Inequality in the Global South."
       }
     ]
   },
@@ -121,6 +136,30 @@
         "video": ""
       },
       {
+        "title": "Interpolate: How Resetting Active Neurons can also improve Generalizability in Online Learning",
+        "href": "",
+        "dates": "Under review 2025",
+        "active": true,
+        "description": "Investigating how resetting active neurons improves generalizability in online learning settings.",
+        "technologies": ["Online Learning", "Continual Learning"],
+        "authors": "**Authors:** **P. Malviya**, D. Patil, M. Hashemzadeh, Q. Fournier, S. Chandar",
+        "links": [],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Experimental Design for Nonstationary Optimization",
+        "href": "",
+        "dates": "Under review 2025",
+        "active": true,
+        "description": "An experimental design framework for nonstationary optimization problems.",
+        "technologies": ["Optimization", "Non-stationarity"],
+        "authors": "**Authors:** D. Patil, **P. Malviya**, M. Hashemzadeh, S. Chandar",
+        "links": [],
+        "image": "",
+        "video": ""
+      },
+      {
         "title": "Manifold Metric: A Loss Landscape Approach for Predicting Model Performance",
         "href": "https://arxiv.org/abs/2405.15895",
         "dates": "CoLLAs 2025 (Oral)",
@@ -147,6 +186,18 @@
           { "type": "arXiv", "href": "https://arxiv.org/abs/2307.16704", "icon": "paper" },
           { "type": "Github", "href": "https://github.com/chandar-lab/Lookbehind-SAM", "icon": "github" }
         ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Exploring the Plasticity of Neural Network for NLP Tasks in Continual Learning",
+        "href": "",
+        "dates": "CoLLAs Workshop 2024",
+        "active": true,
+        "description": "Investigating plasticity loss in neural networks for NLP tasks under continual learning.",
+        "technologies": ["Continual Learning", "NLP"],
+        "authors": "**Authors:** M. Hashemzadeh, **P. Malviya**\\*, D. Patil\\*, S. Chandar",
+        "links": [],
         "image": "",
         "video": ""
       },
@@ -272,15 +323,15 @@
       {
         "school": "MILA / Polytechnique Montreal",
         "href": "https://mila.quebec/en/",
-        "degree": "PhD in Computer Engineering (Advisor: Prof. Sarath Chandar)",
+        "degree": "PhD in Computer Engineering, GPA 4.0/4.0 (Advisor: Prof. Sarath Chandar)",
         "logoUrl": "",
         "start": "2022",
-        "end": "Present"
+        "end": "2026 (expected)"
       },
       {
         "school": "Indian Institute of Technology Madras",
         "href": "https://www.iitm.ac.in/",
-        "degree": "MS in Computer Science (Advisors: Prof. B. Ravindran & Prof. S. Chandar)",
+        "degree": "MS in Computer Science, GPA 9.57/10.0 (Advisors: Prof. B. Ravindran & Prof. S. Chandar)",
         "logoUrl": "",
         "start": "2020",
         "end": "2021"
@@ -342,6 +393,17 @@
         "description": "Remote research internship on lifelong learning methods."
       },
       {
+        "company": "ArangoDB GmbH",
+        "href": "https://www.arangodb.com/",
+        "badges": [],
+        "location": "Remote (Germany)",
+        "title": "Freelancer",
+        "logoUrl": "",
+        "start": "Apr 2018",
+        "end": "Apr 2020",
+        "description": "Knowledge graphs, recommendation systems, and GeoJSON data exploration using AQL, Apache Spark, and TensorFlow."
+      },
+      {
         "company": "RBCDSAI, IIT Madras",
         "href": "https://rbcdsai.iitm.ac.in/",
         "badges": [],
@@ -367,6 +429,10 @@
   },
   "awards": {
     "items": [
+      {
+        "year": 2024,
+        "title": "PBEEE Doctoral Research Scholarship -- FRQNT Quebec"
+      },
       {
         "year": 2021,
         "title": "DEAADIGS Workshop Co-organizer (IJCAI 2021)"
@@ -434,8 +500,8 @@
     "LaTeX",
     "Docker"
   ],
-  "reviewerConferences": [],
-  "reviewerJournals": [],
+  "reviewerConferences": ["ICML 2025", "ICLR 2025", "CoLLAs 2022-2025"],
+  "reviewerJournals": ["TMLR 2024"],
   "social": {
     "CV": {
       "name": "CV",
