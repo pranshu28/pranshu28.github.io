@@ -76,7 +76,8 @@ export default function Navbar({
           const href = item.href;
           const label = item.label;
           const IconComponent = getIconComponent(item.icon);
-          const isStaticFile = href.includes(".") && (href.endsWith(".pdf") || href.endsWith(".png") || href.endsWith(".jpg") || href.endsWith(".jpeg"));
+          const isExternal = href.startsWith("http://") || href.startsWith("https://");
+          const isStaticFile = isExternal || (href.includes(".") && (href.endsWith(".pdf") || href.endsWith(".png") || href.endsWith(".jpg") || href.endsWith(".jpeg")));
           const LinkComponent = isStaticFile ? "a" : I18nLink;
 
           return (
@@ -86,6 +87,7 @@ export default function Navbar({
                   {isStaticFile ? (
                     <a
                       href={href}
+                      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className={cn(
                         buttonVariants({ variant: "ghost", size: "icon" }),
                         "size-12",
