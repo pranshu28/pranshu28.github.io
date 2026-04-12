@@ -16,8 +16,12 @@ const GAP_PX = 5;
 const MIN_ROW_H = 118;
 const MAX_ROW_H = 360;
 const DEFAULT_AR = 1.5;
-/** Max thumbnails per row (justified layout). */
-const MAX_ITEMS_PER_ROW = 3;
+
+function maxItemsForWidth(containerWidth: number): number {
+  if (containerWidth < 400) return 2;
+  if (containerWidth < 640) return 3;
+  return 4;
+}
 
 type JustifiedAlbumGridProps = {
   photos: readonly Photo[];
@@ -61,7 +65,7 @@ export function JustifiedAlbumGrid({
             GAP_PX,
             MIN_ROW_H,
             MAX_ROW_H,
-            MAX_ITEMS_PER_ROW,
+            maxItemsForWidth(width),
           )
         : [],
     [aspects, width],
@@ -85,7 +89,7 @@ export function JustifiedAlbumGrid({
       {rows.map((row, ri) => (
         <div
           key={ri}
-          className="flex w-full flex-row flex-nowrap"
+          className="flex w-full flex-row flex-nowrap justify-start"
           style={{
             gap: GAP_PX,
             marginBottom: ri < rows.length - 1 ? GAP_PX : 0,
@@ -98,7 +102,7 @@ export function JustifiedAlbumGrid({
             const hPx = Math.max(1, Math.round(row.height));
             return (
               <button
-                key={`${photo.src}-${photoIndex}`}
+                key={photo.src}
                 type="button"
                 data-photo-src={photo.src}
                 title={photoDisplayTitle(photo)}

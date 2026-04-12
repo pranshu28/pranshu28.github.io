@@ -10,7 +10,7 @@ export const HISTORY_PHOTOS = [
     title: "Kuldhara ghost village",
     place: "Kuldhara, Rajasthan, India",
     description:
-      "Paliwal settlement near Jaisalmer, abandoned in the 19th century; dry-stone ruins in the desert.",
+      "Dry stone lanes and roofless rooms seen from above — a Paliwal village near Jaisalmer empty since the early 1800s. Thirteenth-century prosperity, then abandonment: maybe drought and hardship, maybe, as local story goes, pressure from minister Salim Singh. Over time the silence turned into ghost lore; from the ridge it mostly reads as wind and geometry.",
     takenAt: "2021-11-15",
     sortPlace: "india",
     sortCity: "jaisalmer",
@@ -70,6 +70,8 @@ export const HISTORY_PHOTOS = [
     alt: "Cobblestone street in Pompeii, Regio I, stepping stones and brick ruins under blue sky",
     title: "Pompeii, Regio I",
     place: "Pompeii, Italy",
+    description:
+      "Regio I: stepping stones across a cobbled street, brick and plaster ruins catching hard Italian sun. Vesuvius sits on the horizon — the same mountain that buried the town under meters of ash in 79 CE, freezing streets like this one. The rest of the day wandered from plaster bodies to a thermopolium counter, fresco fragments, the big theatre, and chariot ruts — a checklist that still feels like one continuous afternoon.",
     takenAt: "2024-08-04",
     sortPlace: "italy",
     sortCity: "pompeii",
@@ -82,7 +84,7 @@ export const HISTORY_PHOTOS = [
     title: "Thermopolium",
     place: "Pompeii, Italy",
     description:
-      "Ancient snack bar: stone counter with jar holes and storage amphorae against the walls.",
+      "Stone counter punched with jar sockets, amphorae stacked in the corner — a Roman lunch counter. The Pompeii street above has stepping stones; down here it’s ordinary appetite made permanent.",
     sortPlace: "italy",
     sortCity: "pompeii",
     sortVenue: "thermopolium",

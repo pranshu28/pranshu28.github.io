@@ -363,17 +363,6 @@
         "description": "Department of Computer Science and Engineering — Spring 2019, Spring 2020, and Spring 2021."
       },
       {
-        "company": "ACM Web Science 2021",
-        "href": "https://sites.google.com/view/deaadigs/",
-        "badges": [],
-        "location": "Virtual",
-        "title": "Workshop co-organizer (DEAADIGS)",
-        "logoUrl": "/logos/iitm.svg",
-        "start": "2021",
-        "end": "2021",
-        "description": "Co-organized the DEAADIGS workshop at ACM Web Science 2021."
-      },
-      {
         "company": "Winsoft Technologies",
         "href": "",
         "badges": [],
@@ -383,28 +372,6 @@
         "start": "May 2016",
         "end": "Jun 2016",
         "description": "Library management system (SQL, Java, JSP/Servlet). Training on data modeling, Spring, AngularJS, and Java OOP; weekly sessions on databases, normalization, UML, and coding conventions."
-      },
-      {
-        "company": "IIIT Bhubaneswar",
-        "href": "https://www.iiit-bh.ac.in/",
-        "badges": [],
-        "location": "Bhubaneswar, India",
-        "title": "Co-organizer, Introduction to Data Science workshop",
-        "logoUrl": "/logos/iiitbh.png",
-        "start": "2017",
-        "end": "2017",
-        "description": "Workshop on introduction to data science."
-      },
-      {
-        "company": "IIIT Bhubaneswar",
-        "href": "https://www.iiit-bh.ac.in/",
-        "badges": [],
-        "location": "Bhubaneswar, India",
-        "title": "Mentor, Coding for All",
-        "logoUrl": "/logos/iiitbh.png",
-        "start": "2015",
-        "end": "2015",
-        "description": "Mentoring for the Coding for All initiative."
       }
     ]
   },

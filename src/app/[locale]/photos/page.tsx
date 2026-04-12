@@ -102,29 +102,32 @@ function AlbumTile({
 }) {
   const count = gallery.photos.length;
   return (
-    <BlurFade delay={BLUR_FADE_DELAY * (index + 1)}>
+    <BlurFade
+      delay={BLUR_FADE_DELAY * (index + 1)}
+      className="min-w-0 flex-1 basis-0"
+    >
       <div role="listitem" className="contents">
         <button
           type="button"
           data-album-id={gallery.id}
           onClick={onClick}
           aria-label={`Open ${gallery.title} album, ${count} ${count === 1 ? "photo" : "photos"}`}
-          className="group border-border relative block w-full overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="group border-border relative block w-full min-w-0 overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           style={{ aspectRatio: "4 / 3" }}
         >
           <img
             src={resolvePhotoSrc(gallery.cover)}
             alt=""
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            loading={index < 3 ? "eager" : "lazy"}
+            loading={index < 8 ? "eager" : "lazy"}
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4 md:p-5">
-            <h2 className="text-left text-sm font-semibold text-white sm:text-lg md:text-xl">
+          <div className="absolute bottom-0 left-0 right-0 p-1.5 sm:p-4 md:p-5">
+            <h2 className="text-left text-xs leading-tight font-semibold text-white sm:text-sm md:text-lg lg:text-xl">
               {gallery.title}
             </h2>
-            <p className="mt-0.5 text-left text-xs text-white/75">
+            <p className="mt-0.5 text-left text-[10px] text-white/75 sm:text-xs">
               {count} {count === 1 ? "photo" : "photos"}
             </p>
           </div>
@@ -192,57 +195,24 @@ function PhotoLightbox({
   const photo = photos[index];
   const resolved = resolvePhotoSrc(photo.src);
 
+  const metaLine = [
+    photo.place?.trim() || null,
+    photo.year != null ? String(photo.year) : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
   return (
     <div
-      className="fixed inset-0 z-[100] flex flex-col bg-black/95"
+      className="fixed inset-0 z-[100] flex h-[100dvh] flex-col bg-black"
       role="dialog"
       aria-modal="true"
       aria-label="Photo viewer"
       onClick={onClose}
     >
+      {/* Full viewport height minus filmstrip: image uses 100% of this; caption is overlaid, not a separate row */}
       <div
-        className="flex shrink-0 items-center justify-between gap-3 px-4 py-3 sm:px-6"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex min-w-0 flex-1 items-start gap-2 sm:gap-3">
-          <LocationTag
-            label={locationLabel}
-            className="!bg-white/10 !text-white mt-0.5 shrink-0"
-          />
-          <div className="text-muted-foreground min-w-0 flex-1 text-sm text-white/70">
-            <p className="text-foreground font-semibold text-white">
-              {photoDisplayTitle(photo)}
-            </p>
-            {(photo.place != null && photo.place.trim() !== "") ||
-            photo.year != null ? (
-              <p className="mt-0.5 text-xs text-white/55">
-                {[
-                  photo.place?.trim() || null,
-                  photo.year != null ? String(photo.year) : null,
-                ]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </p>
-            ) : null}
-            {photo.description != null && photo.description.trim() !== "" ? (
-              <p className="mt-1 max-h-24 overflow-y-auto text-sm leading-snug text-white/65">
-                {photo.description.trim()}
-              </p>
-            ) : null}
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="text-white/80 hover:text-white focus-visible:ring-ring shrink-0 rounded-md p-2 focus-visible:ring-2 focus-visible:outline-none"
-          aria-label="Close"
-        >
-          <X className="size-6" />
-        </button>
-      </div>
-
-      <div
-        className="relative flex min-h-0 flex-1 items-center justify-center px-2 sm:px-12"
+        className="relative min-h-0 flex-1"
         onClick={onClose}
       >
         <button
@@ -251,22 +221,11 @@ function PhotoLightbox({
             e.stopPropagation();
             onPrev();
           }}
-          className="text-white/70 hover:text-white focus-visible:ring-ring z-10 rounded-full p-2 focus-visible:ring-2 focus-visible:outline-none"
+          className="text-white/70 hover:text-white focus-visible:ring-ring absolute top-1/2 left-1 z-20 -translate-y-1/2 rounded-full p-2 focus-visible:ring-2 focus-visible:outline-none sm:left-2"
           aria-label="Previous photo"
         >
           <ChevronLeft className="size-10 sm:size-12" strokeWidth={1.25} />
         </button>
-
-        <div
-          className="mx-1 flex max-h-[calc(100vh-14rem)] max-w-[calc(100vw-2rem)] flex-1 items-center justify-center sm:mx-2"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <img
-            src={resolved}
-            alt={photo.alt}
-            className="max-h-[calc(100vh-14rem)] max-w-full object-contain"
-          />
-        </div>
 
         <button
           type="button"
@@ -274,11 +233,61 @@ function PhotoLightbox({
             e.stopPropagation();
             onNext();
           }}
-          className="text-white/70 hover:text-white focus-visible:ring-ring z-10 rounded-full p-2 focus-visible:ring-2 focus-visible:outline-none"
+          className="text-white/70 hover:text-white focus-visible:ring-ring absolute top-1/2 right-1 z-20 -translate-y-1/2 rounded-full p-2 focus-visible:ring-2 focus-visible:outline-none sm:right-2"
           aria-label="Next photo"
         >
           <ChevronRight className="size-10 sm:size-12" strokeWidth={1.25} />
         </button>
+
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-12 sm:px-16">
+          <img
+            src={resolved}
+            alt={photo.alt}
+            onClick={(e) => e.stopPropagation()}
+            className="pointer-events-auto max-h-full max-w-full object-contain"
+          />
+        </div>
+
+        <div
+          className="absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-3 p-3 sm:items-center sm:p-4"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex min-w-0 flex-1 flex-col gap-1.5 pr-1 sm:flex-row sm:items-center sm:gap-3">
+            <LocationTag
+              label={locationLabel}
+              className="!bg-black/50 !text-white w-fit max-w-full shrink-0 truncate align-middle backdrop-blur-sm"
+            />
+            {metaLine !== "" ? (
+              <p className="min-w-0 text-xs leading-snug text-white/75 sm:text-sm">
+                {metaLine}
+              </p>
+            ) : null}
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-white/90 hover:text-white focus-visible:ring-ring shrink-0 rounded-md bg-black/40 p-2 backdrop-blur-sm focus-visible:ring-2 focus-visible:outline-none"
+            aria-label="Close"
+          >
+            <X className="size-6" />
+          </button>
+        </div>
+
+        <div
+          className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/90 via-black/55 to-transparent pt-20 pb-2 sm:pt-24 sm:pb-3"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <p className="text-base font-semibold text-white drop-shadow-sm sm:text-lg">
+              {photoDisplayTitle(photo)}
+            </p>
+            {photo.description != null && photo.description.trim() !== "" ? (
+              <p className="mt-1.5 max-h-[min(42vh,16rem)] overflow-y-auto text-sm leading-relaxed whitespace-pre-wrap text-white/85 [scrollbar-width:thin] sm:max-h-[min(45vh,20rem)] sm:text-[0.9375rem] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/30">
+                {photo.description.trim()}
+              </p>
+            ) : null}
+          </div>
+        </div>
       </div>
 
       <div
@@ -848,7 +857,7 @@ function PhotosPageContent() {
         </BlurFade>
 
         <div
-          className="mb-10 grid min-w-0 grid-cols-1 gap-2 sm:mb-14 sm:grid-cols-3 sm:gap-3 md:gap-4"
+          className="mb-10 flex min-w-0 flex-row flex-nowrap gap-1.5 sm:mb-14 sm:gap-3 md:gap-4"
           role="list"
           aria-label="Album shortcuts"
         >

@@ -328,13 +328,28 @@ const PLACE_ALBUM_SPECS = [
 
 const GALLERY_SPECS = [...LANDING_ALBUM_SPECS, ...PLACE_ALBUM_SPECS] as const;
 
+/** Same `src` only once per gallery (defensive; catalog should already be unique). */
+function dedupeTaggedPhotosBySrc(
+  photos: readonly TaggedPhoto[],
+): TaggedPhoto[] {
+  const out: TaggedPhoto[] = [];
+  const seen = new Set<string>();
+  for (const p of photos) {
+    if (seen.has(p.src)) continue;
+    seen.add(p.src);
+    out.push(p);
+  }
+  return out;
+}
+
 function specToGallery(
   spec: (typeof GALLERY_SPECS)[number],
 ): Gallery {
-  const photos =
+  const raw =
     spec.id === "travel"
       ? PHOTO_CATALOG.filter((p) => !p.tags.includes("sketch"))
       : PHOTO_CATALOG.filter((p) => p.tags.includes(spec.tag));
+  const photos = dedupeTaggedPhotosBySrc(raw);
   return {
     id: spec.id,
     title: spec.title,
