@@ -64,7 +64,11 @@
         "technologies": ["ArangoDB", "Graph Databases", "NoSQL"],
         "authors": "",
         "links": [
-          { "type": "Blog", "href": "/blog/graphical-interpretation-arangodb/", "icon": "globe" }
+          {
+            "type": "Article",
+            "href": "/blog/graphical-interpretation-arangodb/",
+            "icon": "globe"
+          }
         ],
         "image": "",
         "video": ""
@@ -331,6 +335,7 @@
       }
     ]
   },
+  "skills": [],
   "service": {
     "reviewing": ["ICML", "ICLR", "CoLLAs", "TMLR"],
     "teaching": [
@@ -341,8 +346,7 @@
       "Big Data Lab — IIT Madras"
     ],
     "volunteering": [
-      "Co-organized DEAADIGS Workshop at IJCAI 2021",
-      "Co-organized Workshop on Data Ethics at ACM Web Science 2021"
+      "Co-organized the [DEAADIGS workshop](https://sites.google.com/view/deaadigs/) at IJCAI 2021 on data-efficient and adversarial AI."
     ]
   },
   "social": {
@@ -372,7 +376,7 @@
     },
     "LinkedIn": {
       "name": "LinkedIn",
-      "url": "https://linkedin.com/in/pranshumalviya2",
+      "url": "https://www.linkedin.com/in/pranshumalviya2",
       "icon": "linkedin",
       "navbar": false,
       "content": true,

@@ -18,7 +18,9 @@
             "title": "Latest News"
         },
         "publications": {
-            "title": "Publications"
+            "title": "Selected Publications",
+            "othersTitle": "Others",
+            "othersSubtitle": "Preprints and workshop papers"
         },
         "invitedTalks": {
             "title": "Invited Talks"
@@ -47,12 +49,7 @@
                 "label": "Home"
             },
             {
-                "href": "/blog",
-                "icon": "notebook",
-                "label": "Blog"
-            },
-            {
-                "href": "/photos",
+                "href": "/photos/",
                 "icon": "camera",
                 "label": "Life"
             },
@@ -62,8 +59,7 @@
                 "label": "CV"
             }
         ],
-        "theme": "Theme",
-        "language": "Language"
+        "theme": "Theme"
     },
     "blog": {
         "title": "Blog",

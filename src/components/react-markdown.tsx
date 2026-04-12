@@ -2,9 +2,49 @@ import Image from "next/image";
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 
+/** Internal hrefs use trailing slash for static export (trailingSlash: true). */
+function MarkdownLink({
+  href,
+  children,
+}: {
+  href?: string;
+  children?: React.ReactNode;
+}) {
+  if (!href) {
+    return <span>{children}</span>;
+  }
+  const isExternal =
+    href.startsWith("http://") ||
+    href.startsWith("https://") ||
+    href.startsWith("mailto:");
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-2"
+      >
+        {children}
+      </a>
+    );
+  }
+  let path = href;
+  if (path !== "/" && !path.endsWith("/")) {
+    path = `${path}/`;
+  }
+  return (
+    <a href={path} className="underline underline-offset-2 hover:no-underline">
+      {children}
+    </a>
+  );
+}
+
 interface CustomReactMarkdownProps {
   children: string;
   className?: string;
+  /** Avoid wrapping in <p> (e.g. inside <li>) */
+  inline?: boolean;
 }
 
 // Custom Image component that uses Next.js Image or native img for shields.io
@@ -34,15 +74,23 @@ function CustomImage({ src, alt }: React.ImgHTMLAttributes<HTMLImageElement>) {
   );
 }
 
-// Custom components for react-markdown
-const components: Components = {
+const baseComponents: Components = {
   img: CustomImage,
+  a: MarkdownLink,
 };
 
 export function CustomReactMarkdown({
   children,
   className,
+  inline = false,
 }: CustomReactMarkdownProps) {
+  const components: Components = inline
+    ? {
+        ...baseComponents,
+        p: ({ children: c }) => <span className="inline">{c}</span>,
+      }
+    : baseComponents;
+
   return (
     <div className={className}>
       <ReactMarkdown components={components}>{children}</ReactMarkdown>

@@ -215,12 +215,14 @@ export default async function Page(props: {
               showAllText={t("showAll")}
             />
 
-            {/* Preprints / Working Papers */}
             {preprintItems.length > 0 && (
               <div className="mt-8">
-                <h3 className="text-muted-foreground mb-4 text-sm font-medium uppercase tracking-wider">
-                  Preprints & Workshop Papers
+                <h3 className="text-foreground mb-1 text-xl font-bold tracking-tight sm:text-2xl">
+                  {t("sections.publications.othersTitle")}
                 </h3>
+                <p className="text-muted-foreground mb-4 text-sm">
+                  {t("sections.publications.othersSubtitle")}
+                </p>
                 <div className="space-y-3">
                   {preprintItems.map((p, i) => (
                     <BlurFade key={i} delay={BLUR_FADE_DELAY * (i + 1)}>
@@ -303,9 +305,11 @@ export default async function Page(props: {
                 <span className="text-foreground mb-1 block font-medium">
                   {t("sections.serviceVolunteering")}
                 </span>
-                <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-0.5">
-                  {serviceData.volunteering.map((line) => (
-                    <li key={line}>{line}</li>
+                <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-0.5 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2">
+                  {serviceData.volunteering.map((line, i) => (
+                    <li key={i}>
+                      <CustomReactMarkdown inline>{line}</CustomReactMarkdown>
+                    </li>
                   ))}
                 </ul>
               </div>

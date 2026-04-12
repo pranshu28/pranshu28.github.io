@@ -13,14 +13,9 @@ export default function NotFound() {
           Sorry, we couldn't find the page you're looking for. It might have
           been moved, deleted, or you entered the wrong URL.
         </p>
-        <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <Button asChild>
-            <Link href="/">Go Home</Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href="/blog">View Blog</Link>
-          </Button>
-        </div>
+        <Button asChild>
+          <Link href="/">Go Home</Link>
+        </Button>
       </div>
     </main>
   );

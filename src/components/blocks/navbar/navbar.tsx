@@ -3,7 +3,6 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { LanguageToggle } from "@/components/blocks/navbar/language-toggle";
 import { ModeToggle } from "@/components/blocks/navbar/mode-toggle";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
@@ -17,13 +16,7 @@ import {
 import { Link as I18nLink } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
-interface NavbarProps {
-  languageToggleDisabled?: boolean;
-}
-
-export default function Navbar({
-  languageToggleDisabled = false,
-}: NavbarProps) {
+export default function Navbar() {
   const t = useTranslations();
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -150,16 +143,6 @@ export default function Navbar({
             </TooltipTrigger>
             <TooltipContent side={isDesktop ? "bottom" : "top"} sideOffset={8}>
               <p>{t("navbar.theme")}</p>
-            </TooltipContent>
-          </Tooltip>
-        </DockIcon>
-        <DockIcon>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <LanguageToggle disabled={languageToggleDisabled} />
-            </TooltipTrigger>
-            <TooltipContent side={isDesktop ? "bottom" : "top"} sideOffset={8}>
-              <p>{t("navbar.language")}</p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>
