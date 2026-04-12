@@ -192,12 +192,6 @@ const LANDING_ALBUM_SPECS = [
     tag: "wonder",
     cover: "/photos/core/taj-mahal.jpg",
   },
-  {
-    id: "nature",
-    title: "Nature",
-    tag: "nature",
-    cover: "/photos/frames/img-20160814-164345-hdr.jpg",
-  },
 ] as const;
 
 /** Place / archive albums — reachable via `?g=` but not shown on the main landing grid. */
@@ -293,12 +287,14 @@ export function getLandingAlbums(): readonly Gallery[] {
 /**
  * Legacy and alias query values → canonical gallery `id`.
  * Thematic filters: `sketching` → sketches, `travelling` → travel.
+ * `nature` was a removed landing album; old links open Travelling.
  */
 export function normalizeGalleryParam(gParam: string | null): string | null {
   if (!gParam) return null;
   if (gParam === "hawaii") return "usa";
   if (gParam === "sketching") return "sketches";
   if (gParam === "travelling") return "travel";
+  if (gParam === "nature") return "travel";
   return gParam;
 }
 
