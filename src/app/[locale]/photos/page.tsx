@@ -1,11 +1,20 @@
 "use client";
 
-import { BLUR_FADE_DELAY } from "@/data/site";
-import { BlurFade } from "@/components/ui/blur-fade";
-import { Link as I18nLink } from "@/i18n/routing";
-import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import {
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
+
+import { BlurFade } from "@/components/ui/blur-fade";
+import { BLUR_FADE_DELAY } from "@/data/site";
+import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
+import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
+import { cn } from "@/lib/utils";
 
 type Photo = { src: string; alt: string };
 
@@ -108,6 +117,33 @@ const sketches: Photo[] = [
   { src: "/photos/sketches/cityscape-lens.jpg", alt: "Cityscape through a lens" },
 ];
 
+/** Shareable photo URLs: ?g=<galleryId>&p=<0-based index> */
+function buildPhotosHref(
+  pathname: string,
+  current: URLSearchParams,
+  updates: Record<string, string | null | undefined>,
+): string {
+  const sp = new URLSearchParams(current.toString());
+  for (const [k, v] of Object.entries(updates)) {
+    if (v === undefined || v === null || v === "") sp.delete(k);
+    else sp.set(k, v);
+  }
+  const q = sp.toString();
+  return q ? `${pathname}?${q}` : pathname;
+}
+
+function resolveActiveGallery(
+  gParam: string | null,
+): { id: string; title: string; photos: Photo[] } | null {
+  if (gParam === "sketches") {
+    return { id: "sketches", title: "Sketches", photos: sketches };
+  }
+  const found = galleries.find((x) => x.id === gParam);
+  return found
+    ? { id: found.id, title: found.title, photos: found.photos }
+    : null;
+}
+
 function LocationTag({
   label,
   className = "",
@@ -205,6 +241,7 @@ function PhotoLightbox({
   onClose,
   onPrev,
   onNext,
+  onSelectIndex,
 }: {
   open: boolean;
   photos: Photo[];
@@ -213,7 +250,10 @@ function PhotoLightbox({
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  onSelectIndex: (i: number) => void;
 }) {
+  const filmstripRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!open) return;
     const prevOverflow = document.body.style.overflow;
@@ -233,6 +273,18 @@ function PhotoLightbox({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose, onPrev, onNext]);
+
+  useEffect(() => {
+    if (!open || !filmstripRef.current) return;
+    const el = filmstripRef.current.querySelector(
+      `[data-thumb-index="${index}"]`,
+    );
+    el?.scrollIntoView({
+      inline: "center",
+      block: "nearest",
+      behavior: "smooth",
+    });
+  }, [open, index]);
 
   if (!open || photos.length === 0) return null;
 
@@ -256,7 +308,7 @@ function PhotoLightbox({
             label={locationLabel}
             className="!bg-white/10 !text-white shrink-0"
           />
-          <span className="text-muted-foreground truncate text-sm">
+          <span className="text-muted-foreground truncate text-sm text-white/70">
             {photo.alt}
           </span>
         </div>
@@ -287,13 +339,13 @@ function PhotoLightbox({
         </button>
 
         <div
-          className="mx-1 flex max-h-[calc(100vh-8rem)] max-w-[min(100vw-8rem,1400px)] flex-1 items-center justify-center sm:mx-4"
+          className="mx-1 flex max-h-[calc(100vh-14rem)] max-w-[min(100vw-8rem,1400px)] flex-1 items-center justify-center sm:mx-4"
           onClick={(e) => e.stopPropagation()}
         >
           <img
             src={resolved}
             alt={photo.alt}
-            className="max-h-[calc(100vh-8rem)] max-w-full object-contain"
+            className="max-h-[calc(100vh-14rem)] max-w-full object-contain"
           />
         </div>
 
@@ -311,7 +363,41 @@ function PhotoLightbox({
       </div>
 
       <div
-        className="text-muted-foreground shrink-0 px-4 py-4 text-center text-sm sm:px-6"
+        className="shrink-0 border-t border-white/10 px-2 pt-2 pb-1 sm:px-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div
+          ref={filmstripRef}
+          className="flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/25"
+        >
+          {photos.map((ph, i) => (
+            <button
+              key={ph.src}
+              type="button"
+              data-thumb-index={i}
+              onClick={() => onSelectIndex(i)}
+              className={cn(
+                "h-16 w-20 shrink-0 overflow-hidden rounded-md border-2 transition-all sm:h-[4.5rem] sm:w-24",
+                i === index
+                  ? "border-white opacity-100 ring-2 ring-white/40"
+                  : "border-transparent opacity-55 hover:opacity-90",
+              )}
+              aria-label={`Photo ${i + 1}`}
+              aria-current={i === index ? "true" : undefined}
+            >
+              <img
+                src={resolvePhotoSrc(ph.src)}
+                alt=""
+                className="size-full object-cover"
+                draggable={false}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div
+        className="text-muted-foreground shrink-0 px-4 py-3 text-center text-sm text-white/60 sm:px-6"
         onClick={(e) => e.stopPropagation()}
       >
         {index + 1} / {photos.length}
@@ -322,31 +408,25 @@ function PhotoLightbox({
 
 function GalleryDetail({
   gallery,
+  lightboxOpen,
+  lightboxIndex,
   onBack,
+  onOpenPhoto,
+  onCloseLightbox,
+  onPrevPhoto,
+  onNextPhoto,
+  onSelectPhoto,
 }: {
-  gallery: { title: string; photos: Photo[] };
+  gallery: { id: string; title: string; photos: Photo[] };
+  lightboxOpen: boolean;
+  lightboxIndex: number;
   onBack: () => void;
+  onOpenPhoto: (index: number) => void;
+  onCloseLightbox: () => void;
+  onPrevPhoto: () => void;
+  onNextPhoto: () => void;
+  onSelectPhoto: (index: number) => void;
 }) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
-
-  const goPrev = useCallback(() => {
-    setLightboxIndex((i) => {
-      if (i === null) return i;
-      const n = gallery.photos.length;
-      return (i - 1 + n) % n;
-    });
-  }, [gallery.photos.length]);
-
-  const goNext = useCallback(() => {
-    setLightboxIndex((i) => {
-      if (i === null) return i;
-      const n = gallery.photos.length;
-      return (i + 1) % n;
-    });
-  }, [gallery.photos.length]);
-
   return (
     <div>
       <BlurFade delay={0}>
@@ -373,46 +453,110 @@ function GalleryDetail({
         </div>
       </BlurFade>
 
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-3">
+      <div className="columns-2 gap-x-3 sm:columns-3 md:columns-4 md:gap-x-4">
         {gallery.photos.map((photo, i) => (
           <BlurFade key={photo.src} delay={BLUR_FADE_DELAY * Math.min(i + 1, 8)}>
             <button
               type="button"
-              onClick={() => setLightboxIndex(i)}
-              className="group border-border relative aspect-square w-full overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              onClick={() => onOpenPhoto(i)}
+              className="group border-border relative mb-3 w-full break-inside-avoid overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <img
                 src={resolvePhotoSrc(photo.src)}
                 alt={photo.alt}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 loading={i < 8 ? "eager" : "lazy"}
               />
-              <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
+              <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
             </button>
           </BlurFade>
         ))}
       </div>
 
       <PhotoLightbox
-        open={lightboxIndex !== null}
+        open={lightboxOpen}
         photos={gallery.photos}
-        index={lightboxIndex ?? 0}
+        index={lightboxIndex}
         locationLabel={gallery.title}
-        onClose={closeLightbox}
-        onPrev={goPrev}
-        onNext={goNext}
+        onClose={onCloseLightbox}
+        onPrev={onPrevPhoto}
+        onNext={onNextPhoto}
+        onSelectIndex={onSelectPhoto}
       />
     </div>
   );
 }
 
-export default function PhotosPage() {
-  const [activeGallery, setActiveGallery] = useState<string | null>(null);
+function PhotosPageContent() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryKey = searchParams.toString();
 
-  const active =
-    activeGallery === "sketches"
-      ? { title: "Sketches", photos: sketches }
-      : galleries.find((g) => g.id === activeGallery);
+  const active = useMemo(() => {
+    const g = searchParams.get("g");
+    return resolveActiveGallery(g);
+  }, [searchParams]);
+
+  const { lightboxOpen, lightboxIndex } = useMemo(() => {
+    if (!active) {
+      return { lightboxOpen: false, lightboxIndex: 0 };
+    }
+    const raw = searchParams.get("p");
+    if (raw === null || raw === "") {
+      return { lightboxOpen: false, lightboxIndex: 0 };
+    }
+    const idx = Number.parseInt(raw, 10);
+    if (
+      !Number.isFinite(idx) ||
+      idx < 0 ||
+      idx >= active.photos.length
+    ) {
+      return { lightboxOpen: false, lightboxIndex: 0 };
+    }
+    return { lightboxOpen: true, lightboxIndex: idx };
+  }, [active, searchParams]);
+
+  const replaceQuery = useCallback(
+    (updates: Record<string, string | null | undefined>) => {
+      router.replace(buildPhotosHref(pathname, searchParams, updates));
+    },
+    [pathname, queryKey, router, searchParams],
+  );
+
+  const openGallery = useCallback(
+    (id: string) => {
+      replaceQuery({ g: id, p: null });
+    },
+    [replaceQuery],
+  );
+
+  const backToAll = useCallback(() => {
+    replaceQuery({ g: null, p: null });
+  }, [replaceQuery]);
+
+  const openPhoto = useCallback(
+    (index: number) => {
+      if (!active) return;
+      replaceQuery({ g: active.id, p: String(index) });
+    },
+    [active, replaceQuery],
+  );
+
+  const closeLightbox = useCallback(() => {
+    if (!active) return;
+    replaceQuery({ p: null });
+  }, [active, replaceQuery]);
+
+  const stepPhoto = useCallback(
+    (delta: number) => {
+      if (!active || !lightboxOpen) return;
+      const n = active.photos.length;
+      const next = (lightboxIndex + delta + n) % n;
+      replaceQuery({ g: active.id, p: String(next) });
+    },
+    [active, lightboxIndex, lightboxOpen, replaceQuery],
+  );
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-7xl flex-col px-6 py-8 pb-24 sm:px-16 md:px-20 md:py-16 md:pt-14 lg:px-24 lg:py-20 xl:px-32 xl:py-24">
@@ -420,7 +564,14 @@ export default function PhotosPage() {
         {active ? (
           <GalleryDetail
             gallery={active}
-            onBack={() => setActiveGallery(null)}
+            lightboxOpen={lightboxOpen}
+            lightboxIndex={lightboxIndex}
+            onBack={backToAll}
+            onOpenPhoto={openPhoto}
+            onCloseLightbox={closeLightbox}
+            onPrevPhoto={() => stepPhoto(-1)}
+            onNextPhoto={() => stepPhoto(1)}
+            onSelectPhoto={openPhoto}
           />
         ) : (
           <>
@@ -437,9 +588,11 @@ export default function PhotosPage() {
               <h1 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">
                 Life
               </h1>
-              <p className="text-muted-foreground mb-10 max-w-md text-sm">
-                Open a place, then a thumbnail for a full-screen view. Keys: ← →
-                Esc.
+              <p className="text-muted-foreground mb-10 max-w-lg text-sm">
+                Open a gallery for a masonry grid; click a photo for full-screen
+                view with a filmstrip. Each photo has a shareable URL (
+                <code className="text-foreground/80 text-xs">?g=…&amp;p=…</code>
+                ). Keys: ← → Esc.
               </p>
             </BlurFade>
 
@@ -449,17 +602,31 @@ export default function PhotosPage() {
                   key={gallery.id}
                   gallery={gallery}
                   index={i}
-                  onClick={() => setActiveGallery(gallery.id)}
+                  onClick={() => openGallery(gallery.id)}
                 />
               ))}
               <SketchesTile
                 index={galleries.length}
-                onClick={() => setActiveGallery("sketches")}
+                onClick={() => openGallery("sketches")}
               />
             </div>
           </>
         )}
       </section>
     </main>
+  );
+}
+
+export default function PhotosPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="mx-auto flex min-h-dvh max-w-7xl flex-col items-center justify-center px-6 py-24">
+          <p className="text-muted-foreground text-sm">Loading galleries…</p>
+        </main>
+      }
+    >
+      <PhotosPageContent />
+    </Suspense>
   );
 }

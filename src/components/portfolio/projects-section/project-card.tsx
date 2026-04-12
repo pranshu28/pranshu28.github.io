@@ -13,7 +13,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Link as I18nLink } from "@/i18n/routing";
+import { cn, isLocaleScopedAppPath } from "@/lib/utils";
 
 interface Props {
   title: string;
@@ -62,6 +63,18 @@ export function ProjectCard({
     }
   };
 
+  const linkClass = cn("group block cursor-pointer", className);
+  const linkLabel = `View project: ${title}`;
+  const useI18n = href ? isLocaleScopedAppPath(href) : false;
+  const MediaLink = useI18n ? I18nLink : Link;
+  const mediaLinkProps = useI18n
+    ? { href: href as string, className: linkClass, "aria-label": linkLabel }
+    : {
+        href: href || "#",
+        className: linkClass,
+        "aria-label": linkLabel,
+      };
+
   return (
     <Card
       className={cn(
@@ -71,11 +84,7 @@ export function ProjectCard({
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <Link
-        href={href || "#"}
-        className={cn("group block cursor-pointer", className)}
-        aria-label={`View project: ${title}`}
-      >
+      <MediaLink {...mediaLinkProps}>
         {video && (
           <div className="bg-muted relative h-40 w-full overflow-hidden rounded-md sm:h-44 md:h-48">
             {/* blurred background video to fill empty space */}
@@ -143,7 +152,7 @@ export function ProjectCard({
             />
           </div>
         )}
-      </Link>
+      </MediaLink>
       <CardHeader className="px-2">
         <div className="space-y-1">
           <CardTitle className="mt-1 text-base [&_img]:my-0 [&_img]:inline-block [&_img]:h-[1em] [&_img]:w-auto [&_img]:align-baseline">
@@ -181,14 +190,30 @@ export function ProjectCard({
       <CardFooter className="px-2 pb-2">
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
-            {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
+            {links?.map((link, idx) => {
+              const href = link?.href ?? "#";
+              const scoped = isLocaleScopedAppPath(href);
+              const badge = (
+                <Badge className="flex gap-2 px-2 py-1 text-[10px]">
                   {link.icon}
                   {link.type}
                 </Badge>
-              </Link>
-            ))}
+              );
+              return scoped ? (
+                <I18nLink href={href} key={idx}>
+                  {badge}
+                </I18nLink>
+              ) : (
+                <Link
+                  href={href}
+                  key={idx}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {badge}
+                </Link>
+              );
+            })}
           </div>
         )}
       </CardFooter>

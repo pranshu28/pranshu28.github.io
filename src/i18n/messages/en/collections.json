@@ -48,8 +48,8 @@
       },
       {
         "date": "2021.08",
-        "title": "Co-organized [DEAADIGS Workshop](https://sites.google.com/view/deaadigs/) at **IJCAI 2021**",
-        "content": "Workshop on Data-Efficient and Adversarial AI -- Design, Implementation, and Generalization Strategies."
+        "title": "Co-organized [DEAADIGS Workshop](https://sites.google.com/view/deaadigs/) at **ACM Web Science 2021**",
+        "content": "Workshop on data ethics, algorithmic accountability, and digital inequality in the global south."
       }
     ]
   },
@@ -141,7 +141,7 @@
         "href": "https://arxiv.org/abs/2105.05155",
         "dates": "CoLLAs 2022",
         "active": true,
-        "description": "A gradient accumulation method for continual learning that prevents catastrophic forgetting. Also presented at ICML 2021 Workshop.",
+        "description": "A gradient accumulation method for continual learning that prevents catastrophic forgetting.",
         "technologies": ["Continual Learning", "Optimization"],
         "authors": "**Authors:** **P. Malviya**, B. Ravindran, S. Chandar",
         "links": [
@@ -219,7 +219,7 @@
       },
       {
         "title": "A Causal Linear Model to Quantify Edge and Cumulative Unfairness",
-        "dates": "ICML 2020 Workshop",
+        "dates": "ICML 2020 Workshop (Law and Machine Learning)",
         "authors": "P. Ravishankar, **P. Malviya**, B. Ravindran",
         "href": "https://arxiv.org/abs/2007.05516"
       },
@@ -340,7 +340,7 @@
       "Big Data Lab — IIT Madras"
     ],
     "volunteering": [
-      "Co-organized the [DEAADIGS workshop](https://sites.google.com/view/deaadigs/) at IJCAI 2021 on data-efficient and adversarial AI."
+      "Co-organized the [DEAADIGS workshop](https://sites.google.com/view/deaadigs/) at ACM Web Science 2021 (data ethics, algorithmic accountability, and digital inequality in the global south)."
     ]
   },
   "social": {
@@ -386,7 +386,7 @@
     },
     "goodreads": {
       "name": "Goodreads",
-      "url": "https://www.goodreads.com/user/show/49705608-pranshu",
+      "url": "https://www.goodreads.com/user/show/49705608-pranshu-malviya",
       "icon": "bookopen",
       "navbar": false,
       "content": false,

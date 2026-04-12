@@ -34,6 +34,17 @@ export function sortByLatestYearDesc<T extends { dates: string }>(
     .map(({ item }) => item);
 }
 
+/** In-app routes under `[locale]` for static export; not `/papers/…` or `/photos/*.jpg`. */
+export function isLocaleScopedAppPath(href: string): boolean {
+  if (!href.startsWith("/") || href.startsWith("//")) return false;
+  const path = href.split("?")[0].split("#")[0];
+  if (path.startsWith("/blog")) return true;
+  if (path === "/photos" || path === "/photos/") return true;
+  if (path.startsWith("/privacy-policy")) return true;
+  if (path.startsWith("/terms-of-service")) return true;
+  return false;
+}
+
 export function formatDate(date: string, locale: string = "en-US") {
   const currentDate = new Date().getTime();
   if (!date.includes("T")) {

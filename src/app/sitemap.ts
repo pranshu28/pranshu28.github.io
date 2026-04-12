@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 import { siteConfig } from "@/data/site";
-import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
+import { getPathname, LOCALES } from "@/i18n/routing";
 import { getBlogPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";
@@ -19,16 +19,16 @@ type ChangeFrequency =
   | undefined;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages = ["", "/blog"];
+  const staticPages: Array<"/" | "/blog"> = ["/", "/blog"];
 
   const pages = LOCALES.flatMap((locale) => {
     return staticPages.map((page) => ({
-      url: `${siteUrl}${locale === DEFAULT_LOCALE ? "" : `/${locale}`}${page}`,
+      url: `${siteUrl}${getPathname({ locale, href: page })}`,
       lastModified: new Date(),
-      changeFrequency: (["", "/blog"].includes(page)
+      changeFrequency: (["/", "/blog"].includes(page)
         ? "weekly"
         : "monthly") as ChangeFrequency,
-      priority: page === "" ? 1.0 : page === "/blog" ? 0.8 : 0.5,
+      priority: page === "/" ? 1.0 : page === "/blog" ? 0.8 : 0.5,
     }));
   });
 
@@ -46,9 +46,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const slugPart = post.slug.replace(/^\//, "").replace(/^blogs\//, "");
         if (slugPart) {
           allBlogSitemapEntries.push({
-            url: `${siteUrl}${
-              locale === DEFAULT_LOCALE ? "" : `/${locale}`
-            }/blog/${slugPart}`,
+            url: `${siteUrl}${getPathname({
+              locale,
+              href: `/blog/${slugPart}`,
+            })}`,
             lastModified: post.metadata.updatedAt
               ? new Date(post.metadata.updatedAt as string)
               : post.metadata.date

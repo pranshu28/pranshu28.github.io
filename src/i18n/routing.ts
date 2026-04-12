@@ -15,7 +15,10 @@ export const LOCALE_TO_HREFLANG: Record<Locale, string> = {
 export const routing = defineRouting({
   locales: LOCALES,
   defaultLocale: DEFAULT_LOCALE,
-  localePrefix: "as-needed",
+  // Always prefix so static export paths (`out/en/blog`, `out/en/photos`, …) match
+  // in-page hrefs. `as-needed` omits `/en` for the default locale but Next still
+  // emits pages under `/en/`, which breaks links on GitHub Pages.
+  localePrefix: "always",
 });
 
 export const { Link, redirect, usePathname, useRouter, getPathname } =
