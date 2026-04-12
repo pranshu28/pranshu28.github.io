@@ -1,0 +1,199 @@
+{
+    "sections": {
+        "about": "About",
+        "selectedProjects": "Selected Projects",
+        "checkOutLatestWork": "Check out my latest work",
+        "earlierWork": "Earlier Work",
+        "research": "Research",
+        "viewFullPublications": "View the full list of my publications on",
+        "skills": "Skills",
+        "education": "Education",
+        "workExperience": "Experience",
+        "awards": "Honors & Activities",
+        "academicServices": "Academic Services",
+        "news": {
+            "title": "Latest News"
+        },
+        "publications": {
+            "title": "Publications"
+        },
+        "invitedTalks": {
+            "title": "Invited Talks"
+        },
+        "teaching": {
+            "title": "Teaching",
+            "reviewerConferencesLabel": "Conference Reviewer:",
+            "reviewerJournalsLabel": "Journal Reviewer:",
+            "teachingLabel": "Teaching Assistant:"
+        },
+        "contact": "Contact",
+        "getInTouch": "Get in Touch",
+        "contactDescription": "Want to chat? Feel free to reach out",
+        "viaEmail": "via email",
+        "askQuestions": "Ask questions",
+        "exploreCollaboration": "Explore collaboration opportunities",
+        "coffeeChat": "Let's connect",
+        "schedule": "Schedule"
+    },
+    "showAll": "Show All",
+    "navbar": {
+        "items": [
+            {
+                "href": "/",
+                "icon": "home",
+                "label": "Home"
+            },
+            {
+                "href": "/blog",
+                "icon": "notebook",
+                "label": "Blog"
+            },
+            {
+                "href": "/photos",
+                "icon": "camera",
+                "label": "Life"
+            },
+            {
+                "href": "/resume.pdf",
+                "icon": "file",
+                "label": "CV"
+            }
+        ],
+        "theme": "Theme",
+        "language": "Language"
+    },
+    "blog": {
+        "title": "Blog",
+        "titleWithName": "{name}'s Blog",
+        "readMore": "Read more",
+        "authorLabel": "by",
+        "readingTime": "{minutes} min read",
+        "toc": {
+            "title": "Table of Contents",
+            "toggle": "Toggle table of contents",
+            "close": "Close table of contents",
+            "empty": "No table of contents available"
+        }
+    },
+    "footer": {
+        "navigation": {
+            "about": "About",
+            "projects": "Projects",
+            "education": "Education",
+            "experience": "Experience"
+        },
+        "sections": {
+            "quickNavigation": "Quick Navigation",
+            "connect": "Connect",
+            "resources": "Resources",
+            "discover": "Discover",
+            "contact": "Contact"
+        },
+        "resources": [
+            {
+                "name": "Blog",
+                "url": "/blog"
+            },
+            {
+                "name": "Google Scholar",
+                "url": "https://scholar.google.com/citations?user=VET8VMcAAAAJ"
+            }
+        ],
+        "discover": [
+            {
+                "name": "Chandar Lab",
+                "url": "https://chandar-lab.github.io/"
+            },
+            {
+                "name": "MILA",
+                "url": "https://mila.quebec/en/"
+            },
+            {
+                "name": "RBCDSAI",
+                "url": "https://rbcdsai.iitm.ac.in/"
+            }
+        ],
+        "contact": {
+            "support": "Support"
+        },
+        "legal": {
+            "allRightsReserved": "All rights reserved",
+            "privacyPolicy": "Privacy Policy",
+            "termsDisclaimer": "Terms & Disclaimer"
+        },
+        "bottom": {
+            "lastUpdated": "Last updated",
+            "madeWith": "Made with",
+            "modifiedFrom": "Built with"
+        }
+    },
+    "privacyPolicy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last updated",
+        "sections": {
+            "informationWeCollect": {
+                "title": "Information We Collect",
+                "description": "This website does not actively collect personal data.",
+                "items": [],
+                "note": ""
+            },
+            "howWeUseInformation": {
+                "title": "How We Use Information",
+                "description": "No personal data is collected or processed.",
+                "items": []
+            },
+            "dataSharing": {
+                "title": "Data Sharing",
+                "description": "No data is shared with third parties."
+            },
+            "cookies": {
+                "title": "Cookies",
+                "description": "This website uses minimal cookies for theme preferences."
+            },
+            "contact": {
+                "title": "Contact",
+                "description": "For questions, contact me via the information on the main page."
+            }
+        }
+    },
+    "termsOfService": {
+        "title": "Terms & Disclaimer",
+        "lastUpdated": "Last updated",
+        "sections": {
+            "termsOfService": {
+                "title": "Terms of Service",
+                "description": "By accessing this website, you agree to these terms."
+            },
+            "useLicense": {
+                "title": "Use License",
+                "description": "Content is provided for personal, non-commercial viewing.",
+                "items": []
+            },
+            "disclaimer": {
+                "title": "Disclaimer",
+                "description": "Materials are provided as-is without warranties."
+            },
+            "limitations": {
+                "title": "Limitations",
+                "description": "I am not liable for damages arising from use of this website."
+            },
+            "accuracyOfMaterials": {
+                "title": "Accuracy",
+                "description": "Content may contain errors and is subject to change without notice.",
+                "note": ""
+            },
+            "links": {
+                "title": "Links",
+                "description": "External links are not endorsed and used at your own risk."
+            },
+            "modifications": {
+                "title": "Modifications",
+                "description": "These terms may be revised at any time."
+            },
+            "contact": {
+                "title": "Contact",
+                "description": "For questions, contact me via the information on the main page."
+            }
+        }
+    }
+}

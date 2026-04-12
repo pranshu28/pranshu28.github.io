@@ -1,0 +1,113 @@
+---
+title: "Graphical Interpretation of Data using ArangoDB"
+date: "2017-12-28"
+summary: "Building a generic graph API with ArangoDB, Java, and Apache JMeter for performance testing on unstructured data."
+---
+
+A number of industries and laboratories still rely upon relational database management systems for handling their data. But usually, raw data that they encounter is not structured. It is highly complicated, fast-changing and massive for conventional technologies to handle efficiently.
+
+In the past, I have advocated working on huge amount of data using only relational database management. For the purposes of actually knowing what goes on under the hood, I think that handling big data is essential, and the lessons learned from building things from scratch are real game-changers when it comes to tackling real world data. It is the NoSQL database systems that allow simpler scalability and improved performance in terms of maintaining big unstructured data.
+
+In this article, I am describing my work during the summers, in which I dealt with huge and highly connected data, stored in `.json` format, and discovered relationships between its nodes. To do this, I built a generic API that interpreted this data as graphs, that could only concern with data-points and relationships between them than the values itself.
+
+I used [ArangoDB](https://www.arangodb.com/) that worked perfectly fine for this job. It is an open-source NoSQL database that not only works with documents but can also handle graphs natively. I also tested its performance for working with different number of clients at the same time.
+
+The article is divided into the following sub-sections:
+
+1. **Getting Started with ArangoDB**: Brief introduction of ArangoDB, ArangoQL and installation.
+2. **Building the Graph API**: Steps taken to build the API using Java and ArangoDB.
+3. **Using ArangoQL for exploring and visualizing dataset**: Examples of ArangoQL queries and using the web interface for visualizing the graph database.
+4. **Analyzing performance**: Building a RESTful API, introduction of Apache JMeter, and performance testing.
+
+## ArangoDB
+
+As they say, it is a multi-threaded "native multi-model database" that allows us to store the data as key/value pairs, graphs or documents, and access any or all the data using a single declarative query language. It is called multi-model because it allows ad hoc queries on data stored in different models. We can also choose single node or cluster execution. It worked quite efficiently for graph algorithms processed across data spread throughout the cluster.
+
+A database here is a set of **collections** (equivalent to tables in relational databases). They store records referred to as **documents**. A simple document has its own immutable handle as `_id`, a primary key as `_key`, and a document revision as `_rev`.
+
+For the graphical model, the database consists of two collections: vertices in a document collection and edges in an edge collection. While vertices have similar properties to simple documents, edges additionally contain `_from` and `_to` handles that store document handles as strings, plus a `_label` to name the interconnections.
+
+**ArangoQL** is similar to SQL — it supports reading and modifying collection data. It is a pure data-manipulation language that is client-independent and allows complex query patterns. The key feature: it can combine different data models in a single query.
+
+## Building the Graph API
+
+Steps:
+
+1. Built a new database with two collections (nodes and links) in a Java API using Maven with dependencies: `arangodb-java-driver`, `junit`, `slf4j-api`, `velocypack-module-jdk8`.
+2. Defined a generic `Node` class where `_id`, `_key`, `_rev` are default handles. Example:
+
+```json
+{
+  "_key": "1006",
+  "_id": "vertices/1006",
+  "_rev": "_Vi2UzK2--",
+  "label": "Verizon",
+  "vertex": {}
+}
+```
+
+3. Defined a generic `Link` class with additional `_to` and `_from` handles. Example:
+
+```json
+{
+  "_key": "1009",
+  "_id": "edges/1009",
+  "_from": "vertices/1000",
+  "_to": "vertices/1006",
+  "_rev": "_Vi2UzK6--",
+  "label": "level_2"
+}
+```
+
+4. Parsed the `.json` file, defined individual JSON objects as nodes and hierarchy as links for nested objects recursively. Nodes stored in `vertex` collection, links in `edge` collection.
+5. Operations supported: creating, retrieving, and querying nodes/links using `_id`/`_key`/`label`.
+
+## AQL Query Examples
+
+Basic queries:
+
+```sql
+FOR x IN vertices RETURN x
+FOR x IN vertices FILTER x.label == 'Data' RETURN x
+FOR u IN vertices SORT u.label DESC RETURN u
+FOR u IN vertices LIMIT 5 RETURN u
+```
+
+Graph traversal queries:
+
+```sql
+-- All neighbors of vertex with label "Data"
+FOR x IN vertices FILTER x.label == 'Data'
+  LET vin = TO_STRING(x._id)
+  FOR v, e, p IN 1..1 ANY vin GRAPH 'myGraph'
+  RETURN v
+
+-- Shortest path between two random vertices
+FOR node IN vertices SORT RAND() LIMIT 1
+  LET rand1 = TO_STRING(node._id)
+  FOR node2 IN vertices SORT RAND() LIMIT 1
+    LET rand2 = TO_STRING(node2._id)
+    FOR v IN ANY SHORTEST_PATH rand1 TO rand2 GRAPH 'myGraph'
+    RETURN v
+```
+
+## Performance Testing
+
+For performance testing, I used **Spring Boot** to provide a RESTful web service and **Apache JMeter** to test how efficiently the AQL queries work and how many concurrent users the server can handle.
+
+The RESTful API (built on Maven with `spring-boot-starter-web`) exposed endpoints like:
+
+- `GET /node/` — all documents in vertices collection
+- `POST /node/<label>` — add new vertex
+- `GET /node/<id>` — get specific vertex
+- `POST /query` — execute an arbitrary AQL query
+
+JMeter was configured with thread groups of 10, 20, 50, and 100 concurrent users, each running 10 loops. Results showed that ArangoDB handled concurrent graph queries efficiently across all thread counts, with expected linear scaling in average response time.
+
+## Conclusion
+
+While still competing with Neo4j for graphs and MongoDB for NoSQL, ArangoDB is powerful and flexible because of its multi-model feature, fast enough when dealing with complex datasets, and ready for production environments.
+
+---
+
+*Originally published on [Medium](https://pranshumalviya.medium.com/graphical-interpretation-of-data-using-arangodb-8d8e5ef7c622).*

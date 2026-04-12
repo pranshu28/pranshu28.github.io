@@ -1,0 +1,505 @@
+{
+  "news": {
+    "items": [
+      {
+        "date": "2026.03",
+        "title": "New preprint: [CoPeP](https://arxiv.org/abs/2603.00253) on continual pretraining for protein language models",
+        "content": "Benchmarking how protein language models handle continual pretraining -- with Darshan Patil, Mathieu Reymond, Quentin Fournier, and Sarath Chandar."
+      },
+      {
+        "date": "2025.09",
+        "title": "Joined [DRW](https://drw.com/) as AI Research Scientist Intern",
+        "content": "Working on AI/ML research at DRW in Montreal."
+      },
+      {
+        "date": "2025.05",
+        "title": "Paper accepted at CoLLAs 2025: [Manifold Metric](https://arxiv.org/abs/2405.15895)",
+        "content": "A loss landscape approach for predicting model performance -- presented at the Conference on Lifelong Learning Agents."
+      },
+      {
+        "date": "2024.05",
+        "title": "Paper accepted at **ICML 2024**: [Lookbehind-SAM](https://arxiv.org/abs/2307.16704)",
+        "content": "k steps back, 1 step forward -- sharpness-aware minimization with lookbehind."
+      },
+      {
+        "date": "2024.03",
+        "title": "Paper accepted at **TMLR**: [Critical Momenta](https://arxiv.org/abs/2307.09638)",
+        "content": "Promoting exploration in memory-augmented Adam using critical momenta."
+      },
+      {
+        "date": "2023.06",
+        "title": "Book notes: [How to Live](/blog/how-to-live-derek-sivers/) and [How the World Really Works](/blog/how-the-world-really-works-vaclav-smil/)",
+        "content": "New posts on the blog -- notes from Derek Sivers and Vaclav Smil."
+      },
+      {
+        "date": "2022.09",
+        "title": "Book notes: [Numbers Don't Lie](/blog/numbers-dont-lie-vaclav-smil/) by Vaclav Smil",
+        "content": "Notes and highlights from 71 essays on people, countries, machines, food, and the environment."
+      },
+      {
+        "date": "2022.07",
+        "title": "Paper accepted at **CoLLAs 2022**: [TAG](https://arxiv.org/abs/2105.05155)",
+        "content": "Task-based Accumulated Gradients for Lifelong Learning -- also presented at ICML 2021 Workshop on Theory and Foundation of Continual Learning."
+      },
+      {
+        "date": "2022.01",
+        "title": "Started PhD at [MILA](https://mila.quebec/en/) / Polytechnique Montreal",
+        "content": "Working with Prof. Sarath Chandar on lifelong learning and optimization."
+      },
+      {
+        "date": "2021.08",
+        "title": "Co-organized [DEAADIGS Workshop](https://sites.google.com/view/deaadigs/) at **IJCAI 2021**",
+        "content": "Workshop on Data-Efficient and Adversarial AI -- Design, Implementation, and Generalization Strategies."
+      },
+      {
+        "date": "2024.05",
+        "title": "Joined [DRW](https://drw.com/) as ML Research Intern",
+        "content": "First internship at DRW, working on ML research in Montreal."
+      }
+    ]
+  },
+  "projects": {
+    "items": [
+      {
+        "title": "Graphical Interpretation of Data using ArangoDB",
+        "href": "/blog/graphical-interpretation-arangodb/",
+        "dates": "2018",
+        "active": false,
+        "description": "A technical walkthrough of modeling and querying graph data with ArangoDB — from setup to traversal queries and visualization.",
+        "technologies": ["ArangoDB", "Graph Databases", "NoSQL"],
+        "authors": "",
+        "links": [
+          { "type": "Blog", "href": "/blog/graphical-interpretation-arangodb/", "icon": "globe" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "An Introduction to Lifelong Supervised Learning",
+        "href": "https://arxiv.org/abs/2207.04354",
+        "dates": "2022",
+        "active": false,
+        "description": "A comprehensive primer on lifelong/continual supervised learning — survey of the field covering task-incremental, class-incremental, and domain-incremental settings.",
+        "technologies": ["Continual Learning", "Survey"],
+        "authors": "",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2207.04354", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Fast CSP and Learning-based Minesweeper Solver",
+        "href": "/papers/minesweeper-csp.pdf",
+        "dates": "2017 – 2019",
+        "active": false,
+        "description": "AI solver using Constraint Satisfaction Problems, XGBoost, and Deep Q-Learning — achieving 92% win rate on standard boards.",
+        "technologies": ["C++", "Python", "XGBoost", "Deep Q-Learning", "CSP"],
+        "authors": "",
+        "links": [
+          { "type": "Paper", "href": "/papers/minesweeper-csp.pdf", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      }
+    ]
+  },
+  "publications": {
+    "items": [
+      {
+        "title": "CoPeP: Benchmarking Continual Pretraining for Protein Language Models",
+        "href": "https://arxiv.org/abs/2603.00253",
+        "dates": "arXiv 2026",
+        "active": true,
+        "description": "A benchmark for evaluating continual pretraining strategies in protein language models.",
+        "technologies": ["NLP", "Continual Learning"],
+        "authors": "**Authors:** D. Patil, **P. Malviya**, M. Reymond, Q. Fournier, S. Chandar",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2603.00253", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Manifold Metric: A Loss Landscape Approach for Predicting Model Performance",
+        "href": "https://arxiv.org/abs/2405.15895",
+        "dates": "CoLLAs 2025 (Oral)",
+        "active": true,
+        "description": "Using loss landscape geometry to predict model generalization without held-out data.",
+        "technologies": ["Optimization", "Loss Landscape"],
+        "authors": "**Authors:** **P. Malviya**, J. Huang, A. Baratin, Q. Fournier, S. Chandar",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2405.15895", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Lookbehind-SAM: k steps back, 1 step forward",
+        "href": "https://arxiv.org/abs/2307.16704",
+        "dates": "ICML 2024",
+        "active": true,
+        "description": "An efficient extension to Sharpness-Aware Minimization that leverages historical gradient information.",
+        "technologies": ["Optimization", "SAM"],
+        "authors": "**Authors:** G. Mordido, **P. Malviya**, A. Baratin, S. Chandar",
+        "links": [
+          { "type": "Paper", "href": "https://proceedings.mlr.press/v235/mordido24a.html", "icon": "paper" },
+          { "type": "arXiv", "href": "https://arxiv.org/abs/2307.16704", "icon": "paper" },
+          { "type": "Github", "href": "https://github.com/chandar-lab/Lookbehind-SAM", "icon": "github" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Promoting Exploration in Memory-Augmented Adam using Critical Momenta",
+        "href": "https://arxiv.org/abs/2307.09638",
+        "dates": "TMLR 2024",
+        "active": true,
+        "description": "A memory-augmented optimizer that stores and retrieves critical momenta to promote exploration in the loss landscape.",
+        "technologies": ["Optimization", "Continual Learning"],
+        "authors": "**Authors:** **P. Malviya**, G. Mordido, A. Baratin, R. Babanezhad, J. Huang, S. Lacoste-Julien, R. Pascanu, S. Chandar",
+        "links": [
+          { "type": "OpenReview", "href": "https://openreview.net/forum?id=sHSkJqyQgW", "icon": "paper" },
+          { "type": "arXiv", "href": "https://arxiv.org/abs/2307.09638", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Torque-Aware Momentum",
+        "href": "https://arxiv.org/abs/2412.18790",
+        "dates": "arXiv 2024",
+        "active": true,
+        "description": "Rethinking momentum through the lens of torque for improved optimization dynamics.",
+        "technologies": ["Optimization"],
+        "authors": "**Authors:** **P. Malviya**, G. Mordido, A. Baratin, R. Babanezhad, G.K. Dziugaite, R. Pascanu, S. Chandar",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2412.18790", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "TAG: Task-based Accumulated Gradients for Lifelong Learning",
+        "href": "https://arxiv.org/abs/2105.05155",
+        "dates": "CoLLAs 2022",
+        "active": true,
+        "description": "A gradient accumulation method for continual learning that prevents catastrophic forgetting. Also presented at ICML 2021 Workshop.",
+        "technologies": ["Continual Learning"],
+        "authors": "**Authors:** **P. Malviya**, B. Ravindran, S. Chandar",
+        "links": [
+          { "type": "PMLR", "href": "https://proceedings.mlr.press/v199/malviya22a", "icon": "paper" },
+          { "type": "arXiv", "href": "https://arxiv.org/abs/2105.05155", "icon": "paper" },
+          { "type": "Github", "href": "https://github.com/pranshu28/TAG", "icon": "github" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "An Introduction to Lifelong Supervised Learning",
+        "href": "https://arxiv.org/abs/2207.04354",
+        "dates": "arXiv 2022",
+        "active": true,
+        "description": "A survey and introduction to the field of lifelong supervised learning.",
+        "technologies": ["Continual Learning", "Survey"],
+        "authors": "**Authors:** S. Sodhani, M. Faramarzi, S.V. Mehta, **P. Malviya**, M. Abdelsalam, J. Rajendran, S. Chandar",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2207.04354", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Feature Diversity in Self-Supervised Learning",
+        "href": "https://arxiv.org/abs/2209.01275",
+        "dates": "CoLLAs Workshop 2022",
+        "active": true,
+        "description": "Investigating the role of feature diversity in self-supervised representation learning.",
+        "technologies": ["Self-Supervised Learning"],
+        "authors": "**Authors:** **P. Malviya**\\*, A.V. Sudhakar\\*",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2209.01275", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "A Causal Approach for Unfair Edge Prioritization and Discrimination Removal",
+        "href": "https://arxiv.org/abs/2111.14348",
+        "dates": "ACML 2021",
+        "active": true,
+        "description": "Using causal inference to identify and remove discriminatory edges in decision systems.",
+        "technologies": ["Causal Inference", "Fairness"],
+        "authors": "**Authors:** P. Ravishankar, **P. Malviya**, B. Ravindran",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2111.14348", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "A Causal Linear Model to Quantify Edge and Cumulative Unfairness",
+        "href": "https://arxiv.org/abs/2007.05516",
+        "dates": "ICML 2020 Workshop",
+        "active": true,
+        "description": "A linear causal model for quantifying and prioritizing sources of unfairness in ML pipelines.",
+        "technologies": ["Causal Inference", "Fairness"],
+        "authors": "**Authors:** P. Ravishankar, **P. Malviya**, B. Ravindran",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/abs/2007.05516", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      },
+      {
+        "title": "Contextual Care Protocol using Neural Networks and Decision Trees",
+        "href": "https://arxiv.org/pdf/1811.06437",
+        "dates": "IEEE ICAECC 2018",
+        "active": true,
+        "description": "A neural network and decision tree hybrid for contextual healthcare protocol recommendation.",
+        "technologies": ["Healthcare ML"],
+        "authors": "**Authors:** Y.P. Sinha, **P. Malviya**, M. Panda, S.M. Ali",
+        "links": [
+          { "type": "Paper", "href": "https://arxiv.org/pdf/1811.06437", "icon": "paper" }
+        ],
+        "image": "",
+        "video": ""
+      }
+    ]
+  },
+  "education": {
+    "items": [
+      {
+        "school": "MILA / Polytechnique Montreal",
+        "href": "https://mila.quebec/en/",
+        "degree": "PhD in Computer Engineering (Advisor: Prof. Sarath Chandar)",
+        "logoUrl": "",
+        "start": "2022",
+        "end": "Present"
+      },
+      {
+        "school": "Indian Institute of Technology Madras",
+        "href": "https://www.iitm.ac.in/",
+        "degree": "MS in Computer Science (Advisors: Prof. B. Ravindran & Prof. S. Chandar)",
+        "logoUrl": "",
+        "start": "2020",
+        "end": "2021"
+      },
+      {
+        "school": "IIIT Bhubaneswar",
+        "href": "https://www.iiit-bh.ac.in/",
+        "degree": "B.Tech in Computer Science & Engineering",
+        "logoUrl": "",
+        "start": "2014",
+        "end": "2018"
+      }
+    ]
+  },
+  "work": {
+    "items": [
+      {
+        "company": "DRW",
+        "href": "https://drw.com/",
+        "badges": [],
+        "location": "Montreal, Canada",
+        "title": "AI Research Scientist Intern",
+        "logoUrl": "",
+        "start": "Sep 2025",
+        "end": "Present",
+        "description": "AI/ML research in quantitative finance."
+      },
+      {
+        "company": "DRW",
+        "href": "https://drw.com/",
+        "badges": [],
+        "location": "Montreal, Canada",
+        "title": "ML Research Intern",
+        "logoUrl": "",
+        "start": "May 2025",
+        "end": "Aug 2025",
+        "description": "Machine learning research internship."
+      },
+      {
+        "company": "Polytechnique Montreal",
+        "href": "https://www.polymtl.ca/",
+        "badges": [],
+        "location": "Montreal, Canada",
+        "title": "Teaching Assistant",
+        "logoUrl": "",
+        "start": "2023",
+        "end": "2025",
+        "description": "TA for INF6953PE Deep Learning Dynamics (W2025) and INF8245E Machine Learning (F2023)."
+      },
+      {
+        "company": "MILA / Chandar Lab",
+        "href": "https://chandar-lab.github.io/",
+        "badges": [],
+        "location": "Remote",
+        "title": "Research Intern",
+        "logoUrl": "",
+        "start": "Jul 2020",
+        "end": "Dec 2020",
+        "description": "Remote research internship on lifelong learning methods."
+      },
+      {
+        "company": "RBCDSAI, IIT Madras",
+        "href": "https://rbcdsai.iitm.ac.in/",
+        "badges": [],
+        "location": "Chennai, India",
+        "title": "Project Associate",
+        "logoUrl": "",
+        "start": "Jun 2018",
+        "end": "Dec 2019",
+        "description": "Research on causal inference, Bayesian networks, and deep learning. Collaboration with Applied Materials on semiconductor manufacturing data."
+      },
+      {
+        "company": "RISE Lab, IIT Madras",
+        "href": "https://www.iitm.ac.in/",
+        "badges": [],
+        "location": "Chennai, India",
+        "title": "Research Intern",
+        "logoUrl": "",
+        "start": "Jan 2018",
+        "end": "Apr 2018",
+        "description": "Bayesian optimization and deep learning for Hadoop parameter tuning."
+      }
+    ]
+  },
+  "awards": {
+    "items": [
+      {
+        "year": 2021,
+        "title": "DEAADIGS Workshop Co-organizer (IJCAI 2021)"
+      },
+      {
+        "year": 2020,
+        "title": "CoDS-COMAD 2020 Participant"
+      },
+      {
+        "year": 2017,
+        "title": "Smart India Hackathon -- Finalist"
+      },
+      {
+        "year": 2017,
+        "title": "GE HealthHack -- Top 10"
+      },
+      {
+        "year": 2016,
+        "title": "ACM-ICPC Regionals -- Qualified"
+      }
+    ]
+  },
+  "invitedTalks": {
+    "items": []
+  },
+  "teaching": {
+    "items": [
+      {
+        "date": "Winter 2025",
+        "location": "Polytechnique Montreal",
+        "title": "INF6953PE: Deep Learning Dynamics"
+      },
+      {
+        "date": "Fall 2023",
+        "location": "Polytechnique Montreal",
+        "title": "INF8245E: Machine Learning"
+      },
+      {
+        "date": "2021",
+        "location": "IIT Madras (NPTEL)",
+        "title": "Reinforcement Learning"
+      },
+      {
+        "date": "2019",
+        "location": "IIT Madras (NPTEL)",
+        "title": "Practical Machine Learning with TensorFlow"
+      },
+      {
+        "date": "2019",
+        "location": "IIT Madras",
+        "title": "Big Data Lab"
+      }
+    ]
+  },
+  "skills": [
+    "Python",
+    "PyTorch",
+    "JAX",
+    "TensorFlow",
+    "CUDA",
+    "Distributed Training",
+    "Weights & Biases",
+    "Git",
+    "Linux",
+    "LaTeX",
+    "Docker"
+  ],
+  "reviewerConferences": [],
+  "reviewerJournals": [],
+  "social": {
+    "CV": {
+      "name": "CV",
+      "url": "/resume.pdf",
+      "icon": "paper",
+      "navbar": false,
+      "content": true,
+      "footer": false
+    },
+    "GoogleScholar": {
+      "name": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=VET8VMcAAAAJ",
+      "icon": "googlescholar",
+      "navbar": false,
+      "content": true,
+      "footer": true
+    },
+    "GitHub": {
+      "name": "GitHub",
+      "url": "https://github.com/pranshu28",
+      "icon": "github",
+      "navbar": false,
+      "content": true,
+      "footer": true
+    },
+    "LinkedIn": {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/pranshumalviya2",
+      "icon": "linkedin",
+      "navbar": false,
+      "content": true,
+      "footer": true
+    },
+    "X": {
+      "name": "X",
+      "url": "https://twitter.com/pranshumalviya8",
+      "icon": "x",
+      "navbar": false,
+      "content": true,
+      "footer": true
+    },
+    "medium": {
+      "name": "Medium",
+      "url": "https://medium.com/@pranshumalviya",
+      "icon": "medium",
+      "navbar": false,
+      "content": true,
+      "footer": true
+    },
+    "goodreads": {
+      "name": "Goodreads",
+      "url": "https://www.goodreads.com/user/show/49705608-pranshu",
+      "icon": "bookopen",
+      "navbar": false,
+      "content": false,
+      "footer": true
+    },
+    "email": {
+      "name": "Email",
+      "url": "mailto:pranshu.malviya@mila.quebec",
+      "icon": "email",
+      "navbar": false,
+      "content": true,
+      "footer": false
+    }
+  }
+}
