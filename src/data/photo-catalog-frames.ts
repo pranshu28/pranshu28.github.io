@@ -6,6 +6,7 @@
  * Do not tag `wonder` here — reserved for the four headline landmarks in `CORE_PHOTO_CATALOG`.
  * `hiking` only for clear trail / trek / backcountry on foot (not observation decks alone).
  * Omit shots that duplicate a landmark already in `CORE_PHOTO_CATALOG` (same scene, different filename).
+ * Alt text: describe place and scene; avoid third-person labels like “visitor” when the subject is you.
  */
 export const FRAME_PHOTOS = [
   {
@@ -15,7 +16,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/20230611-123339.jpg",
-    alt: "Hikers on a rocky forest trail through bright green deciduous woods",
+    alt: "Rocky forest trail through bright green deciduous woods",
     tags: ["canada", "nature", "travel", "hiking", "frames"],
   },
   {
@@ -65,7 +66,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/fjqq5987.jpg",
-    alt: "Forest hiking portrait",
+    alt: "Sunlit path through a tall deciduous forest",
     tags: ["usa", "nature", "travel", "hiking", "frames"],
   },
   {
@@ -85,7 +86,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-0469-edit.jpg",
-    alt: "Sunset over rippled sand dunes in the Thar Desert with figures on a distant ridge",
+    alt: "Sunset over rippled sand dunes in the Thar Desert",
     tags: ["india", "nature", "travel", "frames"],
   },
   {
@@ -180,7 +181,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-4786.jpeg",
-    alt: "View from a gondola on a narrow Venetian canal toward a stone bridge and another gondola",
+    alt: "Narrow Venetian canal, stone bridge, and moored gondolas between tall façades",
     tags: ["italy", "travel", "frames"],
   },
   {
@@ -210,12 +211,12 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-5272-original.jpg",
-    alt: "Ferns and forest trail portrait",
+    alt: "Ferns and stone steps along a forest trail",
     tags: ["usa", "nature", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/img-5295.jpg",
-    alt: "Figure on a boulder overlooking forested slopes and distant ranges in bright sun",
+    alt: "Sunlit boulders above forested slopes and distant ranges",
     tags: ["peru", "nature", "travel", "hiking", "frames"],
   },
   {
@@ -250,7 +251,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6663.jpg",
-    alt: "Snow-capped Andean peak with hikers on winding trails in the arid foreground",
+    alt: "Winding trails across arid slopes below a snow-capped Andean peak",
     tags: ["peru", "nature", "travel", "hiking", "frames"],
   },
   {
@@ -270,12 +271,12 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6813.jpg",
-    alt: "Visitor at Machu Picchu with terraces and Huayna Picchu under a bright sky",
+    alt: "Machu Picchu terraces and Huayna Picchu under a bright sky",
     tags: ["peru", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-6842.jpg",
-    alt: "Machu Picchu stone ruins and tourists on stairs above the Urubamba valley",
+    alt: "Inca stone ruins and terraces above the Urubamba valley, Machu Picchu",
     tags: ["peru", "nature", "travel", "frames"],
   },
   {
@@ -290,7 +291,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6976.jpg",
-    alt: "Visitor at a railing above a volcanic crater with steam and distant green mountains",
+    alt: "Volcanic crater with a steam plume and forested mountains beyond",
     tags: ["costa-rica", "nature", "travel", "frames"],
   },
   {
@@ -320,12 +321,12 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/p1090246-47-original.jpg",
-    alt: "Summit overlook of autumn forest, lake, and distant mountains with two people on the rocks",
+    alt: "Summit overlook of autumn forest, lake, and distant mountains",
     tags: ["canada", "nature", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/pxl-20231001-171545947.mp-original.jpg",
-    alt: "Visitor on a wooden observation deck above a vast forest in peak autumn color",
+    alt: "View from a wooden observation tower over peak autumn forest",
     tags: ["canada", "nature", "travel", "frames"],
   },
 ] as const satisfies ReadonlyArray<{
