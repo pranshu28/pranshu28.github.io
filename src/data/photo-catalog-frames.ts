@@ -1,16 +1,14 @@
 /**
  * Imports from `Frame/` → run `python3 scripts/sync-frames-from-folder.py` to copy web formats
- * into `public/photos/frames/` (sibling to `photos/sketches/`). HEIC → JPEG
+ * into `public/photos/frames/` (sibling to `photos/core/` and `photos/sketches/`). HEIC → JPEG
  * via `sips`. Skips `.mp4` / `.avif`. If both
  * `IMG_n.jpg` and `IMG_n.HEIC` exist, the raster copy wins (HEIC not exported twice).
- * `public/photos/frames/` should contain only files listed here.
- * Tag `wonder` only for clear New7 / headline UNESCO–scale landmarks in the frame (e.g. Machu Picchu,
- * Colosseum). Omit if the shot is ambiguous.
- * Tags: place key (see `PLACE_ALBUM_SPECS` / `LANDING_ALBUM_SPECS` in `photo-catalog.ts`), plus `travel`,
- * optional `hiking`, and `frames`. Do not use `nature` — it is not an album filter.
+ * `public/photos/frames/` should contain only files listed here. After syncing from `Frame/`, the
+ * set of files on disk and this list must match (see `scripts/sync-frames-from-folder.py`).
+ * Do not tag `wonder` here — reserved for the four headline landmarks in `CORE_PHOTO_CATALOG`.
  * `hiking` only for clear trail / trek / backcountry on foot (not observation decks alone).
- * Drop redundant near-duplicate frames of the same scene (e.g. one Red Valley / Vinicunca-trek shot;
- * avoid a second frame that reads as the same ridge or mirador).
+ * Omit shots that duplicate `CORE_PHOTO_CATALOG` (same landmark or scene), including extra
+ * Rainbow Mountain / Red Valley frames when `rainbow-mountain.jpg` / `red-valley-peru.jpg` exist.
  * Alt text: describe place and scene; avoid third-person labels like “visitor” when the subject is you.
  */
 export const FRAME_PHOTOS = [
@@ -50,6 +48,11 @@ export const FRAME_PHOTOS = [
     tags: ["austria", "travel", "frames"],
   },
   {
+    src: "/photos/frames/djuf1669.jpg",
+    alt: "Alpine meadow and peaks, Himachal Pradesh",
+    tags: ["india", "travel", "hiking", "frames"],
+  },
+  {
     src: "/photos/frames/e85decfe-f4b9-495f-a35e-0e7a219ec1e2.jpg",
     alt: "St. Stephen's Cathedral (Stephansdom), Vienna — Gothic spire and patterned tile roof",
     tags: ["austria", "travel", "frames"],
@@ -72,6 +75,11 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-0414.jpeg",
     alt: "Bada Bagh cenotaphs, Jaisalmer",
+    tags: ["india", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-0469-edit.jpg",
+    alt: "Sunset over rippled sand dunes in the Thar Desert",
     tags: ["india", "travel", "frames"],
   },
   {
@@ -105,6 +113,11 @@ export const FRAME_PHOTOS = [
     tags: ["usa", "travel", "frames"],
   },
   {
+    src: "/photos/frames/img-2366.jpeg",
+    alt: "Pastel sunset over turquoise shallows and a sandy shore",
+    tags: ["usa", "travel", "frames"],
+  },
+  {
     src: "/photos/frames/img-2445-edit.jpg",
     alt: "Beach sunset with gathering clouds",
     tags: ["usa", "travel", "frames"],
@@ -125,6 +138,11 @@ export const FRAME_PHOTOS = [
     tags: ["mexico", "travel", "frames"],
   },
   {
+    src: "/photos/frames/img-3176.jpeg",
+    alt: "Tropical beach with palm tree, wooden pier, and turquoise water under a bright sky",
+    tags: ["usa", "travel", "frames"],
+  },
+  {
     src: "/photos/frames/img-3243.jpg",
     alt: "Rock-framed overlook of a green valley, river, and distant town under a bright sky",
     tags: ["canada", "travel", "frames"],
@@ -138,6 +156,11 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/img-3689.jpg",
     alt: "Wide leaf-strewn trail through autumn woods under an overcast sky",
     tags: ["canada", "travel", "hiking", "frames"],
+  },
+  {
+    src: "/photos/frames/img-3691.jpeg",
+    alt: "Silhouetted trees and green ground cover at a coastal sunset over the ocean",
+    tags: ["usa", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-4604.jpeg",
@@ -177,12 +200,17 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-5165.jpeg",
     alt: "Colosseum at night, Rome",
-    tags: ["italy", "travel", "wonder", "frames"],
+    tags: ["italy", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-5272-original.jpg",
     alt: "Ferns and stone steps along a forest trail",
     tags: ["usa", "travel", "hiking", "frames"],
+  },
+  {
+    src: "/photos/frames/img-5295.jpg",
+    alt: "Sunlit boulders above forested slopes and distant ranges",
+    tags: ["peru", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/img-5302.jpeg",
@@ -215,6 +243,11 @@ export const FRAME_PHOTOS = [
     tags: ["canada", "travel", "hiking", "frames"],
   },
   {
+    src: "/photos/frames/img-6663.jpg",
+    alt: "Winding trails across arid slopes below a snow-capped Andean peak",
+    tags: ["peru", "travel", "hiking", "frames"],
+  },
+  {
     src: "/photos/frames/img-6683.jpg",
     alt: "Mirador Valle Rojo sign at 5045 m with the Red Valley below, Peru",
     tags: ["peru", "travel", "hiking", "frames"],
@@ -227,7 +260,17 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-6813.jpg",
     alt: "Machu Picchu terraces and Huayna Picchu under a bright sky",
-    tags: ["peru", "travel", "wonder", "frames"],
+    tags: ["peru", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-6842.jpg",
+    alt: "Inca stone ruins and terraces above the Urubamba valley, Machu Picchu",
+    tags: ["peru", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-6882-edit.jpg",
+    alt: "Machu Picchu ruins and terraces in mist with Huayna Picchu behind",
+    tags: ["peru", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-6924.jpg",

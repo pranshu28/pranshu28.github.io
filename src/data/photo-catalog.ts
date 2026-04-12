@@ -3,13 +3,14 @@
  * gallery whose `tag` is listed on it). Same pattern as tag-filtered React galleries + optional
  * `data-*` hooks on the client.
  *
- * Asset layout under `public/photos/`: `frames/` (`photo-catalog-frames.ts`),
- * `sketches/` (`photo-catalog-sketches.ts`), plus `index.html` redirect to the app.
+ * Asset layout under `public/photos/`: `core/` (`photo-catalog-core.ts`), `frames/`
+ * (`photo-catalog-frames.ts`), `sketches/` (`photo-catalog-sketches.ts`), plus `index.html`.
  *
  * Live site = whatever was in the last deployed `out/` build (and CDN mirror if configured).
  * Deleting files locally does not change production until CI deploys; see `resolve-photo-src.ts`.
  */
 
+import { CORE_PHOTO_CATALOG } from "./photo-catalog-core";
 import { FRAME_PHOTOS } from "./photo-catalog-frames";
 import { SKETCH_PHOTOS } from "./photo-catalog-sketches";
 
@@ -38,9 +39,10 @@ export type ActiveGallery = {
 
 /**
  * Order preserved for every derived gallery (filter walks this array in order):
- * sketches first, then frames.
+ * core → sketches → frames.
  */
 export const PHOTO_CATALOG: readonly TaggedPhoto[] = [
+  ...CORE_PHOTO_CATALOG,
   ...SKETCH_PHOTOS,
   ...FRAME_PHOTOS,
 ];
@@ -62,7 +64,7 @@ const LANDING_ALBUM_SPECS = [
     id: "hiking",
     title: "Hiking",
     tag: "hiking",
-    cover: "/photos/frames/img-6683.jpg",
+    cover: "/photos/core/rainbow-mountain.jpg",
   },
   {
     id: "travel",
@@ -74,7 +76,7 @@ const LANDING_ALBUM_SPECS = [
     id: "wonders",
     title: "Wonders",
     tag: "wonder",
-    cover: "/photos/frames/img-6813.jpg",
+    cover: "/photos/core/taj-mahal.jpg",
   },
 ] as const;
 
@@ -84,43 +86,43 @@ const PLACE_ALBUM_SPECS = [
     id: "peru",
     title: "Peru",
     tag: "peru",
-    cover: "/photos/frames/img-6813.jpg",
+    cover: "/photos/core/machu-picchu-mist.jpg",
   },
   {
     id: "italy",
     title: "Italy",
     tag: "italy",
-    cover: "/photos/frames/img-5032.jpeg",
+    cover: "/photos/core/cinque-terre.jpg",
   },
   {
     id: "india",
     title: "India",
     tag: "india",
-    cover: "/photos/frames/img-0334.jpeg",
+    cover: "/photos/core/taj-mahal.jpg",
   },
   {
     id: "mexico",
     title: "Mexico",
     tag: "mexico",
-    cover: "/photos/frames/img-3143.jpeg",
+    cover: "/photos/core/chichen-itza.jpg",
   },
   {
     id: "costa-rica",
     title: "Costa Rica",
     tag: "costa-rica",
-    cover: "/photos/frames/img-7059.jpg",
+    cover: "/photos/core/costa-rica-rainforest.jpg",
   },
   {
     id: "canada",
     title: "Canada",
     tag: "canada",
-    cover: "/photos/frames/img-3243.jpg",
+    cover: "/photos/core/chateau-frontenac.jpg",
   },
   {
     id: "usa",
     title: "United States",
     tag: "usa",
-    cover: "/photos/frames/92ce3525-8bf5-4828-9ce4-950afc68cd2b.jpg",
+    cover: "/photos/core/nyc-skyline.jpg",
   },
   {
     id: "austria",

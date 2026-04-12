@@ -11,7 +11,6 @@ import {
   useRef,
 } from "react";
 
-import { JustifiedPhotoGrid } from "@/components/justified-photo-grid";
 import { BlurFade } from "@/components/ui/blur-fade";
 import {
   type ActiveGallery,
@@ -299,6 +298,7 @@ function AlbumDetail({
   backLabel: string;
 }) {
   const tGallery = useTranslations("galleryPage");
+  const grid = gallery.photos.map((photo, photoIndex) => ({ photo, photoIndex }));
 
   return (
     <div>
@@ -326,12 +326,37 @@ function AlbumDetail({
         </div>
       </BlurFade>
 
-      <JustifiedPhotoGrid
-        key={gallery.id}
-        photos={gallery.photos}
-        galleryLabel={gallery.title}
-        onPhotoClick={onOpenPhoto}
-      />
+      <div
+        className="columns-2 gap-x-4 [column-fill:_balance] md:columns-3 xl:columns-4"
+        role="list"
+        aria-label={`${gallery.title} photos`}
+      >
+        {grid.map(({ photo, photoIndex }, visualI) => (
+          <div
+            role="listitem"
+            key={`${photo.src}-${photoIndex}`}
+            className="contents"
+          >
+            <BlurFade delay={BLUR_FADE_DELAY * Math.min(visualI + 1, 8)}>
+              <button
+                type="button"
+                data-photo-src={photo.src}
+                onClick={() => onOpenPhoto(photoIndex)}
+                className="group border-border relative mb-4 w-full break-inside-avoid overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <img
+                  src={resolvePhotoSrc(photo.src)}
+                  alt={photo.alt}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  loading={visualI < 8 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
+              </button>
+            </BlurFade>
+          </div>
+        ))}
+      </div>
 
       <PhotoLightbox
         open={lightboxOpen}
