@@ -1,6 +1,7 @@
 /**
  * Imports from `Frame/` → run `python3 scripts/sync-frames-from-folder.py` to copy web formats
- * into `public/photos/frames/` (HEIC → JPEG via `sips`). Skips `.mp4` / `.avif`. If both
+ * into `public/photos/frames/` (sibling to `photos/core/` and `photos/sketches/`). HEIC → JPEG
+ * via `sips`. Skips `.mp4` / `.avif`. If both
  * `IMG_n.jpg` and `IMG_n.HEIC` exist, the raster copy wins (HEIC not exported twice).
  * `public/photos/frames/` should contain only files listed here.
  * Do not tag `wonder` here — reserved for the four headline landmarks in `CORE_PHOTO_CATALOG`.

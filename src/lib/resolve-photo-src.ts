@@ -1,8 +1,8 @@
 /**
  * Host large galleries off GitHub: set NEXT_PUBLIC_PHOTOS_CDN at build time to a URL
- * that mirrors paths under /public (e.g. upload `public/photos/*` to R2/S3 and set
- * NEXT_PUBLIC_PHOTOS_CDN=https://your-cdn.example.com so /photos/a.jpg becomes
- * https://your-cdn.example.com/photos/a.jpg).
+ * that mirrors paths under /public (e.g. upload `public/photos/**` to R2/S3 and set
+ * NEXT_PUBLIC_PHOTOS_CDN=https://your-cdn.example.com so /photos/core/a.jpg becomes
+ * https://your-cdn.example.com/photos/core/a.jpg).
  *
  * Per-image external URLs: use a full https://... string as `src` in gallery data.
  */

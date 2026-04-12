@@ -2,6 +2,9 @@
  * Single catalog: each image once, tagged for gallery filters (OR: photo appears in every
  * gallery whose `tag` is listed on it). Same pattern as tag-filtered React galleries + optional
  * `data-*` hooks on the client.
+ *
+ * Asset layout under `public/photos/`: `core/` (curated hero shots, `CORE_PHOTO_CATALOG`),
+ * `frames/` (see `photo-catalog-frames.ts`), `sketches/`, plus `index.html` redirect to the app.
  */
 
 import { FRAME_PHOTOS } from "./photo-catalog-frames";
@@ -35,97 +38,97 @@ export type ActiveGallery = {
  */
 const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
-    src: "/photos/machu-picchu-mist.jpg",
+    src: "/photos/core/machu-picchu-mist.jpg",
     alt: "Machu Picchu",
     tags: ["peru", "wonder", "travel"],
   },
   {
-    src: "/photos/rainbow-mountain.jpg",
+    src: "/photos/core/rainbow-mountain.jpg",
     alt: "Rainbow Mountain",
     tags: ["peru", "travel", "hiking"],
   },
   {
-    src: "/photos/red-valley-peru.jpg",
+    src: "/photos/core/red-valley-peru.jpg",
     alt: "Red Valley",
     tags: ["peru", "travel", "hiking"],
   },
   {
-    src: "/photos/sacred-valley-peru.jpg",
+    src: "/photos/core/sacred-valley-peru.jpg",
     alt: "Sacred Valley",
     tags: ["peru", "travel"],
   },
   {
-    src: "/photos/colosseum-rome.jpg",
+    src: "/photos/core/colosseum-rome.jpg",
     alt: "Inside the Colosseum, Rome",
     tags: ["italy", "wonder", "travel"],
   },
   {
-    src: "/photos/cinque-terre.jpg",
+    src: "/photos/core/cinque-terre.jpg",
     alt: "Cinque Terre",
     tags: ["italy", "travel"],
   },
   {
-    src: "/photos/venice-canal.jpg",
+    src: "/photos/core/venice-canal.jpg",
     alt: "Murano canal, Venice",
     tags: ["italy", "travel"],
   },
   {
-    src: "/photos/leaning-tower-pisa.jpg",
+    src: "/photos/core/leaning-tower-pisa.jpg",
     alt: "Leaning Tower of Pisa",
     tags: ["italy", "travel"],
   },
   {
-    src: "/photos/taj-mahal.jpg",
+    src: "/photos/core/taj-mahal.jpg",
     alt: "Taj Mahal",
     tags: ["india", "wonder", "travel"],
   },
   {
-    src: "/photos/desert-sunset.jpg",
+    src: "/photos/core/desert-sunset.jpg",
     alt: "Sunset over Thar Desert",
     tags: ["india", "travel"],
   },
   {
-    src: "/photos/himalayas-meadow.jpg",
+    src: "/photos/core/himalayas-meadow.jpg",
     alt: "Mountain meadow, Himalayas",
     tags: ["india", "travel", "hiking"],
   },
   {
-    src: "/photos/chichen-itza.jpg",
+    src: "/photos/core/chichen-itza.jpg",
     alt: "Chichén Itzá",
     tags: ["mexico", "wonder", "travel"],
   },
   {
-    src: "/photos/mountain-sunset.jpg",
+    src: "/photos/core/mountain-sunset.jpg",
     alt: "Sunrise",
     tags: ["costa-rica", "travel"],
   },
   {
-    src: "/photos/costa-rica-rainforest.jpg",
+    src: "/photos/core/costa-rica-rainforest.jpg",
     alt: "Rainforest trail",
     tags: ["costa-rica", "travel", "hiking"],
   },
   {
-    src: "/photos/chateau-frontenac.jpg",
+    src: "/photos/core/chateau-frontenac.jpg",
     alt: "Château Frontenac, Quebec City",
     tags: ["canada", "travel"],
   },
   {
-    src: "/photos/forest-pool.jpg",
+    src: "/photos/core/forest-pool.jpg",
     alt: "Forest pool",
     tags: ["canada", "travel"],
   },
   {
-    src: "/photos/montreal-sunset.jpg",
+    src: "/photos/core/montreal-sunset.jpg",
     alt: "Sunset over Montreal",
     tags: ["canada", "travel"],
   },
   {
-    src: "/photos/nyc-skyline.jpg",
+    src: "/photos/core/nyc-skyline.jpg",
     alt: "Manhattan skyline at dusk",
     tags: ["usa", "travel"],
   },
   {
-    src: "/photos/hawaii-beach-sunset.jpg",
+    src: "/photos/core/hawaii-beach-sunset.jpg",
     alt: "Beach sunset, Hawaiʻi",
     tags: ["usa", "travel"],
   },
@@ -175,7 +178,7 @@ const LANDING_ALBUM_SPECS = [
     id: "hiking",
     title: "Hiking",
     tag: "hiking",
-    cover: "/photos/rainbow-mountain.jpg",
+    cover: "/photos/core/rainbow-mountain.jpg",
   },
   {
     id: "travel",
@@ -187,7 +190,7 @@ const LANDING_ALBUM_SPECS = [
     id: "wonders",
     title: "Wonders",
     tag: "wonder",
-    cover: "/photos/taj-mahal.jpg",
+    cover: "/photos/core/taj-mahal.jpg",
   },
   {
     id: "nature",
@@ -203,43 +206,43 @@ const PLACE_ALBUM_SPECS = [
     id: "peru",
     title: "Peru",
     tag: "peru",
-    cover: "/photos/machu-picchu-mist.jpg",
+    cover: "/photos/core/machu-picchu-mist.jpg",
   },
   {
     id: "italy",
     title: "Italy",
     tag: "italy",
-    cover: "/photos/cinque-terre.jpg",
+    cover: "/photos/core/cinque-terre.jpg",
   },
   {
     id: "india",
     title: "India",
     tag: "india",
-    cover: "/photos/taj-mahal.jpg",
+    cover: "/photos/core/taj-mahal.jpg",
   },
   {
     id: "mexico",
     title: "Mexico",
     tag: "mexico",
-    cover: "/photos/chichen-itza.jpg",
+    cover: "/photos/core/chichen-itza.jpg",
   },
   {
     id: "costa-rica",
     title: "Costa Rica",
     tag: "costa-rica",
-    cover: "/photos/costa-rica-rainforest.jpg",
+    cover: "/photos/core/costa-rica-rainforest.jpg",
   },
   {
     id: "canada",
     title: "Canada",
     tag: "canada",
-    cover: "/photos/chateau-frontenac.jpg",
+    cover: "/photos/core/chateau-frontenac.jpg",
   },
   {
     id: "usa",
     title: "United States",
     tag: "usa",
-    cover: "/photos/nyc-skyline.jpg",
+    cover: "/photos/core/nyc-skyline.jpg",
   },
   {
     id: "austria",
