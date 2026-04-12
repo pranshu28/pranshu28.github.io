@@ -15,7 +15,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import {
   type ActiveGallery,
   type Gallery,
-  getAllGalleries,
+  getLandingAlbums,
   type Photo,
   resolveActiveGallery,
 } from "@/data/photo-catalog";
@@ -32,7 +32,7 @@ function masonryEntries(gallery: ActiveGallery): { photo: Photo; photoIndex: num
   return filtered.length > 0 ? filtered : withIdx;
 }
 
-/** Shareable photo URLs: `?g=<galleryId>&p=<0-based index>` */
+/** Shareable: `?g=<albumId>&p=<0-based index>` */
 function buildPhotosHref(
   pathname: string,
   current: URLSearchParams,
@@ -63,7 +63,7 @@ function LocationTag({
   );
 }
 
-function GalleryTile({
+function AlbumTile({
   gallery,
   index,
   onClick,
@@ -78,9 +78,9 @@ function GalleryTile({
       <div role="listitem" className="contents">
         <button
           type="button"
-          data-gallery-id={gallery.id}
+          data-album-id={gallery.id}
           onClick={onClick}
-          aria-label={`Open ${gallery.title} gallery, ${count} ${count === 1 ? "photo" : "photos"}`}
+          aria-label={`Open ${gallery.title} album, ${count} ${count === 1 ? "photo" : "photos"}`}
           className="group border-border relative block w-full overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           style={{ aspectRatio: "4 / 3" }}
         >
@@ -88,7 +88,7 @@ function GalleryTile({
             src={resolvePhotoSrc(gallery.cover)}
             alt=""
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            loading={index < 4 ? "eager" : "lazy"}
+            loading={index < 3 ? "eager" : "lazy"}
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
@@ -96,9 +96,9 @@ function GalleryTile({
             <LocationTag label={gallery.title} className="!bg-black/55 !text-white" />
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-            <h3 className="text-left text-lg font-semibold text-white sm:text-xl">
+            <h2 className="text-left text-lg font-semibold text-white sm:text-xl">
               {gallery.title}
-            </h3>
+            </h2>
             <p className="mt-0.5 text-left text-xs text-white/75">
               {count} {count === 1 ? "photo" : "photos"}
             </p>
@@ -282,7 +282,7 @@ function PhotoLightbox({
   );
 }
 
-function GalleryDetail({
+function AlbumDetail({
   gallery,
   lightboxOpen,
   lightboxIndex,
@@ -292,6 +292,7 @@ function GalleryDetail({
   onPrevPhoto,
   onNextPhoto,
   onSelectPhoto,
+  backLabel,
 }: {
   gallery: ActiveGallery;
   lightboxOpen: boolean;
@@ -302,6 +303,7 @@ function GalleryDetail({
   onPrevPhoto: () => void;
   onNextPhoto: () => void;
   onSelectPhoto: (index: number) => void;
+  backLabel: string;
 }) {
   const tGallery = useTranslations("galleryPage");
   const grid = masonryEntries(gallery);
@@ -322,7 +324,7 @@ function GalleryDetail({
           onClick={onBack}
           className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors"
         >
-          &larr; All galleries
+          &larr; {backLabel}
         </button>
         <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
@@ -415,14 +417,14 @@ function PhotosPageContent() {
     [pathname, queryKey, router, searchParams],
   );
 
-  const openGallery = useCallback(
+  const openAlbum = useCallback(
     (id: string) => {
       replaceQuery({ g: id, p: null });
     },
     [replaceQuery],
   );
 
-  const backToAll = useCallback(() => {
+  const backToAlbums = useCallback(() => {
     replaceQuery({ g: null, p: null });
   }, [replaceQuery]);
 
@@ -449,7 +451,7 @@ function PhotosPageContent() {
     [active, lightboxIndex, lightboxOpen, replaceQuery],
   );
 
-  const allGalleries = getAllGalleries();
+  const landingAlbums = getLandingAlbums();
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-7xl flex-col px-6 py-8 pb-24 sm:px-16 md:px-20 md:py-16 md:pt-14 lg:px-24 lg:py-20 xl:px-32 xl:py-24">
@@ -458,16 +460,17 @@ function PhotosPageContent() {
         aria-labelledby="photos-heading"
       >
         {active ? (
-          <GalleryDetail
+          <AlbumDetail
             gallery={active}
             lightboxOpen={lightboxOpen}
             lightboxIndex={lightboxIndex}
-            onBack={backToAll}
+            onBack={backToAlbums}
             onOpenPhoto={openPhoto}
             onCloseLightbox={closeLightbox}
             onPrevPhoto={() => stepPhoto(-1)}
             onNextPhoto={() => stepPhoto(1)}
             onSelectPhoto={openPhoto}
+            backLabel={tGallery("backToAlbums")}
           />
         ) : (
           <>
@@ -479,7 +482,7 @@ function PhotosPageContent() {
                 &larr; Back to site
               </I18nLink>
               <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
-                Galleries
+                {tGallery("albumsSection")}
               </p>
               <h1
                 id="photos-heading"
@@ -492,14 +495,14 @@ function PhotosPageContent() {
             <div
               className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
               role="list"
-              aria-label="Photo galleries"
+              aria-label="Photo albums"
             >
-              {allGalleries.map((gallery, i) => (
-                <GalleryTile
+              {landingAlbums.map((gallery, i) => (
+                <AlbumTile
                   key={gallery.id}
                   gallery={gallery}
                   index={i}
-                  onClick={() => openGallery(gallery.id)}
+                  onClick={() => openAlbum(gallery.id)}
                 />
               ))}
             </div>
@@ -511,11 +514,12 @@ function PhotosPageContent() {
 }
 
 export default function PhotosPage() {
+  const tGallery = useTranslations("galleryPage");
   return (
     <Suspense
       fallback={
         <main className="mx-auto flex min-h-dvh max-w-7xl flex-col items-center justify-center px-6 py-24">
-          <p className="text-muted-foreground text-sm">Loading galleries…</p>
+          <p className="text-muted-foreground text-sm">{tGallery("loading")}</p>
         </main>
       }
     >

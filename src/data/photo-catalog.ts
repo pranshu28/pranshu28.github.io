@@ -37,7 +37,7 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
     src: "/photos/machu-picchu-mist.jpg",
     alt: "Machu Picchu",
-    tags: ["peru", "wonder", "travel", "hiking"],
+    tags: ["peru", "wonder", "travel"],
   },
   {
     src: "/photos/rainbow-mountain.jpg",
@@ -52,12 +52,12 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
     src: "/photos/sacred-valley-peru.jpg",
     alt: "Sacred Valley",
-    tags: ["peru", "travel", "hiking"],
+    tags: ["peru", "travel"],
   },
   {
     src: "/photos/andes-panorama.jpg",
     alt: "Andes mountains",
-    tags: ["peru", "travel", "hiking"],
+    tags: ["peru", "travel"],
   },
   {
     src: "/photos/colosseum-rome.jpg",
@@ -67,7 +67,7 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
     src: "/photos/cinque-terre.jpg",
     alt: "Cinque Terre",
-    tags: ["italy", "travel", "hiking"],
+    tags: ["italy", "travel"],
   },
   {
     src: "/photos/venice-canal.jpg",
@@ -92,7 +92,7 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
     src: "/photos/himalayas-forest.jpg",
     alt: "Himalayas",
-    tags: ["india", "travel", "hiking"],
+    tags: ["india", "travel"],
   },
   {
     src: "/photos/himalayas-meadow.jpg",
@@ -107,7 +107,7 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
     src: "/photos/mountain-sunset.jpg",
     alt: "Sunrise",
-    tags: ["costa-rica", "travel", "hiking"],
+    tags: ["costa-rica", "travel"],
   },
   {
     src: "/photos/costa-rica-rainforest.jpg",
@@ -122,7 +122,7 @@ const CORE_PHOTO_CATALOG: readonly TaggedPhoto[] = [
   {
     src: "/photos/forest-pool.jpg",
     alt: "Forest pool",
-    tags: ["canada", "travel", "hiking"],
+    tags: ["canada", "travel"],
   },
   {
     src: "/photos/montreal-sunset.jpg",
@@ -173,7 +173,11 @@ export const PHOTO_CATALOG: readonly TaggedPhoto[] = [
   ...FRAME_PHOTOS,
 ];
 
-const GALLERY_SPECS = [
+/**
+ * SmugMug-style landing: a few albums only. Each `cover` is chosen to be visually
+ * distinct from the others (overlapping photos inside albums are fine).
+ */
+const LANDING_ALBUM_SPECS = [
   {
     id: "sketches",
     title: "Sketching",
@@ -190,19 +194,29 @@ const GALLERY_SPECS = [
     id: "travel",
     title: "Travelling",
     tag: "travel",
-    cover: "/photos/cinque-terre.jpg",
+    cover: "/photos/frames/img-4604.jpeg",
   },
   {
     id: "wonders",
     title: "Wonders",
     tag: "wonder",
-    cover: "/photos/machu-picchu-mist.jpg",
+    cover: "/photos/taj-mahal.jpg",
   },
+  {
+    id: "nature",
+    title: "Nature",
+    tag: "nature",
+    cover: "/photos/frames/img-20160814-164345-hdr.jpg",
+  },
+] as const;
+
+/** Place / archive albums — reachable via `?g=` but not shown on the main landing grid. */
+const PLACE_ALBUM_SPECS = [
   {
     id: "peru",
     title: "Peru",
     tag: "peru",
-    cover: "/photos/rainbow-mountain.jpg",
+    cover: "/photos/machu-picchu-mist.jpg",
   },
   {
     id: "italy",
@@ -247,34 +261,43 @@ const GALLERY_SPECS = [
     cover: "/photos/frames/e85decfe-f4b9-495f-a35e-0e7a219ec1e2.jpg",
   },
   {
-    id: "nature",
-    title: "Nature",
-    tag: "nature",
-    cover: "/photos/frames/p1090170-22.jpg",
-  },
-  {
     id: "frames",
     title: "Frames",
     tag: "frames",
-    cover: "/photos/frames/img-4604.jpeg",
+    cover: "/photos/frames/0503549e-8280-4ff8-a086-3fa0a8d58f2d.jpg",
   },
 ] as const;
 
-function buildGalleries(): Gallery[] {
-  return GALLERY_SPECS.map((spec) => ({
+const GALLERY_SPECS = [...LANDING_ALBUM_SPECS, ...PLACE_ALBUM_SPECS] as const;
+
+function specToGallery(
+  spec: (typeof GALLERY_SPECS)[number],
+): Gallery {
+  return {
     id: spec.id,
     title: spec.title,
     cover: spec.cover,
     photos: PHOTO_CATALOG.filter((p) => p.tags.includes(spec.tag)).map(
       ({ src, alt }) => ({ src, alt }),
     ),
-  }));
+  };
+}
+
+function buildGalleries(): Gallery[] {
+  return GALLERY_SPECS.map(specToGallery);
 }
 
 const allGalleries: Gallery[] = buildGalleries();
 
+const landingAlbums: Gallery[] = LANDING_ALBUM_SPECS.map(specToGallery);
+
 export function getAllGalleries(): readonly Gallery[] {
   return allGalleries;
+}
+
+/** Album tiles for the main photos landing (subset of `getAllGalleries()`). */
+export function getLandingAlbums(): readonly Gallery[] {
+  return landingAlbums;
 }
 
 /**

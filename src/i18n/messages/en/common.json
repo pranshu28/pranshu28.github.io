@@ -64,7 +64,10 @@
     },
     "galleryPage": {
         "title": "Beyond work",
-        "breadcrumbRoot": "Beyond work"
+        "breadcrumbRoot": "Beyond work",
+        "albumsSection": "Albums",
+        "backToAlbums": "All albums",
+        "loading": "Loading…"
     },
     "blog": {
         "title": "Blog",

@@ -1,10 +1,12 @@
 /**
  * Imports from `Frame/` → copy web formats to `public/photos/frames/` (HEIC not used in-browser).
+ * `public/photos/frames/` should contain only files listed here (no extra copies in git).
  * Shape matches `TaggedPhoto` in `photo-catalog.ts` (kept separate to avoid circular imports).
  * Omits shots whose subject already appears in `CORE_PHOTO_CATALOG` (same landmark / scene), and
  * one-off duplicates of the same edit series (e.g. img-2445 vs img-2445-edit).
  * Do not tag `wonder` here — that gallery is only the four headline landmarks in `CORE_PHOTO_CATALOG`.
- * All frames are travel captures; `hiking` marks trail / mountain-trek context.
+ * All frames are travel captures; `hiking` only when the shot is clearly trail / trek /
+ * backcountry on foot (not city views, generic peaks-at-sunset, or campus/park woods).
  */
 export const FRAME_PHOTOS = [
   {
@@ -25,7 +27,7 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/a32eddce-58a1-4a3d-a17c-0292717362ae.jpg",
     alt: "Mountain sunset over layered ridges",
-    tags: ["usa", "nature", "travel", "hiking", "frames"],
+    tags: ["usa", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/djuf1669.jpg",
@@ -60,7 +62,7 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-20160814-164345-hdr.jpg",
     alt: "Monsoon valley and fields, Western Ghats",
-    tags: ["india", "nature", "travel", "hiking", "frames"],
+    tags: ["india", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-2207.jpeg",
@@ -85,7 +87,7 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-2668.jpeg",
     alt: "Sunbeams through evergreen forest",
-    tags: ["usa", "nature", "travel", "hiking", "frames"],
+    tags: ["usa", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-2968.jpeg",
@@ -165,17 +167,17 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-6924.jpg",
     alt: "Andean peaks above the Sacred Valley",
-    tags: ["peru", "travel", "hiking", "frames"],
+    tags: ["peru", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-7179.jpg",
     alt: "Mountain layers at sunset",
-    tags: ["usa", "travel", "hiking", "frames"],
+    tags: ["usa", "travel", "frames"],
   },
   {
     src: "/photos/frames/p1090170-22.jpg",
     alt: "Autumn hillside forest",
-    tags: ["canada", "nature", "travel", "hiking", "frames"],
+    tags: ["canada", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/stky6683-1-original.jpg",
