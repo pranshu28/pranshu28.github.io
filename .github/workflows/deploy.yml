@@ -31,7 +31,8 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      # Optional: set repo variable PHOTOS_CDN_BASE (e.g. https://cdn.example.com) to mirror public/photos on a CDN
+      # Optional: vars.PHOTOS_CDN_BASE → image URLs point at CDN. After changing/deleting files under
+      # public/photos/, re-upload that tree to the CDN and purge cache, or the site can still show old photos.
       - run: pnpm build
         env:
           NEXT_PUBLIC_PHOTOS_CDN: ${{ vars.PHOTOS_CDN_BASE }}

@@ -34,7 +34,7 @@ export function sortByLatestYearDesc<T extends { dates: string }>(
     .map(({ item }) => item);
 }
 
-/** In-app routes under `[locale]` for static export; not `/papers/…` or static `/photos/{core,frames,sketches}/…`. */
+/** In-app routes under `[locale]` for static export; not `/papers/…` or static `/photos/{frames,sketches}/…`. */
 export function isLocaleScopedAppPath(href: string): boolean {
   if (!href.startsWith("/") || href.startsWith("//")) return false;
   const path = href.split("?")[0].split("#")[0];

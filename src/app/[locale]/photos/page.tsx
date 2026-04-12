@@ -1,8 +1,8 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   Suspense,
   useCallback,
@@ -11,6 +11,7 @@ import {
   useRef,
 } from "react";
 
+import { JustifiedPhotoGrid } from "@/components/justified-photo-grid";
 import { BlurFade } from "@/components/ui/blur-fade";
 import {
   type ActiveGallery,
@@ -84,11 +85,11 @@ function AlbumTile({
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-          <div className="absolute left-3 top-3">
+          <div className="absolute left-2 top-2 sm:left-3 sm:top-3">
             <LocationTag label={gallery.title} className="!bg-black/55 !text-white" />
           </div>
-          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-            <h2 className="text-left text-lg font-semibold text-white sm:text-xl">
+          <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4 md:p-5">
+            <h2 className="text-left text-sm font-semibold text-white sm:text-lg md:text-xl">
               {gallery.title}
             </h2>
             <p className="mt-0.5 text-left text-xs text-white/75">
@@ -298,7 +299,6 @@ function AlbumDetail({
   backLabel: string;
 }) {
   const tGallery = useTranslations("galleryPage");
-  const grid = gallery.photos.map((photo, photoIndex) => ({ photo, photoIndex }));
 
   return (
     <div>
@@ -326,32 +326,12 @@ function AlbumDetail({
         </div>
       </BlurFade>
 
-      <div
-        className="columns-2 gap-x-3 sm:columns-3 md:columns-4 md:gap-x-4"
-        role="list"
-        aria-label={`${gallery.title} photos`}
-      >
-        {grid.map(({ photo, photoIndex }, visualI) => (
-          <div role="listitem" key={`${photo.src}-${photoIndex}`} className="contents">
-            <BlurFade delay={BLUR_FADE_DELAY * Math.min(visualI + 1, 8)}>
-              <button
-                type="button"
-                data-photo-src={photo.src}
-                onClick={() => onOpenPhoto(photoIndex)}
-                className="group border-border relative mb-3 w-full break-inside-avoid overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <img
-                  src={resolvePhotoSrc(photo.src)}
-                  alt={photo.alt}
-                  className="w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  loading={visualI < 8 ? "eager" : "lazy"}
-                />
-                <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
-              </button>
-            </BlurFade>
-          </div>
-        ))}
-      </div>
+      <JustifiedPhotoGrid
+        key={gallery.id}
+        photos={gallery.photos}
+        galleryLabel={gallery.title}
+        onPhotoClick={onOpenPhoto}
+      />
 
       <PhotoLightbox
         open={lightboxOpen}
@@ -485,7 +465,7 @@ function PhotosPageContent() {
             </BlurFade>
 
             <div
-              className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+              className="grid min-w-0 grid-cols-4 gap-2 sm:gap-3"
               role="list"
               aria-label="Photo albums"
             >
