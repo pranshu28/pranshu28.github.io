@@ -1,11 +1,10 @@
 /**
  * Imports from `Frame/` → run `python3 scripts/sync-frames-from-folder.py` to copy web formats
- * into `public/photos/frames/` (HEIC → JPEG via `sips`). `public/photos/frames/` should contain
- * only files listed here (no orphan binaries in git).
- * Shape matches `TaggedPhoto` in `photo-catalog.ts` (kept separate to avoid circular imports).
- * Do not tag `wonder` here — that gallery is only the four headline landmarks in `CORE_PHOTO_CATALOG`.
- * All frames are travel captures; `hiking` only when the shot is clearly trail / trek /
- * backcountry on foot (not city views, generic peaks-at-sunset, or observation decks alone).
+ * into `public/photos/frames/` (HEIC → JPEG via `sips`). Skips `.mp4` / `.avif`. If both
+ * `IMG_n.jpg` and `IMG_n.HEIC` exist, the raster copy wins (HEIC not exported twice).
+ * `public/photos/frames/` should contain only files listed here.
+ * Do not tag `wonder` here — reserved for the four headline landmarks in `CORE_PHOTO_CATALOG`.
+ * `hiking` only for clear trail / trek / backcountry on foot (not observation decks alone).
  */
 export const FRAME_PHOTOS = [
   {
@@ -17,6 +16,16 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/1a50ce1b-c251-4152-870a-569cf742b99a.jpg",
     alt: "Visitor in front of the Colosseum interior ruins and hypogeum, Rome, under a bright blue sky",
     tags: ["italy", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/20230611-123339.jpg",
+    alt: "Hikers on a rocky forest trail through bright green deciduous woods",
+    tags: ["canada", "nature", "travel", "hiking", "frames"],
+  },
+  {
+    src: "/photos/frames/261f6472-c705-4cf0-b52b-e33462846fc2.jpg",
+    alt: "Curved path through a sunlit deciduous forest with rope-lined edging",
+    tags: ["austria", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/53c64963-f68c-42d5-82b0-6e7af9b274b4.jpg",
@@ -34,6 +43,11 @@ export const FRAME_PHOTOS = [
     tags: ["canada", "travel", "frames"],
   },
   {
+    src: "/photos/frames/75b1288e-77f8-40d0-9d59-44a3f2dfc669.jpg",
+    alt: "Red Valley, Peru — layered rust-red ridges and green pockets under a bright blue sky",
+    tags: ["peru", "nature", "travel", "hiking", "frames"],
+  },
+  {
     src: "/photos/frames/92ce3525-8bf5-4828-9ce4-950afc68cd2b.jpg",
     alt: "Manhattan skyline at night looking south, with the New York Life Building and One World Trade Center",
     tags: ["usa", "travel", "frames"],
@@ -47,6 +61,16 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/b565410c-2c36-4d9e-b894-df7b1bb0301b.jpg",
     alt: "Rainbow Mountain (Vinicunca) stripes with a visitor arms outstretched on a high-altitude path, Peru",
     tags: ["peru", "nature", "travel", "hiking", "frames"],
+  },
+  {
+    src: "/photos/frames/c5d78703-35fc-42fe-850f-dd75fcf341f3.jpg",
+    alt: "Rainbow Mountain (Vinicunca) — diagonal mineral stripes and a narrow trail under cumulus clouds, Peru",
+    tags: ["peru", "nature", "travel", "hiking", "frames"],
+  },
+  {
+    src: "/photos/frames/ca53e79c-8932-4b49-bc73-2bc4abae8d3a.jpg",
+    alt: "Long green trellis tunnel and gravel path in formal palace gardens",
+    tags: ["austria", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/djuf1669.jpg",
@@ -92,6 +116,16 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/img-0718.jpeg",
     alt: "Gadisar Lake pavilion, Jaisalmer",
     tags: ["india", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-1454.jpg",
+    alt: "Snow-covered city park with bare trees and winter sky",
+    tags: ["canada", "nature", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-1996.jpg",
+    alt: "Fallen red maple leaves on mossy grey rock in autumn",
+    tags: ["canada", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-20160814-164345-hdr.jpg",
@@ -142,6 +176,21 @@ export const FRAME_PHOTOS = [
     src: "/photos/frames/img-3176.jpeg",
     alt: "Tropical beach with palm tree, wooden pier, and turquoise water under a bright sky",
     tags: ["usa", "nature", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-3243.jpg",
+    alt: "Rock-framed overlook of a green valley, river, and distant town under a bright sky",
+    tags: ["canada", "nature", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-3591.jpg",
+    alt: "Rolling hills of forest in peak autumn color from above",
+    tags: ["canada", "nature", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-3689.jpg",
+    alt: "Wide leaf-strewn trail through autumn woods under an overcast sky",
+    tags: ["canada", "nature", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/img-3691.jpeg",
@@ -199,6 +248,11 @@ export const FRAME_PHOTOS = [
     tags: ["usa", "nature", "travel", "hiking", "frames"],
   },
   {
+    src: "/photos/frames/img-5295.jpg",
+    alt: "Figure on a boulder overlooking forested slopes and distant ranges in bright sun",
+    tags: ["peru", "nature", "travel", "hiking", "frames"],
+  },
+  {
     src: "/photos/frames/img-5302.jpeg",
     alt: "Bramante Staircase, Vatican Museums",
     tags: ["italy", "travel", "frames"],
@@ -219,6 +273,11 @@ export const FRAME_PHOTOS = [
     tags: ["canada", "nature", "travel", "frames"],
   },
   {
+    src: "/photos/frames/img-6134.jpg",
+    alt: "Rope-and-post railing above a forested valley, small lake, and rolling hills",
+    tags: ["canada", "nature", "travel", "hiking", "frames"],
+  },
+  {
     src: "/photos/frames/img-6301.jpg",
     alt: "Fallen tree trunk over a clear green pond in forest, with a wooden walkway in the background",
     tags: ["canada", "nature", "travel", "hiking", "frames"],
@@ -229,9 +288,19 @@ export const FRAME_PHOTOS = [
     tags: ["peru", "nature", "travel", "hiking", "frames"],
   },
   {
+    src: "/photos/frames/img-6683.jpg",
+    alt: "Mirador Valle Rojo sign at 5045 m with the Red Valley below, Peru",
+    tags: ["peru", "nature", "travel", "hiking", "frames"],
+  },
+  {
     src: "/photos/frames/img-6688.jpg",
     alt: "Red Valley, Peru — rust-red slopes, green patches, and a winding trail under cumulus clouds",
     tags: ["peru", "nature", "travel", "hiking", "frames"],
+  },
+  {
+    src: "/photos/frames/img-6765.jpg",
+    alt: "Forest-clad mountain faces and clouds in high contrast daylight",
+    tags: ["peru", "nature", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-6813.jpg",
@@ -239,8 +308,18 @@ export const FRAME_PHOTOS = [
     tags: ["peru", "nature", "travel", "frames"],
   },
   {
+    src: "/photos/frames/img-6842.jpg",
+    alt: "Machu Picchu stone ruins and tourists on stairs above the Urubamba valley",
+    tags: ["peru", "nature", "travel", "frames"],
+  },
+  {
     src: "/photos/frames/img-6882-edit.jpg",
     alt: "Machu Picchu ruins and terraces in mist with Huayna Picchu behind",
+    tags: ["peru", "nature", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/img-6887.jpg",
+    alt: "Machu Picchu citadel, terraces, and Huayna Picchu rising into mist",
     tags: ["peru", "nature", "travel", "frames"],
   },
   {
@@ -254,6 +333,11 @@ export const FRAME_PHOTOS = [
     tags: ["costa-rica", "nature", "travel", "frames"],
   },
   {
+    src: "/photos/frames/img-7045.jpg",
+    alt: "Tropical waterfall plunging into a turquoise pool, framed by dense jungle foliage",
+    tags: ["costa-rica", "nature", "travel", "frames"],
+  },
+  {
     src: "/photos/frames/img-7059.jpg",
     alt: "Stone steps and path climbing through dense tropical rainforest with log-style railings",
     tags: ["costa-rica", "nature", "travel", "hiking", "frames"],
@@ -264,9 +348,19 @@ export const FRAME_PHOTOS = [
     tags: ["costa-rica", "nature", "travel", "frames"],
   },
   {
+    src: "/photos/frames/img-7791.jpg",
+    alt: "Deep V-shaped valley between steep green peaks and layered blue distant ranges",
+    tags: ["peru", "nature", "travel", "frames"],
+  },
+  {
     src: "/photos/frames/p1090170-22.jpg",
     alt: "Autumn hillside forest",
     tags: ["canada", "nature", "travel", "frames"],
+  },
+  {
+    src: "/photos/frames/p1090246-47-original.jpg",
+    alt: "Summit overlook of autumn forest, lake, and distant mountains with two people on the rocks",
+    tags: ["canada", "nature", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/pxl-20231001-171545947.mp-original.jpg",

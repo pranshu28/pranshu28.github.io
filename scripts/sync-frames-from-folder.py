@@ -22,6 +22,16 @@ def public_name(path: Path) -> str | None:
     stem, suf = path.stem, path.suffix
     ext = suf.lower()
 
+    if ext in (".mp4", ".mov", ".m4v"):
+        return None
+
+    m_date = re.match(r"^(\d{8})_(\d{6})\.(jpe?g)$", name, re.I)
+    if m_date:
+        e = m_date.group(3).lower()
+        if e == "jpeg":
+            e = "jpg"
+        return f"{m_date.group(1)}-{m_date.group(2)}.{e}"
+
     if ext in (".heic",):
         m = re.match(r"^IMG_(\d+)$", stem, re.I)
         return f"img-{m.group(1)}.jpg" if m else f"{stem.lower().replace('_', '-')}.jpg"
@@ -63,10 +73,22 @@ def public_name(path: Path) -> str | None:
         return f"img-{m.group(1)}.jpg"
 
     if re.match(r"^P\d+.*\.jpe?g$", name, re.I):
-        return name.lower()
+        base = name.rsplit(".", 1)[0].lower().replace("_", "-")
+        e = name.rsplit(".", 1)[1].lower()
+        if e == "jpeg":
+            e = "jpg"
+        return f"{base}.{e}"
 
     print(f"unmapped: {name}", file=sys.stderr)
     return None
+
+
+def img_has_raster_pair(frame_dir: Path, n: str) -> bool:
+    """True if IMG_<n> exists as jpg/jpeg (skip HEIC duplicate)."""
+    for ext in (".jpg", ".jpeg", ".JPG", ".JPEG"):
+        if (frame_dir / f"IMG_{n}{ext}").is_file():
+            return True
+    return False
 
 
 def main() -> None:
@@ -81,11 +103,15 @@ def main() -> None:
     for path in sorted(FRAME.iterdir()):
         if not path.is_file():
             continue
+        ext = path.suffix.lower()
+        if ext == ".heic":
+            m = re.match(r"^IMG_(\d+)$", path.stem, re.I)
+            if m and img_has_raster_pair(FRAME, m.group(1)):
+                continue
         dest = public_name(path)
         if dest is None:
             continue
         out_path = OUT / dest
-        ext = path.suffix.lower()
         if ext in (".heic",):
             subprocess.run(
                 ["sips", "-s", "format", "jpeg", str(path), "--out", str(out_path)],
