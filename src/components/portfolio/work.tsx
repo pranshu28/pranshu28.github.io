@@ -1,4 +1,11 @@
+"use client";
+
+import { ChevronDown } from "lucide-react";
+import { useMemo, useState } from "react";
+
 import { ResumeCard } from "@/components/portfolio/resume-card";
+import { BlurFade } from "@/components/ui/blur-fade";
+import { Button } from "@/components/ui/button";
 
 interface Work {
   company: string;
@@ -14,14 +21,33 @@ interface Work {
 
 interface WorkProps {
   work: readonly Work[];
+  moreWork?: readonly Work[];
+  showAllText?: string;
 }
 
-export default function Work({ work }: WorkProps) {
+function workRowKey(item: Work): string {
+  return `${item.company}\0${item.title}\0${item.start}\0${item.end ?? ""}`;
+}
+
+export default function Work({
+  work,
+  moreWork = [],
+  showAllText = "Show All",
+}: WorkProps) {
+  const [showAll, setShowAll] = useState(false);
+
+  const displayed = useMemo(() => {
+    if (!showAll || moreWork.length === 0) return [...work];
+    return [...work, ...moreWork];
+  }, [work, moreWork, showAll]);
+
+  const hasMore = moreWork.length > 0;
+
   return (
     <div className="flex flex-col gap-y-3">
-      {work.map((item) => (
+      {displayed.map((item) => (
         <ResumeCard
-          key={item.company}
+          key={workRowKey(item)}
           logoUrl={item.logoUrl}
           altText={item.company}
           title={item.company}
@@ -33,6 +59,22 @@ export default function Work({ work }: WorkProps) {
           description={item.description}
         />
       ))}
+      {hasMore && !showAll ? (
+        <BlurFade delay={0.15}>
+          <div className="flex justify-center pt-1">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setShowAll(true)}
+              className="flex items-center gap-2"
+            >
+              <ChevronDown className="h-4 w-4" />
+              {showAllText}
+            </Button>
+          </div>
+        </BlurFade>
+      ) : null}
     </div>
   );
 }

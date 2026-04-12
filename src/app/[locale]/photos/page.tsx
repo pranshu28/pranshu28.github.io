@@ -9,20 +9,27 @@ import {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 
 import { JustifiedAlbumGrid } from "@/components/photos/justified-album-grid";
+import { PhotoSearchBar } from "@/components/photos/photo-search-bar";
 import { BlurFade } from "@/components/ui/blur-fade";
 import {
   type ActiveGallery,
   type Gallery,
-  getLandingAlbums,
+  getNavLandingAlbums,
+  INLINE_LANDING_GALLERY_IDS,
+  normalizeGalleryParam,
+  photoDisplayTitle,
   type Photo,
   resolveActiveGallery,
+  usesCombinedPhotosLayout,
 } from "@/data/photo-catalog";
 import { BLUR_FADE_DELAY } from "@/data/site";
 import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
+import { filterPhotosBySearchQuery } from "@/lib/search-photos";
 import {
   type GallerySortMode,
   normalizeSortParam,
@@ -43,6 +50,29 @@ function buildPhotosHref(
   }
   const q = sp.toString();
   return q ? `${pathname}?${q}` : pathname;
+}
+
+function parseLightboxIndex(
+  searchParams: URLSearchParams,
+  max: number,
+): { open: boolean; index: number } {
+  const raw = searchParams.get("p");
+  if (raw === null || raw === "") {
+    return { open: false, index: 0 };
+  }
+  let idx = Number.parseInt(raw, 10);
+  const gRaw = searchParams.get("g");
+  if (gRaw === "hawaii" && Number.isFinite(idx)) {
+    idx += 1;
+  }
+  if (
+    !Number.isFinite(idx) ||
+    idx < 0 ||
+    idx >= max
+  ) {
+    return { open: false, index: 0 };
+  }
+  return { open: true, index: idx };
 }
 
 function LocationTag({
@@ -90,9 +120,6 @@ function AlbumTile({
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-          <div className="absolute left-2 top-2 sm:left-3 sm:top-3">
-            <LocationTag label={gallery.title} className="!bg-black/55 !text-white" />
-          </div>
           <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4 md:p-5">
             <h2 className="text-left text-sm font-semibold text-white sm:text-lg md:text-xl">
               {gallery.title}
@@ -177,14 +204,32 @@ function PhotoLightbox({
         className="flex shrink-0 items-center justify-between gap-3 px-4 py-3 sm:px-6"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+        <div className="flex min-w-0 flex-1 items-start gap-2 sm:gap-3">
           <LocationTag
             label={locationLabel}
-            className="!bg-white/10 !text-white shrink-0"
+            className="!bg-white/10 !text-white mt-0.5 shrink-0"
           />
-          <span className="text-muted-foreground truncate text-sm text-white/70">
-            {photo.alt}
-          </span>
+          <div className="text-muted-foreground min-w-0 flex-1 text-sm text-white/70">
+            <p className="text-foreground font-semibold text-white">
+              {photoDisplayTitle(photo)}
+            </p>
+            {(photo.place != null && photo.place.trim() !== "") ||
+            photo.year != null ? (
+              <p className="mt-0.5 text-xs text-white/55">
+                {[
+                  photo.place?.trim() || null,
+                  photo.year != null ? String(photo.year) : null,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+            ) : null}
+            {photo.description != null && photo.description.trim() !== "" ? (
+              <p className="mt-1 max-h-24 overflow-y-auto text-sm leading-snug text-white/65">
+                {photo.description.trim()}
+              </p>
+            ) : null}
+          </div>
         </div>
         <button
           type="button"
@@ -282,6 +327,10 @@ function PhotoLightbox({
 
 function AlbumDetail({
   gallery,
+  displayPhotos,
+  searchQuery,
+  onSearchQueryChange,
+  searchStatusText,
   sortMode,
   onSortChange,
   onReshuffleRandom,
@@ -296,6 +345,10 @@ function AlbumDetail({
   backLabel,
 }: {
   gallery: ActiveGallery;
+  displayPhotos: readonly Photo[];
+  searchQuery: string;
+  onSearchQueryChange: (q: string) => void;
+  searchStatusText?: string;
   sortMode: GallerySortMode;
   onSortChange: (mode: GallerySortMode) => void;
   onReshuffleRandom: () => void;
@@ -318,9 +371,12 @@ function AlbumDetail({
           className="text-muted-foreground mb-2 text-xs font-medium tracking-wide uppercase"
           aria-label="Breadcrumb"
         >
-          <span className="text-foreground">{tGallery("breadcrumbRoot")}</span>
-          <span className="mx-1.5 opacity-50">/</span>
-          <span>{gallery.title}</span>
+          <I18nLink
+            href="/photos"
+            className="text-foreground hover:underline"
+          >
+            {tGallery("breadcrumbRoot")}
+          </I18nLink>
         </nav>
         <button
           type="button"
@@ -329,32 +385,30 @@ function AlbumDetail({
         >
           &larr; {backLabel}
         </button>
-        <div className="mb-4 flex flex-wrap items-end justify-between gap-3 sm:mb-5">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            {gallery.title}
-          </h2>
-          <LocationTag label={gallery.title} />
-        </div>
+        <h1
+          id="photos-album-heading"
+          className="mb-4 text-2xl font-bold tracking-tight sm:mb-5 sm:text-3xl"
+        >
+          {gallery.title}
+        </h1>
         <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5 sm:gap-3">
           <label
-            htmlFor="gallery-sort"
+            htmlFor="gallery-sort-archive"
             className="text-muted-foreground text-xs font-semibold tracking-wide uppercase"
           >
             {tGallery("sortLabel")}
           </label>
           <select
-            id="gallery-sort"
+            id="gallery-sort-archive"
             value={sortMode}
             onChange={(e) =>
               onSortChange(e.target.value as GallerySortMode)
             }
             className="border-border bg-background text-foreground max-w-[min(100%,16rem)] rounded-md border px-2 py-1.5 text-sm"
           >
-            <option value="catalog">{tGallery("sortCatalog")}</option>
             <option value="place">{tGallery("sortPlace")}</option>
             <option value="date">{tGallery("sortDate")}</option>
             <option value="random">{tGallery("sortRandom")}</option>
-            <option value="az">{tGallery("sortAz")}</option>
           </select>
           {sortMode === "random" ? (
             <button
@@ -366,17 +420,26 @@ function AlbumDetail({
             </button>
           ) : null}
         </div>
+        <PhotoSearchBar
+          id="photos-archive-search"
+          value={searchQuery}
+          onChange={onSearchQueryChange}
+          label={tGallery("searchLabel")}
+          placeholder={tGallery("searchPlaceholder")}
+          statusText={searchStatusText}
+          className="mt-4 sm:mt-5"
+        />
       </BlurFade>
 
       <JustifiedAlbumGrid
-        photos={gallery.photos}
+        photos={displayPhotos}
         onOpenPhoto={onOpenPhoto}
         ariaLabel={`${gallery.title} photos`}
       />
 
       <PhotoLightbox
         open={lightboxOpen}
-        photos={gallery.photos}
+        photos={[...displayPhotos]}
         index={lightboxIndex}
         locationLabel={gallery.title}
         onClose={onCloseLightbox}
@@ -388,6 +451,101 @@ function AlbumDetail({
   );
 }
 
+function InlineAlbumSection({
+  gallery,
+  sectionId,
+  headingId,
+  hideSectionHeading,
+  sectionAriaLabel,
+  showSortControls,
+  sortMode,
+  onSortChange,
+  onReshuffleRandom,
+  sortedPhotos,
+  onOpenPhoto,
+  sortLabel,
+  sortPlace,
+  sortDate,
+  sortRandom,
+  reshuffle,
+}: {
+  gallery: ActiveGallery;
+  sectionId: string;
+  headingId: string;
+  /** When true, no visible H2; use `sectionAriaLabel` for the section landmark. */
+  hideSectionHeading?: boolean;
+  sectionAriaLabel?: string;
+  showSortControls: boolean;
+  sortMode: GallerySortMode;
+  onSortChange: (mode: GallerySortMode) => void;
+  onReshuffleRandom: () => void;
+  sortedPhotos: Photo[];
+  onOpenPhoto: (index: number) => void;
+  sortLabel: string;
+  sortPlace: string;
+  sortDate: string;
+  sortRandom: string;
+  reshuffle: string;
+}) {
+  const selectId = `gallery-sort-${gallery.id}`;
+
+  return (
+    <section
+      id={sectionId}
+      className="scroll-mt-28 w-full min-w-0 sm:scroll-mt-32"
+      aria-labelledby={hideSectionHeading ? undefined : headingId}
+      aria-label={hideSectionHeading ? sectionAriaLabel : undefined}
+    >
+      <BlurFade delay={0}>
+        {hideSectionHeading ? null : (
+          <h2
+            id={headingId}
+            className="mb-4 text-xl font-bold tracking-tight sm:mb-5 sm:text-2xl"
+          >
+            {gallery.title}
+          </h2>
+        )}
+        {showSortControls ? (
+          <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5 sm:gap-3">
+            <label
+              htmlFor={selectId}
+              className="text-muted-foreground text-xs font-semibold tracking-wide uppercase"
+            >
+              {sortLabel}
+            </label>
+            <select
+              id={selectId}
+              value={sortMode}
+              onChange={(e) =>
+                onSortChange(e.target.value as GallerySortMode)
+              }
+              className="border-border bg-background text-foreground max-w-[min(100%,16rem)] rounded-md border px-2 py-1.5 text-sm"
+            >
+              <option value="place">{sortPlace}</option>
+              <option value="date">{sortDate}</option>
+              <option value="random">{sortRandom}</option>
+            </select>
+            {sortMode === "random" ? (
+              <button
+                type="button"
+                onClick={onReshuffleRandom}
+                className="text-muted-foreground hover:text-foreground text-xs font-medium underline-offset-2 hover:underline"
+              >
+                {reshuffle}
+              </button>
+            ) : null}
+          </div>
+        ) : null}
+      </BlurFade>
+      <JustifiedAlbumGrid
+        photos={sortedPhotos}
+        onOpenPhoto={onOpenPhoto}
+        ariaLabel={`${gallery.title} photos`}
+      />
+    </section>
+  );
+}
+
 function PhotosPageContent() {
   const tGallery = useTranslations("galleryPage");
   const router = useRouter();
@@ -395,49 +553,13 @@ function PhotosPageContent() {
   const searchParams = useSearchParams();
   const queryKey = searchParams.toString();
 
-  const active = useMemo(() => {
-    const g = searchParams.get("g");
-    return resolveActiveGallery(g);
-  }, [searchParams]);
+  const gRaw = searchParams.get("g");
 
   const sortMode = useMemo(
     () => normalizeSortParam(searchParams.get("sort")),
     [searchParams],
   );
   const rs = searchParams.get("rs") ?? "0";
-
-  const sortedPhotos = useMemo(() => {
-    if (!active) return [];
-    return sortGalleryPhotos(active.photos, sortMode, `${active.id}:${rs}`);
-  }, [active, sortMode, rs]);
-
-  const displayGallery = useMemo((): ActiveGallery | null => {
-    if (!active) return null;
-    return { ...active, photos: sortedPhotos };
-  }, [active, sortedPhotos]);
-
-  const { lightboxOpen, lightboxIndex } = useMemo(() => {
-    if (!displayGallery) {
-      return { lightboxOpen: false, lightboxIndex: 0 };
-    }
-    const raw = searchParams.get("p");
-    if (raw === null || raw === "") {
-      return { lightboxOpen: false, lightboxIndex: 0 };
-    }
-    let idx = Number.parseInt(raw, 10);
-    const gRaw = searchParams.get("g");
-    if (gRaw === "hawaii" && Number.isFinite(idx)) {
-      idx += 1;
-    }
-    if (
-      !Number.isFinite(idx) ||
-      idx < 0 ||
-      idx >= displayGallery.photos.length
-    ) {
-      return { lightboxOpen: false, lightboxIndex: 0 };
-    }
-    return { lightboxOpen: true, lightboxIndex: idx };
-  }, [displayGallery, searchParams]);
 
   const replaceQuery = useCallback(
     (updates: Record<string, string | null | undefined>) => {
@@ -446,23 +568,30 @@ function PhotosPageContent() {
     [pathname, queryKey, router, searchParams],
   );
 
-  const openAlbum = useCallback(
-    (id: string) => {
-      replaceQuery({ g: id, p: null, sort: null, rs: null });
+  const [photoSearchQuery, setPhotoSearchQueryState] = useState("");
+
+  const setPhotoSearchQuery = useCallback(
+    (q: string) => {
+      setPhotoSearchQueryState(q);
+      replaceQuery({ p: null });
     },
     [replaceQuery],
   );
 
-  const backToAlbums = useCallback(() => {
-    replaceQuery({ g: null, p: null, sort: null, rs: null });
-  }, [replaceQuery]);
-
   const onSortChange = useCallback(
     (m: GallerySortMode) => {
+      if (m === "random") {
+        replaceQuery({
+          sort: null,
+          p: null,
+          rs: String(Date.now()),
+        });
+        return;
+      }
       replaceQuery({
-        sort: m === "catalog" ? null : m,
+        sort: m,
         p: null,
-        rs: m === "random" ? String(Date.now()) : null,
+        rs: null,
       });
     },
     [replaceQuery],
@@ -472,86 +601,327 @@ function PhotosPageContent() {
     replaceQuery({ rs: String(Date.now()), p: null });
   }, [replaceQuery]);
 
-  const openPhoto = useCallback(
+  const active = useMemo(() => {
+    return resolveActiveGallery(gRaw);
+  }, [gRaw]);
+
+  const combinedLayout =
+    usesCombinedPhotosLayout(gRaw) || (gRaw != null && active === null);
+
+  const sortedArchivePhotos = useMemo(() => {
+    if (!active) return [];
+    return sortGalleryPhotos(active.photos, sortMode, `${active.id}:${rs}`);
+  }, [active, sortMode, rs]);
+
+  const archiveDisplayedPhotos = useMemo(
+    () => filterPhotosBySearchQuery(sortedArchivePhotos, photoSearchQuery),
+    [sortedArchivePhotos, photoSearchQuery],
+  );
+
+  const displayArchiveGallery = useMemo((): ActiveGallery | null => {
+    if (!active) return null;
+    return { ...active, photos: sortedArchivePhotos };
+  }, [active, sortedArchivePhotos]);
+
+  const { open: archiveLightboxOpen, index: archiveLightboxIndex } = useMemo(
+    () => {
+      if (!displayArchiveGallery) {
+        return { open: false, index: 0 };
+      }
+      return parseLightboxIndex(
+        searchParams,
+        archiveDisplayedPhotos.length,
+      );
+    },
+    [displayArchiveGallery, searchParams, archiveDisplayedPhotos.length],
+  );
+
+  const archiveSearchStatus = useMemo(() => {
+    const q = photoSearchQuery.trim();
+    if (q === "") return undefined;
+    const n = archiveDisplayedPhotos.length;
+    if (n === 0) return tGallery("searchNoMatches");
+    return tGallery("searchMatchCount", { count: n });
+  }, [photoSearchQuery, archiveDisplayedPhotos.length, tGallery]);
+
+  const backToCombinedHome = useCallback(() => {
+    setPhotoSearchQueryState("");
+    replaceQuery({ g: null, p: null, sort: null, rs: null });
+  }, [replaceQuery]);
+
+  const openArchivePhoto = useCallback(
     (index: number) => {
-      if (!displayGallery) return;
-      replaceQuery({ g: displayGallery.id, p: String(index) });
+      if (!displayArchiveGallery) return;
+      replaceQuery({ g: displayArchiveGallery.id, p: String(index) });
     },
-    [displayGallery, replaceQuery],
+    [displayArchiveGallery, replaceQuery],
   );
 
-  const closeLightbox = useCallback(() => {
-    if (!displayGallery) return;
+  const closeArchiveLightbox = useCallback(() => {
+    if (!displayArchiveGallery) return;
     replaceQuery({ p: null });
-  }, [displayGallery, replaceQuery]);
+  }, [displayArchiveGallery, replaceQuery]);
 
-  const stepPhoto = useCallback(
+  const stepArchivePhoto = useCallback(
     (delta: number) => {
-      if (!displayGallery || !lightboxOpen) return;
-      const n = displayGallery.photos.length;
-      const next = (lightboxIndex + delta + n) % n;
-      replaceQuery({ g: displayGallery.id, p: String(next) });
+      if (!displayArchiveGallery || !archiveLightboxOpen) return;
+      const n = archiveDisplayedPhotos.length;
+      if (n === 0) return;
+      const next = (archiveLightboxIndex + delta + n) % n;
+      replaceQuery({ g: displayArchiveGallery.id, p: String(next) });
     },
-    [displayGallery, lightboxIndex, lightboxOpen, replaceQuery],
+    [
+      archiveDisplayedPhotos.length,
+      archiveLightboxIndex,
+      archiveLightboxOpen,
+      displayArchiveGallery,
+      replaceQuery,
+    ],
   );
 
-  const landingAlbums = getLandingAlbums();
+  const travelBase = useMemo(
+    () => resolveActiveGallery("travel"),
+    [],
+  );
+  const travelSorted = useMemo(() => {
+    if (!travelBase) return [];
+    return sortGalleryPhotos(
+      travelBase.photos,
+      sortMode,
+      `travel:${rs}`,
+    );
+  }, [travelBase, sortMode, rs]);
+
+  const travelDisplayedPhotos = useMemo(
+    () => filterPhotosBySearchQuery(travelSorted, photoSearchQuery),
+    [travelSorted, photoSearchQuery],
+  );
+
+  const combinedSearchStatus = useMemo(() => {
+    const q = photoSearchQuery.trim();
+    if (q === "") return undefined;
+    const n = travelDisplayedPhotos.length;
+    if (n === 0) return tGallery("searchNoMatches");
+    return tGallery("searchMatchCount", { count: n });
+  }, [photoSearchQuery, travelDisplayedPhotos.length, tGallery]);
+
+  const lightboxAlbumId = useMemo(() => {
+    const p = searchParams.get("p");
+    if (p === null || p === "") return null;
+    const g = normalizeGalleryParam(searchParams.get("g"));
+    if (g != null && INLINE_LANDING_GALLERY_IDS.includes(g)) return g;
+    return "travel";
+  }, [searchParams]);
+
+  const lightboxGallery = useMemo((): ActiveGallery | null => {
+    if (!lightboxAlbumId) return null;
+    const ag = resolveActiveGallery(lightboxAlbumId);
+    if (!ag) return null;
+    const sorted =
+      lightboxAlbumId === "travel"
+        ? sortGalleryPhotos(ag.photos, sortMode, `travel:${rs}`)
+        : sortGalleryPhotos(ag.photos, "place", lightboxAlbumId);
+    const photosForLightbox =
+      lightboxAlbumId === "travel"
+        ? filterPhotosBySearchQuery(sorted, photoSearchQuery)
+        : [...sorted];
+    return { ...ag, photos: photosForLightbox };
+  }, [lightboxAlbumId, sortMode, rs, photoSearchQuery]);
+
+  const { open: combinedLightboxOpen, index: combinedLightboxIndex } = useMemo(
+    () => {
+      if (!lightboxGallery) {
+        return { open: false, index: 0 };
+      }
+      return parseLightboxIndex(
+        searchParams,
+        lightboxGallery.photos.length,
+      );
+    },
+    [lightboxGallery, searchParams],
+  );
+
+  const openCombinedPhoto = useCallback(
+    (albumId: string, index: number) => {
+      replaceQuery({ g: albumId, p: String(index) });
+    },
+    [replaceQuery],
+  );
+
+  const closeCombinedLightbox = useCallback(() => {
+    replaceQuery({ p: null });
+  }, [replaceQuery]);
+
+  const stepCombinedPhoto = useCallback(
+    (delta: number) => {
+      if (!lightboxGallery || !combinedLightboxOpen) return;
+      const n = lightboxGallery.photos.length;
+      const next = (combinedLightboxIndex + delta + n) % n;
+      replaceQuery({
+        g: lightboxGallery.id,
+        p: String(next),
+      });
+    },
+    [
+      lightboxGallery,
+      combinedLightboxIndex,
+      combinedLightboxOpen,
+      replaceQuery,
+    ],
+  );
+
+  useEffect(() => {
+    if (!combinedLayout) return;
+    const g = normalizeGalleryParam(searchParams.get("g"));
+    if (g == null || !INLINE_LANDING_GALLERY_IDS.includes(g)) return;
+    const p = searchParams.get("p");
+    if (p != null && p !== "") return;
+    const id = `album-${g}`;
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }, [combinedLayout, searchParams]);
+
+  const navAlbums = useMemo(() => getNavLandingAlbums(), []);
+
+  const jumpToAlbum = useCallback(
+    (id: string) => {
+      setPhotoSearchQueryState("");
+      replaceQuery({ g: id, p: null });
+    },
+    [replaceQuery],
+  );
+
+  if (!combinedLayout && displayArchiveGallery) {
+    return (
+      <main className="flex min-h-dvh w-full max-w-none flex-col pb-24 pl-[max(0.5rem,env(safe-area-inset-left))] pr-[max(0.5rem,env(safe-area-inset-right))] pt-10 sm:pl-[max(0.75rem,env(safe-area-inset-left))] sm:pr-[max(0.75rem,env(safe-area-inset-right))] sm:pt-14 md:pt-16">
+        <section
+          className="w-full min-w-0"
+          aria-labelledby="photos-album-heading"
+        >
+          <AlbumDetail
+            gallery={displayArchiveGallery}
+            displayPhotos={archiveDisplayedPhotos}
+            searchQuery={photoSearchQuery}
+            onSearchQueryChange={setPhotoSearchQuery}
+            searchStatusText={archiveSearchStatus}
+            sortMode={sortMode}
+            onSortChange={onSortChange}
+            onReshuffleRandom={onReshuffleRandom}
+            lightboxOpen={archiveLightboxOpen}
+            lightboxIndex={archiveLightboxIndex}
+            onBack={backToCombinedHome}
+            onOpenPhoto={openArchivePhoto}
+            onCloseLightbox={closeArchiveLightbox}
+            onPrevPhoto={() => stepArchivePhoto(-1)}
+            onNextPhoto={() => stepArchivePhoto(1)}
+            onSelectPhoto={openArchivePhoto}
+            backLabel={tGallery("backToAlbums")}
+          />
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="flex min-h-dvh w-full max-w-none flex-col pb-24 pl-[max(0.5rem,env(safe-area-inset-left))] pr-[max(0.5rem,env(safe-area-inset-right))] pt-10 sm:pl-[max(0.75rem,env(safe-area-inset-left))] sm:pr-[max(0.75rem,env(safe-area-inset-right))] sm:pt-14 md:pt-16">
       <section className="w-full min-w-0" aria-labelledby="photos-heading">
-        {displayGallery ? (
-          <AlbumDetail
-            gallery={displayGallery}
-            sortMode={sortMode}
-            onSortChange={onSortChange}
-            onReshuffleRandom={onReshuffleRandom}
-            lightboxOpen={lightboxOpen}
-            lightboxIndex={lightboxIndex}
-            onBack={backToAlbums}
-            onOpenPhoto={openPhoto}
-            onCloseLightbox={closeLightbox}
-            onPrevPhoto={() => stepPhoto(-1)}
-            onNextPhoto={() => stepPhoto(1)}
-            onSelectPhoto={openPhoto}
-            backLabel={tGallery("backToAlbums")}
-          />
-        ) : (
-          <>
-            <BlurFade delay={0}>
-              <I18nLink
-                href="/"
-                className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors sm:mb-8"
-              >
-                &larr; Back to site
-              </I18nLink>
-              <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
-                {tGallery("albumsSection")}
-              </p>
-              <h1
-                id="photos-heading"
-                className="mb-6 text-3xl font-bold tracking-tight sm:mb-8 sm:text-4xl"
-              >
-                {tGallery("title")}
-              </h1>
-            </BlurFade>
+        <BlurFade delay={0}>
+          <I18nLink
+            href="/"
+            className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors sm:mb-8"
+          >
+            &larr; Back to site
+          </I18nLink>
+          <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
+            {tGallery("albumsSection")}
+          </p>
+          <h1
+            id="photos-heading"
+            className="mb-6 text-3xl font-bold tracking-tight sm:mb-8 sm:text-4xl"
+          >
+            {tGallery("title")}
+          </h1>
+        </BlurFade>
 
-            <div
-              className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-2 md:grid-cols-4 md:gap-3 lg:grid-cols-5 xl:grid-cols-6"
-              role="list"
-              aria-label="Photo albums"
-            >
-              {landingAlbums.map((gallery, i) => (
-                <AlbumTile
-                  key={gallery.id}
-                  gallery={gallery}
-                  index={i}
-                  onClick={() => openAlbum(gallery.id)}
-                />
-              ))}
-            </div>
+        <div
+          className="mb-10 grid min-w-0 grid-cols-1 gap-2 sm:mb-14 sm:grid-cols-3 sm:gap-3 md:gap-4"
+          role="list"
+          aria-label="Album shortcuts"
+        >
+          {navAlbums.map((gallery, i) => (
+            <AlbumTile
+              key={gallery.id}
+              gallery={gallery}
+              index={i}
+              onClick={() => jumpToAlbum(gallery.id)}
+            />
+          ))}
+        </div>
+
+        {travelBase ? (
+          <>
+            <PhotoSearchBar
+              id="photos-gallery-search"
+              value={photoSearchQuery}
+              onChange={setPhotoSearchQuery}
+              label={tGallery("searchLabel")}
+              placeholder={tGallery("searchPlaceholder")}
+              statusText={combinedSearchStatus}
+              className="mb-8 sm:mb-10"
+            />
+            <InlineAlbumSection
+              gallery={travelBase}
+              sectionId="album-travel"
+              headingId="photos-section-travel"
+              hideSectionHeading
+              sectionAriaLabel={tGallery("inlineFeedAriaLabel")}
+              showSortControls
+              sortMode={sortMode}
+              onSortChange={onSortChange}
+              onReshuffleRandom={onReshuffleRandom}
+              sortedPhotos={travelDisplayedPhotos}
+              onOpenPhoto={(i) => openCombinedPhoto("travel", i)}
+              sortLabel={tGallery("sortLabel")}
+              sortPlace={tGallery("sortPlace")}
+              sortDate={tGallery("sortDate")}
+              sortRandom={tGallery("sortRandom")}
+              reshuffle={tGallery("reshuffle")}
+            />
           </>
-        )}
+        ) : null}
+
+        <p className="text-muted-foreground mx-auto mt-14 max-w-prose text-center text-xs leading-relaxed sm:mt-20 sm:text-sm">
+          {tGallery("layoutInspiration")}{" "}
+          <a
+            href="https://stuckincustoms.smugmug.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="https://stuckincustoms.smugmug.com"
+            className="text-foreground/90 underline decoration-muted-foreground/50 underline-offset-2 transition-colors hover:decoration-foreground"
+          >
+            {tGallery("layoutInspirationLink")}
+          </a>
+          .
+        </p>
+
+        {lightboxGallery && combinedLightboxOpen ? (
+          <PhotoLightbox
+            open={combinedLightboxOpen}
+            photos={lightboxGallery.photos}
+            index={combinedLightboxIndex}
+            locationLabel={lightboxGallery.title}
+            onClose={closeCombinedLightbox}
+            onPrev={() => stepCombinedPhoto(-1)}
+            onNext={() => stepCombinedPhoto(1)}
+            onSelectIndex={(i) =>
+              openCombinedPhoto(lightboxGallery.id, i)
+            }
+          />
+        ) : null}
       </section>
     </main>
   );

@@ -10,10 +10,7 @@
         "education": "Education",
         "workExperience": "Experience",
         "awards": "Honors & Activities",
-        "academicServices": "Service & Teaching",
-        "serviceReviewer": "Reviewer",
-        "serviceTeachingAssistant": "Teaching assistant",
-        "serviceVolunteering": "Volunteering",
+        "peerReviewLabel": "Peer review:",
         "news": {
             "title": "Latest News"
         },
@@ -69,12 +66,17 @@
         "backToAlbums": "All albums",
         "loading": "Loading…",
         "sortLabel": "Sort",
-        "sortCatalog": "Gallery order",
         "sortPlace": "Place",
         "sortDate": "Date",
         "sortRandom": "Shuffle",
-        "sortAz": "Title A–Z",
-        "reshuffle": "New shuffle"
+        "reshuffle": "New shuffle",
+        "layoutInspiration": "Gallery layout inspired by",
+        "layoutInspirationLink": "Trey Ratcliff — Stuck in Customs (SmugMug)",
+        "searchLabel": "Search photos",
+        "searchPlaceholder": "Titles, places, descriptions…",
+        "searchNoMatches": "No matching photos",
+        "searchMatchCount": "{count, plural, one {# match} other {# matches}}",
+        "inlineFeedAriaLabel": "All photos"
     },
     "blog": {
         "title": "Blog",

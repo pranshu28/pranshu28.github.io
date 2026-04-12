@@ -1,6 +1,7 @@
 /**
  * Raster sketches under `public/photos/sketches/`. Listed here so `PHOTO_CATALOG` stays
  * one concatenation of sources (`photo-catalog.ts`).
+ * Sketches are not geo-tagged; omit `sortPlace` / `sortCity` / dates unless you add them.
  */
 export const SKETCH_PHOTOS = [
   { src: "/photos/sketches/horse.jpg", alt: "Rearing horse", tags: ["sketch"] },
@@ -29,6 +30,12 @@ export const SKETCH_PHOTOS = [
   readonly src: string;
   readonly alt: string;
   readonly tags: readonly string[];
+  readonly title?: string;
+  readonly place?: string;
+  readonly year?: number;
+  readonly description?: string;
   readonly takenAt?: string;
   readonly sortPlace?: string;
+  readonly sortCity?: string;
+  readonly sortVenue?: string;
 }>;

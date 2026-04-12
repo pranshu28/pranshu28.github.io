@@ -23,6 +23,8 @@ export function computeJustifiedRows(
   gap: number,
   minRowHeight: number,
   maxRowHeight: number,
+  /** Cap thumbnails per row (e.g. 4 on desktop, 3 on narrow). */
+  maxItemsPerRow: number,
 ): JustifiedRowLayout[] {
   const W = containerWidth;
   const n = aspects.length;
@@ -46,6 +48,9 @@ export function computeJustifiedRows(
         break;
       }
       if (h < minRowHeight && row.length === 1) {
+        break;
+      }
+      if (row.length >= maxItemsPerRow) {
         break;
       }
     }

@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-import type { Photo } from "@/data/photo-catalog";
+import { type Photo, photoDisplayTitle } from "@/data/photo-catalog";
 import { computeJustifiedRows } from "@/lib/justified-gallery-layout";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 
@@ -16,6 +16,8 @@ const GAP_PX = 5;
 const MIN_ROW_H = 118;
 const MAX_ROW_H = 360;
 const DEFAULT_AR = 1.5;
+/** Max thumbnails per row (justified layout). */
+const MAX_ITEMS_PER_ROW = 3;
 
 type JustifiedAlbumGridProps = {
   photos: readonly Photo[];
@@ -59,6 +61,7 @@ export function JustifiedAlbumGrid({
             GAP_PX,
             MIN_ROW_H,
             MAX_ROW_H,
+            MAX_ITEMS_PER_ROW,
           )
         : [],
     [aspects, width],
@@ -98,6 +101,7 @@ export function JustifiedAlbumGrid({
                 key={`${photo.src}-${photoIndex}`}
                 type="button"
                 data-photo-src={photo.src}
+                title={photoDisplayTitle(photo)}
                 onClick={() => onOpenPhoto(photoIndex)}
                 className="group border-border relative shrink-0 overflow-hidden border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 style={{ width: wPx, height: hPx }}

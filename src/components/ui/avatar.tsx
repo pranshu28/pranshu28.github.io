@@ -37,17 +37,40 @@ Avatar.displayName = AvatarPrimitive.Root.displayName;
 type AvatarImageProps = {
   src?: string;
   alt: string;
+  /** Default `contain` (logos, letterboxing). Use `cover` to fill circular crops. */
+  objectFit?: "contain" | "cover";
+  /** Passed to the underlying img `object-position` (e.g. `center 25%` for portraits). */
+  objectPosition?: string;
+  priority?: boolean;
 } & React.ComponentProps<typeof AvatarPrimitive.Image>;
 
-function AvatarImage({ src, alt, className, ...rest }: AvatarImageProps) {
+function AvatarImage({
+  src,
+  alt,
+  className,
+  objectFit = "contain",
+  objectPosition,
+  priority,
+  ...rest
+}: AvatarImageProps) {
   if (!src) return null;
   const { props } = getImageProps({
     src,
     alt,
     fill: true,
-    style: { objectFit: "contain" },
+    priority,
+    style: {
+      objectFit,
+      ...(objectPosition ? { objectPosition } : {}),
+    },
   });
-  return <AvatarPrimitive.Image {...props} {...rest} className={className} />;
+  return (
+    <AvatarPrimitive.Image
+      {...props}
+      {...rest}
+      className={cn("h-full w-full", className)}
+    />
+  );
 }
 
 const AvatarFallback = React.forwardRef<

@@ -1,17 +1,13 @@
-import type { Photo } from "@/data/photo-catalog";
+import { type Photo, photoSortLabel } from "@/data/photo-catalog";
 
-export type GallerySortMode = "catalog" | "place" | "date" | "random" | "az";
+export type GallerySortMode = "place" | "date" | "random";
 
+/** Default album order is shuffle (`random`). Legacy `catalog` / `az` URLs map to shuffle. */
 export function normalizeSortParam(value: string | null): GallerySortMode {
-  if (
-    value === "place" ||
-    value === "date" ||
-    value === "random" ||
-    value === "az"
-  ) {
+  if (value === "place" || value === "date" || value === "random") {
     return value;
   }
-  return "catalog";
+  return "random";
 }
 
 function hashSeed(s: string): number {
@@ -43,15 +39,46 @@ function extractDateFromSrc(src: string): string | undefined {
   return dashed?.[1];
 }
 
+const UNKNOWN_DATE = "\uFFFF";
+
 function dateKey(photo: Photo): string {
   if (photo.takenAt) return photo.takenAt;
+  if (photo.year != null && Number.isFinite(photo.year)) {
+    return `${photo.year}-01-01`;
+  }
   const fromSrc = extractDateFromSrc(photo.src);
-  return fromSrc ?? "\uFFFF";
+  return fromSrc ?? UNKNOWN_DATE;
+}
+
+/** Newest first; photos with no date sort last. */
+function compareDateDesc(da: string, db: string): number {
+  const ua = da === UNKNOWN_DATE;
+  const ub = db === UNKNOWN_DATE;
+  if (ua && ub) return 0;
+  if (ua) return 1;
+  if (ub) return -1;
+  return db.localeCompare(da);
+}
+
+function comparePlaceTieBreak(a: Photo, b: Photo): number {
+  const pa = a.sortPlace ?? "\uFFFF";
+  const pb = b.sortPlace ?? "\uFFFF";
+  if (pa !== pb) return pa.localeCompare(pb);
+  const ca = a.sortCity ?? "\uFFFF";
+  const cb = b.sortCity ?? "\uFFFF";
+  if (ca !== cb) return ca.localeCompare(cb);
+  const va = a.sortVenue ?? "\uFFFF";
+  const vb = b.sortVenue ?? "\uFFFF";
+  if (va !== vb) return va.localeCompare(vb);
+  return photoSortLabel(a).localeCompare(photoSortLabel(b));
 }
 
 /**
- * Reorders a copy of `photos`. `catalog` keeps input order. `random` is deterministic for a
- * given `randomSeed` (e.g. gallery id + `rs` query).
+ * Reorders a copy of `photos`. `random` is deterministic for a given `randomSeed`
+ * (e.g. gallery id + `rs` query).
+ *
+ * **Place:** country → city → venue → date (newest first) → title/alt.
+ * **Date:** date (newest first) → country → city → venue → title/alt.
  */
 export function sortGalleryPhotos(
   photos: readonly Photo[],
@@ -60,27 +87,32 @@ export function sortGalleryPhotos(
 ): Photo[] {
   const copy = [...photos];
   switch (mode) {
-    case "catalog":
-      return copy;
     case "place":
       return copy.sort((a, b) => {
         const pa = a.sortPlace ?? "\uFFFF";
         const pb = b.sortPlace ?? "\uFFFF";
         if (pa !== pb) return pa.localeCompare(pb);
-        return a.alt.localeCompare(b.alt);
+        const ca = a.sortCity ?? "\uFFFF";
+        const cb = b.sortCity ?? "\uFFFF";
+        if (ca !== cb) return ca.localeCompare(cb);
+        const va = a.sortVenue ?? "\uFFFF";
+        const vb = b.sortVenue ?? "\uFFFF";
+        if (va !== vb) return va.localeCompare(vb);
+        const d = compareDateDesc(dateKey(a), dateKey(b));
+        if (d !== 0) return d;
+        return photoSortLabel(a).localeCompare(photoSortLabel(b));
       });
     case "date":
       return copy.sort((a, b) => {
         const da = dateKey(a);
         const db = dateKey(b);
-        if (da !== db) return da.localeCompare(db);
-        return a.alt.localeCompare(b.alt);
+        const dc = compareDateDesc(da, db);
+        if (dc !== 0) return dc;
+        return comparePlaceTieBreak(a, b);
       });
-    case "az":
-      return copy.sort((a, b) => a.alt.localeCompare(b.alt));
     case "random":
       return seededShuffle(copy, randomSeed);
     default:
-      return copy;
+      return seededShuffle(copy, randomSeed);
   }
 }

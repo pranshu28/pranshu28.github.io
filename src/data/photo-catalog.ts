@@ -3,8 +3,17 @@
  * gallery whose `tag` is listed on it). Same pattern as tag-filtered React galleries + optional
  * `data-*` hooks on the client.
  *
- * Asset layout under `public/photos/`: `core/` (`photo-catalog-core.ts`), `frames/`
- * (`photo-catalog-frames.ts`), `sketches/` (`photo-catalog-sketches.ts`), plus `index.html`.
+ * Per-image metadata (all optional on `TaggedPhoto`): `title`, `place`, `year`, `description`,
+ * `takenAt` (ISO `YYYY-MM-DD`).
+ * Display `place` on `Photo` is built in **country — city/region** order: explicit `place` is
+ * normalized (e.g. `City, Country` → `Country — City`), or derived from `sortPlace` / tags + `sortCity`.
+ * Place sort uses three slugs (lowercase, hyphenated): `sortPlace` (country), `sortCity`,
+ * `sortVenue` (POI). Set all three on each catalog photo; if `sortPlace` is omitted, the first
+ * matching place tag is used. Omit city/venue only when unknown — those keys sort last within the country.
+ * Keep `alt` short for accessibility; put longer copy in `description`.
+ *
+ * Asset layout under `public/photos/`: `core/`, `frames/`, `sketches/`, `history/`
+ * (`photo-catalog-history.ts`), plus `index.html`.
  *
  * Live site = whatever was in the last deployed `out/` build (and CDN mirror if configured).
  * Deleting files locally does not change production until CI deploys; see `resolve-photo-src.ts`.
@@ -12,15 +21,29 @@
 
 import { CORE_PHOTO_CATALOG } from "./photo-catalog-core";
 import { FRAME_PHOTOS } from "./photo-catalog-frames";
+import { HISTORY_PHOTOS } from "./photo-catalog-history";
 import { SKETCH_PHOTOS } from "./photo-catalog-sketches";
 
 export type Photo = {
   src: string;
+  /** Short accessibility text on `<img alt>`; keep concise even if `title` / `description` exist. */
   alt: string;
-  /** ISO YYYY-MM-DD for date sort (optional). */
+  /** Short headline in the lightbox (e.g. place-forward or editorial title). */
+  title?: string;
+  /** Human-readable location for display (country first, e.g. "Peru — Cusco region"). */
+  place?: string;
+  /** Calendar year when known (sorting uses `takenAt` first, then `year` as Jan 1, then filename heuristics). */
+  year?: number;
+  /** Longer caption (your edits on top of any draft text). */
+  description?: string;
+  /** ISO YYYY-MM-DD when known (preferred over `year` for date sort). */
   takenAt?: string;
-  /** Stable key for place sort (e.g. country slug); optional, inferred from tags when missing. */
+  /** Country slug for place sort (e.g. `peru`); optional, inferred from tags when missing. */
   sortPlace?: string;
+  /** City or region slug (e.g. `rome`, `cusco-region`); optional. */
+  sortCity?: string;
+  /** Exact place / POI slug (e.g. `colosseum-interior`); optional. */
+  sortVenue?: string;
 };
 
 export type TaggedPhoto = {
@@ -28,8 +51,14 @@ export type TaggedPhoto = {
   readonly alt: string;
   /** Slugs; a gallery includes this photo if its `tag` is present here. */
   readonly tags: readonly string[];
+  readonly title?: string;
+  readonly place?: string;
+  readonly year?: number;
+  readonly description?: string;
   readonly takenAt?: string;
   readonly sortPlace?: string;
+  readonly sortCity?: string;
+  readonly sortVenue?: string;
 };
 
 /** First matching tag wins when building `Photo.sortPlace`. */
@@ -54,13 +83,113 @@ function inferSortPlace(tags: readonly string[]): string | undefined {
   return undefined;
 }
 
+/** English labels for `sortPlace` slugs (and `unknown-travel` when country tags are absent). */
+const PLACE_SLUG_LABEL: Record<string, string> = {
+  austria: "Austria",
+  brazil: "Brazil",
+  canada: "Canada",
+  china: "China",
+  "costa-rica": "Costa Rica",
+  india: "India",
+  italy: "Italy",
+  jordan: "Jordan",
+  mexico: "Mexico",
+  peru: "Peru",
+  usa: "United States",
+  "unknown-travel": "Various places",
+};
+
+function titleCaseFromSlug(slug: string): string {
+  return slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
+}
+
+/** `Town, Country` or `A, B, Country` → `Country — …` when the last comma segment is `country`. */
+function reorderTrailingCommaCountry(
+  explicit: string,
+  country: string,
+): string | null {
+  const parts = explicit.split(",").map((s) => s.trim());
+  if (parts.length < 2) return null;
+  const last = parts[parts.length - 1]!;
+  if (last.toLowerCase() !== country.toLowerCase()) return null;
+  const rest = parts.slice(0, -1).join(", ");
+  return `${country} — ${rest}`;
+}
+
+function normalizeExplicitPlaceCountryFirst(
+  explicit: string,
+  country: string,
+): string {
+  const reordered = reorderTrailingCommaCountry(explicit, country);
+  if (reordered) return reordered;
+  const lower = explicit.toLowerCase();
+  const c = country.toLowerCase();
+  if (
+    lower.startsWith(`${c} —`) ||
+    lower.startsWith(`${c},`) ||
+    lower === c
+  ) {
+    return explicit;
+  }
+  return `${country} — ${explicit}`;
+}
+
+function computedDisplayPlace(
+  p: TaggedPhoto,
+  sortPlace: string | undefined,
+): string | undefined {
+  if (sortPlace === "unknown-travel") {
+    const city =
+      p.sortCity && p.sortCity !== "unknown"
+        ? titleCaseFromSlug(p.sortCity)
+        : undefined;
+    return city ? `Various places — ${city}` : "Various places";
+  }
+
+  const country = sortPlace
+    ? (PLACE_SLUG_LABEL[sortPlace] ?? titleCaseFromSlug(sortPlace))
+    : undefined;
+  const explicit = p.place?.trim();
+  if (explicit) {
+    if (country) return normalizeExplicitPlaceCountryFirst(explicit, country);
+    return explicit;
+  }
+  if (!country) return undefined;
+  const city =
+    p.sortCity && p.sortCity !== "unknown"
+      ? titleCaseFromSlug(p.sortCity)
+      : undefined;
+  return city ? `${country} — ${city}` : country;
+}
+
 function toGalleryPhoto(p: TaggedPhoto): Photo {
+  const sortPlace = p.sortPlace ?? inferSortPlace(p.tags);
   return {
     src: p.src,
     alt: p.alt,
+    title: p.title,
+    place: computedDisplayPlace(p, sortPlace),
+    year: p.year,
+    description: p.description,
     takenAt: p.takenAt,
-    sortPlace: p.sortPlace ?? inferSortPlace(p.tags),
+    sortPlace,
+    sortCity: p.sortCity,
+    sortVenue: p.sortVenue,
   };
+}
+
+/** Lightbox / UI headline: `title` when set, otherwise `alt`. */
+export function photoDisplayTitle(p: Pick<Photo, "alt" | "title">): string {
+  const t = p.title?.trim();
+  return t && t.length > 0 ? t : p.alt;
+}
+
+/** Sort / A–Z key: `title` when set, otherwise `alt`. */
+export function photoSortLabel(p: Pick<Photo, "alt" | "title">): string {
+  return photoDisplayTitle(p);
 }
 
 export type Gallery = {
@@ -79,12 +208,13 @@ export type ActiveGallery = {
 
 /**
  * Order preserved for every derived gallery (filter walks this array in order):
- * core → sketches → frames.
+ * core → sketches → frames → history.
  */
 export const PHOTO_CATALOG: readonly TaggedPhoto[] = [
   ...CORE_PHOTO_CATALOG,
   ...SKETCH_PHOTOS,
   ...FRAME_PHOTOS,
+  ...HISTORY_PHOTOS,
 ];
 
 /**
@@ -96,7 +226,7 @@ export const PHOTO_CATALOG: readonly TaggedPhoto[] = [
 const LANDING_ALBUM_SPECS = [
   {
     id: "sketches",
-    title: "Sketching",
+    title: "Sketches",
     tag: "sketch",
     cover: "/photos/sketches/horse.jpg",
   },
@@ -107,18 +237,36 @@ const LANDING_ALBUM_SPECS = [
     cover: "/photos/core/red-valley-peru.jpg",
   },
   {
-    id: "travel",
-    title: "Travelling",
-    tag: "travel",
-    cover: "/photos/frames/img-4604.jpeg",
+    id: "history",
+    title: "History",
+    tag: "history",
+    cover: "/photos/history/img-5198.jpg",
   },
   {
     id: "wonders",
-    title: "Wonders",
+    title: "Wonders of the World",
     tag: "wonder",
     cover: "/photos/core/taj-mahal.jpg",
   },
+  {
+    id: "travel",
+    title: "Gallery",
+    /** Filtered in `specToGallery`: all photos except `sketch` (main feed on Beyond work). */
+    tag: "travel",
+    cover: "/photos/frames/img-4604.jpeg",
+  },
 ] as const;
+
+/** Shown as nav tiles on Beyond work; main `travel` grid is embedded below them on the same page. */
+export const LANDING_NAV_ALBUM_IDS = [
+  "sketches",
+  "hiking",
+  "history",
+  "wonders",
+] as const;
+
+/** Only `travel` is embedded on `/photos`; other landing albums open full-page (`?g=`). */
+export const INLINE_LANDING_GALLERY_IDS: readonly string[] = ["travel"];
 
 /** Place / archive albums — reachable via `?g=` but not shown on the main landing grid. */
 const PLACE_ALBUM_SPECS = [
@@ -126,7 +274,7 @@ const PLACE_ALBUM_SPECS = [
     id: "peru",
     title: "Peru",
     tag: "peru",
-    cover: "/photos/core/machu-picchu-mist.jpg",
+    cover: "/photos/core/machu-picchu-main.jpg",
   },
   {
     id: "italy",
@@ -183,13 +331,15 @@ const GALLERY_SPECS = [...LANDING_ALBUM_SPECS, ...PLACE_ALBUM_SPECS] as const;
 function specToGallery(
   spec: (typeof GALLERY_SPECS)[number],
 ): Gallery {
+  const photos =
+    spec.id === "travel"
+      ? PHOTO_CATALOG.filter((p) => !p.tags.includes("sketch"))
+      : PHOTO_CATALOG.filter((p) => p.tags.includes(spec.tag));
   return {
     id: spec.id,
     title: spec.title,
     cover: spec.cover,
-    photos: PHOTO_CATALOG.filter((p) => p.tags.includes(spec.tag)).map(
-      toGalleryPhoto,
-    ),
+    photos: photos.map(toGalleryPhoto),
   };
 }
 
@@ -210,10 +360,18 @@ export function getLandingAlbums(): readonly Gallery[] {
   return landingAlbums;
 }
 
+/** Nav row on Beyond work: Sketches, Hiking, History, Wonders (main feed grid is separate on the page). */
+export function getNavLandingAlbums(): readonly Gallery[] {
+  const byId = new Map(landingAlbums.map((g) => [g.id, g]));
+  return LANDING_NAV_ALBUM_IDS.map((id) => byId.get(id)).filter(
+    (g): g is Gallery => g != null,
+  );
+}
+
 /**
  * Legacy and alias query values → canonical gallery `id`.
- * Thematic filters: `sketching` → sketches, `travelling` → travel.
- * `nature` was a removed landing album; old links open Travelling.
+ * Thematic filters: `sketching` → sketches, `travelling` → travel (Gallery album).
+ * `nature` was a removed landing album; old links open Gallery (`?g=travel`).
  */
 export function normalizeGalleryParam(gParam: string | null): string | null {
   if (!gParam) return null;
@@ -222,6 +380,12 @@ export function normalizeGalleryParam(gParam: string | null): string | null {
   if (gParam === "travelling") return "travel";
   if (gParam === "nature") return "travel";
   return gParam;
+}
+
+export function usesCombinedPhotosLayout(gParam: string | null): boolean {
+  const g = normalizeGalleryParam(gParam);
+  if (g === null) return true;
+  return INLINE_LANDING_GALLERY_IDS.includes(g);
 }
 
 export function resolveActiveGallery(gParam: string | null): ActiveGallery | null {

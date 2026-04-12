@@ -76,7 +76,7 @@
       {
         "title": "Fast CSP and Learning-based Minesweeper Solver",
         "href": "/papers/minesweeper-csp.pdf",
-        "dates": "2017 – 2019",
+        "dates": "2017",
         "active": false,
         "description": "AI solver using Constraint Satisfaction Problems, XGBoost, and Deep Q-Learning — achieving 92% win rate on standard boards.",
         "technologies": ["C++", "Python", "XGBoost", "Deep Q-Learning", "CSP"],
@@ -284,17 +284,6 @@
         "description": "Machine learning research internship."
       },
       {
-        "company": "Polytechnique Montreal",
-        "href": "https://www.polymtl.ca/",
-        "badges": [],
-        "location": "Montreal, Canada",
-        "title": "Teaching Assistant",
-        "logoUrl": "/logos/polymtl.svg",
-        "start": "2023",
-        "end": "2025",
-        "description": "TA for INF6953PE Deep Learning Dynamics (W2025) and INF8245E Machine Learning (F2023)."
-      },
-      {
         "company": "ArangoDB GmbH",
         "href": "https://www.arangodb.com/",
         "badges": [],
@@ -327,21 +316,101 @@
         "end": "Apr 2018",
         "description": "Bayesian optimization and deep learning for Hadoop parameter tuning."
       }
+    ],
+    "moreItems": [
+      {
+        "company": "Polytechnique Montreal",
+        "href": "https://www.polymtl.ca/",
+        "badges": [],
+        "location": "Montreal, Canada",
+        "title": "Teaching Assistant",
+        "logoUrl": "/logos/polymtl.svg",
+        "start": "2023",
+        "end": "2025",
+        "description": "Deep Learning Dynamics (Spring 2025). Machine Learning (Fall 2023)."
+      },
+      {
+        "company": "NPTEL, IIT Madras",
+        "href": "https://nptel.ac.in/",
+        "badges": [],
+        "location": "Chennai, India (online)",
+        "title": "Teaching Assistant, Reinforcement Learning",
+        "logoUrl": "/logos/iitm.svg",
+        "start": "2021",
+        "end": "2021",
+        "description": "NPTEL online course offered by IIT Madras — Spring 2021 and Fall 2021 runs."
+      },
+      {
+        "company": "NPTEL / Google",
+        "href": "https://nptel.ac.in/",
+        "badges": [],
+        "location": "India (online)",
+        "title": "Teaching Assistant, Practical Machine Learning with TensorFlow",
+        "logoUrl": "/logos/iitm.svg",
+        "start": "2019",
+        "end": "2020",
+        "description": "NPTEL course — Fall 2019, Spring 2020, and Fall 2020 runs."
+      },
+      {
+        "company": "IIT Madras",
+        "href": "https://www.iitm.ac.in/",
+        "badges": [],
+        "location": "Chennai, India",
+        "title": "Teaching Assistant, Big Data Lab (CSE)",
+        "logoUrl": "/logos/iitm.svg",
+        "start": "2019",
+        "end": "2021",
+        "description": "Department of Computer Science and Engineering — Spring 2019, Spring 2020, and Spring 2021."
+      },
+      {
+        "company": "ACM Web Science 2021",
+        "href": "https://sites.google.com/view/deaadigs/",
+        "badges": [],
+        "location": "Virtual",
+        "title": "Workshop co-organizer (DEAADIGS)",
+        "logoUrl": "/logos/iitm.svg",
+        "start": "2021",
+        "end": "2021",
+        "description": "Co-organized the DEAADIGS workshop at ACM Web Science 2021."
+      },
+      {
+        "company": "Winsoft Technologies",
+        "href": "",
+        "badges": [],
+        "location": "India",
+        "title": "Project Trainee",
+        "logoUrl": "/logos/iitm.svg",
+        "start": "May 2016",
+        "end": "Jun 2016",
+        "description": "Library management system (SQL, Java, JSP/Servlet). Training on data modeling, Spring, AngularJS, and Java OOP; weekly sessions on databases, normalization, UML, and coding conventions."
+      },
+      {
+        "company": "IIIT Bhubaneswar",
+        "href": "https://www.iiit-bh.ac.in/",
+        "badges": [],
+        "location": "Bhubaneswar, India",
+        "title": "Co-organizer, Introduction to Data Science workshop",
+        "logoUrl": "/logos/iiitbh.png",
+        "start": "2017",
+        "end": "2017",
+        "description": "Workshop on introduction to data science."
+      },
+      {
+        "company": "IIIT Bhubaneswar",
+        "href": "https://www.iiit-bh.ac.in/",
+        "badges": [],
+        "location": "Bhubaneswar, India",
+        "title": "Mentor, Coding for All",
+        "logoUrl": "/logos/iiitbh.png",
+        "start": "2015",
+        "end": "2015",
+        "description": "Mentoring for the Coding for All initiative."
+      }
     ]
   },
   "skills": [],
   "service": {
-    "reviewing": ["ICML", "ICLR", "CoLLAs", "TMLR"],
-    "teaching": [
-      "Deep Learning Dynamics — Polytechnique Montreal",
-      "Machine Learning — Polytechnique Montreal",
-      "Reinforcement Learning — IIT Madras (NPTEL)",
-      "Practical ML with TensorFlow — IIT Madras (NPTEL)",
-      "Big Data Lab — IIT Madras"
-    ],
-    "volunteering": [
-      "Co-organized the [DEAADIGS workshop](https://sites.google.com/view/deaadigs/) at ACM Web Science 2021."
-    ]
+    "reviewing": ["ICML", "ICLR", "CoLLAs", "TMLR"]
   },
   "social": {
     "GoogleScholar": {

@@ -94,7 +94,7 @@ export default async function Page(props: {
     start: string;
     end: string;
   }>("education.items");
-  const workItems = getCollectionItems<{
+  type WorkEntry = {
     company: string;
     href: string;
     badges: readonly string[];
@@ -104,7 +104,15 @@ export default async function Page(props: {
     start: string;
     end: string;
     description: string;
-  }>("work.items");
+  };
+
+  const workItems = getCollectionItems<WorkEntry>("work.items");
+
+  const workMoreItems = (() => {
+    const raw = t.raw("work") as { moreItems?: WorkEntry[] } | undefined;
+    if (raw && Array.isArray(raw.moreItems)) return raw.moreItems;
+    return [];
+  })();
 
   const preprintItems = getCollectionItems<{
     title: string;
@@ -128,11 +136,9 @@ export default async function Page(props: {
     }>("projects.items"),
   );
 
-  const serviceData = (t.raw("service") as {
-    reviewing: string[];
-    teaching: string[];
-    volunteering: string[];
-  }) ?? { reviewing: [], teaching: [], volunteering: [] };
+  const serviceData = (t.raw("service") as { reviewing?: string[] }) ?? {};
+
+  const peerReviewVenues = (serviceData.reviewing ?? []).filter(Boolean);
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-7xl flex-col space-y-8 px-6 py-8 pb-24 sm:space-y-10 sm:px-16 md:px-20 md:py-16 md:pt-14 lg:px-24 lg:py-20 xl:px-32 xl:py-24">
@@ -144,6 +150,7 @@ export default async function Page(props: {
             name={t("name.full")}
             firstName={t("name.given")}
             surname={t("name.family")}
+            initials={t("name.initials")}
             subtitle={t("subtitle")}
             description={t("headline")}
             avatarUrl={siteConfig.avatarUrl}
@@ -206,6 +213,14 @@ export default async function Page(props: {
                     {socialData.GoogleScholar.name}
                   </Link>
                 </p>
+                {peerReviewVenues.length > 0 ? (
+                  <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
+                    <span className="text-foreground/90 font-medium">
+                      {t("sections.peerReviewLabel")}
+                    </span>{" "}
+                    {peerReviewVenues.join(" · ")}
+                  </p>
+                ) : null}
               </div>
             </div>
             <ProjectsSection
@@ -248,57 +263,20 @@ export default async function Page(props: {
       )}
 
       {/* Work Section */}
-      {Array.isArray(workItems) && workItems.length > 0 && (
+      {workItems.length > 0 || workMoreItems.length > 0 ? (
         <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
             <h2 className="text-xl font-bold">
               {t("sections.workExperience")}
             </h2>
-            <Work work={workItems} />
+            <Work
+              work={workItems}
+              moreWork={workMoreItems}
+              showAllText={t("showAll")}
+            />
           </div>
         </section>
-      )}
-
-      {/* Service & Teaching Section */}
-      <section id="service">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <div className="flex min-h-0 flex-col gap-y-4">
-            <h2 className="text-xl font-bold">
-              {t("sections.academicServices")}
-            </h2>
-            <div className="text-muted-foreground space-y-4 text-sm">
-              <div>
-                <span className="text-foreground mb-1 block font-medium">
-                  {t("sections.serviceReviewer")}
-                </span>
-                <span>{serviceData.reviewing.join(" · ")}</span>
-              </div>
-              <div>
-                <span className="text-foreground mb-1 block font-medium">
-                  {t("sections.serviceTeachingAssistant")}
-                </span>
-                <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-0.5">
-                  {serviceData.teaching.map((line) => (
-                    <li key={line}>{line}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <span className="text-foreground mb-1 block font-medium">
-                  {t("sections.serviceVolunteering")}
-                </span>
-                <ul className="text-muted-foreground list-inside list-disc space-y-1 pl-0.5 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2">
-                  {serviceData.volunteering.map((line, i) => (
-                    <li key={i}>
-                      <CustomReactMarkdown inline>{line}</CustomReactMarkdown>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </BlurFade>
-      </section>
+      ) : null}
 
       {/* Earlier Work Section */}
       {earlierWorkProjects.length > 0 && (
