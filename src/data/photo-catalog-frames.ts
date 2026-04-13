@@ -197,7 +197,6 @@ export const FRAME_PHOTOS = [
     takenAt: "2023-05-20",
     tags: [
       "mexico",
-      "history",
       "travel",
       "frames",
       "cenote",
@@ -351,7 +350,7 @@ export const FRAME_PHOTOS = [
     sortCity: "rome",
     sortVenue: "vatican-bramante-staircase",
     takenAt: "2024-08-03",
-    tags: ["italy", "history", "travel", "frames"],
+    tags: ["italy", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-5359.jpeg",
@@ -387,7 +386,7 @@ export const FRAME_PHOTOS = [
     sortCity: "cusco-region",
     sortVenue: "andean-trails",
     takenAt: "2025-11-09",
-    tags: ["peru", "history", "travel", "hiking", "frames"],
+    tags: ["peru", "travel", "hiking", "frames", "andes"],
   },
   {
     src: "/photos/frames/img-6683.jpg",

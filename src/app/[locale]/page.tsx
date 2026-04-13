@@ -188,6 +188,7 @@ export default async function Page(props: {
             delay={BLUR_FADE_DELAY * 6}
             title={t("sections.news.title")}
             showAllText={t("showAll")}
+            showLessText={t("showLess")}
           />
         </section>
       )}

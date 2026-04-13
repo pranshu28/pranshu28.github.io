@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { CustomReactMarkdown } from "@/components/react-markdown";
@@ -18,6 +18,7 @@ interface NewsSectionProps {
   delay?: number;
   title?: string;
   showAllText?: string;
+  showLessText?: string;
 }
 
 const DEFAULT_DISPLAY_COUNT = 5;
@@ -70,11 +71,12 @@ function NewsItem({ item, delay }: { item: NewsItem; delay: number }) {
   );
 }
 
-export default function NewsSection({ 
-  news, 
-  delay = 0, 
+export default function NewsSection({
+  news,
+  delay = 0,
   title = "Latest News",
-  showAllText = "Show All"
+  showAllText = "Show All",
+  showLessText = "Show Less",
 }: NewsSectionProps) {
   const [showAll, setShowAll] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -121,21 +123,30 @@ export default function NewsSection({
           />
         ))}
       </div>
-      {hasMoreNews && !showAll && (
+      {hasMoreNews ? (
         <BlurFade delay={delay + 0.3}>
           <div className="flex justify-center pt-1">
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setShowAll(true)}
+              onClick={() => setShowAll((v) => !v)}
               className="flex items-center gap-2"
             >
-              <ChevronDown className="h-4 w-4" />
-              {showAllText}
+              {showAll ? (
+                <>
+                  <ChevronUp className="h-4 w-4" />
+                  {showLessText}
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="h-4 w-4" />
+                  {showAllText}
+                </>
+              )}
             </Button>
           </div>
         </BlurFade>
-      )}
+      ) : null}
     </div>
   );
 }

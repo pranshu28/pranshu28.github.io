@@ -140,7 +140,6 @@ export const CORE_PHOTO_CATALOG = [
       "mexico",
       "wonder",
       "travel",
-      "history",
       "chichen-itza",
       "maya",
       "seven-wonders",
