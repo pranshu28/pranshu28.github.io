@@ -290,7 +290,7 @@ export default async function Page(props: {
             </I18nLink>
           </h2>
           <CustomReactMarkdown
-            className="text-muted-foreground dark:prose-invert prose mt-2 max-w-2xl text-sm leading-relaxed text-pretty [&_a]:text-foreground [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:no-underline"
+            className="text-muted-foreground dark:prose-invert prose mt-2 max-w-2xl text-sm leading-relaxed [&_a]:text-foreground [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:no-underline"
           >
             {t("sections.beyondWork.contentMarkdown")}
           </CustomReactMarkdown>
