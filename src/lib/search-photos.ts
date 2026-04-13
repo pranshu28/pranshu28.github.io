@@ -51,6 +51,12 @@ function tokenScore(
   for (const w of words) {
     if (w.startsWith(token) && token.length >= 2) return 68;
   }
+  for (const w of words) {
+    if (token.length >= 3 && w.length >= token.length && w.includes(token)) {
+      return 52;
+    }
+    if (token.length === 2 && w.length >= 4 && w.includes(token)) return 34;
+  }
   if (token.length >= 4) {
     for (const w of words) {
       if (w.length >= 3 && levenshteinAtMost1(token, w)) return 44;
@@ -120,6 +126,12 @@ export function rankPhotosForSearch(
       for (const tw of titleWords) {
         if (tw.startsWith(t) && t.length >= 2) score += 28;
       }
+    }
+    for (let i = 0; i < tokens.length - 1; i++) {
+      const a = tokens[i]!;
+      const b = tokens[i + 1]!;
+      const pair = `${a} ${b}`;
+      if (pair.length >= 4 && full.includes(pair)) score += 62;
     }
     return { photo, score, originalIndex };
   });

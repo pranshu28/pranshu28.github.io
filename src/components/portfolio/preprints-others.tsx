@@ -54,6 +54,7 @@ export default function PreprintsOthers({
             href={p.href}
             className="font-medium underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
             target="_blank"
+            rel="noopener noreferrer"
           >
             {p.title}
           </Link>

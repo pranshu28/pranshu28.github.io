@@ -6,6 +6,9 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig([
   {
+    ignores: [".next/**", "out/**", "node_modules/**"],
+  },
+  {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     plugins: { js, "simple-import-sort": simpleImportSort },
     rules: {
@@ -16,4 +19,8 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   tseslint.configs.recommended,
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: { globals: globals.node },
+  },
 ]);

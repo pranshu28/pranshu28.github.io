@@ -11,7 +11,7 @@ import Work from "@/components/portfolio/work";
 import { CustomReactMarkdown } from "@/components/react-markdown";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY, siteConfig } from "@/data/site";
-import { Link as I18nLink, routing } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
 import { generatePersonJsonLd } from "@/lib/jsonld";
 import { transformSocialData } from "@/lib/social-icons";
 import {
@@ -106,17 +106,18 @@ export default async function Page(props: {
     description: string;
   };
 
-  const workItems = sortWorkExperienceDesc(
-    getCollectionItems<WorkEntry>("work.items"),
-  );
-
-  const workMoreItems = (() => {
-    const raw = t.raw("work") as { moreItems?: WorkEntry[] } | undefined;
-    if (raw && Array.isArray(raw.moreItems)) {
-      return sortWorkExperienceDesc(raw.moreItems);
-    }
-    return [];
-  })();
+  /** Merged so order is newest-first across main + “Show all”, not two separately sorted blocks. */
+  const WORK_EXPERIENCE_VISIBLE_COUNT = 5;
+  const workBundle = t.raw("work") as
+    | { items?: WorkEntry[]; moreItems?: WorkEntry[] }
+    | undefined;
+  const workAll = [
+    ...(Array.isArray(workBundle?.items) ? workBundle.items : []),
+    ...(Array.isArray(workBundle?.moreItems) ? workBundle.moreItems : []),
+  ];
+  const workSorted = sortWorkExperienceDesc(workAll);
+  const workItems = workSorted.slice(0, WORK_EXPERIENCE_VISIBLE_COUNT);
+  const workMoreItems = workSorted.slice(WORK_EXPERIENCE_VISIBLE_COUNT);
 
   const preprintItems = getCollectionItems<{
     title: string;
@@ -139,10 +140,6 @@ export default async function Page(props: {
       video?: string;
     }>("projects.items"),
   );
-
-  const serviceData = (t.raw("service") as { reviewing?: string[] }) ?? {};
-
-  const peerReviewVenues = (serviceData.reviewing ?? []).filter(Boolean);
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-7xl flex-col space-y-8 px-6 py-8 pb-24 sm:space-y-10 sm:px-16 md:px-20 md:py-16 md:pt-14 lg:px-24 lg:py-20 xl:px-32 xl:py-24">
@@ -171,29 +168,12 @@ export default async function Page(props: {
         </BlurFade>
       </section>
 
-      <section id="beyond-work" aria-labelledby="beyond-work-heading">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 id="beyond-work-heading" className="text-xl font-bold">
-            {t("sections.beyondWork.title")}
-          </h2>
-          <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed text-pretty">
-            {t("sections.beyondWork.description")}{" "}
-            <I18nLink
-              href="/photos/"
-              className="text-foreground font-medium underline underline-offset-2 hover:no-underline"
-            >
-              {t("sections.beyondWork.cta")}
-            </I18nLink>
-          </p>
-        </BlurFade>
-      </section>
-
       {/* About Section */}
       <section id="about">
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 className="text-xl font-bold">{t("sections.about")}</h2>
         </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 5}>
+        <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-sm text-pretty [&_img]:my-0 [&_img]:inline-block [&_img]:h-[1em] [&_img]:w-auto [&_img]:align-baseline">
             <CustomReactMarkdown>{t("bioMarkdown")}</CustomReactMarkdown>
           </div>
@@ -216,19 +196,9 @@ export default async function Page(props: {
       {publicationsItems && publicationsItems.length > 0 && (
         <section id="publications">
           <div className="flex min-h-0 w-full flex-col space-y-8">
-            <div className="space-y-2">
-              <h2 className="text-xl font-bold">
-                {t("sections.publications.title")}
-              </h2>
-              {peerReviewVenues.length > 0 ? (
-                <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
-                  <span className="text-foreground/90 font-medium">
-                    {t("sections.peerReviewLabel")}
-                  </span>{" "}
-                  {peerReviewVenues.join(" · ")}
-                </p>
-              ) : null}
-            </div>
+            <h2 className="text-xl font-bold">
+              {t("sections.publications.title")}
+            </h2>
             <ProjectsSection
               projects={publicationsItems.map((project) => ({
                 ...project,
@@ -237,7 +207,6 @@ export default async function Page(props: {
                   icon: getIconComponent(link.icon),
                 })),
               }))}
-              delay={BLUR_FADE_DELAY * 3}
               mobileDisplayCount={6}
               desktopDisplayCount={6}
               showAllText={t("showAll")}
@@ -297,7 +266,6 @@ export default async function Page(props: {
                   icon: getIconComponent(link.icon),
                 })),
               }))}
-              delay={BLUR_FADE_DELAY * 3}
               mobileDisplayCount={4}
               desktopDisplayCount={3}
               showAllText={t("showAll")}
@@ -305,6 +273,19 @@ export default async function Page(props: {
           </div>
         </section>
       )}
+
+      <section id="beyond-work" aria-labelledby="beyond-work-heading">
+        <BlurFade delay={BLUR_FADE_DELAY * 9}>
+          <h2 id="beyond-work-heading" className="text-xl font-bold">
+            {t("sections.beyondWork.title")}
+          </h2>
+          <CustomReactMarkdown
+            className="text-muted-foreground dark:prose-invert prose mt-2 max-w-2xl text-sm leading-relaxed text-pretty [&_a]:text-foreground [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:no-underline"
+          >
+            {t("sections.beyondWork.contentMarkdown")}
+          </CustomReactMarkdown>
+        </BlurFade>
+      </section>
 
       {/* Contact Section */}
       <section id="contact">

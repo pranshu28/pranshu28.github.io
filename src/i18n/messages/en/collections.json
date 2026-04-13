@@ -376,9 +376,6 @@
     ]
   },
   "skills": [],
-  "service": {
-    "reviewing": ["ICML", "ICLR", "CoLLAs", "TMLR"]
-  },
   "social": {
     "GoogleScholar": {
       "name": "Google Scholar",

@@ -19,6 +19,7 @@
  * Deleting files locally does not change production until CI deploys; see `resolve-photo-src.ts`.
  */
 
+import { BOOK_NOTE_SPECS } from "./book-notes-catalog";
 import { CORE_PHOTO_CATALOG } from "./photo-catalog-core";
 import { FRAME_PHOTOS } from "./photo-catalog-frames";
 import { HISTORY_PHOTOS } from "./photo-catalog-history";
@@ -26,6 +27,8 @@ import { SKETCH_PHOTOS } from "./photo-catalog-sketches";
 
 export type Photo = {
   src: string;
+  /** When set, grid opens this URL (e.g. Medium) instead of the photo lightbox. */
+  openHref?: string;
   /** Short accessibility text on `<img alt>`; keep concise even if `title` / `description` exist. */
   alt: string;
   /** Short headline in the lightbox (e.g. place-forward or editorial title). */
@@ -97,6 +100,7 @@ const PLACE_SLUG_LABEL: Record<string, string> = {
   peru: "Peru",
   usa: "United States",
   "unknown-travel": "Various places",
+  books: "Books",
 };
 
 function titleCaseFromSlug(slug: string): string {
@@ -169,6 +173,7 @@ function toGalleryPhoto(p: TaggedPhoto): Photo {
   const sortPlace = p.sortPlace ?? inferSortPlace(p.tags);
   return {
     src: p.src,
+    openHref: undefined,
     alt: p.alt,
     title: p.title,
     place: computedDisplayPlace(p, sortPlace),
@@ -179,6 +184,21 @@ function toGalleryPhoto(p: TaggedPhoto): Photo {
     sortCity: p.sortCity,
     sortVenue: p.sortVenue,
   };
+}
+
+function bookNotesAsPhotos(): Photo[] {
+  return BOOK_NOTE_SPECS.map((b) => ({
+    src: b.coverSrc,
+    openHref: b.openHref,
+    alt: b.alt,
+    title: b.title,
+    place: b.place ?? "Book notes — Medium",
+    description: b.description,
+    takenAt: b.takenAt,
+    sortPlace: "books",
+    sortCity: "notes",
+    sortVenue: b.sortVenue ?? "medium",
+  }));
 }
 
 /** Lightbox / UI headline: `title` when set, otherwise `alt`. */
@@ -231,6 +251,12 @@ const LANDING_ALBUM_SPECS = [
     cover: "/photos/sketches/horse.jpg",
   },
   {
+    id: "book-notes",
+    title: "Book notes",
+    tag: "__book_notes__",
+    cover: "/photos/book-notes/goodreads-collage.jpg",
+  },
+  {
     id: "hiking",
     title: "Hiking",
     tag: "hiking",
@@ -260,6 +286,7 @@ const LANDING_ALBUM_SPECS = [
 /** Nav tiles on `/photos/`; main `travel` grid is embedded below on the same page. */
 export const LANDING_NAV_ALBUM_IDS = [
   "sketches",
+  "book-notes",
   "hiking",
   "history",
   "wonders",
@@ -345,6 +372,14 @@ function dedupeTaggedPhotosBySrc(
 function specToGallery(
   spec: (typeof GALLERY_SPECS)[number],
 ): Gallery {
+  if (spec.id === "book-notes") {
+    return {
+      id: spec.id,
+      title: spec.title,
+      cover: spec.cover,
+      photos: bookNotesAsPhotos(),
+    };
+  }
   const raw =
     spec.id === "travel"
       ? PHOTO_CATALOG.filter((p) => !p.tags.includes("sketch"))
@@ -375,7 +410,7 @@ export function getLandingAlbums(): readonly Gallery[] {
   return landingAlbums;
 }
 
-/** Nav row on photos: Sketches, Hiking, History, Wonders (main feed grid is separate on the page). */
+/** Nav row on photos: Sketches, Book notes, Hiking, History, Wonders (travel grid is separate below). */
 export function getNavLandingAlbums(): readonly Gallery[] {
   const byId = new Map(landingAlbums.map((g) => [g.id, g]));
   return LANDING_NAV_ALBUM_IDS.map((id) => byId.get(id)).filter(

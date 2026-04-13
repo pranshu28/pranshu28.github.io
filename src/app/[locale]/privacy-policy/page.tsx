@@ -101,6 +101,20 @@ export default async function PrivacyPolicy(props: {
 
           <section>
             <h2 className="mb-4 text-2xl font-semibold">
+              {t("privacyPolicy.sections.dataRetention.title")}
+            </h2>
+            <p>{t("privacyPolicy.sections.dataRetention.description")}</p>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-2xl font-semibold">
+              {t("privacyPolicy.sections.yourRights.title")}
+            </h2>
+            <p>{t("privacyPolicy.sections.yourRights.description")}</p>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-2xl font-semibold">
               {t("privacyPolicy.sections.contact.title")}
             </h2>
             <p>{t("privacyPolicy.sections.contact.description")}</p>

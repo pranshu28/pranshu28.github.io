@@ -16,13 +16,12 @@ interface Talk {
 
 interface TalksProps {
   talks: readonly Talk[];
-  delay?: number;
   showAllText?: string;
 }
 
 const DEFAULT_DISPLAY_COUNT = 5;
 
-export default function Talks({ talks, delay = 0, showAllText = "Show All" }: TalksProps) {
+export default function Talks({ talks, showAllText = "Show All" }: TalksProps) {
   const [showAll, setShowAll] = useState(false);
   const [mounted, setMounted] = useState(false);
 

@@ -40,7 +40,7 @@ function integerWidthsProportional(
   }
   const raw = floatWidths.map((w) => (w / sum) * targetSum);
   const floors = raw.map((x) => Math.max(1, Math.floor(x)));
-  let s = floors.reduce((a, b) => a + b, 0);
+  const s = floors.reduce((a, b) => a + b, 0);
   let rem = targetSum - s;
   const order = raw.map((x, i) => ({ i, frac: x - floors[i]! }));
   order.sort((a, b) => b.frac - a.frac);
@@ -52,7 +52,7 @@ function integerWidthsProportional(
     k++;
   }
   while (rem < 0) {
-    let j = out.findIndex((x) => x > 1);
+    const j = out.findIndex((x) => x > 1);
     if (j < 0) break;
     out[j] -= 1;
     rem++;
@@ -129,7 +129,7 @@ export function computeJustifiedRows(
     }
 
     const sumA = row.reduce((s, idx) => s + aspectAt(aspects, idx), 0);
-    let hIdeal = targetContent / sumA;
+    const hIdeal = targetContent / sumA;
     let h = Math.min(maxRowHeight, hIdeal);
     h = Math.max(minRowHeight, h);
 

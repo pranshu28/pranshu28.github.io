@@ -22,13 +22,14 @@ import {
   getNavLandingAlbums,
   INLINE_LANDING_GALLERY_IDS,
   normalizeGalleryParam,
-  photoDisplayTitle,
   type Photo,
+  photoDisplayTitle,
   resolveActiveGallery,
   usesCombinedPhotosLayout,
 } from "@/data/photo-catalog";
 import { BLUR_FADE_DELAY } from "@/data/site";
 import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
+import { resolveAlbumGridSrc } from "@/lib/album-image-src";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 import { filterPhotosBySearchQuery } from "@/lib/search-photos";
 import {
@@ -56,7 +57,11 @@ function buildPhotosHref(
 function parseLightboxIndex(
   searchParams: URLSearchParams,
   max: number,
+  galleryId?: string | null,
 ): { open: boolean; index: number } {
+  if (galleryId === "book-notes") {
+    return { open: false, index: 0 };
+  }
   const raw = searchParams.get("p");
   if (raw === null || raw === "") {
     return { open: false, index: 0 };
@@ -140,7 +145,7 @@ function AlbumTile({
           style={{ aspectRatio: "4 / 3" }}
         >
           <img
-            src={resolvePhotoSrc(gallery.cover)}
+            src={resolveAlbumGridSrc(gallery.cover)}
             alt=""
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             loading={index < 8 ? "eager" : "lazy"}
@@ -388,11 +393,14 @@ function AlbumDetail({
   return (
     <div className="w-full min-w-0">
       <BlurFade delay={0}>
-        <div className="mb-4 flex flex-wrap items-center gap-x-5 gap-y-2 sm:mb-5">
+        <nav
+          className="mb-4 flex flex-col items-start gap-2 sm:mb-5 sm:gap-2.5"
+          aria-label="Gallery navigation"
+        >
           <button
             type="button"
             onClick={onBack}
-            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+            className="text-muted-foreground hover:text-foreground text-left text-sm transition-colors"
           >
             &larr; {backLabel}
           </button>
@@ -400,44 +408,48 @@ function AlbumDetail({
             href="/"
             className="text-muted-foreground hover:text-foreground text-sm transition-colors"
           >
-            &larr; {tGallery("backToSite")}
+            &larr; {tGallery("backToHome")}
           </I18nLink>
-        </div>
+        </nav>
         <h1
           id="photos-album-heading"
           className="mb-4 text-2xl font-bold tracking-tight sm:mb-5 sm:text-3xl"
         >
           {gallery.title}
         </h1>
-        <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5 sm:gap-3">
-          <label
-            htmlFor="gallery-sort-archive"
-            className="text-muted-foreground text-xs font-semibold tracking-wide uppercase"
-          >
-            {tGallery("sortLabel")}
-          </label>
-          <select
-            id="gallery-sort-archive"
-            value={sortMode}
-            onChange={(e) =>
-              onSortChange(e.target.value as GallerySortMode)
-            }
-            className="border-border bg-background text-foreground max-w-[min(100%,16rem)] rounded-md border px-2 py-1.5 text-sm"
-          >
-            <option value="place">{tGallery("sortPlace")}</option>
-            <option value="date">{tGallery("sortDate")}</option>
-            <option value="random">{tGallery("sortRandom")}</option>
-          </select>
-        </div>
-        <PhotoSearchBar
-          id="photos-archive-search"
-          value={searchQuery}
-          onChange={onSearchQueryChange}
-          label={tGallery("searchLabel")}
-          placeholder={tGallery("searchPlaceholder")}
-          statusText={searchStatusText}
-          className="mt-4 sm:mt-5"
-        />
+        {gallery.id !== "book-notes" ? (
+          <>
+            <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5 sm:gap-3">
+              <label
+                htmlFor="gallery-sort-archive"
+                className="text-muted-foreground text-xs font-semibold tracking-wide uppercase"
+              >
+                {tGallery("sortLabel")}
+              </label>
+              <select
+                id="gallery-sort-archive"
+                value={sortMode}
+                onChange={(e) =>
+                  onSortChange(e.target.value as GallerySortMode)
+                }
+                className="border-border bg-background text-foreground max-w-[min(100%,16rem)] rounded-md border px-2 py-1.5 text-sm"
+              >
+                <option value="place">{tGallery("sortPlace")}</option>
+                <option value="date">{tGallery("sortDate")}</option>
+                <option value="random">{tGallery("sortRandom")}</option>
+              </select>
+            </div>
+            <PhotoSearchBar
+              id="photos-archive-search"
+              value={searchQuery}
+              onChange={onSearchQueryChange}
+              label={tGallery("searchLabel")}
+              placeholder={tGallery("searchPlaceholder")}
+              statusText={searchStatusText}
+              className="mt-4 sm:mt-5"
+            />
+          </>
+        ) : null}
       </BlurFade>
 
       <JustifiedAlbumGrid
@@ -608,6 +620,14 @@ function PhotosPageContent() {
     replaceQuery({ rs: String(Date.now()), p: null });
   }, [sortMode, replaceQuery, searchParams]);
 
+  useEffect(() => {
+    const g = normalizeGalleryParam(searchParams.get("g"));
+    if (g !== "book-notes") return;
+    const p = searchParams.get("p");
+    if (p == null || p === "") return;
+    replaceQuery({ p: null });
+  }, [replaceQuery, searchParams]);
+
   const active = useMemo(() => {
     return resolveActiveGallery(gRaw);
   }, [gRaw]);
@@ -617,13 +637,15 @@ function PhotosPageContent() {
 
   const sortedArchivePhotos = useMemo(() => {
     if (!active) return [];
+    if (active.id === "book-notes") return [...active.photos];
     return sortGalleryPhotos(active.photos, sortMode, `${active.id}:${rs}`);
   }, [active, sortMode, rs]);
 
-  const archiveDisplayedPhotos = useMemo(
-    () => filterPhotosBySearchQuery(sortedArchivePhotos, photoSearchQuery),
-    [sortedArchivePhotos, photoSearchQuery],
-  );
+  const archiveDisplayedPhotos = useMemo(() => {
+    if (!active) return [];
+    if (active.id === "book-notes") return [...active.photos];
+    return filterPhotosBySearchQuery(sortedArchivePhotos, photoSearchQuery);
+  }, [active, sortedArchivePhotos, photoSearchQuery]);
 
   const displayArchiveGallery = useMemo((): ActiveGallery | null => {
     if (!active) return null;
@@ -638,9 +660,14 @@ function PhotosPageContent() {
       return parseLightboxIndex(
         searchParams,
         archiveDisplayedPhotos.length,
+        displayArchiveGallery.id,
       );
     },
-    [displayArchiveGallery, searchParams, archiveDisplayedPhotos.length],
+    [
+      displayArchiveGallery,
+      searchParams,
+      archiveDisplayedPhotos.length,
+    ],
   );
 
   const archiveSearchStatus = useMemo(() => {
@@ -659,9 +686,14 @@ function PhotosPageContent() {
   const openArchivePhoto = useCallback(
     (index: number) => {
       if (!displayArchiveGallery) return;
+      const ph = archiveDisplayedPhotos[index];
+      if (ph?.openHref) {
+        window.open(ph.openHref, "_blank", "noopener,noreferrer");
+        return;
+      }
       replaceQuery({ g: displayArchiveGallery.id, p: String(index) });
     },
-    [displayArchiveGallery, replaceQuery],
+    [archiveDisplayedPhotos, displayArchiveGallery, replaceQuery],
   );
 
   const closeArchiveLightbox = useCallback(() => {
@@ -743,6 +775,7 @@ function PhotosPageContent() {
       return parseLightboxIndex(
         searchParams,
         lightboxGallery.photos.length,
+        lightboxGallery.id,
       );
     },
     [lightboxGallery, searchParams],
@@ -847,7 +880,7 @@ function PhotosPageContent() {
               href="/"
               className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors sm:mb-8"
             >
-              &larr; {tGallery("backToSite")}
+              &larr; {tGallery("backToHome")}
             </I18nLink>
             <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
               {tGallery("albumsSection")}

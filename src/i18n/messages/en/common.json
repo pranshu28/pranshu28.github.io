@@ -8,7 +8,6 @@
         "education": "Education",
         "workExperience": "Experience",
         "awards": "Honors & Activities",
-        "peerReviewLabel": "Peer review:",
         "news": {
             "title": "Latest News"
         },
@@ -27,9 +26,8 @@
             "teachingLabel": "Teaching Assistant:"
         },
         "beyondWork": {
-            "title": "Beyond work",
-            "description": "Photos, sketches, hiking, and travel albums live here — same place as the camera icon in the bar below.",
-            "cta": "Open the gallery."
+            "title": "Beyond Work",
+            "contentMarkdown": "I like reading [non-fiction](https://www.goodreads.com/user/show/49705608-pranshu-malviya), [sketching](/en/photos/?g=sketches), [hiking](/en/photos/?g=hiking), and [travelling](/en/photos/?g=travel), and I've visited 4 of the 7 [wonders](/en/photos/?g=wonders) so far."
         },
         "contact": "Contact",
         "getInTouch": "Get in Touch",
@@ -57,16 +55,16 @@
             {
                 "href": "/photos/",
                 "icon": "camera",
-                "label": "Beyond work"
+                "label": "Beyond Work"
             }
         ],
         "theme": "Theme"
     },
     "galleryPage": {
-        "title": "Beyond work",
+        "title": "Beyond Work",
         "albumsSection": "Albums",
-        "backToAlbums": "All albums",
-        "backToSite": "Back to site",
+        "backToAlbums": "Beyond Work",
+        "backToHome": "Home",
         "loading": "Loading…",
         "sortLabel": "Sort",
         "sortPlace": "Place",
@@ -151,26 +149,43 @@
         "sections": {
             "informationWeCollect": {
                 "title": "Information We Collect",
-                "description": "This website does not actively collect personal data.",
-                "items": [],
-                "note": ""
+                "description": "This site is a static portfolio. There are no accounts, logins, or forms that store submissions on the site itself.",
+                "items": [
+                    "Hosting: The site is served with GitHub Pages. GitHub may process standard server and access logs (for example IP address, request metadata, and timestamps) as described in GitHub’s documentation and privacy statement.",
+                    "Browser storage: The light/dark theme preference is stored locally in your browser (localStorage via next-themes) and is not sent to a server I operate.",
+                    "Optional analytics: If this deployment is built with Google Tag Manager enabled (NEXT_PUBLIC_GTM_ID), Google may collect usage data under Google’s policies. That configuration is optional and not required to view the site.",
+                    "External content: Pages may link to or load images from other domains (for example a photo CDN or third-party sites). Those services apply their own privacy practices when you request their content."
+                ],
+                "note": "If you email me directly, you choose what you include; that correspondence is handled like normal email, not through this repository."
             },
             "howWeUseInformation": {
                 "title": "How We Use Information",
-                "description": "No personal data is collected or processed.",
-                "items": []
+                "description": "There is no first-party database on this static site. Processing is limited to what is needed to display the pages and what hosting or optional analytics providers do automatically.",
+                "items": [
+                    "To deliver HTML, assets, and linked resources when you visit.",
+                    "To remember your theme preference in your browser.",
+                    "If analytics are enabled in the deployment, to understand aggregate traffic (via Google Tag Manager / tools configured there)."
+                ]
             },
             "dataSharing": {
                 "title": "Data Sharing",
-                "description": "No data is shared with third parties."
+                "description": "GitHub hosts the site and may process technical data as part of that service. If Google Tag Manager is enabled for a given build, Google may process analytics data under its terms. I do not sell personal data. When you follow links to other websites, their policies govern those sites."
             },
             "cookies": {
-                "title": "Cookies",
-                "description": "This website uses minimal cookies for theme preferences."
+                "title": "Cookies and similar technologies",
+                "description": "This site does not set first-party cookies for authentication. Theme preference uses local storage in your browser. If Google Tag Manager is enabled, third-party cookies or similar technologies may be used as described in Google’s documentation. You can use browser settings to limit cookies and storage."
+            },
+            "dataRetention": {
+                "title": "Retention",
+                "description": "I do not operate a server-side profile for visitors on this static site. Hosting and analytics providers retain data according to their own policies and your browser controls local storage for theme."
+            },
+            "yourRights": {
+                "title": "Your choices and rights",
+                "description": "Depending on where you live, privacy laws may give you rights to access, correct, delete, or restrict certain processing of personal data held by companies that process data about you (for example GitHub or Google). This site does not give me a visitor list from static hosting; for requests related to those services, use the processes they provide."
             },
             "contact": {
                 "title": "Contact",
-                "description": "For questions, contact me via the information on the main page."
+                "description": "For questions about this policy, contact me via the information on the main page."
             }
         }
     },
@@ -202,7 +217,7 @@
             },
             "links": {
                 "title": "Links",
-                "description": "External links are not endorsed and used at your own risk."
+                "description": "External links are not endorsed and are used at your own risk. Third-party sites have their own terms and privacy policies."
             },
             "modifications": {
                 "title": "Modifications",

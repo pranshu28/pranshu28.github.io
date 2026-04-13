@@ -4,6 +4,9 @@ on:
   push:
     branches: [master, redesign-nextjs, main]
   workflow_dispatch:
+  # Rebuild so Medium book-note sync runs without a code push (static site pulls RSS at build).
+  schedule:
+    - cron: "0 6,18 * * *"
 
 permissions:
   contents: read

@@ -1,0 +1,48 @@
+# When you publish on Medium (tag: books or nonfiction) without pushing code, this job
+# commits fresh data and triggers Deploy via push to the default branch.
+name: Sync Medium book notes
+
+on:
+  schedule:
+    - cron: "25 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Sync Medium + Goodreads shelf collage (raster tiles)
+        run: |
+          node scripts/sync-medium-book-notes.mjs
+          node scripts/sync-goodreads-collage.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            public/photos/book-notes/medium \
+            public/photos/book-notes/goodreads-collage.jpg \
+            src/data/book-notes-medium.generated.json
+          if git diff --staged --quiet; then
+            echo "No book-notes asset changes."
+          else
+            git commit -m "chore: sync Medium book notes + Goodreads collage"
+            git push
+          fi

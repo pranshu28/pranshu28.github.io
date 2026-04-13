@@ -9,8 +9,8 @@ import {
 } from "react";
 
 import { type Photo, photoDisplayTitle } from "@/data/photo-catalog";
+import { resolveAlbumGridSrc } from "@/lib/album-image-src";
 import { computeJustifiedRows } from "@/lib/justified-gallery-layout";
-import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 
 const GAP_PX = 5;
 const MIN_ROW_H = 118;
@@ -100,27 +100,50 @@ export function JustifiedAlbumGrid({
             if (!photo) return null;
             const wPx = Math.max(1, Math.round(row.widths[wi] ?? 0));
             const hPx = Math.max(1, Math.round(row.height));
+            const gridSrc = resolveAlbumGridSrc(photo.src);
+            const cellClass =
+              "group border-border relative shrink-0 overflow-hidden border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+            const img = (
+              <img
+                src={gridSrc}
+                alt={photo.alt}
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                loading={photoIndex < 14 ? "eager" : "lazy"}
+                decoding="async"
+                onLoad={(e) => {
+                  const im = e.currentTarget;
+                  onImgLoad(photo.src, im.naturalWidth, im.naturalHeight);
+                }}
+              />
+            );
+            if (photo.openHref) {
+              return (
+                <a
+                  key={`${photo.src}-${photoIndex}`}
+                  href={photo.openHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-photo-src={photo.src}
+                  title={photoDisplayTitle(photo)}
+                  className={cellClass}
+                  style={{ width: wPx, height: hPx }}
+                >
+                  {img}
+                  <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
+                </a>
+              );
+            }
             return (
               <button
-                key={photo.src}
+                key={`${photo.src}-${photoIndex}`}
                 type="button"
                 data-photo-src={photo.src}
                 title={photoDisplayTitle(photo)}
                 onClick={() => onOpenPhoto(photoIndex)}
-                className="group border-border relative shrink-0 overflow-hidden border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className={cellClass}
                 style={{ width: wPx, height: hPx }}
               >
-                <img
-                  src={resolvePhotoSrc(photo.src)}
-                  alt={photo.alt}
-                  className="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  loading={photoIndex < 14 ? "eager" : "lazy"}
-                  decoding="async"
-                  onLoad={(e) => {
-                    const im = e.currentTarget;
-                    onImgLoad(photo.src, im.naturalWidth, im.naturalHeight);
-                  }}
-                />
+                {img}
                 <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/15" />
               </button>
             );

@@ -61,6 +61,7 @@ export async function constructMetadata({
   return {
     title: finalTitle,
     description: finalDescription,
+    referrer: "strict-origin-when-cross-origin",
     keywords: [],
     authors: [{ name: t("name.full"), url: siteConfig.url }],
     creator: t("name.full"),
