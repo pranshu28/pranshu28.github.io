@@ -276,7 +276,7 @@ export function generateBlogJsonLd(
       summary: string;
     };
     slug: string;
-    locale?: Locale;
+    locale?: string;
   }[],
 ): string {
   const itemListElements = posts
@@ -311,7 +311,7 @@ export async function generateBlogPostingJsonLd(post: {
     image?: string;
   };
   slug: string;
-  locale?: Locale;
+  locale?: string;
 }): Promise<string> {
   const locale = (post.locale || DEFAULT_LOCALE) as Locale;
   const socialMediaUrls = await getSocialMediaUrls(locale);

@@ -78,7 +78,7 @@ export function sortWorkExperienceDesc<T extends { start: string; end: string }>
     .map(({ item }) => item);
 }
 
-/** In-app routes under `[locale]` for static export; not `/papers/…` or static assets under `/photos/{core,frames,…}`. */
+/** In-app routes for static export; not `/papers/…` or static assets under `/photos/{core,frames,…}`. */
 export function isLocaleScopedAppPath(href: unknown): boolean {
   if (typeof href !== "string" || href.length === 0) return false;
   if (!href.startsWith("/") || href.startsWith("//")) return false;

@@ -30,6 +30,7 @@ import {
 import { BLUR_FADE_DELAY } from "@/data/site";
 import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
 import { resolveAlbumGridSrc } from "@/lib/album-image-src";
+import { pageTitleClass, sectionHeadingClass } from "@/lib/page-typography";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
 import { filterPhotosBySearchQuery } from "@/lib/search-photos";
 import {
@@ -37,7 +38,6 @@ import {
   normalizeSortParam,
   sortGalleryPhotos,
 } from "@/lib/sort-gallery-photos";
-import { pageTitleClass, sectionHeadingClass } from "@/lib/page-typography";
 import { cn } from "@/lib/utils";
 
 /** Shareable: `?g=<albumId>&p=<0-based index>` */

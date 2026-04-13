@@ -7,7 +7,7 @@
     "dev:webpack": "next dev --webpack",
     "sync:book-notes": "node scripts/sync-medium-book-notes.mjs",
     "sync:goodreads-collage": "node scripts/sync-goodreads-collage.mjs",
-    "build": "node scripts/sync-medium-book-notes.mjs && node scripts/sync-goodreads-collage.mjs && next build && cp out/en/index.html out/index.html",
+    "build": "node scripts/sync-medium-book-notes.mjs && node scripts/sync-goodreads-collage.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
     "analyze": "ANALYZE=true next build",

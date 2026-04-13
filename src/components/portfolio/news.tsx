@@ -3,10 +3,10 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { sectionHeadingClass } from "@/lib/page-typography";
 import { CustomReactMarkdown } from "@/components/react-markdown";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Button } from "@/components/ui/button";
+import { sectionHeadingClass } from "@/lib/page-typography";
 
 interface NewsItem {
   readonly date: string;

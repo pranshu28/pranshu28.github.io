@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { MobileTOC } from "@/components/blog/toc/mobile-toc";
 import { TableOfContents } from "@/components/blog/toc/table-of-contents";
 import type { Locale } from "@/i18n/routing";
-import { LOCALES, routing } from "@/i18n/routing";
+import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { getAvailableLocales, getBlogPosts, getPost } from "@/lib/blog";
 import { generateBlogPostingJsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
@@ -15,17 +15,16 @@ export async function generateStaticParams() {
   const enArray = Array.isArray(enPosts) ? enPosts : [];
   return enArray
     .filter((post) => post?.slug)
-    .map((post) => ({ locale: "en", slug: post.slug }));
+    .map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata(props: {
   params: Promise<{
-    locale: string;
     slug: string;
   }>;
 }): Promise<Metadata | undefined> {
   const params = await props.params;
-  const locale = (params.locale || routing.defaultLocale) as Locale;
+  const locale = DEFAULT_LOCALE as Locale;
   const post = await getPost(params.slug, locale);
 
   if (!post) {
@@ -35,7 +34,7 @@ export async function generateMetadata(props: {
   const { title, date: publishedTime, summary: description } = post.metadata;
 
   const blogPath = `/blog/${post.slug}`;
-  const availableLocales = await getAvailableLocales(params.slug, LOCALES);
+  const availableLocales = await getAvailableLocales(params.slug, [...LOCALES]);
 
   const baseMetadata = await constructMetadata({
     title,
@@ -58,12 +57,11 @@ export async function generateMetadata(props: {
 export default async function BlogLayout(props: {
   children: React.ReactNode;
   params: Promise<{
-    locale: string;
     slug: string;
   }>;
 }) {
   const params = await props.params;
-  const locale = params.locale || routing.defaultLocale;
+  const locale = DEFAULT_LOCALE;
   const post = await getPost(params.slug, locale);
 
   if (!post) {

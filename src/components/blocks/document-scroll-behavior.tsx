@@ -7,7 +7,7 @@ const SMOOTH_CLASS = "scroll-smooth-doc";
 
 /**
  * Per-route document scroll-behavior (see globals.css). Uses Next's pathname
- * (includes locale segment, e.g. `/en`, `/en/blog/slug`).
+ * (pathname includes a leading locale only if your routing adds one).
  *
  * - Home + blog: smooth anchors / default scroll APIs for long pages & TOC.
  * - Photos + legal: `auto` — dense media & policy text stay snappy; photos still pass

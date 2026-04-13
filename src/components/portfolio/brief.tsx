@@ -1,5 +1,5 @@
-import { heroNameClass } from "@/lib/page-typography";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { heroNameClass } from "@/lib/page-typography";
 
 export default function Brief({
   name,

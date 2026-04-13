@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { CustomReactMarkdown } from "@/components/react-markdown";
-import { subsectionHeadingClass } from "@/lib/page-typography";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Button } from "@/components/ui/button";
 import { Link as I18nLink } from "@/i18n/routing";
+import { subsectionHeadingClass } from "@/lib/page-typography";
 import { isLocaleScopedAppPath } from "@/lib/utils";
 
 const DEFAULT_VISIBLE = 4;

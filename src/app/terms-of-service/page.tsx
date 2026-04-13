@@ -1,38 +1,26 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import { routing } from "@/i18n/routing";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { constructMetadata } from "@/lib/metadata";
 import { pageTitleClass, sectionHeadingClass } from "@/lib/page-typography";
 
-type MetadataProps = {
-  params: Promise<{ locale: string }>;
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations({ locale: DEFAULT_LOCALE });
 
-export async function generateMetadata({
-  params,
-}: MetadataProps): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale });
-
-  const metadata = await constructMetadata({
+  return constructMetadata({
     title: t("termsOfService.title"),
     description: `${t("termsOfService.title")} for ${t("name.full")}'s portfolio website`,
     path: "/terms-of-service",
-    locale,
+    locale: DEFAULT_LOCALE,
   });
-
-  return metadata;
 }
 
-export default async function TermsAndDisclaimer(props: {
-  params: Promise<{ locale: string }>;
-}) {
-  const params = await props.params;
-  const locale = params.locale || routing.defaultLocale;
+export default async function TermsAndDisclaimer() {
+  const locale = DEFAULT_LOCALE;
   const t = await getTranslations({ locale });
 
-  const dateLocale = locale === "zh" ? "zh-CN" : "en-US";
+  const dateLocale = "en-US";
 
   return (
     <main className="mx-auto max-w-4xl px-6 pt-16 pb-16 sm:px-16 md:px-20 md:pt-24 lg:px-24 xl:px-32">

@@ -3,7 +3,7 @@ import { defineRouting } from "next-intl/routing";
 
 import { siteConfig } from "@/data/site";
 
-export const LOCALES = ["en"];
+export const LOCALES = ["en"] as const;
 export const DEFAULT_LOCALE = "en";
 export const LOCALE_ICONS = {
   en: "En",
@@ -12,13 +12,11 @@ export const LOCALE_TO_HREFLANG: Record<Locale, string> = {
   en: "en-US",
 };
 
+/** Single locale (English); URLs have no `/en` prefix. */
 export const routing = defineRouting({
-  locales: LOCALES,
+  locales: [...LOCALES],
   defaultLocale: DEFAULT_LOCALE,
-  // Always prefix so static export paths (`out/en/blog`, `out/en/beyond-work`, …) match
-  // in-page hrefs. `as-needed` omits `/en` for the default locale but Next still
-  // emits pages under `/en/`, which breaks links on GitHub Pages.
-  localePrefix: "always",
+  localePrefix: "never",
 });
 
 export const { Link, redirect, usePathname, useRouter, getPathname } =

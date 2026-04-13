@@ -49,8 +49,8 @@ export async function constructMetadata({
   const locales = availableLocales || LOCALES;
   const alternateLanguages = locales.reduce(
     (acc, lang) => {
-      const url = getLocaleUrl(lang, path || "");
-      const hreflangCode = LOCALE_TO_HREFLANG[lang] || lang;
+      const url = getLocaleUrl(lang as Locale, path || "");
+      const hreflangCode = LOCALE_TO_HREFLANG[lang as Locale] || lang;
       acc[hreflangCode] = url;
       return acc;
     },

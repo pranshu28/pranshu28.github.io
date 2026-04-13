@@ -2,38 +2,26 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { BlogCard } from "@/components/blog/blog-card";
-import { routing } from "@/i18n/routing";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { getBlogPosts } from "@/lib/blog";
 import { generateBlogJsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { pageTitleClass } from "@/lib/page-typography";
 import { jsonldScript } from "@/lib/utils";
 
-type MetadataProps = {
-  params: Promise<{ locale: string }>;
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations({ locale: DEFAULT_LOCALE });
 
-export async function generateMetadata({
-  params,
-}: MetadataProps): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale });
-
-  const metadata = await constructMetadata({
+  return constructMetadata({
     title: t("blog.title"),
     description: t("blogTagline"),
     path: "/blog",
-    locale,
+    locale: DEFAULT_LOCALE,
   });
-
-  return metadata;
 }
 
-export default async function BlogPage(props: {
-  params: Promise<{ locale: string }>;
-}) {
-  const params = await props.params;
-  const locale = params.locale || routing.defaultLocale;
+export default async function BlogPage() {
+  const locale = DEFAULT_LOCALE;
   const posts = await getBlogPosts(locale);
   const blogJsonLd = generateBlogJsonLd(posts);
   const t = await getTranslations({ locale });
