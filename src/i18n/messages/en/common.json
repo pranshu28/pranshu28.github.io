@@ -27,7 +27,9 @@
         },
         "beyondWork": {
             "title": "Beyond Work",
-            "contentMarkdown": "I like reading [non-fiction](https://www.goodreads.com/user/show/49705608-pranshu-malviya), [sketching](/en/beyond-work/?g=sketches), [hiking](/en/beyond-work/?g=hiking), and [travelling](/en/beyond-work/?g=travel) - visited 4 of the 7 [wonders](/en/beyond-work/?g=wonders) so far."
+            "openLink": "Full gallery →",
+            "openLinkAria": "Open the Beyond Work gallery page",
+            "contentMarkdown": "I like reading [non-fiction](https://www.goodreads.com/user/show/49705608-pranshu-malviya), [sketching](/en/beyond-work/?g=sketches), [hiking](/en/beyond-work/?g=hiking), and [travelling](/en/beyond-work/?g=travel). I've visited four of the seven [wonders](/en/beyond-work/?g=wonders) so far."
         },
         "contact": "Contact",
         "getInTouch": "Get in Touch",
@@ -73,7 +75,7 @@
         "layoutInspiration": "Gallery layout inspired by",
         "layoutInspirationLink": "Trey Ratcliff — Stuck in Customs (SmugMug)",
         "searchLabel": "Search photos",
-        "searchPlaceholder": "Titles, places, descriptions…",
+        "searchPlaceholder": "Titles, places…",
         "searchNoMatches": "No matching photos",
         "searchFiltered": "Showing photos that match your search",
         "inlineFeedAriaLabel": "All photos"

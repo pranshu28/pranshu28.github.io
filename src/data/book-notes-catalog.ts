@@ -22,11 +22,10 @@ export type BookNoteSpec = {
 
 const GOODREADS_SPEC = {
   coverSrc: "/photos/book-notes/goodreads-collage.jpg",
-  alt: "Goodreads — recent reads from my library",
+  alt: "Goodreads, recent reads from my library",
   title: "More books in my library",
   openHref: "https://www.goodreads.com/user/show/49705608-pranshu-malviya",
-  description:
-    "See what I’ve read, what I’m reading, and what’s on my shelf — on Goodreads.",
+  description: "Goodreads shelf.",
   takenAt: "2026-01-01",
   place: "Goodreads",
   sortVenue: "goodreads",

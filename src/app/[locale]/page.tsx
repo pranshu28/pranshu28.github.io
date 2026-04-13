@@ -11,7 +11,7 @@ import Work from "@/components/portfolio/work";
 import { CustomReactMarkdown } from "@/components/react-markdown";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY, siteConfig } from "@/data/site";
-import { routing } from "@/i18n/routing";
+import { Link as I18nLink, routing } from "@/i18n/routing";
 import { generatePersonJsonLd } from "@/lib/jsonld";
 import { transformSocialData } from "@/lib/social-icons";
 import {
@@ -276,8 +276,18 @@ export default async function Page(props: {
 
       <section id="beyond-work" aria-labelledby="beyond-work-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 9}>
-          <h2 id="beyond-work-heading" className="text-xl font-bold">
-            {t("sections.beyondWork.title")}
+          <h2
+            id="beyond-work-heading"
+            className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-xl font-bold"
+          >
+            <span>{t("sections.beyondWork.title")}</span>
+            <I18nLink
+              href="/beyond-work"
+              className="text-sm font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:ring-ring rounded-sm focus-visible:ring-2 focus-visible:outline-none"
+              aria-label={t("sections.beyondWork.openLinkAria")}
+            >
+              {t("sections.beyondWork.openLink")}
+            </I18nLink>
           </h2>
           <CustomReactMarkdown
             className="text-muted-foreground dark:prose-invert prose mt-2 max-w-2xl text-sm leading-relaxed text-pretty [&_a]:text-foreground [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:no-underline"

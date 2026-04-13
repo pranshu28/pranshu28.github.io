@@ -18,9 +18,7 @@
 export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/0503549e-8280-4ff8-a086-3fa0a8d58f2d.jpg",
-    alt: "Kunsthistorisches and Natural History Museum domes at night, Maria-Theresien-Platz, Vienna",
-    description:
-      "Maria-Theresien-Platz after hours: the twin museum domes lit like lanterns, façades in warm stone, traffic reduced to light trails.",
+    alt: "Museum domes at night, Vienna",
     sortPlace: "austria",
     sortCity: "vienna",
     sortVenue: "maria-theresien-platz-museums",
@@ -29,7 +27,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/20230611-123339.jpg",
-    alt: "Rocky forest trail through bright green deciduous woods",
+    alt: "Forest trail, Quebec",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "forest-trail",
@@ -38,9 +36,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/261f6472-c705-4cf0-b52b-e33462846fc2.jpg",
-    alt: "Curved path through a sunlit deciduous park",
-    description:
-      "A curved lawn path through deciduous trees — Montreal’s botanical garden in gentle sun. The kind of place where the pun writes itself: for what it’s earth.",
+    alt: "Montreal botanical garden",
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "botanical-garden",
@@ -50,8 +46,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/55cf6453-4bc3-450e-a8b9-d15b53555894.jpg",
     alt: "Naples street at dusk",
-    description:
-      "Narrow street at dusk, balconies stacked above a last stripe of warm light. Lilian Whiting wasn’t wrong: after Rome’s gravity, Florence’s polish, and Venice’s dream logic, Naples reads as pure pull.",
     sortPlace: "italy",
     sortCity: "naples",
     sortVenue: "street-dusk",
@@ -60,9 +54,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/ca53e79c-8932-4b49-bc73-2bc4abae8d3a.jpg",
-    alt: "Long green trellis tunnel and gravel path in formal palace gardens",
-    description:
-      "Long trellis tunnel at Schönbrunn: gravel underfoot, leaves filtering the light, palace yellow peeking through the green.",
+    alt: "Schönbrunn gardens, Vienna",
     sortPlace: "austria",
     sortCity: "vienna",
     sortVenue: "schonbrunn-gardens",
@@ -71,7 +63,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/djuf1669.jpg",
-    alt: "Alpine meadow and peaks, Himachal Pradesh",
+    alt: "Himachal Pradesh hills",
     sortPlace: "india",
     sortCity: "himachal-pradesh",
     sortVenue: "alpine-meadow",
@@ -80,9 +72,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/e85decfe-f4b9-495f-a35e-0e7a219ec1e2.jpg",
-    alt: "St. Stephen's Cathedral (Stephansdom), Vienna — Gothic spire and patterned tile roof",
-    description:
-      "Stephansdom’s south tower and chevron roof tiles from below — the silhouette most people mean when they say Vienna.",
+    alt: "Stephansdom, Vienna",
     sortPlace: "austria",
     sortCity: "vienna",
     sortVenue: "stephansdom",
@@ -91,7 +81,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/fjqq5987.jpg",
-    alt: "Sunlit path through a tall deciduous forest",
+    alt: "Forest path, Kasol",
     sortPlace: "india",
     sortCity: "kasol",
     sortVenue: "deciduous-forest-path",
@@ -100,7 +90,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/fnoz8370.jpg",
-    alt: "Remote mountain campsite with tents at the edge of a pine forest below rocky peaks",
+    alt: "Mountain camp, Manali",
     sortPlace: "india",
     sortCity: "manali",
     sortVenue: "mountain-campsite",
@@ -110,8 +100,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-0334.jpeg",
     alt: "Mehrangarh Fort, Jodhpur",
-    description:
-      "Mehrangarh’s sandstone massifs rise above a sea of indigo roofs — the blue city compressed under the fort.",
     sortPlace: "india",
     sortCity: "jodhpur",
     sortVenue: "mehrangarh-fort",
@@ -138,7 +126,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-1454.jpg",
-    alt: "Snow-covered city park with bare trees and winter sky",
+    alt: "Winter park, Montreal",
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "jarry-park-winter",
@@ -147,7 +135,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-1996.jpg",
-    alt: "Fallen red maple leaves on mossy grey rock in autumn",
+    alt: "Fall leaves, Quebec",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-maple-leaves",
@@ -156,7 +144,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-20160814-164345-hdr.jpg",
-    alt: "Monsoon valley and green fields, Araku Valley",
+    alt: "Araku Valley",
     place: "Araku Valley, Andhra Pradesh, India",
     sortPlace: "india",
     sortCity: "araku-valley",
@@ -166,9 +154,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-2207.jpeg",
-    alt: "Autumn trees on a campus lawn",
-    description:
-      "Autumn on a campus lawn in Toronto — maples turning, weekend pace, short light.",
+    alt: "Campus in fall, Toronto",
     sortPlace: "canada",
     sortCity: "toronto",
     sortVenue: "campus-lawn-autumn",
@@ -177,7 +163,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-2364.jpeg",
-    alt: "Waikiki beach view",
+    alt: "Waikiki",
     sortPlace: "usa",
     sortCity: "hawaii",
     sortVenue: "waikiki-beach",
@@ -186,18 +172,16 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-2668.jpeg",
-    alt: "Sunlight through a dense evergreen forest from a low angle",
+    alt: "Forest near Seattle",
     sortPlace: "usa",
     sortCity: "seattle",
     sortVenue: "evergreen-forest",
-    takenAt: "2024-05-18",
+    takenAt: "2023-01-14",
     tags: ["usa", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/img-2968.jpeg",
-    alt: "Turquoise Caribbean sea, rocky shore, and coastal ruins",
-    description:
-      "Caribbean blue against dark rock, low ruins on the point — the Yucatán coast where the sea eats the archaeology.",
+    alt: "Yucatán coast",
     sortPlace: "mexico",
     sortCity: "cancun",
     sortVenue: "coastal-ruins",
@@ -207,8 +191,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-3143.jpeg",
     alt: "Cenote Ik Kil, Yucatán",
-    description:
-      "Ik Kil from the rim: roots dangling like rigging, a thin falls threading the opening, swimmers in bright jackets dotting jade water. Cenotes are collapsed limestone vaults fed by rain and groundwater; the Yucatán’s ring of them sits roughly on the buried scar of the Chicxulub impact — science fiction geology you can swim in.",
     sortPlace: "mexico",
     sortCity: "cancun",
     sortVenue: "cenote-ik-kil",
@@ -227,7 +209,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-3176.jpeg",
-    alt: "Tropical beach with palm tree, wooden pier, and turquoise water under a bright sky",
+    alt: "Beach, Riviera Maya",
     sortPlace: "mexico",
     sortCity: "cancun",
     sortVenue: "tropical-beach-pier",
@@ -236,7 +218,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-3243.jpg",
-    alt: "Rock-framed overlook of a green valley, river, and distant town under a bright sky",
+    alt: "Valley view, Montreal area",
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "valley-overlook",
@@ -245,7 +227,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-3591.jpg",
-    alt: "Rolling hills of forest in peak autumn color from above",
+    alt: "Fall forest, Quebec",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-forest-hills",
@@ -254,7 +236,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-3689.jpg",
-    alt: "Wide leaf-strewn trail through autumn woods under an overcast sky",
+    alt: "Woods in fall, Quebec",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-woods-trail",
@@ -263,9 +245,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-3691.jpeg",
-    alt: "Silhouetted trees and green ground cover at a coastal sunset over the ocean",
-    description:
-      "Silhouetted trees and low brush against a cooling Pacific — the same Maui trip as the open beach sunset, this time picking a way along rough lava at the water’s edge.",
+    alt: "Coast at sunset, Maui",
     sortPlace: "usa",
     sortCity: "hawaii",
     sortVenue: "coastal-sunset-silhouette",
@@ -275,8 +255,7 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-4604.jpeg",
     alt: "Rialto Bridge and Grand Canal, Venice",
-    description:
-      "Rialto’s arch and the Grand Canal in hard daylight — vaporetti, gondolas, façades leaning over the water. Do Lafzon Ki Hai 🎶🤌",
+    description: "Do Lafzon Ki Hai 🎶🤌",
     sortPlace: "italy",
     sortCity: "venice",
     sortVenue: "rialto-grand-canal",
@@ -294,7 +273,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-4786.jpeg",
-    alt: "Narrow Venetian canal, stone bridge, and moored gondolas between tall façades",
+    alt: "Venetian canal",
     sortPlace: "italy",
     sortCity: "venice",
     sortVenue: "canal-gondolas",
@@ -303,9 +282,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-4838.jpeg",
-    alt: "Florence Cathedral and Giotto's Campanile",
-    description:
-      "Brunelleschi’s dome and Giotto’s campanile sharing one vertical slice of sky — marble geometry that, for me, edged out the tower-in-a-field shot from Pisa on the same Italy loop.",
+    alt: "Florence Duomo and campanile",
     sortPlace: "italy",
     sortCity: "florence",
     sortVenue: "duomo-campanile",
@@ -323,7 +300,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-5109.jpeg",
-    alt: "Siena Cathedral facade — white and green marble stripes and rose window under blue sky",
+    alt: "Siena Cathedral facade",
     sortPlace: "italy",
     sortCity: "siena",
     sortVenue: "duomo-facade",
@@ -333,8 +310,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-5165.jpeg",
     alt: "Colosseum at night, Rome",
-    description:
-      "The Colosseum under floodlight — arches stacked like ribs, tourists reduced to motion blur. Third wonder checked earlier that week from inside the arena; this is the same ruin dressed for night.",
     sortPlace: "italy",
     sortCity: "rome",
     sortVenue: "colosseum-night",
@@ -352,21 +327,21 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-5272-original.jpg",
-    alt: "Ferns and stone steps along a forest trail",
+    alt: "Trail steps near Seattle",
     sortPlace: "usa",
     sortCity: "seattle",
     sortVenue: "forest-trail-steps",
-    takenAt: "2024-05-19",
+    takenAt: "2023-01-15",
     tags: ["usa", "travel", "hiking", "frames"],
   },
   {
     src: "/photos/frames/img-5295.jpg",
-    alt: "Sunlit boulders and forested slopes below West Tiger Mountain, Cascade foothills near Seattle",
+    alt: "West Tiger Mountain, Washington",
     place: "West Tiger Mountain, Washington",
     sortPlace: "usa",
     sortCity: "issaquah",
     sortVenue: "west-tiger-mountain",
-    takenAt: "2024-05-20",
+    takenAt: "2023-01-16",
     tags: ["usa", "travel", "hiking", "frames", "seattle", "cascades", "washington"],
   },
   {
@@ -381,8 +356,6 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-5359.jpeg",
     alt: "Pompeii victim cast",
-    description:
-      "Plaster cast of a body hollow left by ash — the most human object in Pompeii, folded in on itself while the street scenes still look like someone stepped away for lunch.",
     sortPlace: "italy",
     sortCity: "pompeii",
     sortVenue: "plaster-cast",
@@ -391,7 +364,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-5448.jpeg",
-    alt: "Sunset light on balconied apartment buildings in a European city street",
+    alt: "Street at sunset, Naples",
     sortPlace: "italy",
     sortCity: "naples",
     sortVenue: "apartment-street-sunset",
@@ -400,7 +373,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6134.jpg",
-    alt: "Rope-and-post railing above a forested valley, small lake, and rolling hills",
+    alt: "Lookout near Montreal",
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "valley-lake-overlook",
@@ -409,7 +382,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6663.jpg",
-    alt: "Winding trails across arid slopes below a snow-capped Andean peak",
+    alt: "Andes near Cusco",
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "andean-trails",
@@ -418,9 +391,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6683.jpg",
-    alt: "Mirador Valle Rojo sign at 5045 m with the Red Valley below, Peru",
-    description:
-      "Wooden mirador sign carved with altitude — 5045 m — and the Valle Rojo rolling out in rust-red folds behind. Cold air, sharp shadow, lungs reminding you you’re not in the syllabus anymore.",
+    alt: "Red Valley mirador, Peru",
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "mirador-valle-rojo",
@@ -438,11 +409,9 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/b565410c-2c36-4d9e-b894-df7b1bb0301b.jpg",
-    alt: "Hiker with arms outstretched in front of Rainbow Mountain’s striped mineral slopes, Vinicunca, Peru",
+    alt: "Rainbow Mountain, Peru",
     title: "Vinicunca",
     place: "Vinicunca, Cusco Region, Peru",
-    description:
-      "Around 5,036 m in references for Vinicunca — not exactly 5,200 m, a figure you’ll still see rounded in a lot of tour copy. The stripes behind you look painted — rust, lavender, ochre, grey — until you remember it’s all mineral and altitude. Same brutal, beautiful day as the Red Valley mirador; this frame is the “I actually made it” shot.",
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "vinicunca-rainbow-mountain",
@@ -461,7 +430,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6765.jpg",
-    alt: "Forest-clad mountain faces and clouds in high contrast daylight",
+    alt: "Clouds over the Andes",
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "cloud-forest-peaks",
@@ -470,9 +439,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6842.jpg",
-    alt: "Inca stone ruins and terraces above the Urubamba valley, Machu Picchu",
-    description:
-      "Dry-laid walls stepping down toward the Urubamba gorge — the citadel’s engineering as loud as the peaks. Fourth wonder; three in three years; still processing the scale.",
+    alt: "Machu Picchu terraces",
     sortPlace: "peru",
     sortCity: "machu-picchu",
     sortVenue: "machu-picchu-terraces",
@@ -481,10 +448,8 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-6976.jpg",
-    alt: "Visitor at the railing above Poás Volcano crater, steam rising from acidic lake",
+    alt: "Poás Volcano crater",
     place: "Poás Volcano, Costa Rica",
-    description:
-      "Poás from the safety rail: grey crater walls, a pale green lake, and a column of steam that keeps rewriting the skyline. Elsewhere on the same road trip we also caught the quieter, extinct crater viewpoint.",
     sortPlace: "costa-rica",
     sortCity: "poas-volcano",
     sortVenue: "volcanic-crater",
@@ -493,9 +458,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-7045.jpg",
-    alt: "Tropical waterfall plunging into a turquoise pool, framed by dense jungle foliage",
-    description:
-      "Catarata de La Fortuna: one white column dropping seventy meters into turquoise pool, people tiny on the rocks for scale, jungle pressing in from every side.",
+    alt: "La Fortuna waterfall",
     sortPlace: "costa-rica",
     sortCity: "la-fortuna",
     sortVenue: "jungle-waterfall",
@@ -504,9 +467,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-7179.jpg",
-    alt: "Orange sunset over rolling hills and distant water from an elevated wooden overlook",
-    description:
-      "From a wooden overlook: rolling highlands going amber, a glint of water between ridges, air thick enough to feel like mist — the tail end of a Costa Rica road trip.",
+    alt: "Sunset, Costa Rica highlands",
     sortPlace: "costa-rica",
     sortCity: "san-jose",
     sortVenue: "hills-sunset-overlook",
@@ -515,7 +476,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-7791.jpg",
-    alt: "Deep V-shaped valley between steep green peaks and layered blue distant ranges",
+    alt: "Valley near Machu Picchu",
     sortPlace: "peru",
     sortCity: "machu-picchu",
     sortVenue: "v-valley-andes",
@@ -524,7 +485,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/p1090170-22.jpg",
-    alt: "Autumn hillside forest",
+    alt: "Fall hills, Quebec",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-hillside-forest",
@@ -533,9 +494,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/p1090246-47-original.jpg",
-    alt: "Summit overlook of autumn forest, lake, and distant mountains",
-    description:
-      "Summit view over a quilt of red and gold forest, a slice of lake, hazy mountains beyond — Quebec autumn when the Laurentians turn all the way up.",
+    alt: "Summit view, Laurentians",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "summit-autumn-overlook",
