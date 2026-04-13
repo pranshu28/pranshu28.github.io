@@ -605,18 +605,9 @@ function PhotosPageContent() {
     [replaceQuery],
   );
 
-  const replaceQueryRef = useRef(replaceQuery);
-  replaceQueryRef.current = replaceQuery;
-
-  useLayoutEffect(() => {
-    const sp = new URLSearchParams(window.location.search);
-    if (normalizeSortParam(sp.get("sort")) !== "random") return;
-    replaceQueryRef.current({ rs: String(Date.now()), p: null });
-  }, []);
-
   useLayoutEffect(() => {
     if (sortMode !== "random") return;
-    if (searchParams.get("rs") != null) return;
+    if (searchParams.get("rs") != null && searchParams.get("rs") !== "") return;
     replaceQuery({ rs: String(Date.now()), p: null });
   }, [sortMode, replaceQuery, searchParams]);
 
