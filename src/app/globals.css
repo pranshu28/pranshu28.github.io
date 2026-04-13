@@ -151,6 +151,16 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /*
+    Document scroll smoothing is toggled per route via `html.scroll-smooth-doc`
+    (see DocumentScrollBehavior). Reduced motion disables it regardless of route.
+  */
+  @media (prefers-reduced-motion: no-preference) {
+    html.scroll-smooth-doc {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 /* code styling */

@@ -75,7 +75,7 @@
         "searchLabel": "Search photos",
         "searchPlaceholder": "Titles, places, descriptions…",
         "searchNoMatches": "No matching photos",
-        "searchMatchCount": "{count, plural, one {# match} other {# matches}}",
+        "searchFiltered": "Showing photos that match your search",
         "inlineFeedAriaLabel": "All photos"
     },
     "blog": {

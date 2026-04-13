@@ -10,6 +10,7 @@ import { Inter as FontSans } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import Footer from "@/components/blocks/footer";
+import { DocumentScrollBehavior } from "@/components/blocks/document-scroll-behavior";
 import Navbar from "@/components/blocks/navbar/navbar";
 import { ScrollRestore } from "@/components/blocks/scroll-restore";
 import JsonLdScripts from "@/components/jsonld-scripts";
@@ -81,6 +82,7 @@ export default async function LocaleLayout({
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <TooltipProvider delayDuration={0}>
               <ScrollRestore />
+              <DocumentScrollBehavior />
               <Navbar />
               {children}
               <Footer />

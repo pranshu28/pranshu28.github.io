@@ -91,6 +91,30 @@ function LocationTag({
   );
 }
 
+function GalleryLayoutAttribution() {
+  const tGallery = useTranslations("galleryPage");
+  return (
+    <footer
+      className="text-muted-foreground/65 mt-auto w-full shrink-0 border-t border-border/40 pt-3"
+      role="note"
+    >
+      <p className="mx-auto max-w-md px-1 text-center text-[10px] leading-snug sm:text-[11px]">
+        {tGallery("layoutInspiration")}{" "}
+        <a
+          href="https://stuckincustoms.smugmug.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="https://stuckincustoms.smugmug.com"
+          className="text-muted-foreground/90 underline decoration-border/60 underline-offset-2 transition-colors hover:text-foreground/70 hover:decoration-foreground/40"
+        >
+          {tGallery("layoutInspirationLink")}
+        </a>
+        .
+      </p>
+    </footer>
+  );
+}
+
 function AlbumTile({
   gallery,
   index,
@@ -100,7 +124,6 @@ function AlbumTile({
   index: number;
   onClick: () => void;
 }) {
-  const count = gallery.photos.length;
   return (
     <BlurFade
       delay={BLUR_FADE_DELAY * (index + 1)}
@@ -111,7 +134,7 @@ function AlbumTile({
           type="button"
           data-album-id={gallery.id}
           onClick={onClick}
-          aria-label={`Open ${gallery.title} album, ${count} ${count === 1 ? "photo" : "photos"}`}
+          aria-label={`Open ${gallery.title} album`}
           className="group border-border relative block w-full min-w-0 overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           style={{ aspectRatio: "4 / 3" }}
         >
@@ -127,9 +150,6 @@ function AlbumTile({
             <h2 className="text-left text-xs leading-tight font-semibold text-white sm:text-sm md:text-lg lg:text-xl">
               {gallery.title}
             </h2>
-            <p className="mt-0.5 text-left text-[10px] text-white/75 sm:text-xs">
-              {count} {count === 1 ? "photo" : "photos"}
-            </p>
           </div>
         </button>
       </div>
@@ -310,7 +330,7 @@ function PhotoLightbox({
                   ? "border-white opacity-100 ring-2 ring-white/40"
                   : "border-transparent opacity-55 hover:opacity-90",
               )}
-              aria-label={`Photo ${i + 1}`}
+              aria-label={photoDisplayTitle(ph)}
               aria-current={i === index ? "true" : undefined}
             >
               <img
@@ -322,13 +342,6 @@ function PhotoLightbox({
             </button>
           ))}
         </div>
-      </div>
-
-      <div
-        className="text-muted-foreground shrink-0 px-4 py-3 text-center text-sm text-white/60 sm:px-6"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {index + 1} / {photos.length}
       </div>
     </div>
   );
@@ -650,7 +663,7 @@ function PhotosPageContent() {
     if (q === "") return undefined;
     const n = archiveDisplayedPhotos.length;
     if (n === 0) return tGallery("searchNoMatches");
-    return tGallery("searchMatchCount", { count: n });
+    return tGallery("searchFiltered");
   }, [photoSearchQuery, archiveDisplayedPhotos.length, tGallery]);
 
   const backToCombinedHome = useCallback(() => {
@@ -711,7 +724,7 @@ function PhotosPageContent() {
     if (q === "") return undefined;
     const n = travelDisplayedPhotos.length;
     if (n === 0) return tGallery("searchNoMatches");
-    return tGallery("searchMatchCount", { count: n });
+    return tGallery("searchFiltered");
   }, [photoSearchQuery, travelDisplayedPhotos.length, tGallery]);
 
   const lightboxAlbumId = useMemo(() => {
@@ -808,28 +821,31 @@ function PhotosPageContent() {
     return (
       <main className="flex min-h-dvh w-full max-w-none flex-col pb-24 pl-[max(0.5rem,env(safe-area-inset-left))] pr-[max(0.5rem,env(safe-area-inset-right))] pt-10 sm:pl-[max(0.75rem,env(safe-area-inset-left))] sm:pr-[max(0.75rem,env(safe-area-inset-right))] sm:pt-14 md:pt-16">
         <section
-          className="w-full min-w-0"
+          className="flex min-h-0 min-w-0 flex-1 flex-col"
           aria-labelledby="photos-album-heading"
         >
-          <AlbumDetail
-            gallery={displayArchiveGallery}
-            displayPhotos={archiveDisplayedPhotos}
-            searchQuery={photoSearchQuery}
-            onSearchQueryChange={setPhotoSearchQuery}
-            searchStatusText={archiveSearchStatus}
-            sortMode={sortMode}
-            onSortChange={onSortChange}
-            onReshuffleRandom={onReshuffleRandom}
-            lightboxOpen={archiveLightboxOpen}
-            lightboxIndex={archiveLightboxIndex}
-            onBack={backToCombinedHome}
-            onOpenPhoto={openArchivePhoto}
-            onCloseLightbox={closeArchiveLightbox}
-            onPrevPhoto={() => stepArchivePhoto(-1)}
-            onNextPhoto={() => stepArchivePhoto(1)}
-            onSelectPhoto={openArchivePhoto}
-            backLabel={tGallery("backToAlbums")}
-          />
+          <div className="min-w-0 flex-1">
+            <AlbumDetail
+              gallery={displayArchiveGallery}
+              displayPhotos={archiveDisplayedPhotos}
+              searchQuery={photoSearchQuery}
+              onSearchQueryChange={setPhotoSearchQuery}
+              searchStatusText={archiveSearchStatus}
+              sortMode={sortMode}
+              onSortChange={onSortChange}
+              onReshuffleRandom={onReshuffleRandom}
+              lightboxOpen={archiveLightboxOpen}
+              lightboxIndex={archiveLightboxIndex}
+              onBack={backToCombinedHome}
+              onOpenPhoto={openArchivePhoto}
+              onCloseLightbox={closeArchiveLightbox}
+              onPrevPhoto={() => stepArchivePhoto(-1)}
+              onNextPhoto={() => stepArchivePhoto(1)}
+              onSelectPhoto={openArchivePhoto}
+              backLabel={tGallery("backToAlbums")}
+            />
+          </div>
+          <GalleryLayoutAttribution />
         </section>
       </main>
     );
@@ -837,85 +853,78 @@ function PhotosPageContent() {
 
   return (
     <main className="flex min-h-dvh w-full max-w-none flex-col pb-24 pl-[max(0.5rem,env(safe-area-inset-left))] pr-[max(0.5rem,env(safe-area-inset-right))] pt-10 sm:pl-[max(0.75rem,env(safe-area-inset-left))] sm:pr-[max(0.75rem,env(safe-area-inset-right))] sm:pt-14 md:pt-16">
-      <section className="w-full min-w-0" aria-labelledby="photos-heading">
-        <BlurFade delay={0}>
-          <I18nLink
-            href="/"
-            className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors sm:mb-8"
-          >
-            &larr; Back to site
-          </I18nLink>
-          <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
-            {tGallery("albumsSection")}
-          </p>
-          <h1
-            id="photos-heading"
-            className="mb-6 text-3xl font-bold tracking-tight sm:mb-8 sm:text-4xl"
-          >
-            {tGallery("title")}
-          </h1>
-        </BlurFade>
+      <section
+        className="flex min-h-0 min-w-0 flex-1 flex-col"
+        aria-labelledby="photos-heading"
+      >
+        <div className="min-w-0 flex-1">
+          <BlurFade delay={0}>
+            <I18nLink
+              href="/"
+              className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors sm:mb-8"
+            >
+              &larr; Back to site
+            </I18nLink>
+            <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
+              {tGallery("albumsSection")}
+            </p>
+            <h1
+              id="photos-heading"
+              className="mb-6 text-3xl font-bold tracking-tight sm:mb-8 sm:text-4xl"
+            >
+              {tGallery("title")}
+            </h1>
+          </BlurFade>
 
-        <div
-          className="mb-10 flex min-w-0 flex-row flex-nowrap gap-1.5 sm:mb-14 sm:gap-3 md:gap-4"
-          role="list"
-          aria-label="Album shortcuts"
-        >
-          {navAlbums.map((gallery, i) => (
-            <AlbumTile
-              key={gallery.id}
-              gallery={gallery}
-              index={i}
-              onClick={() => jumpToAlbum(gallery.id)}
-            />
-          ))}
+          <div
+            className="mb-10 flex min-w-0 flex-row flex-nowrap gap-1.5 sm:mb-14 sm:gap-3 md:gap-4"
+            role="list"
+            aria-label="Album shortcuts"
+          >
+            {navAlbums.map((gallery, i) => (
+              <AlbumTile
+                key={gallery.id}
+                gallery={gallery}
+                index={i}
+                onClick={() => jumpToAlbum(gallery.id)}
+              />
+            ))}
+          </div>
+
+          {travelBase ? (
+            <>
+              <PhotoSearchBar
+                id="photos-gallery-search"
+                value={photoSearchQuery}
+                onChange={setPhotoSearchQuery}
+                label={tGallery("searchLabel")}
+                placeholder={tGallery("searchPlaceholder")}
+                statusText={combinedSearchStatus}
+                className="mb-8 sm:mb-10"
+              />
+              <InlineAlbumSection
+                gallery={travelBase}
+                sectionId="album-travel"
+                headingId="photos-section-travel"
+                hideSectionHeading
+                sectionAriaLabel={tGallery("inlineFeedAriaLabel")}
+                showSortControls
+                sortMode={sortMode}
+                onSortChange={onSortChange}
+                onReshuffleRandom={onReshuffleRandom}
+                sortedPhotos={travelDisplayedPhotos}
+                onOpenPhoto={(i) => openCombinedPhoto("travel", i)}
+                sortLabel={tGallery("sortLabel")}
+                sortPlace={tGallery("sortPlace")}
+                sortDate={tGallery("sortDate")}
+                sortRandom={tGallery("sortRandom")}
+                reshuffle={tGallery("reshuffle")}
+              />
+            </>
+          ) : null}
         </div>
 
-        {travelBase ? (
-          <>
-            <PhotoSearchBar
-              id="photos-gallery-search"
-              value={photoSearchQuery}
-              onChange={setPhotoSearchQuery}
-              label={tGallery("searchLabel")}
-              placeholder={tGallery("searchPlaceholder")}
-              statusText={combinedSearchStatus}
-              className="mb-8 sm:mb-10"
-            />
-            <InlineAlbumSection
-              gallery={travelBase}
-              sectionId="album-travel"
-              headingId="photos-section-travel"
-              hideSectionHeading
-              sectionAriaLabel={tGallery("inlineFeedAriaLabel")}
-              showSortControls
-              sortMode={sortMode}
-              onSortChange={onSortChange}
-              onReshuffleRandom={onReshuffleRandom}
-              sortedPhotos={travelDisplayedPhotos}
-              onOpenPhoto={(i) => openCombinedPhoto("travel", i)}
-              sortLabel={tGallery("sortLabel")}
-              sortPlace={tGallery("sortPlace")}
-              sortDate={tGallery("sortDate")}
-              sortRandom={tGallery("sortRandom")}
-              reshuffle={tGallery("reshuffle")}
-            />
-          </>
-        ) : null}
-
-        <p className="text-muted-foreground mx-auto mt-14 max-w-prose text-center text-xs leading-relaxed sm:mt-20 sm:text-sm">
-          {tGallery("layoutInspiration")}{" "}
-          <a
-            href="https://stuckincustoms.smugmug.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="https://stuckincustoms.smugmug.com"
-            className="text-foreground/90 underline decoration-muted-foreground/50 underline-offset-2 transition-colors hover:decoration-foreground"
-          >
-            {tGallery("layoutInspirationLink")}
-          </a>
-          .
-        </p>
+        <GalleryLayoutAttribution />
 
         {lightboxGallery && combinedLightboxOpen ? (
           <PhotoLightbox

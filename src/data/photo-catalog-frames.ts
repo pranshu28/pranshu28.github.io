@@ -13,7 +13,7 @@
  *
  * Every entry sets `sortPlace` (country slug), `sortCity`, and `sortVenue` for place-sort
  * (country → city → venue). Add `takenAt` / `year` from EXIF or when the filename encodes a date
- * (`YYYYMMDD`); otherwise omit until you have a reliable date.
+ * (`YYYYMMDD`); otherwise use trip notes. Dates reflect the owner’s timeline (EXIF not always present).
  */
 export const FRAME_PHOTOS = [
   {
@@ -24,6 +24,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "austria",
     sortCity: "vienna",
     sortVenue: "maria-theresien-platz-museums",
+    takenAt: "2024-07-10",
     tags: ["austria", "history", "travel", "frames", "vienna", "night", "kunsthistorisches"],
   },
   {
@@ -43,6 +44,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "botanical-garden",
+    takenAt: "2022-07-14",
     tags: ["canada", "travel", "hiking", "frames", "montreal", "botanical-garden"],
   },
   {
@@ -53,7 +55,8 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "naples",
     sortVenue: "street-dusk",
-    tags: ["italy", "history", "travel", "frames", "naples", "campania"],
+    takenAt: "2024-08-04",
+    tags: ["italy", "travel", "frames", "naples", "campania"],
   },
   {
     src: "/photos/frames/ca53e79c-8932-4b49-bc73-2bc4abae8d3a.jpg",
@@ -63,7 +66,8 @@ export const FRAME_PHOTOS = [
     sortPlace: "austria",
     sortCity: "vienna",
     sortVenue: "schonbrunn-gardens",
-    tags: ["austria", "history", "travel", "frames", "schonbrunn", "vienna"],
+    takenAt: "2024-07-11",
+    tags: ["austria", "travel", "frames", "schonbrunn", "vienna"],
   },
   {
     src: "/photos/frames/djuf1669.jpg",
@@ -71,6 +75,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "india",
     sortCity: "himachal-pradesh",
     sortVenue: "alpine-meadow",
+    takenAt: "2018-05-12",
     tags: ["india", "travel", "hiking", "frames"],
   },
   {
@@ -81,6 +86,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "austria",
     sortCity: "vienna",
     sortVenue: "stephansdom",
+    takenAt: "2024-07-12",
     tags: ["austria", "history", "travel", "frames", "stephansdom", "gothic"],
   },
   {
@@ -89,6 +95,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "india",
     sortCity: "kasol",
     sortVenue: "deciduous-forest-path",
+    takenAt: "2018-05-14",
     tags: ["india", "travel", "hiking", "frames"],
   },
   {
@@ -97,6 +104,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "india",
     sortCity: "manali",
     sortVenue: "mountain-campsite",
+    takenAt: "2018-05-16",
     tags: ["india", "travel", "hiking", "frames"],
   },
   {
@@ -107,6 +115,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "india",
     sortCity: "jodhpur",
     sortVenue: "mehrangarh-fort",
+    takenAt: "2021-11-18",
     tags: ["india", "history", "travel", "frames", "jodhpur", "rajasthan", "blue-city"],
   },
   {
@@ -115,6 +124,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "india",
     sortCity: "jaisalmer",
     sortVenue: "bada-bagh",
+    takenAt: "2021-11-14",
     tags: ["india", "history", "travel", "frames"],
   },
   {
@@ -123,6 +133,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "india",
     sortCity: "jaisalmer",
     sortVenue: "gadisar-lake",
+    takenAt: "2021-11-14",
     tags: ["india", "history", "travel", "frames"],
   },
   {
@@ -131,6 +142,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "jarry-park-winter",
+    takenAt: "2021-12-15",
     tags: ["canada", "travel", "frames"],
   },
   {
@@ -139,6 +151,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-maple-leaves",
+    takenAt: "2023-10-12",
     tags: ["canada", "travel", "frames"],
   },
   {
@@ -148,7 +161,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "india",
     sortCity: "araku-valley",
     sortVenue: "monsoon-valley",
-    takenAt: "2016-08-14",
+    takenAt: "2017-08-15",
     tags: ["india", "travel", "hiking", "frames"],
   },
   {
@@ -159,6 +172,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "toronto",
     sortVenue: "campus-lawn-autumn",
+    takenAt: "2023-10-21",
     tags: ["canada", "travel", "frames", "toronto", "autumn"],
   },
   {
@@ -167,6 +181,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "usa",
     sortCity: "hawaii",
     sortVenue: "waikiki-beach",
+    takenAt: "2022-12-29",
     tags: ["usa", "travel", "frames"],
   },
   {
@@ -175,6 +190,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "usa",
     sortCity: "seattle",
     sortVenue: "evergreen-forest",
+    takenAt: "2024-05-18",
     tags: ["usa", "travel", "hiking", "frames"],
   },
   {
@@ -185,7 +201,8 @@ export const FRAME_PHOTOS = [
     sortPlace: "mexico",
     sortCity: "cancun",
     sortVenue: "coastal-ruins",
-    tags: ["mexico", "history", "travel", "frames", "cancun", "caribbean", "riviera-maya"],
+    takenAt: "2023-05-19",
+    tags: ["mexico", "travel", "frames", "cancun", "caribbean", "riviera-maya"],
   },
   {
     src: "/photos/frames/img-3143.jpeg",
@@ -195,6 +212,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "mexico",
     sortCity: "cancun",
     sortVenue: "cenote-ik-kil",
+    takenAt: "2023-05-20",
     tags: [
       "mexico",
       "history",
@@ -213,6 +231,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "mexico",
     sortCity: "cancun",
     sortVenue: "tropical-beach-pier",
+    takenAt: "2023-05-21",
     tags: ["mexico", "travel", "frames"],
   },
   {
@@ -221,6 +240,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "valley-overlook",
+    takenAt: "2023-07-20",
     tags: ["canada", "travel", "hiking", "frames"],
   },
   {
@@ -229,6 +249,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-forest-hills",
+    takenAt: "2024-10-05",
     tags: ["canada", "travel", "hiking", "frames"],
   },
   {
@@ -237,6 +258,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-woods-trail",
+    takenAt: "2022-10-18",
     tags: ["canada", "travel", "hiking", "frames"],
   },
   {
@@ -247,6 +269,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "usa",
     sortCity: "hawaii",
     sortVenue: "coastal-sunset-silhouette",
+    takenAt: "2022-12-31",
     tags: ["usa", "travel", "frames", "maui", "hawaii", "lava", "coast", "sunset"],
   },
   {
@@ -257,6 +280,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "venice",
     sortVenue: "rialto-grand-canal",
+    takenAt: "2024-07-27",
     tags: ["italy", "history", "travel", "frames", "venice", "rialto", "grand-canal"],
   },
   {
@@ -265,6 +289,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "venice",
     sortVenue: "bridge-of-sighs",
+    takenAt: "2024-07-27",
     tags: ["italy", "history", "travel", "frames"],
   },
   {
@@ -273,6 +298,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "venice",
     sortVenue: "canal-gondolas",
+    takenAt: "2024-07-27",
     tags: ["italy", "history", "travel", "frames"],
   },
   {
@@ -283,17 +309,8 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "florence",
     sortVenue: "duomo-campanile",
+    takenAt: "2024-07-29",
     tags: ["italy", "history", "travel", "frames", "florence", "duomo", "renaissance"],
-  },
-  {
-    src: "/photos/frames/img-5032.jpeg",
-    alt: "Manarola, Cinque Terre — colorful houses on cliffs above the Mediterranean",
-    description:
-      "Manarola again from the classic angle — pastel walls, tiny harbor, sea darkening to sapphire. Still feels unreal from this ledge.",
-    sortPlace: "italy",
-    sortCity: "manarola",
-    sortVenue: "manarola-cliffs",
-    tags: ["italy", "history", "travel", "frames", "cinque-terre", "manarola", "liguria"],
   },
   {
     src: "/photos/frames/img-5104.jpeg",
@@ -301,6 +318,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "siena",
     sortVenue: "skyline-duomo",
+    takenAt: "2024-08-02",
     tags: ["italy", "history", "travel", "frames"],
   },
   {
@@ -309,6 +327,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "siena",
     sortVenue: "duomo-facade",
+    takenAt: "2024-08-02",
     tags: ["italy", "history", "travel", "frames"],
   },
   {
@@ -319,6 +338,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "rome",
     sortVenue: "colosseum-night",
+    takenAt: "2024-08-05",
     tags: [
       "italy",
       "history",
@@ -336,6 +356,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "usa",
     sortCity: "seattle",
     sortVenue: "forest-trail-steps",
+    takenAt: "2024-05-19",
     tags: ["usa", "travel", "hiking", "frames"],
   },
   {
@@ -345,6 +366,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "usa",
     sortCity: "issaquah",
     sortVenue: "west-tiger-mountain",
+    takenAt: "2024-05-20",
     tags: ["usa", "travel", "hiking", "frames", "seattle", "cascades", "washington"],
   },
   {
@@ -353,6 +375,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "rome",
     sortVenue: "vatican-bramante-staircase",
+    takenAt: "2024-08-03",
     tags: ["italy", "history", "travel", "frames"],
   },
   {
@@ -363,6 +386,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "pompeii",
     sortVenue: "plaster-cast",
+    takenAt: "2024-08-03",
     tags: ["italy", "history", "travel", "frames", "pompeii", "vesuvius"],
   },
   {
@@ -371,7 +395,8 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "naples",
     sortVenue: "apartment-street-sunset",
-    tags: ["italy", "history", "travel", "frames"],
+    takenAt: "2024-08-04",
+    tags: ["italy", "travel", "frames"],
   },
   {
     src: "/photos/frames/img-6134.jpg",
@@ -379,6 +404,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "valley-lake-overlook",
+    takenAt: "2025-07-08",
     tags: ["canada", "travel", "hiking", "frames"],
   },
   {
@@ -387,6 +413,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "andean-trails",
+    takenAt: "2025-11-09",
     tags: ["peru", "history", "travel", "hiking", "frames"],
   },
   {
@@ -397,9 +424,9 @@ export const FRAME_PHOTOS = [
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "mirador-valle-rojo",
+    takenAt: "2025-11-11",
     tags: [
       "peru",
-      "history",
       "travel",
       "hiking",
       "frames",
@@ -415,10 +442,11 @@ export const FRAME_PHOTOS = [
     title: "Vinicunca",
     place: "Vinicunca, Cusco Region, Peru",
     description:
-      "About 5200 m and the stripes behind you look painted — rust, lavender, ochre, grey — until you remember it’s all mineral and altitude. Same brutal, beautiful day as the Red Valley mirador; this frame is the “I actually made it” shot.",
+      "Around 5,036 m in references for Vinicunca — not exactly 5,200 m, a figure you’ll still see rounded in a lot of tour copy. The stripes behind you look painted — rust, lavender, ochre, grey — until you remember it’s all mineral and altitude. Same brutal, beautiful day as the Red Valley mirador; this frame is the “I actually made it” shot.",
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "vinicunca-rainbow-mountain",
+    takenAt: "2025-11-11",
     tags: [
       "peru",
       "travel",
@@ -437,6 +465,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "cloud-forest-peaks",
+    takenAt: "2025-11-09",
     tags: ["peru", "travel", "hiking", "frames"],
   },
   {
@@ -447,6 +476,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "peru",
     sortCity: "machu-picchu",
     sortVenue: "machu-picchu-terraces",
+    takenAt: "2025-11-10",
     tags: ["peru", "history", "travel", "hiking", "frames", "machu-picchu", "inca", "seven-wonders"],
   },
   {
@@ -458,6 +488,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "costa-rica",
     sortCity: "poas-volcano",
     sortVenue: "volcanic-crater",
+    takenAt: "2025-11-16",
     tags: ["costa-rica", "travel", "hiking", "frames", "poas", "volcano", "roadtrip", "pura-vida"],
   },
   {
@@ -468,6 +499,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "costa-rica",
     sortCity: "la-fortuna",
     sortVenue: "jungle-waterfall",
+    takenAt: "2025-11-17",
     tags: ["costa-rica", "travel", "hiking", "frames", "la-fortuna", "waterfall", "rainforest", "pura-vida"],
   },
   {
@@ -478,6 +510,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "costa-rica",
     sortCity: "san-jose",
     sortVenue: "hills-sunset-overlook",
+    takenAt: "2025-11-19",
     tags: ["costa-rica", "travel", "frames", "roadtrip", "pura-vida", "sunset"],
   },
   {
@@ -486,6 +519,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "peru",
     sortCity: "machu-picchu",
     sortVenue: "v-valley-andes",
+    takenAt: "2025-11-10",
     tags: ["peru", "travel", "hiking", "frames"],
   },
   {
@@ -494,6 +528,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-hillside-forest",
+    takenAt: "2023-10-08",
     tags: ["canada", "travel", "hiking", "frames"],
   },
   {
@@ -504,6 +539,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "summit-autumn-overlook",
+    takenAt: "2023-10-14",
     tags: [
       "canada",
       "travel",

@@ -18,6 +18,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "machu-picchu-citadel",
+    takenAt: "2025-11-10",
     tags: [
       "peru",
       "wonder",
@@ -38,6 +39,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "machu-picchu-mist",
+    takenAt: "2025-11-10",
     tags: ["peru", "travel", "hiking", "history", "machu-picchu", "cloud-forest"],
   },
   {
@@ -48,6 +50,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "peru",
     sortCity: "cusco-region",
     sortVenue: "red-valley",
+    takenAt: "2025-11-11",
     tags: [
       "peru",
       "travel",
@@ -65,6 +68,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "peru",
     sortCity: "sacred-valley",
     sortVenue: "urubamba-valley",
+    takenAt: "2025-11-09",
     tags: ["peru", "travel", "hiking"],
   },
   {
@@ -75,6 +79,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "italy",
     sortCity: "rome",
     sortVenue: "colosseum-interior",
+    takenAt: "2024-08-05",
     tags: [
       "italy",
       "wonder",
@@ -95,7 +100,8 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "italy",
     sortCity: "la-spezia-province",
     sortVenue: "cinque-terre-coast",
-    tags: ["italy", "travel", "history", "cinque-terre", "manarola", "mediterranean", "liguria"],
+    takenAt: "2024-08-01",
+    tags: ["italy", "travel", "cinque-terre", "manarola", "mediterranean", "liguria"],
   },
   {
     src: "/photos/core/venice-canal.jpg",
@@ -103,7 +109,8 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "italy",
     sortCity: "venice",
     sortVenue: "murano-canal",
-    tags: ["italy", "travel", "history"],
+    takenAt: "2024-07-27",
+    tags: ["italy", "travel"],
   },
   {
     src: "/photos/core/leaning-tower-pisa.jpg",
@@ -111,6 +118,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "italy",
     sortCity: "pisa",
     sortVenue: "leaning-tower",
+    takenAt: "2024-07-30",
     tags: ["italy", "travel", "history"],
   },
   {
@@ -119,6 +127,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "india",
     sortCity: "agra",
     sortVenue: "taj-mahal",
+    takenAt: "2009-03-15",
     tags: ["india", "wonder", "travel", "history"],
   },
   {
@@ -127,6 +136,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "india",
     sortCity: "rajasthan",
     sortVenue: "thar-desert",
+    takenAt: "2021-11-19",
     tags: ["india", "travel"],
   },
   {
@@ -137,6 +147,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "mexico",
     sortCity: "yucatan",
     sortVenue: "chichen-itza",
+    takenAt: "2023-05-18",
     tags: [
       "mexico",
       "wonder",
@@ -156,6 +167,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "costa-rica",
     sortCity: "san-jose",
     sortVenue: "mountain-sunrise",
+    takenAt: "2025-11-18",
     tags: ["costa-rica", "travel", "hiking", "roadtrip", "pura-vida", "sunset", "cloud-forest"],
   },
   {
@@ -166,6 +178,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "costa-rica",
     sortCity: "la-fortuna",
     sortVenue: "rainforest-trail",
+    takenAt: "2025-11-17",
     tags: [
       "costa-rica",
       "travel",
@@ -185,6 +198,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "canada",
     sortCity: "quebec-city",
     sortVenue: "chateau-frontenac",
+    takenAt: "2023-07-12",
     tags: [
       "canada",
       "travel",
@@ -201,6 +215,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "canada",
     sortCity: "vancouver",
     sortVenue: "forest-pool",
+    takenAt: "2025-07-15",
     tags: ["canada", "travel"],
   },
   {
@@ -209,6 +224,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "sunset-skyline",
+    takenAt: "2025-05-20",
     tags: ["canada", "travel"],
   },
   {
@@ -219,6 +235,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "usa",
     sortCity: "new-york-city",
     sortVenue: "manhattan-dusk",
+    takenAt: "2023-11-12",
     tags: [
       "usa",
       "travel",
@@ -238,6 +255,7 @@ export const CORE_PHOTO_CATALOG = [
     sortPlace: "usa",
     sortCity: "hawaii",
     sortVenue: "beach-sunset",
+    takenAt: "2022-12-30",
     tags: [
       "usa",
       "travel",
