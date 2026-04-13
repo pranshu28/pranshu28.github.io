@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { sectionHeadingClass } from "@/lib/page-typography";
+
 interface ContactProps {
   emailUrl: string;
   contactLabel?: string;
@@ -20,9 +22,7 @@ export default function Contact({
       <p className="text-muted-foreground font-sans text-xs font-medium tracking-[0.2em] uppercase">
         {contactLabel}
       </p>
-      <h2 className="font-page-heading text-2xl font-semibold tracking-tight sm:text-3xl">
-        {getInTouch}
-      </h2>
+      <h2 className={sectionHeadingClass}>{getInTouch}</h2>
       <p className="text-muted-foreground font-sans text-center text-sm leading-relaxed md:text-base">
         {contactDescription}{" "}
         <Link

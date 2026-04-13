@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 import { getBlogPosts, getPost } from "@/lib/blog";
+import { pageTitleClass } from "@/lib/page-typography";
 import { formatDate } from "@/lib/utils";
 
 export async function generateStaticParams() {
@@ -31,9 +32,7 @@ export default async function Blog(props: {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 sm:px-8 md:px-10">
-      <h1 className="mb-3 text-3xl font-semibold tracking-tighter md:text-4xl">
-        {post.metadata.title}
-      </h1>
+      <h1 className={`${pageTitleClass} mb-3`}>{post.metadata.title}</h1>
       <div className="mb-8 flex items-center justify-between text-sm">
         <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
           <p>{formatDate(post.metadata.date, locale)}</p>

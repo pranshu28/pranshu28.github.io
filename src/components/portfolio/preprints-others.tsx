@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { CustomReactMarkdown } from "@/components/react-markdown";
+import { subsectionHeadingClass } from "@/lib/page-typography";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Button } from "@/components/ui/button";
 import { Link as I18nLink } from "@/i18n/routing";
@@ -91,9 +92,7 @@ export default function PreprintsOthers({
   if (!mounted) {
     return (
       <div className="mt-8">
-        <h3 className="font-page-heading text-foreground mb-1 text-xl font-semibold tracking-tight sm:text-2xl">
-          {title}
-        </h3>
+        <h3 className={subsectionHeadingClass}>{title}</h3>
         <p className="text-muted-foreground mb-4 text-sm">{subtitle}</p>
         <div className="space-y-3">
           {items.slice(0, initialVisible).map((p, i) => row(p, i))}
@@ -104,9 +103,7 @@ export default function PreprintsOthers({
 
   return (
     <div className="mt-8">
-      <h3 className="font-page-heading text-foreground mb-1 text-xl font-semibold tracking-tight sm:text-2xl">
-        {title}
-      </h3>
+      <h3 className={subsectionHeadingClass}>{title}</h3>
       <p className="text-muted-foreground mb-4 text-sm">{subtitle}</p>
       <div className="space-y-3">
         {displayed.map((p, i) => row(p, i))}

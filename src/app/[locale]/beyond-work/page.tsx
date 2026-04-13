@@ -37,6 +37,7 @@ import {
   normalizeSortParam,
   sortGalleryPhotos,
 } from "@/lib/sort-gallery-photos";
+import { pageTitleClass, sectionHeadingClass } from "@/lib/page-typography";
 import { cn } from "@/lib/utils";
 
 /** Shareable: `?g=<albumId>&p=<0-based index>` */
@@ -413,7 +414,10 @@ function AlbumDetail({
         </nav>
         <h1
           id="photos-album-heading"
-          className="mb-4 max-w-full overflow-x-auto text-2xl font-bold tracking-tight whitespace-nowrap sm:mb-5 sm:text-3xl"
+          className={cn(
+            "mb-4 max-w-full overflow-x-auto whitespace-nowrap sm:mb-5",
+            pageTitleClass,
+          )}
         >
           {gallery.title}
         </h1>
@@ -517,7 +521,7 @@ function InlineAlbumSection({
         {hideSectionHeading ? null : (
           <h2
             id={headingId}
-            className="mb-4 text-xl font-bold tracking-tight sm:mb-5 sm:text-2xl"
+            className={cn("mb-4 sm:mb-5", sectionHeadingClass)}
           >
             {gallery.title}
           </h2>
@@ -878,7 +882,7 @@ function PhotosPageContent() {
             </p>
             <h1
               id="photos-heading"
-              className="mb-6 text-3xl font-bold tracking-tight sm:mb-8 sm:text-4xl"
+              className={cn("mb-6 sm:mb-8", pageTitleClass)}
             >
               {tGallery("title")}
             </h1>

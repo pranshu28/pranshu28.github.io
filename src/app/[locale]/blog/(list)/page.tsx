@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { getBlogPosts } from "@/lib/blog";
 import { generateBlogJsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
+import { pageTitleClass } from "@/lib/page-typography";
 import { jsonldScript } from "@/lib/utils";
 
 type MetadataProps = {
@@ -41,9 +42,7 @@ export default async function BlogPage(props: {
     <main className="pt-16 pb-12 sm:pt-24 sm:pb-14 md:pt-32 md:pb-16 lg:pt-36 xl:pt-40">
       {jsonldScript(blogJsonLd)}
       <div className="mx-auto w-full max-w-3xl px-6 sm:px-8 md:px-10">
-        <h1 className="mb-4 text-3xl font-semibold tracking-tighter md:text-4xl">
-          {t("blog.title")}
-        </h1>
+        <h1 className={`${pageTitleClass} mb-4`}>{t("blog.title")}</h1>
         <p className="text-muted-foreground mb-8 max-w-2xl text-sm md:text-base">
           {t("blogTagline")}
         </p>

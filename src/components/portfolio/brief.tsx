@@ -1,3 +1,4 @@
+import { heroNameClass } from "@/lib/page-typography";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Brief({
@@ -29,7 +30,7 @@ export default function Brief({
       className={`flex flex-col-reverse items-center justify-center gap-6 sm:flex-row sm:justify-between md:gap-8 lg:gap-10 ${className || ""}`}
     >
       <div className="flex flex-1 flex-col items-center space-y-1.5 text-center sm:items-start sm:text-left">
-        <h1 className="font-page-heading text-3xl font-semibold tracking-tight sm:text-5xl xl:text-6xl/none">
+        <h1 className={heroNameClass}>
           {firstName && surname ? (
             isChinese ? (
               `${surname}${firstName}`
@@ -45,11 +46,9 @@ export default function Brief({
           )}
         </h1>
         {subtitle ? (
-          <p className="text-muted-foreground font-sans text-sm font-medium tracking-wide uppercase sm:text-base">
-            {subtitle}
-          </p>
+          <p className="text-muted-foreground font-sans text-lg">{subtitle}</p>
         ) : null}
-        <p className="max-w-[600px] font-sans whitespace-pre-line text-base leading-snug md:text-lg md:leading-snug">
+        <p className="max-w-[600px] font-sans whitespace-pre-line md:text-xl">
           {description}
         </p>
       </div>

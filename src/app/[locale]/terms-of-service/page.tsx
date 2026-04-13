@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 import { constructMetadata } from "@/lib/metadata";
+import { pageTitleClass, sectionHeadingClass } from "@/lib/page-typography";
 
 type MetadataProps = {
   params: Promise<{ locale: string }>;
@@ -36,7 +37,9 @@ export default async function TermsAndDisclaimer(props: {
   return (
     <main className="mx-auto max-w-4xl px-6 pt-16 pb-16 sm:px-16 md:px-20 md:pt-24 lg:px-24 xl:px-32">
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <h1 className="mb-8 text-3xl font-bold">{t("termsOfService.title")}</h1>
+        <h1 className={`not-prose ${pageTitleClass} mb-8`}>
+          {t("termsOfService.title")}
+        </h1>
 
         <p className="text-muted-foreground mb-6">
           <strong>{t("termsOfService.lastUpdated")}:</strong>{" "}
@@ -49,14 +52,14 @@ export default async function TermsAndDisclaimer(props: {
 
         <div className="space-y-6">
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.termsOfService.title")}
             </h2>
             <p>{t("termsOfService.sections.termsOfService.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.useLicense.title")}
             </h2>
             <p>{t("termsOfService.sections.useLicense.description")}</p>
@@ -70,21 +73,21 @@ export default async function TermsAndDisclaimer(props: {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.disclaimer.title")}
             </h2>
             <p>{t("termsOfService.sections.disclaimer.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.limitations.title")}
             </h2>
             <p>{t("termsOfService.sections.limitations.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.accuracyOfMaterials.title")}
             </h2>
             <p>
@@ -96,21 +99,21 @@ export default async function TermsAndDisclaimer(props: {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.links.title")}
             </h2>
             <p>{t("termsOfService.sections.links.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.modifications.title")}
             </h2>
             <p>{t("termsOfService.sections.modifications.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("termsOfService.sections.contact.title")}
             </h2>
             <p>{t("termsOfService.sections.contact.description")}</p>

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 import { constructMetadata } from "@/lib/metadata";
+import { pageTitleClass, sectionHeadingClass } from "@/lib/page-typography";
 
 type MetadataProps = {
   params: Promise<{ locale: string }>;
@@ -36,7 +37,9 @@ export default async function PrivacyPolicy(props: {
   return (
     <main className="mx-auto max-w-4xl px-6 pt-16 pb-16 sm:px-16 md:px-20 md:pt-24 lg:px-24 xl:px-32">
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <h1 className="mb-8 text-3xl font-bold">{t("privacyPolicy.title")}</h1>
+        <h1 className={`not-prose ${pageTitleClass} mb-8`}>
+          {t("privacyPolicy.title")}
+        </h1>
 
         <p className="text-muted-foreground mb-6">
           <strong>{t("privacyPolicy.lastUpdated")}:</strong>{" "}
@@ -49,7 +52,7 @@ export default async function PrivacyPolicy(props: {
 
         <div className="space-y-6">
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("privacyPolicy.sections.informationWeCollect.title")}
             </h2>
             <p>
@@ -70,7 +73,7 @@ export default async function PrivacyPolicy(props: {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("privacyPolicy.sections.howWeUseInformation.title")}
             </h2>
             <p>{t("privacyPolicy.sections.howWeUseInformation.description")}</p>
@@ -86,35 +89,35 @@ export default async function PrivacyPolicy(props: {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("privacyPolicy.sections.dataSharing.title")}
             </h2>
             <p>{t("privacyPolicy.sections.dataSharing.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("privacyPolicy.sections.cookies.title")}
             </h2>
             <p>{t("privacyPolicy.sections.cookies.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("privacyPolicy.sections.dataRetention.title")}
             </h2>
             <p>{t("privacyPolicy.sections.dataRetention.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("privacyPolicy.sections.yourRights.title")}
             </h2>
             <p>{t("privacyPolicy.sections.yourRights.description")}</p>
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl font-semibold">
+            <h2 className={`not-prose ${sectionHeadingClass} mb-4`}>
               {t("privacyPolicy.sections.contact.title")}
             </h2>
             <p>{t("privacyPolicy.sections.contact.description")}</p>

@@ -38,7 +38,7 @@
       },
       {
         "date": "2022.07",
-        "title": "Paper accepted at **CoLLAs 2022** (MS): [TAG](https://arxiv.org/abs/2105.05155)",
+        "title": "Paper accepted at **CoLLAs 2022**: [TAG](https://proceedings.mlr.press/v199/malviya22a)",
         "content": "Task-based Accumulated Gradients for Lifelong Learning."
       },
       {
@@ -105,15 +105,15 @@
       },
       {
         "title": "TAG: Task-based Accumulated Gradients for Lifelong Learning",
-        "href": "https://arxiv.org/abs/2105.05155",
-        "dates": "CoLLAs 2022 (MS)",
+        "href": "https://proceedings.mlr.press/v199/malviya22a",
+        "dates": "CoLLAs 2022",
         "active": true,
         "description": "A gradient accumulation method for continual learning that prevents catastrophic forgetting.",
         "technologies": ["Continual Learning", "Optimization"],
         "authors": "**Authors:** **P. Malviya**, B. Ravindran, S. Chandar",
         "links": [
           { "type": "PMLR", "href": "https://proceedings.mlr.press/v199/malviya22a", "icon": "paper" },
-          { "type": "arXiv", "href": "https://arxiv.org/abs/2105.05155", "icon": "paper" },
+          { "type": "Thread", "href": "https://x.com/ChandarLab/status/2033923615146532959", "icon": "x" },
           { "type": "Github", "href": "https://github.com/pranshu28/TAG", "icon": "github" }
         ],
         "image": "",

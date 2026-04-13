@@ -3,6 +3,7 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { sectionHeadingClass } from "@/lib/page-typography";
 import { CustomReactMarkdown } from "@/components/react-markdown";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Button } from "@/components/ui/button";
@@ -94,9 +95,7 @@ export default function NewsSection({
     return (
       <div className="flex min-h-0 flex-col gap-y-1">
         <BlurFade delay={delay}>
-          <h2 className="font-page-heading text-xl font-semibold tracking-tight">
-            {title}
-          </h2>
+          <h2 className={sectionHeadingClass}>{title}</h2>
         </BlurFade>
         <div className="space-y-0">
           {news.slice(0, DEFAULT_DISPLAY_COUNT).map((item, id) => (
@@ -114,9 +113,7 @@ export default function NewsSection({
   return (
     <div className="flex min-h-0 flex-col gap-y-3">
       <BlurFade delay={delay}>
-        <h2 className="font-page-heading text-xl font-semibold tracking-tight">
-          {title}
-        </h2>
+        <h2 className={sectionHeadingClass}>{title}</h2>
       </BlurFade>
       <div className="space-y-0.5">
         {displayedNews.map((item, id) => (

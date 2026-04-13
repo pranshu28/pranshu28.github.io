@@ -140,6 +140,7 @@ export function getIconComponent(iconName: string) {
     paper: Icons.paper,
     bookopen: Icons.bookopen,
     newspaper: Icons.newspaper,
+    x: Icons.x,
   };
   
   const IconComponent = iconMap[iconName] || Icons.globe;

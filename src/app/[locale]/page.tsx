@@ -13,6 +13,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY, siteConfig } from "@/data/site";
 import { routing } from "@/i18n/routing";
 import { generatePersonJsonLd } from "@/lib/jsonld";
+import { sectionHeadingClass } from "@/lib/page-typography";
 import { transformSocialData } from "@/lib/social-icons";
 import {
   getIconComponent,
@@ -20,9 +21,6 @@ import {
   sortByLatestYearDesc,
   sortWorkExperienceDesc,
 } from "@/lib/utils";
-
-const sectionHeadingClass =
-  "font-page-heading text-xl font-semibold tracking-tight";
 
 export default async function Page(props: {
   params: Promise<{ locale: string }>;
@@ -177,7 +175,7 @@ export default async function Page(props: {
           <h2 className={sectionHeadingClass}>{t("sections.about")}</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <div className="prose text-muted-foreground dark:prose-invert max-w-prose font-sans text-sm text-pretty [&_img]:my-0 [&_img]:inline-block [&_img]:h-[1em] [&_img]:w-auto [&_img]:align-baseline">
+          <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-sm text-pretty [&_img]:my-0 [&_img]:inline-block [&_img]:h-[1em] [&_img]:w-auto [&_img]:align-baseline">
             <CustomReactMarkdown>{t("bioMarkdown")}</CustomReactMarkdown>
           </div>
         </BlurFade>
@@ -262,9 +260,7 @@ export default async function Page(props: {
       {earlierWorkProjects.length > 0 && (
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <h2 className={sectionHeadingClass}>
-              {t("sections.earlierWork")}
-            </h2>
+            <h2 className={sectionHeadingClass}>{t("sections.earlierWork")}</h2>
             <ProjectsSection
               projects={earlierWorkProjects.map((project) => ({
                 ...project,
