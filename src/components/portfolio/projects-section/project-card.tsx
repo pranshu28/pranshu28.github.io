@@ -191,7 +191,9 @@ export function ProjectCard({
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links?.map((link, idx) => {
-              const href = link?.href ?? "#";
+              const raw = link?.href;
+              const href =
+                typeof raw === "string" && raw.length > 0 ? raw : "#";
               const scoped = isLocaleScopedAppPath(href);
               const badge = (
                 <Badge className="flex gap-2 px-2 py-1 text-[10px]">

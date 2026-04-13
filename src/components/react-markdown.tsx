@@ -85,6 +85,8 @@ export function CustomReactMarkdown({
   className,
   inline = false,
 }: CustomReactMarkdownProps) {
+  const markdown =
+    typeof children === "string" ? children : String(children ?? "");
   const components: Components = inline
     ? {
         ...baseComponents,
@@ -94,7 +96,7 @@ export function CustomReactMarkdown({
 
   return (
     <div className={className}>
-      <ReactMarkdown components={components}>{children}</ReactMarkdown>
+      <ReactMarkdown components={components}>{markdown}</ReactMarkdown>
     </div>
   );
 }

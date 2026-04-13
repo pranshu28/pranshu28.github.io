@@ -68,7 +68,10 @@ export default function Navbar() {
           // With localePrefix: 'as-needed', en routes don't have /en prefix
           // For static files (e.g., .pdf, .png), use regular <a> tag to avoid routing issues
           // Otherwise use i18n Link for internal routes
-          const href = item.href;
+          const href =
+            typeof item.href === "string" && item.href.length > 0
+              ? item.href
+              : "#";
           const label = item.label;
           const IconComponent = getIconComponent(item.icon);
           const isExternal = href.startsWith("http://") || href.startsWith("https://");

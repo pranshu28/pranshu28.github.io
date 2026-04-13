@@ -10,6 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 
 /** Latest 4-digit year in a label (e.g. `"2017 – 2019"` → 2019, `"CoLLAs 2024"` → 2024). */
 export function maxYearFromDatesLabel(dates: string): number {
+  if (typeof dates !== "string") return 0;
   const years =
     dates.match(/\d{4}/g)?.map((y) => Number.parseInt(y, 10)) ?? [];
   let max = 0;
@@ -36,6 +37,7 @@ export function sortByLatestYearDesc<T extends { dates: string }>(
 
 /** Parse `start` / `end` strings like `Sep 2025`, `2023`, `Present` for ordering. */
 function experienceBoundaryMs(s: string, role: "start" | "end"): number {
+  if (typeof s !== "string") return 0;
   const t = s.trim();
   if (!t) return 0;
   if (role === "end" && t.toLowerCase() === "present") {
@@ -77,7 +79,8 @@ export function sortWorkExperienceDesc<T extends { start: string; end: string }>
 }
 
 /** In-app routes under `[locale]` for static export; not `/papers/…` or static assets under `/photos/{core,frames,…}`. */
-export function isLocaleScopedAppPath(href: string): boolean {
+export function isLocaleScopedAppPath(href: unknown): boolean {
+  if (typeof href !== "string" || href.length === 0) return false;
   if (!href.startsWith("/") || href.startsWith("//")) return false;
   const path = href.split("?")[0].split("#")[0];
   if (path.startsWith("/blog")) return true;
@@ -89,6 +92,7 @@ export function isLocaleScopedAppPath(href: string): boolean {
 }
 
 export function formatDate(date: string, locale: string = "en-US") {
+  if (typeof date !== "string" || date.length === 0) return "";
   const currentDate = new Date().getTime();
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;
@@ -134,6 +138,7 @@ export function jsonldScript(jsonLd: string) {
 }
 
 export function getIconComponent(iconName: string) {
+  const key = typeof iconName === "string" ? iconName : "";
   const iconMap: Record<string, (props: React.HTMLAttributes<SVGElement>) => React.ReactElement> = {
     globe: Icons.globe,
     github: Icons.github,
@@ -143,6 +148,6 @@ export function getIconComponent(iconName: string) {
     x: Icons.x,
   };
   
-  const IconComponent = iconMap[iconName] || Icons.globe;
+  const IconComponent = iconMap[key] || Icons.globe;
   return <IconComponent className="size-3" />;
 }

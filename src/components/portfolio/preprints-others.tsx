@@ -52,7 +52,7 @@ export default function PreprintsOthers({
   const row = (p: PreprintOtherItem, i: number) => (
     <BlurFade key={`${p.title}-${p.dates}-${i}`} delay={delay + (i + 1) * 0.05}>
       <div className="text-sm">
-        {p.href ? (
+        {typeof p.href === "string" && p.href.length > 0 ? (
           p.href.startsWith("http") ? (
             <a
               href={p.href}

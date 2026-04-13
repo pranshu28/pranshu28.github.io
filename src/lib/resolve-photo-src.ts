@@ -12,6 +12,9 @@
  * or disable cache to rule out a stale browser JS bundle (the photo list lives in client chunks).
  */
 export function resolvePhotoSrc(path: string): string {
+  if (typeof path !== "string" || path.length === 0) {
+    return "";
+  }
   if (path.startsWith("http://") || path.startsWith("https://")) {
     throw new Error(
       "resolvePhotoSrc: external image URLs are not allowed; add the file under public/photos and use a /photos/... path.",
