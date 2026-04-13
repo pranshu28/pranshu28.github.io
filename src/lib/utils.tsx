@@ -76,12 +76,13 @@ export function sortWorkExperienceDesc<T extends { start: string; end: string }>
     .map(({ item }) => item);
 }
 
-/** In-app routes under `[locale]` for static export; not `/papers/…` or static `/photos/{core,frames,sketches}/…`. */
+/** In-app routes under `[locale]` for static export; not `/papers/…` or static assets under `/photos/{core,frames,…}`. */
 export function isLocaleScopedAppPath(href: string): boolean {
   if (!href.startsWith("/") || href.startsWith("//")) return false;
   const path = href.split("?")[0].split("#")[0];
   if (path.startsWith("/blog")) return true;
-  if (path === "/photos" || path === "/photos/") return true;
+  if (path === "/beyond-work" || path.startsWith("/beyond-work/")) return true;
+  if (path === "/photos" || path.startsWith("/photos/")) return true;
   if (path.startsWith("/privacy-policy")) return true;
   if (path.startsWith("/terms-of-service")) return true;
   return false;

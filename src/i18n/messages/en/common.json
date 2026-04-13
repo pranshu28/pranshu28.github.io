@@ -13,8 +13,8 @@
         },
         "publications": {
             "title": "Selected Publications",
-            "othersTitle": "Others",
-            "othersSubtitle": "Preprints and workshop papers"
+            "othersTitle": "Other projects",
+            "othersSubtitle": "Preprints, workshop papers, and other projects"
         },
         "invitedTalks": {
             "title": "Invited Talks"
@@ -27,7 +27,7 @@
         },
         "beyondWork": {
             "title": "Beyond Work",
-            "contentMarkdown": "I like reading [non-fiction](https://www.goodreads.com/user/show/49705608-pranshu-malviya), [sketching](/en/photos/?g=sketches), [hiking](/en/photos/?g=hiking), and [travelling](/en/photos/?g=travel), and I've visited 4 of the 7 [wonders](/en/photos/?g=wonders) so far."
+            "contentMarkdown": "I like reading [non-fiction](https://www.goodreads.com/user/show/49705608-pranshu-malviya), [sketching](/en/beyond-work/?g=sketches), [hiking](/en/beyond-work/?g=hiking), and [travelling](/en/beyond-work/?g=travel) - visited 4 of the 7 [wonders](/en/beyond-work/?g=wonders) so far."
         },
         "contact": "Contact",
         "getInTouch": "Get in Touch",
@@ -53,7 +53,7 @@
                 "label": "CV"
             },
             {
-                "href": "/photos/",
+                "href": "/beyond-work/",
                 "icon": "camera",
                 "label": "Beyond Work"
             }

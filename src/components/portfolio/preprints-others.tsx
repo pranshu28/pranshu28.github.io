@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { CustomReactMarkdown } from "@/components/react-markdown";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Button } from "@/components/ui/button";
+import { Link as I18nLink } from "@/i18n/routing";
+import { isLocaleScopedAppPath } from "@/lib/utils";
 
 const DEFAULT_VISIBLE = 4;
 
@@ -50,14 +52,30 @@ export default function PreprintsOthers({
     <BlurFade key={`${p.title}-${p.dates}-${i}`} delay={delay + (i + 1) * 0.05}>
       <div className="text-sm">
         {p.href ? (
-          <Link
-            href={p.href}
-            className="font-medium underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {p.title}
-          </Link>
+          p.href.startsWith("http") ? (
+            <a
+              href={p.href}
+              className="font-medium underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {p.title}
+            </a>
+          ) : isLocaleScopedAppPath(p.href) ? (
+            <I18nLink
+              href={p.href}
+              className="font-medium underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
+            >
+              {p.title}
+            </I18nLink>
+          ) : (
+            <Link
+              href={p.href}
+              className="font-medium underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
+            >
+              {p.title}
+            </Link>
+          )
         ) : (
           <span className="font-medium">{p.title}</span>
         )}

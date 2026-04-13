@@ -38,7 +38,7 @@
       },
       {
         "date": "2022.07",
-        "title": "Paper accepted at **CoLLAs 2022**: [TAG](https://arxiv.org/abs/2105.05155)",
+        "title": "Paper accepted at **CoLLAs 2022** (MS): [TAG](https://arxiv.org/abs/2105.05155)",
         "content": "Task-based Accumulated Gradients for Lifelong Learning."
       },
       {
@@ -54,40 +54,7 @@
     ]
   },
   "projects": {
-    "items": [
-      {
-        "title": "Graphical Interpretation of Data using ArangoDB",
-        "href": "/blog/graphical-interpretation-arangodb/",
-        "dates": "2018",
-        "active": false,
-        "description": "A technical walkthrough of modeling and querying graph data with ArangoDB — from setup to traversal queries and visualization.",
-        "technologies": ["ArangoDB", "Graph Databases", "NoSQL"],
-        "authors": "",
-        "links": [
-          {
-            "type": "Article",
-            "href": "/blog/graphical-interpretation-arangodb/",
-            "icon": "globe"
-          }
-        ],
-        "image": "",
-        "video": ""
-      },
-      {
-        "title": "Fast CSP and Learning-based Minesweeper Solver",
-        "href": "/papers/minesweeper-csp.pdf",
-        "dates": "2017",
-        "active": false,
-        "description": "AI solver using Constraint Satisfaction Problems, XGBoost, and Deep Q-Learning — achieving 92% win rate on standard boards.",
-        "technologies": ["C++", "Python", "XGBoost", "Deep Q-Learning", "CSP"],
-        "authors": "",
-        "links": [
-          { "type": "Paper", "href": "/papers/minesweeper-csp.pdf", "icon": "paper" }
-        ],
-        "image": "",
-        "video": ""
-      }
-    ]
+    "items": []
   },
   "publications": {
     "items": [
@@ -139,7 +106,7 @@
       {
         "title": "TAG: Task-based Accumulated Gradients for Lifelong Learning",
         "href": "https://arxiv.org/abs/2105.05155",
-        "dates": "CoLLAs 2022",
+        "dates": "CoLLAs 2022 (MS)",
         "active": true,
         "description": "A gradient accumulation method for continual learning that prevents catastrophic forgetting.",
         "technologies": ["Continual Learning", "Optimization"],
@@ -228,6 +195,18 @@
         "dates": "IEEE ICAECC 2018",
         "authors": "Y.P. Sinha, **P. Malviya**, M. Panda, S.M. Ali",
         "href": "https://arxiv.org/pdf/1811.06437"
+      },
+      {
+        "title": "Graphical Interpretation of Data using ArangoDB",
+        "dates": "2018",
+        "authors": "Blog walkthrough on modeling and querying graph data with ArangoDB.",
+        "href": "/blog/graphical-interpretation-arangodb/"
+      },
+      {
+        "title": "Fast CSP and Learning-based Minesweeper Solver",
+        "dates": "2017",
+        "authors": "AI solver using CSP, XGBoost, and Deep Q-Learning (92% win rate on standard boards).",
+        "href": "/papers/minesweeper-csp.pdf"
       }
     ]
   },

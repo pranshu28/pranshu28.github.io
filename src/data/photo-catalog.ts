@@ -283,7 +283,7 @@ const LANDING_ALBUM_SPECS = [
   },
 ] as const;
 
-/** Nav tiles on `/photos/`; main `travel` grid is embedded below on the same page. */
+/** Nav tiles on `/beyond-work/`; main `travel` grid is embedded below on the same page. */
 export const LANDING_NAV_ALBUM_IDS = [
   "sketches",
   "book-notes",
@@ -292,7 +292,7 @@ export const LANDING_NAV_ALBUM_IDS = [
   "wonders",
 ] as const;
 
-/** Only `travel` is embedded on `/photos`; other landing albums open full-page (`?g=`). */
+/** Only `travel` is embedded on `/beyond-work`; other landing albums open full-page (`?g=`). */
 export const INLINE_LANDING_GALLERY_IDS: readonly string[] = ["travel"];
 
 /** Place / archive albums — reachable via `?g=` but not shown on the main landing grid. */

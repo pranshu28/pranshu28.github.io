@@ -19,16 +19,27 @@ type ChangeFrequency =
   | undefined;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages: Array<"/" | "/blog"> = ["/", "/blog"];
+  const staticPages: Array<"/" | "/blog" | "/beyond-work/"> = [
+    "/",
+    "/blog",
+    "/beyond-work/",
+  ];
 
   const pages = LOCALES.flatMap((locale) => {
     return staticPages.map((page) => ({
       url: `${siteUrl}${getPathname({ locale, href: page })}`,
       lastModified: new Date(),
-      changeFrequency: (["/", "/blog"].includes(page)
+      changeFrequency: (["/", "/blog", "/beyond-work/"].includes(page)
         ? "weekly"
         : "monthly") as ChangeFrequency,
-      priority: page === "/" ? 1.0 : page === "/blog" ? 0.8 : 0.5,
+      priority:
+        page === "/"
+          ? 1.0
+          : page === "/blog"
+            ? 0.8
+            : page === "/beyond-work/"
+              ? 0.85
+              : 0.5,
     }));
   });
 
