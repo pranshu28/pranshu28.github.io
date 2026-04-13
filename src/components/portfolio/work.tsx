@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { ResumeCard } from "@/components/portfolio/resume-card";
@@ -23,6 +23,7 @@ interface WorkProps {
   work: readonly Work[];
   moreWork?: readonly Work[];
   showAllText?: string;
+  showLessText?: string;
 }
 
 function workRowKey(item: Work): string {
@@ -33,6 +34,7 @@ export default function Work({
   work,
   moreWork = [],
   showAllText = "Show All",
+  showLessText = "Show Less",
 }: WorkProps) {
   const [showAll, setShowAll] = useState(false);
 
@@ -59,18 +61,27 @@ export default function Work({
           description={item.description}
         />
       ))}
-      {hasMore && !showAll ? (
+      {hasMore ? (
         <BlurFade delay={0.15}>
           <div className="flex justify-center pt-1">
             <Button
               type="button"
               variant="outline"
               size="sm"
-              onClick={() => setShowAll(true)}
+              onClick={() => setShowAll((v) => !v)}
               className="flex items-center gap-2"
             >
-              <ChevronDown className="h-4 w-4" />
-              {showAllText}
+              {showAll ? (
+                <>
+                  <ChevronUp className="h-4 w-4" />
+                  {showLessText}
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="h-4 w-4" />
+                  {showAllText}
+                </>
+              )}
             </Button>
           </div>
         </BlurFade>

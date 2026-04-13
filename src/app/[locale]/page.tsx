@@ -248,6 +248,7 @@ export default async function Page(props: {
               work={workItems}
               moreWork={workMoreItems}
               showAllText={t("showAll")}
+              showLessText={t("showLess")}
             />
           </div>
         </section>
