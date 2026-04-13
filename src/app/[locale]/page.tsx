@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import Brief from "@/components/portfolio/brief";
@@ -12,13 +11,14 @@ import Work from "@/components/portfolio/work";
 import { CustomReactMarkdown } from "@/components/react-markdown";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY, siteConfig } from "@/data/site";
-import { routing } from "@/i18n/routing";
+import { Link as I18nLink, routing } from "@/i18n/routing";
 import { generatePersonJsonLd } from "@/lib/jsonld";
 import { transformSocialData } from "@/lib/social-icons";
 import {
   getIconComponent,
   jsonldScript,
   sortByLatestYearDesc,
+  sortWorkExperienceDesc,
 } from "@/lib/utils";
 
 export default async function Page(props: {
@@ -106,11 +106,15 @@ export default async function Page(props: {
     description: string;
   };
 
-  const workItems = getCollectionItems<WorkEntry>("work.items");
+  const workItems = sortWorkExperienceDesc(
+    getCollectionItems<WorkEntry>("work.items"),
+  );
 
   const workMoreItems = (() => {
     const raw = t.raw("work") as { moreItems?: WorkEntry[] } | undefined;
-    if (raw && Array.isArray(raw.moreItems)) return raw.moreItems;
+    if (raw && Array.isArray(raw.moreItems)) {
+      return sortWorkExperienceDesc(raw.moreItems);
+    }
     return [];
   })();
 
@@ -167,12 +171,29 @@ export default async function Page(props: {
         </BlurFade>
       </section>
 
+      <section id="beyond-work" aria-labelledby="beyond-work-heading">
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <h2 id="beyond-work-heading" className="text-xl font-bold">
+            {t("sections.beyondWork.title")}
+          </h2>
+          <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed text-pretty">
+            {t("sections.beyondWork.description")}{" "}
+            <I18nLink
+              href="/photos/"
+              className="text-foreground font-medium underline underline-offset-2 hover:no-underline"
+            >
+              {t("sections.beyondWork.cta")}
+            </I18nLink>
+          </p>
+        </BlurFade>
+      </section>
+
       {/* About Section */}
       <section id="about">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+        <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <h2 className="text-xl font-bold">{t("sections.about")}</h2>
         </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+        <BlurFade delay={BLUR_FADE_DELAY * 5}>
           <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-sm text-pretty [&_img]:my-0 [&_img]:inline-block [&_img]:h-[1em] [&_img]:w-auto [&_img]:align-baseline">
             <CustomReactMarkdown>{t("bioMarkdown")}</CustomReactMarkdown>
           </div>
@@ -184,7 +205,7 @@ export default async function Page(props: {
         <section id="news">
           <NewsSection
             news={newsItems}
-            delay={BLUR_FADE_DELAY * 5}
+            delay={BLUR_FADE_DELAY * 6}
             title={t("sections.news.title")}
             showAllText={t("showAll")}
           />
@@ -194,34 +215,19 @@ export default async function Page(props: {
       {/* Publications Section */}
       {publicationsItems && publicationsItems.length > 0 && (
         <section id="publications">
-          <div className="w-full space-y-12 py-12">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
-                  {t("sections.research")}
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  {t("sections.publications.title")}
-                </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  {t("sections.viewFullPublications")}{" "}
-                  <Link
-                    href={socialData.GoogleScholar.url}
-                    className="text-foreground underline hover:no-underline"
-                    target="_blank"
-                  >
-                    {socialData.GoogleScholar.name}
-                  </Link>
+          <div className="flex min-h-0 w-full flex-col space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-xl font-bold">
+                {t("sections.publications.title")}
+              </h2>
+              {peerReviewVenues.length > 0 ? (
+                <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
+                  <span className="text-foreground/90 font-medium">
+                    {t("sections.peerReviewLabel")}
+                  </span>{" "}
+                  {peerReviewVenues.join(" · ")}
                 </p>
-                {peerReviewVenues.length > 0 ? (
-                  <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
-                    <span className="text-foreground/90 font-medium">
-                      {t("sections.peerReviewLabel")}
-                    </span>{" "}
-                    {peerReviewVenues.join(" · ")}
-                  </p>
-                ) : null}
-              </div>
+              ) : null}
             </div>
             <ProjectsSection
               projects={publicationsItems.map((project) => ({

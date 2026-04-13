@@ -34,6 +34,48 @@ export function sortByLatestYearDesc<T extends { dates: string }>(
     .map(({ item }) => item);
 }
 
+/** Parse `start` / `end` strings like `Sep 2025`, `2023`, `Present` for ordering. */
+function experienceBoundaryMs(s: string, role: "start" | "end"): number {
+  const t = s.trim();
+  if (!t) return 0;
+  if (role === "end" && t.toLowerCase() === "present") {
+    return Number.MAX_SAFE_INTEGER;
+  }
+  const monYear = /^([A-Za-z]{3,9})\s+(\d{4})$/.exec(t);
+  if (monYear) {
+    const ms = Date.parse(`${monYear[1]} 15, ${monYear[2]}`);
+    if (!Number.isFinite(ms)) return 0;
+    return ms;
+  }
+  const years = t.match(/\b(\d{4})\b/g);
+  if (years?.length) {
+    const yi = Number.parseInt(years[years.length - 1], 10);
+    const month = role === "end" ? 11 : 0;
+    const day = role === "end" ? 31 : 1;
+    return Date.UTC(yi, month, day);
+  }
+  const parsed = Date.parse(t);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+/** Experience rows: newest first by end date (`Present` last-in-time), then by start date. */
+export function sortWorkExperienceDesc<T extends { start: string; end: string }>(
+  items: readonly T[],
+): T[] {
+  return [...items]
+    .map((item, index) => ({ item, index }))
+    .sort((a, b) => {
+      const endB = experienceBoundaryMs(b.item.end, "end");
+      const endA = experienceBoundaryMs(a.item.end, "end");
+      if (endB !== endA) return endB - endA;
+      const startB = experienceBoundaryMs(b.item.start, "start");
+      const startA = experienceBoundaryMs(a.item.start, "start");
+      if (startB !== startA) return startB - startA;
+      return a.index - b.index;
+    })
+    .map(({ item }) => item);
+}
+
 /** In-app routes under `[locale]` for static export; not `/papers/…` or static `/photos/{core,frames,sketches}/…`. */
 export function isLocaleScopedAppPath(href: string): boolean {
   if (!href.startsWith("/") || href.startsWith("//")) return false;

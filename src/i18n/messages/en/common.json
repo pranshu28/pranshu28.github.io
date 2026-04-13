@@ -4,8 +4,6 @@
         "selectedProjects": "Selected Projects",
         "checkOutLatestWork": "Check out my latest work",
         "earlierWork": "Earlier Work",
-        "research": "Research",
-        "viewFullPublications": "View the full list of my publications on",
         "skills": "Skills",
         "education": "Education",
         "workExperience": "Experience",
@@ -27,6 +25,11 @@
             "reviewerConferencesLabel": "Conference Reviewer:",
             "reviewerJournalsLabel": "Journal Reviewer:",
             "teachingLabel": "Teaching Assistant:"
+        },
+        "beyondWork": {
+            "title": "Beyond work",
+            "description": "Photos, sketches, hiking, and travel albums live here — same place as the camera icon in the bar below.",
+            "cta": "Open the gallery."
         },
         "contact": "Contact",
         "getInTouch": "Get in Touch",
@@ -61,15 +64,14 @@
     },
     "galleryPage": {
         "title": "Beyond work",
-        "breadcrumbRoot": "Beyond work",
         "albumsSection": "Albums",
         "backToAlbums": "All albums",
+        "backToSite": "Back to site",
         "loading": "Loading…",
         "sortLabel": "Sort",
         "sortPlace": "Place",
         "sortDate": "Date",
         "sortRandom": "Shuffle",
-        "reshuffle": "New shuffle",
         "layoutInspiration": "Gallery layout inspired by",
         "layoutInspirationLink": "Trey Ratcliff — Stuck in Customs (SmugMug)",
         "searchLabel": "Search photos",

@@ -250,14 +250,14 @@ const LANDING_ALBUM_SPECS = [
   },
   {
     id: "travel",
-    title: "Gallery",
-    /** Filtered in `specToGallery`: all photos except `sketch` (main feed on Beyond work). */
+    title: "All photos",
+    /** Filtered in `specToGallery`: all photos except `sketch` (main feed on the Beyond work page). */
     tag: "travel",
     cover: "/photos/frames/img-4604.jpeg",
   },
 ] as const;
 
-/** Shown as nav tiles on Beyond work; main `travel` grid is embedded below them on the same page. */
+/** Nav tiles on `/photos/`; main `travel` grid is embedded below on the same page. */
 export const LANDING_NAV_ALBUM_IDS = [
   "sketches",
   "hiking",
@@ -375,7 +375,7 @@ export function getLandingAlbums(): readonly Gallery[] {
   return landingAlbums;
 }
 
-/** Nav row on Beyond work: Sketches, Hiking, History, Wonders (main feed grid is separate on the page). */
+/** Nav row on photos: Sketches, Hiking, History, Wonders (main feed grid is separate on the page). */
 export function getNavLandingAlbums(): readonly Gallery[] {
   const byId = new Map(landingAlbums.map((g) => [g.id, g]));
   return LANDING_NAV_ALBUM_IDS.map((id) => byId.get(id)).filter(

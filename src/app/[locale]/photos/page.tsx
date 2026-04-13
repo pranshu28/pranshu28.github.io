@@ -7,6 +7,7 @@ import {
   Suspense,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -355,7 +356,6 @@ function AlbumDetail({
   searchStatusText,
   sortMode,
   onSortChange,
-  onReshuffleRandom,
   lightboxOpen,
   lightboxIndex,
   onBack,
@@ -373,7 +373,6 @@ function AlbumDetail({
   searchStatusText?: string;
   sortMode: GallerySortMode;
   onSortChange: (mode: GallerySortMode) => void;
-  onReshuffleRandom: () => void;
   lightboxOpen: boolean;
   lightboxIndex: number;
   onBack: () => void;
@@ -389,24 +388,21 @@ function AlbumDetail({
   return (
     <div className="w-full min-w-0">
       <BlurFade delay={0}>
-        <nav
-          className="text-muted-foreground mb-2 text-xs font-medium tracking-wide uppercase"
-          aria-label="Breadcrumb"
-        >
-          <I18nLink
-            href="/photos"
-            className="text-foreground hover:underline"
+        <div className="mb-4 flex flex-wrap items-center gap-x-5 gap-y-2 sm:mb-5">
+          <button
+            type="button"
+            onClick={onBack}
+            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
           >
-            {tGallery("breadcrumbRoot")}
+            &larr; {backLabel}
+          </button>
+          <I18nLink
+            href="/"
+            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+          >
+            &larr; {tGallery("backToSite")}
           </I18nLink>
-        </nav>
-        <button
-          type="button"
-          onClick={onBack}
-          className="text-muted-foreground hover:text-foreground mb-4 inline-block text-sm transition-colors"
-        >
-          &larr; {backLabel}
-        </button>
+        </div>
         <h1
           id="photos-album-heading"
           className="mb-4 text-2xl font-bold tracking-tight sm:mb-5 sm:text-3xl"
@@ -432,15 +428,6 @@ function AlbumDetail({
             <option value="date">{tGallery("sortDate")}</option>
             <option value="random">{tGallery("sortRandom")}</option>
           </select>
-          {sortMode === "random" ? (
-            <button
-              type="button"
-              onClick={onReshuffleRandom}
-              className="text-muted-foreground hover:text-foreground text-xs font-medium underline-offset-2 hover:underline"
-            >
-              {tGallery("reshuffle")}
-            </button>
-          ) : null}
         </div>
         <PhotoSearchBar
           id="photos-archive-search"
@@ -482,14 +469,12 @@ function InlineAlbumSection({
   showSortControls,
   sortMode,
   onSortChange,
-  onReshuffleRandom,
   sortedPhotos,
   onOpenPhoto,
   sortLabel,
   sortPlace,
   sortDate,
   sortRandom,
-  reshuffle,
 }: {
   gallery: ActiveGallery;
   sectionId: string;
@@ -500,14 +485,12 @@ function InlineAlbumSection({
   showSortControls: boolean;
   sortMode: GallerySortMode;
   onSortChange: (mode: GallerySortMode) => void;
-  onReshuffleRandom: () => void;
   sortedPhotos: Photo[];
   onOpenPhoto: (index: number) => void;
   sortLabel: string;
   sortPlace: string;
   sortDate: string;
   sortRandom: string;
-  reshuffle: string;
 }) {
   const selectId = `gallery-sort-${gallery.id}`;
 
@@ -547,15 +530,6 @@ function InlineAlbumSection({
               <option value="date">{sortDate}</option>
               <option value="random">{sortRandom}</option>
             </select>
-            {sortMode === "random" ? (
-              <button
-                type="button"
-                onClick={onReshuffleRandom}
-                className="text-muted-foreground hover:text-foreground text-xs font-medium underline-offset-2 hover:underline"
-              >
-                {reshuffle}
-              </button>
-            ) : null}
           </div>
         ) : null}
       </BlurFade>
@@ -619,9 +593,20 @@ function PhotosPageContent() {
     [replaceQuery],
   );
 
-  const onReshuffleRandom = useCallback(() => {
+  const replaceQueryRef = useRef(replaceQuery);
+  replaceQueryRef.current = replaceQuery;
+
+  useLayoutEffect(() => {
+    const sp = new URLSearchParams(window.location.search);
+    if (normalizeSortParam(sp.get("sort")) !== "random") return;
+    replaceQueryRef.current({ rs: String(Date.now()), p: null });
+  }, []);
+
+  useLayoutEffect(() => {
+    if (sortMode !== "random") return;
+    if (searchParams.get("rs") != null) return;
     replaceQuery({ rs: String(Date.now()), p: null });
-  }, [replaceQuery]);
+  }, [sortMode, replaceQuery, searchParams]);
 
   const active = useMemo(() => {
     return resolveActiveGallery(gRaw);
@@ -833,7 +818,6 @@ function PhotosPageContent() {
               searchStatusText={archiveSearchStatus}
               sortMode={sortMode}
               onSortChange={onSortChange}
-              onReshuffleRandom={onReshuffleRandom}
               lightboxOpen={archiveLightboxOpen}
               lightboxIndex={archiveLightboxIndex}
               onBack={backToCombinedHome}
@@ -863,7 +847,7 @@ function PhotosPageContent() {
               href="/"
               className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors sm:mb-8"
             >
-              &larr; Back to site
+              &larr; {tGallery("backToSite")}
             </I18nLink>
             <p className="text-muted-foreground mb-1 text-xs font-semibold tracking-widest uppercase">
               {tGallery("albumsSection")}
@@ -911,14 +895,12 @@ function PhotosPageContent() {
                 showSortControls
                 sortMode={sortMode}
                 onSortChange={onSortChange}
-                onReshuffleRandom={onReshuffleRandom}
                 sortedPhotos={travelDisplayedPhotos}
                 onOpenPhoto={(i) => openCombinedPhoto("travel", i)}
                 sortLabel={tGallery("sortLabel")}
                 sortPlace={tGallery("sortPlace")}
                 sortDate={tGallery("sortDate")}
                 sortRandom={tGallery("sortRandom")}
-                reshuffle={tGallery("reshuffle")}
               />
             </>
           ) : null}
