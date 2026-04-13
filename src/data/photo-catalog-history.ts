@@ -6,7 +6,7 @@
 export const HISTORY_PHOTOS = [
   {
     src: "/photos/history/img-0430.jpg",
-    alt: "Kuldhara ruins from above, Thar Desert",
+    alt: "Kuldhara ruins, Thar Desert",
     title: "Kuldhara ghost village",
     place: "Kuldhara, Rajasthan, India",
     takenAt: "2021-11-15",
@@ -14,6 +14,7 @@ export const HISTORY_PHOTOS = [
     sortCity: "jaisalmer",
     sortVenue: "kuldhara",
     tags: ["india", "history", "travel"],
+    description: "An ancient abandoned village in Rajasthan, India - shrouded in mystery. Legend has it that the villagers mysteriously disappeared overnight, leaving behind their homes and possessions. Today, it’s known as a haunted site, with many believing the ghostly remnants of the past still linger.",
   },
   {
     src: "/photos/history/img-0673.jpg",
@@ -25,6 +26,7 @@ export const HISTORY_PHOTOS = [
     sortCity: "jaisalmer",
     sortVenue: "jaisalmer-fort-panorama",
     tags: ["india", "history", "travel"],
+    description: "World's only living fort - built in the 12th century.",
   },
   {
     src: "/photos/history/img-4858.jpg",
@@ -69,6 +71,8 @@ export const HISTORY_PHOTOS = [
     sortCity: "pompeii",
     sortVenue: "regio-i-street",
     tags: ["italy", "history", "travel", "frames"],
+    description:
+      "An ancient Roman city, was buried under volcanic ash and pumice after the eruption of Mount Vesuvius in 79 AD, preserving its streets, buildings, and even the people in time.",
   },
   {
     src: "/photos/history/pompeii-thermopolium.jpg",
@@ -80,6 +84,7 @@ export const HISTORY_PHOTOS = [
     sortVenue: "thermopolium",
     takenAt: "2024-08-03",
     tags: ["italy", "history", "travel"],
+    description: "An ancient Roman fast food spot, complete with colorful frescoes and even food remains, giving a glimpse into everyday life 2,000 years ago.",
   },
 ] as const satisfies ReadonlyArray<{
   readonly src: string;

@@ -28,6 +28,8 @@ export const CORE_PHOTO_CATALOG = [
       "inca",
       "sacred-valley",
     ],
+    description:
+      "Fourth wonder checked off. Built in 15th century - it was never discovered by the Spanish and stayed hidden in the mountains for centuries.",
   },
   {
     src: "/photos/core/machu-picchu-mist.jpg",
@@ -37,6 +39,7 @@ export const CORE_PHOTO_CATALOG = [
     sortVenue: "machu-picchu-mist",
     takenAt: "2025-11-10",
     tags: ["peru", "travel", "hiking", "history", "machu-picchu", "cloud-forest"],
+    description: "Same trip as the classic ridge view, just cloud instead of sun.",
   },
   {
     src: "/photos/core/red-valley-peru.jpg",
@@ -55,6 +58,7 @@ export const CORE_PHOTO_CATALOG = [
       "andes",
       "high-altitude",
     ],
+    description: "A painter's palette",
   },
   {
     src: "/photos/core/sacred-valley-peru.jpg",
@@ -64,6 +68,8 @@ export const CORE_PHOTO_CATALOG = [
     sortVenue: "urubamba-valley",
     takenAt: "2025-11-09",
     tags: ["peru", "travel", "hiking"],
+    description:
+      "On the way back to Cusco.",
   },
   {
     src: "/photos/core/colosseum-rome.jpg",
@@ -83,6 +89,8 @@ export const CORE_PHOTO_CATALOG = [
       "seven-wonders",
       "europe",
     ],
+    description:
+      "Third wonder checked off that Italy run. First time below the Colosseum seats instead of seeing them in a slide deck.",
   },
   {
     src: "/photos/core/cinque-terre.jpg",
@@ -92,6 +100,7 @@ export const CORE_PHOTO_CATALOG = [
     sortVenue: "cinque-terre-coast",
     takenAt: "2024-08-01",
     tags: ["italy", "travel", "cinque-terre", "manarola", "mediterranean", "liguria"],
+    description: "Straight-up bucket list. One of the coolest places I've ever been.",
   },
   {
     src: "/photos/core/venice-canal.jpg",
@@ -110,6 +119,8 @@ export const CORE_PHOTO_CATALOG = [
     sortVenue: "leaning-tower",
     takenAt: "2024-07-30",
     tags: ["italy", "travel", "history"],
+    description:
+      "Unpopular call: I liked the cathedral more than the tower.",
   },
   {
     src: "/photos/core/taj-mahal.jpg",
@@ -119,6 +130,8 @@ export const CORE_PHOTO_CATALOG = [
     sortVenue: "taj-mahal",
     takenAt: "2009-03-15",
     tags: ["india", "wonder", "travel", "history"],
+    description:
+      "First of the seven for me, from an older trip in India.",
   },
   {
     src: "/photos/core/desert-sunset.jpg",
@@ -128,6 +141,8 @@ export const CORE_PHOTO_CATALOG = [
     sortVenue: "thar-desert",
     takenAt: "2021-11-19",
     tags: ["india", "travel"],
+    description:
+      "Thar Desert sunset on the same Rajasthan swing as Jaisalmer and the later fort days.",
   },
   {
     src: "/photos/core/chichen-itza.jpg",
@@ -145,15 +160,19 @@ export const CORE_PHOTO_CATALOG = [
       "seven-wonders",
       "yucatan",
     ],
+    description:
+      "Second wonder for me — the Mayans wired astronomy into stone here. Fun fact: At Chichén Itzá, clapping in front of the Pyramid echoes like a chirping Quetzal bird.",
   },
   {
     src: "/photos/core/mountain-sunset.jpg",
-    alt: "Highlands at sunset, Costa Rica",
+    alt: "Misty sunset in Costa Rica",
     sortPlace: "costa-rica",
     sortCity: "san-jose",
     sortVenue: "mountain-sunrise",
     takenAt: "2025-11-18",
     tags: ["costa-rica", "travel", "hiking", "roadtrip", "pura-vida", "sunset", "cloud-forest"],
+    description:
+      "That \"we should stop the car\" light — because somehow the sunset found a way to double itself, one sun in the sky and another quietly glowing from the lake below.",
   },
   {
     src: "/photos/core/costa-rica-rainforest.jpg",
@@ -172,6 +191,8 @@ export const CORE_PHOTO_CATALOG = [
       "roadtrip",
       "pura-vida",
     ],
+    description:
+      "Through wet forest after volcano and waterfall stops.",
   },
   {
     src: "/photos/core/chateau-frontenac.jpg",
@@ -189,6 +210,8 @@ export const CORE_PHOTO_CATALOG = [
       "fairmont",
       "old-quebec",
     ],
+    description:
+      "The hotel Guinness calls the most photographed on earth.",
   },
   {
     src: "/photos/core/forest-pool.jpg",

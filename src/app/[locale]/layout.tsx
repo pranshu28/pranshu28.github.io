@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, Newsreader } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, Locale, NextIntlClientProvider } from "next-intl";
 import {
@@ -28,6 +28,12 @@ export function generateStaticParams() {
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const fontPageHeading = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
 });
 
 /* Metadata */
@@ -81,6 +87,7 @@ export default async function LocaleLayout({
         className={cn(
           "bg-background min-h-screen font-sans antialiased",
           fontSans.variable,
+          fontPageHeading.variable,
         )}
       >
         {/* Main Layout */}

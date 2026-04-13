@@ -1,18 +1,18 @@
 {
     "sections": {
-        "about": "About",
+        "about": "Research",
         "selectedProjects": "Selected Projects",
         "checkOutLatestWork": "Check out my latest work",
-        "earlierWork": "Earlier Work",
+        "earlierWork": "Earlier projects",
         "skills": "Skills",
         "education": "Education",
-        "workExperience": "Experience",
+        "workExperience": "Roles",
         "awards": "Honors & Activities",
         "news": {
-            "title": "Latest News"
+            "title": "Updates"
         },
         "publications": {
-            "title": "Selected Publications",
+            "title": "Papers",
             "othersTitle": "Other projects",
             "othersSubtitle": "Including preprints and workshop papers"
         },
@@ -27,12 +27,10 @@
         },
         "beyondWork": {
             "title": "Beyond Work",
-            "openLink": "-->",
-            "openLinkAria": "Open the Beyond Work gallery page",
-            "contentMarkdown": "I like reading [non-fiction](https://www.goodreads.com/user/show/49705608-pranshu-malviya), [sketching](/en/beyond-work/?g=sketches), [hiking](/en/beyond-work/?g=hiking), and [travelling](/en/beyond-work/?g=travel) - visited four of the seven [wonders](/en/beyond-work/?g=wonders)\u00a0so far."
+            "contentMarkdown": "[Photos](/en/beyond-work/) from travel and hikes, [sketches](/en/beyond-work/?g=sketches), [book notes](/en/beyond-work/?g=book-notes), and a [reading log](https://www.goodreads.com/user/show/49705608-pranshu-malviya)."
         },
-        "contact": "Contact",
-        "getInTouch": "Get in Touch",
+        "contact": "Email",
+        "getInTouch": "Correspondence",
         "contactDescription": "Want to chat? Feel free to reach out",
         "viaEmail": "via email",
         "askQuestions": "Ask questions",

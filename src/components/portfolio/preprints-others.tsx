@@ -91,7 +91,7 @@ export default function PreprintsOthers({
   if (!mounted) {
     return (
       <div className="mt-8">
-        <h3 className="text-foreground mb-1 text-xl font-bold tracking-tight sm:text-2xl">
+        <h3 className="font-page-heading text-foreground mb-1 text-xl font-semibold tracking-tight sm:text-2xl">
           {title}
         </h3>
         <p className="text-muted-foreground mb-4 text-sm">{subtitle}</p>
@@ -104,7 +104,7 @@ export default function PreprintsOthers({
 
   return (
     <div className="mt-8">
-      <h3 className="text-foreground mb-1 text-xl font-bold tracking-tight sm:text-2xl">
+      <h3 className="font-page-heading text-foreground mb-1 text-xl font-semibold tracking-tight sm:text-2xl">
         {title}
       </h3>
       <p className="text-muted-foreground mb-4 text-sm">{subtitle}</p>

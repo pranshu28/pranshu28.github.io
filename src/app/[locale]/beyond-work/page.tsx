@@ -141,7 +141,7 @@ function AlbumTile({
           data-album-id={gallery.id}
           onClick={onClick}
           aria-label={`Open ${gallery.title} album`}
-          className="group border-border relative block w-full min-w-0 overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="album-nav-tile group border-border relative block w-full min-w-0 overflow-hidden rounded-md border focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           style={{ aspectRatio: "4 / 3" }}
         >
           <img
@@ -152,8 +152,8 @@ function AlbumTile({
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-1.5 sm:p-4 md:p-5">
-            <h2 className="text-left text-xs leading-tight font-semibold text-white sm:text-sm md:text-lg lg:text-xl">
+          <div className="absolute bottom-0 left-0 right-0 min-w-0 p-1.5 sm:p-4 md:p-5">
+            <h2 className="album-nav-tile__title text-left font-semibold text-white">
               {gallery.title}
             </h2>
           </div>
@@ -413,7 +413,7 @@ function AlbumDetail({
         </nav>
         <h1
           id="photos-album-heading"
-          className="mb-4 text-2xl font-bold tracking-tight sm:mb-5 sm:text-3xl"
+          className="mb-4 max-w-full overflow-x-auto text-2xl font-bold tracking-tight whitespace-nowrap sm:mb-5 sm:text-3xl"
         >
           {gallery.title}
         </h1>

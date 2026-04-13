@@ -263,3 +263,43 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background-color: hsl(var(--muted-foreground) / 0.4);
 }
+
+/* Editorial headings (homepage / key sections); body stays Inter via `font-sans`. */
+.font-page-heading {
+  font-family: var(--font-heading), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* Beyond Work album row: title scales with tile width so labels stay one line. */
+.album-nav-tile {
+  container-type: inline-size;
+}
+
+.album-nav-tile__title {
+  white-space: nowrap;
+  line-height: 1.2;
+  /* Base + % of tile width: readable on phones, scales up on wide tiles; cap ~21px. */
+  font-size: clamp(
+    0.6875rem,
+    calc(0.42rem + 8.75cqi),
+    1.3125rem
+  );
+  letter-spacing: -0.03em;
+  min-width: 0;
+  max-width: 100%;
+  /* Zoom / large text: avoid clipping; scroll horizontally when needed. */
+  overflow-x: auto;
+  overflow-y: visible;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
+}
+
+.album-nav-tile__title::-webkit-scrollbar {
+  height: 4px;
+}
+
+.album-nav-tile__title::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.4);
+}

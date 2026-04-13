@@ -16,25 +16,23 @@ export default function Contact({
   viaEmail = "via email",
 }: ContactProps) {
   return (
-    <div className="space-y-3">
-      <div className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
+    <div className="mx-auto max-w-lg space-y-4 text-center">
+      <p className="text-muted-foreground font-sans text-xs font-medium tracking-[0.2em] uppercase">
         {contactLabel}
-      </div>
-      <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+      </p>
+      <h2 className="font-page-heading text-2xl font-semibold tracking-tight sm:text-3xl">
         {getInTouch}
       </h2>
-      <div className="mx-auto max-w-[600px]">
-        <p className="text-muted-foreground text-center text-lg leading-relaxed md:text-xl">
-          {contactDescription}{" "}
-          <Link
-            href={emailUrl}
-            className="inline-flex items-center gap-1 text-foreground underline transition-colors hover:no-underline"
-          >
-            {viaEmail}
-          </Link>
-          .
-        </p>
-      </div>
+      <p className="text-muted-foreground font-sans text-center text-sm leading-relaxed md:text-base">
+        {contactDescription}{" "}
+        <Link
+          href={emailUrl}
+          className="text-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground"
+        >
+          {viaEmail}
+        </Link>
+        .
+      </p>
     </div>
   );
 }

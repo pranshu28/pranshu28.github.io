@@ -11,7 +11,7 @@ import Work from "@/components/portfolio/work";
 import { CustomReactMarkdown } from "@/components/react-markdown";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BLUR_FADE_DELAY, siteConfig } from "@/data/site";
-import { Link as I18nLink, routing } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
 import { generatePersonJsonLd } from "@/lib/jsonld";
 import { transformSocialData } from "@/lib/social-icons";
 import {
@@ -20,6 +20,9 @@ import {
   sortByLatestYearDesc,
   sortWorkExperienceDesc,
 } from "@/lib/utils";
+
+const sectionHeadingClass =
+  "font-page-heading text-xl font-semibold tracking-tight";
 
 export default async function Page(props: {
   params: Promise<{ locale: string }>;
@@ -171,10 +174,10 @@ export default async function Page(props: {
       {/* About Section */}
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">{t("sections.about")}</h2>
+          <h2 className={sectionHeadingClass}>{t("sections.about")}</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <div className="prose text-muted-foreground dark:prose-invert max-w-full font-sans text-sm text-pretty [&_img]:my-0 [&_img]:inline-block [&_img]:h-[1em] [&_img]:w-auto [&_img]:align-baseline">
+          <div className="prose text-muted-foreground dark:prose-invert max-w-prose font-sans text-sm text-pretty [&_img]:my-0 [&_img]:inline-block [&_img]:h-[1em] [&_img]:w-auto [&_img]:align-baseline">
             <CustomReactMarkdown>{t("bioMarkdown")}</CustomReactMarkdown>
           </div>
         </BlurFade>
@@ -197,7 +200,7 @@ export default async function Page(props: {
       {publicationsItems && publicationsItems.length > 0 && (
         <section id="publications">
           <div className="flex min-h-0 w-full flex-col space-y-8">
-            <h2 className="text-xl font-bold">
+            <h2 className={sectionHeadingClass}>
               {t("sections.publications.title")}
             </h2>
             <ProjectsSection
@@ -232,7 +235,7 @@ export default async function Page(props: {
       {educationItems && educationItems.length > 0 && (
         <section id="education">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <h2 className="text-xl font-bold">{t("sections.education")}</h2>
+            <h2 className={sectionHeadingClass}>{t("sections.education")}</h2>
             <Education educations={educationItems} />
           </div>
         </section>
@@ -242,7 +245,7 @@ export default async function Page(props: {
       {workItems.length > 0 || workMoreItems.length > 0 ? (
         <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <h2 className="text-xl font-bold">
+            <h2 className={sectionHeadingClass}>
               {t("sections.workExperience")}
             </h2>
             <Work
@@ -259,7 +262,9 @@ export default async function Page(props: {
       {earlierWorkProjects.length > 0 && (
         <section id="projects">
           <div className="flex min-h-0 flex-col gap-y-3">
-            <h2 className="text-xl font-bold">{t("sections.earlierWork")}</h2>
+            <h2 className={sectionHeadingClass}>
+              {t("sections.earlierWork")}
+            </h2>
             <ProjectsSection
               projects={earlierWorkProjects.map((project) => ({
                 ...project,
@@ -278,18 +283,8 @@ export default async function Page(props: {
 
       <section id="beyond-work" aria-labelledby="beyond-work-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 9}>
-          <h2
-            id="beyond-work-heading"
-            className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-xl font-bold"
-          >
-            <span>{t("sections.beyondWork.title")}</span>
-            <I18nLink
-              href="/beyond-work"
-              className="text-sm font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:ring-ring rounded-sm focus-visible:ring-2 focus-visible:outline-none"
-              aria-label={t("sections.beyondWork.openLinkAria")}
-            >
-              {t("sections.beyondWork.openLink")}
-            </I18nLink>
+          <h2 id="beyond-work-heading" className={sectionHeadingClass}>
+            {t("sections.beyondWork.title")}
           </h2>
           <CustomReactMarkdown
             className="text-muted-foreground dark:prose-invert prose mt-2 max-w-2xl text-sm leading-relaxed [&_a]:text-foreground [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:no-underline"

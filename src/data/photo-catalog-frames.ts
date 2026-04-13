@@ -24,6 +24,7 @@ export const FRAME_PHOTOS = [
     sortVenue: "maria-theresien-platz-museums",
     takenAt: "2024-07-10",
     tags: ["austria", "history", "travel", "frames", "vienna", "night", "kunsthistorisches"],
+    description: "\"Wien im Dunkeln\"",
   },
   {
     src: "/photos/frames/20230611-123339.jpg",
@@ -51,10 +52,12 @@ export const FRAME_PHOTOS = [
     sortVenue: "street-dusk",
     takenAt: "2024-08-04",
     tags: ["italy", "travel", "frames", "naples", "campania"],
+    description:
+      "Chaotic, loud, and weirdly the city I kept wanting to walk again.",
   },
   {
     src: "/photos/frames/ca53e79c-8932-4b49-bc73-2bc4abae8d3a.jpg",
-    alt: "Schönbrunn gardens, Vienna",
+    alt: "Greens and Schönbrunner Gelb",
     sortPlace: "austria",
     sortCity: "vienna",
     sortVenue: "schonbrunn-gardens",
@@ -105,6 +108,7 @@ export const FRAME_PHOTOS = [
     sortVenue: "mehrangarh-fort",
     takenAt: "2021-11-18",
     tags: ["india", "history", "travel", "frames", "jodhpur", "rajasthan", "blue-city"],
+    description: "Over the blue city.",
   },
   {
     src: "/photos/frames/img-0414.jpeg",
@@ -126,7 +130,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-1454.jpg",
-    alt: "Winter park, Montreal",
+    alt: "Parc Jarry, Montreal",
     sortPlace: "canada",
     sortCity: "montreal",
     sortVenue: "jarry-park-winter",
@@ -154,7 +158,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-2207.jpeg",
-    alt: "Campus in fall, Toronto",
+    alt: "Fall season in Toronto",
     sortPlace: "canada",
     sortCity: "toronto",
     sortVenue: "campus-lawn-autumn",
@@ -172,12 +176,13 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-2668.jpeg",
-    alt: "Forest near Seattle",
+    alt: "West Tiger 3, Washington",
     sortPlace: "usa",
     sortCity: "seattle",
     sortVenue: "evergreen-forest",
     takenAt: "2023-01-14",
     tags: ["usa", "travel", "hiking", "frames"],
+    description: "This was quite a challenging hike - but the view was worth it.",
   },
   {
     src: "/photos/frames/img-2968.jpeg",
@@ -187,6 +192,7 @@ export const FRAME_PHOTOS = [
     sortVenue: "coastal-ruins",
     takenAt: "2023-05-19",
     tags: ["mexico", "travel", "frames", "cancun", "caribbean", "riviera-maya"],
+    description: "Riviera Maya—pier, thin sand, loud blue water.",
   },
   {
     src: "/photos/frames/img-3143.jpeg",
@@ -205,6 +211,8 @@ export const FRAME_PHOTOS = [
       "chicxulub",
       "swimming",
     ],
+    description:
+      "Yucatán cenote – cold, crystal-clear waters in a stunning sinkhole, part of the Chicxulub crater ring left by \"that\" asteroid impact 66 million years ago.",
   },
   {
     src: "/photos/frames/img-3176.jpeg",
@@ -223,10 +231,11 @@ export const FRAME_PHOTOS = [
     sortVenue: "valley-overlook",
     takenAt: "2023-07-20",
     tags: ["canada", "travel", "hiking", "frames"],
+    description: "Montreal-area valley hike—green hills, easy trail.",
   },
   {
     src: "/photos/frames/img-3591.jpg",
-    alt: "Fall forest, Quebec",
+    alt: "Tremblant trail, Quebec",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-forest-hills",
@@ -235,7 +244,7 @@ export const FRAME_PHOTOS = [
   },
   {
     src: "/photos/frames/img-3689.jpg",
-    alt: "Woods in fall, Quebec",
+    alt: "Fall season, Quebec",
     sortPlace: "canada",
     sortCity: "quebec",
     sortVenue: "autumn-woods-trail",
@@ -254,7 +263,8 @@ export const FRAME_PHOTOS = [
   {
     src: "/photos/frames/img-4604.jpeg",
     alt: "Rialto Bridge and Grand Canal, Venice",
-    description: "Do Lafzon Ki Hai 🎶🤌",
+    description:
+      "\"Do Lafzon Ki Hai\" on loop in my head the whole time.",
     sortPlace: "italy",
     sortCity: "venice",
     sortVenue: "rialto-grand-canal",
@@ -269,6 +279,7 @@ export const FRAME_PHOTOS = [
     sortVenue: "bridge-of-sighs",
     takenAt: "2024-07-27",
     tags: ["italy", "history", "travel", "frames"],
+    description: "Got its name from the sighs of prisoners who would catch a final glimpse of the outside world through its small windows before being led to their cells.",
   },
   {
     src: "/photos/frames/img-4786.jpeg",
@@ -278,6 +289,7 @@ export const FRAME_PHOTOS = [
     sortVenue: "canal-gondolas",
     takenAt: "2024-07-27",
     tags: ["italy", "history", "travel", "frames"],
+    description: "Quiet canal away from the Rialto crush.",
   },
   {
     src: "/photos/frames/img-4838.jpeg",
@@ -287,6 +299,7 @@ export const FRAME_PHOTOS = [
     sortVenue: "duomo-campanile",
     takenAt: "2024-07-29",
     tags: ["italy", "history", "travel", "frames", "florence", "duomo", "renaissance"],
+    description: "Duomo and campanile from a nearby roof — white marble, hard summer sun.",
   },
   {
     src: "/photos/frames/img-5104.jpeg",
@@ -312,7 +325,7 @@ export const FRAME_PHOTOS = [
     sortPlace: "italy",
     sortCity: "rome",
     sortVenue: "colosseum-night",
-    takenAt: "2024-08-05",
+    takenAt: "2024-08-02",
     tags: [
       "italy",
       "history",
@@ -323,15 +336,17 @@ export const FRAME_PHOTOS = [
       "seven-wonders",
       "night",
     ],
+    description: "A nice birthday treat.",
   },
   {
     src: "/photos/frames/img-5272-original.jpg",
-    alt: "Trail steps near Seattle",
+    alt: "Trail steps in Washington",
     sortPlace: "usa",
     sortCity: "seattle",
     sortVenue: "forest-trail-steps",
     takenAt: "2023-01-15",
     tags: ["usa", "travel", "hiking", "frames"],
+    description: "Away from the city and into the forest—fortunately, this wasn't a typical Seattle January rainy day.",
   },
   {
     src: "/photos/frames/img-5295.jpg",
@@ -360,6 +375,8 @@ export const FRAME_PHOTOS = [
     sortVenue: "plaster-cast",
     takenAt: "2024-08-03",
     tags: ["italy", "history", "travel", "frames", "pompeii", "vesuvius"],
+    description:
+      "Preserves the final moments of an ancient resident, captured in plaster after volcanic ash filled the spaces left by their bodies.",
   },
   {
     src: "/photos/frames/img-5448.jpeg",
@@ -426,6 +443,8 @@ export const FRAME_PHOTOS = [
       "andes",
       "cusco-region",
     ],
+    description:
+      "The \"out of syllabus and out of breath\" hike at 5000+ m.",
   },
   {
     src: "/photos/frames/img-6765.jpg",
@@ -454,6 +473,7 @@ export const FRAME_PHOTOS = [
     sortVenue: "volcanic-crater",
     takenAt: "2025-11-16",
     tags: ["costa-rica", "travel", "hiking", "frames", "poas", "volcano", "roadtrip", "pura-vida"],
+    description: "One of the world's largest active craters with a bubbling turquoise acid lake. We were allowed to stay only 20 minutes due to the volcanic gases and sulfuric fumes!",
   },
   {
     src: "/photos/frames/img-7045.jpg",
@@ -472,6 +492,8 @@ export const FRAME_PHOTOS = [
     sortVenue: "hills-sunset-overlook",
     takenAt: "2025-11-19",
     tags: ["costa-rica", "travel", "frames", "roadtrip", "pura-vida", "sunset"],
+    description:
+      "Just after the heavy downpour—we pulled over when the sky went pink behind the clouds.",
   },
   {
     src: "/photos/frames/img-7791.jpg",

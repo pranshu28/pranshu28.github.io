@@ -270,7 +270,8 @@ const LANDING_ALBUM_SPECS = [
   },
   {
     id: "wonders",
-    title: "Wonders of the World",
+    /** Classic seven; bump counts when you add another. NBSPs reduce awkward line breaks in tiles. */
+    title: "Wonders:\u00A04/7\u00A0\u2713",
     tag: "wonder",
     cover: "/photos/core/taj-mahal.jpg",
   },
