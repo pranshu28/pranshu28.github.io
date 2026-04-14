@@ -1,0 +1,84 @@
+1:"$Sreact.fragment"
+2:I[98162,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js","/_next/static/chunks/0xtpy8d6l8z35.js"],"TableOfContents"]
+6:I[86551,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js","/_next/static/chunks/0xtpy8d6l8z35.js"],"MobileTOC"]
+8:I[93659,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js"],"default"]
+9:I[9321,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js"],"default"]
+3:Tb93,<p>Vaclav Smil's <em>Numbers Don't Lie</em> is a collection of 71 short essays, each built on a single quantitative insight. The premise is simple: numbers are more reliable than narratives, but only if you understand what they mean in context.</p>
+<h2 id="people">People</h2>
+<ul>
+<li>Infant mortality is a more discerning indicator of quality of life than income averages or the Human Development Index.</li>
+<li>The easiest way to improve a child's chances of growing taller is for them to drink more milk.</li>
+<li>Happiness: if you can't fit into the top 10 (Nordic, Dutch, Swiss, Kiwi, or Canadian), convert to Catholicism and start learning Spanish.</li>
+</ul>
+<h2 id="countries">Countries</h2>
+<ul>
+<li>EU vs USA: 27 of the top 30 countries in quality of life are European.</li>
+<li>UK: Once the unrivaled inventor of modern manufacturing — now deindustrialized. Per capita GDP is now just over half of the Irish mean.</li>
+<li>China's 1978 economic modernization mirrors Japan's trajectory in the 1980s. Air/water pollution, aging population, limited gas resources.</li>
+<li>Mean duration of empires: 220 years. Longest: Mesopotamian Elam at 10 centuries.</li>
+</ul>
+<h2 id="machines-and-design">Machines and design</h2>
+<ul>
+<li>The 1880s were the decade that shaped modernity: electricity, internal combustion engines, lightbulbs, transformers, power plants.</li>
+<li>Moore's law held for decades, but innovations are now slower.</li>
+<li>There are fundamental differences between accumulated data, useful information, and insightful knowledge.</li>
+</ul>
+<h2 id="food">Food</h2>
+<ul>
+<li>Nitrogen is the most important macronutrient for crops. Synthetic ammonia (solid urea) is what feeds the world.</li>
+<li>In the US, food enough for ~230 million people was wasted in 2020 alone.</li>
+<li>Japan's longevity secret: remarkably moderate food consumption — 25% less than US/France. The Chinese precept: <em>hara hachi bun me</em> — belly eight parts full.</li>
+</ul>
+<h2 id="environment">Environment</h2>
+<ul>
+<li>Cattle zoo-mass is now more than 50% larger than human biomass.</li>
+<li>Mobile phone production (annual) consumes as much energy as New Zealand uses in a year.</li>
+<li>The quest for untested technical fixes is the curse of energy policy. Why not start with what is proven? Triple-glazed windows cost 15% more than double panes but have dramatically longer payback.</li>
+</ul>
+<h2 id="the-throughline">The throughline</h2>
+<blockquote>
+<p>Numbers may not lie, but individual perceptions of them differ.</p>
+</blockquote>
+<p>Smil's work is a masterclass in calibrating intuition with data. Recommended for anyone who's ever argued about the state of the world at dinner.</p>
+<hr>
+<p><em>Originally published on <a href="https://pranshumalviya.medium.com/numbers-dont-lie-by-vaclav-smil-bbef4605721f">Medium</a>. Check out my bookshelf on <a href="https://www.goodreads.com/user/show/49705608-pranshu-malviya">Goodreads</a>.</em></p>0:{"rsc":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0xtpy8d6l8z35.js","async":true}]],["$","main",null,{"id":"blog","className":"pt-16 pb-12 sm:pt-24 sm:pb-14 md:pt-32 md:pb-16 lg:pt-36 xl:pt-40","children":[["$","script",null,{"type":"application/ld+json","suppressHydrationWarning":true,"dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"\\\"Numbers Don't Lie\\\" by Vaclav Smil\",\"datePublished\":\"2022-09-19\",\"dateModified\":\"2022-09-19\",\"description\":\"Notes and highlights on people, countries, machines, food, and the environment — all through the lens of data.\",\"image\":\"https://pranshu28.github.io/blog/numbers-dont-lie-vaclav-smil/opengraph-image\",\"url\":\"https://pranshu28.github.io/blog/numbers-dont-lie-vaclav-smil\",\"author\":{\"@type\":\"Person\",\"name\":\"Pranshu Malviya\",\"url\":\"https://pranshu28.github.io/\",\"sameAs\":[\"https://scholar.google.com/citations?user=VET8VMcAAAAJ\",\"https://github.com/pranshu28\",\"https://www.linkedin.com/in/pranshumalviya2\",\"https://twitter.com/pranshumalviya8\",\"https://medium.com/@pranshumalviya\",\"https://www.goodreads.com/user/show/49705608-pranshu-malviya\"]},\"publisher\":{\"@type\":\"Person\",\"name\":\"Pranshu Malviya\",\"url\":\"https://pranshu28.github.io/\"},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://pranshu28.github.io/blog/numbers-dont-lie-vaclav-smil\"}}"}}],["$","div",null,{"className":"fixed top-32 left-6 z-10 hidden xl:block","children":["$","$L2",null,{"content":"$3"}]}],"$L4","$L5"]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"OD0BBfcJ78vmHvk1gTim1"}
+7:Tb93,<p>Vaclav Smil's <em>Numbers Don't Lie</em> is a collection of 71 short essays, each built on a single quantitative insight. The premise is simple: numbers are more reliable than narratives, but only if you understand what they mean in context.</p>
+<h2 id="people">People</h2>
+<ul>
+<li>Infant mortality is a more discerning indicator of quality of life than income averages or the Human Development Index.</li>
+<li>The easiest way to improve a child's chances of growing taller is for them to drink more milk.</li>
+<li>Happiness: if you can't fit into the top 10 (Nordic, Dutch, Swiss, Kiwi, or Canadian), convert to Catholicism and start learning Spanish.</li>
+</ul>
+<h2 id="countries">Countries</h2>
+<ul>
+<li>EU vs USA: 27 of the top 30 countries in quality of life are European.</li>
+<li>UK: Once the unrivaled inventor of modern manufacturing — now deindustrialized. Per capita GDP is now just over half of the Irish mean.</li>
+<li>China's 1978 economic modernization mirrors Japan's trajectory in the 1980s. Air/water pollution, aging population, limited gas resources.</li>
+<li>Mean duration of empires: 220 years. Longest: Mesopotamian Elam at 10 centuries.</li>
+</ul>
+<h2 id="machines-and-design">Machines and design</h2>
+<ul>
+<li>The 1880s were the decade that shaped modernity: electricity, internal combustion engines, lightbulbs, transformers, power plants.</li>
+<li>Moore's law held for decades, but innovations are now slower.</li>
+<li>There are fundamental differences between accumulated data, useful information, and insightful knowledge.</li>
+</ul>
+<h2 id="food">Food</h2>
+<ul>
+<li>Nitrogen is the most important macronutrient for crops. Synthetic ammonia (solid urea) is what feeds the world.</li>
+<li>In the US, food enough for ~230 million people was wasted in 2020 alone.</li>
+<li>Japan's longevity secret: remarkably moderate food consumption — 25% less than US/France. The Chinese precept: <em>hara hachi bun me</em> — belly eight parts full.</li>
+</ul>
+<h2 id="environment">Environment</h2>
+<ul>
+<li>Cattle zoo-mass is now more than 50% larger than human biomass.</li>
+<li>Mobile phone production (annual) consumes as much energy as New Zealand uses in a year.</li>
+<li>The quest for untested technical fixes is the curse of energy policy. Why not start with what is proven? Triple-glazed windows cost 15% more than double panes but have dramatically longer payback.</li>
+</ul>
+<h2 id="the-throughline">The throughline</h2>
+<blockquote>
+<p>Numbers may not lie, but individual perceptions of them differ.</p>
+</blockquote>
+<p>Smil's work is a masterclass in calibrating intuition with data. Recommended for anyone who's ever argued about the state of the world at dinner.</p>
+<hr>
+<p><em>Originally published on <a href="https://pranshumalviya.medium.com/numbers-dont-lie-by-vaclav-smil-bbef4605721f">Medium</a>. Check out my bookshelf on <a href="https://www.goodreads.com/user/show/49705608-pranshu-malviya">Goodreads</a>.</em></p>4:["$","$L6",null,{"content":"$7"}]
+5:["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]

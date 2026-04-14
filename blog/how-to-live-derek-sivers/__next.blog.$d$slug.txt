@@ -1,0 +1,142 @@
+1:"$Sreact.fragment"
+2:I[98162,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js","/_next/static/chunks/0xtpy8d6l8z35.js"],"TableOfContents"]
+6:I[86551,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js","/_next/static/chunks/0xtpy8d6l8z35.js"],"MobileTOC"]
+8:I[93659,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js"],"default"]
+9:I[9321,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js"],"default"]
+3:Td7c,<p>Some of my favorite quotes from the book:</p>
+<h2 id="be-independent">Be independent</h2>
+<ul>
+<li>All misery comes from dependency.</li>
+<li>When you know what you're doing, you won't care what anyone else is doing.</li>
+<li>Never agree with anything the same day you hear it, because some ideas are persuasively hypnotic.</li>
+<li>Just like you can't read something if it's pushed up against your face, or too far away, you should keep your friends at arm's length — close but not too close.</li>
+</ul>
+<h2 id="commit">Commit</h2>
+<ul>
+<li>Stop seeking the best option. Pick one and irreversibly commit.</li>
+<li>Word 'decide' comes from Latin <em>'to cut off'</em>.</li>
+<li>Enthusiasm is common. Endurance is rare.</li>
+</ul>
+<h2 id="do-nothing">Do nothing</h2>
+<ul>
+<li>Desire is the opposite of peace.</li>
+<li>Shallow rivers are noisy. Deep lakes are silent.</li>
+<li>Most actions are a pursuit of emotions.</li>
+<li>Wisdom comes from removing the junk, lies, and obstacles to clear thinking.</li>
+<li>The stock market takes money from the active traders and gives it to the patient.</li>
+</ul>
+<h2 id="think-super-long-term">Think super-long-term</h2>
+<ul>
+<li>Actions amplify through time to have a massive impact on the future.</li>
+<li>Eat mostly vegetables. Exercise always. Get preventative health checkups. Make time for your relationships.</li>
+<li>Imagine your future self judging your current life choices.</li>
+</ul>
+<h2 id="make-memories">Make memories</h2>
+<ul>
+<li>Monotony is the enemy. Novelty is the solution.</li>
+<li>The more memories you create, the longer and richer your life feels.</li>
+<li>You do it for the journey, not the destination.</li>
+</ul>
+<h2 id="master-something">Master something</h2>
+<ul>
+<li>Mastery is the best goal because the rich can't buy it, the impatient can't rush it, the privileged can't inherit it, and nobody can steal it.</li>
+<li>Goals don't improve your future. Goals only improve your present actions.</li>
+</ul>
+<h2 id="pursue-pain">Pursue pain</h2>
+<ul>
+<li>If you avoid pain, you avoid improvement. Avoid embarrassment, and you avoid success. Avoid risk, and you avoid reward.</li>
+<li><em>'Passion'</em> comes from the Latin word <em>'pati'</em>, meaning <em>'to suffer or endure'</em>.</li>
+</ul>
+<h2 id="learn">Learn</h2>
+<ul>
+<li>Confidence is usually ignorance.</li>
+<li>Be surprised by something every day.</li>
+<li>If you can't explain it yourself, you don't know it.</li>
+</ul>
+<h2 id="prepare-for-the-worst">Prepare for the worst</h2>
+<ul>
+<li>A caveman would say, "Oh my god! A glass! What a great invention! I can see what I'm about to drink! This is amazing!"</li>
+<li>Fulfillment is more fun than fun.</li>
+</ul>
+<h2 id="create">Create</h2>
+<ul>
+<li>You can improve something bad. You can't improve nothing.</li>
+<li>Creativity is a magic coin. The more you spend, the more you have.</li>
+<li>Originality just means hiding your sources.</li>
+</ul>
+<h2 id="make-a-million-mistakes">Make a million mistakes</h2>
+<ul>
+<li>A mistake only counts as experience if you learn from it.</li>
+<li>Share your stories from all your mistakes for the benefit of the world.</li>
+</ul>
+<hr>
+<p><em>Originally published on <a href="https://pranshumalviya.medium.com/how-to-live-27-conflicting-answers-and-one-weird-conclusion-by-derek-sivers-8c950a7b6659">Medium</a>. Check out my bookshelf on <a href="https://www.goodreads.com/user/show/49705608-pranshu-malviya">Goodreads</a>.</em></p>0:{"rsc":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0xtpy8d6l8z35.js","async":true}]],["$","main",null,{"id":"blog","className":"pt-16 pb-12 sm:pt-24 sm:pb-14 md:pt-32 md:pb-16 lg:pt-36 xl:pt-40","children":[["$","script",null,{"type":"application/ld+json","suppressHydrationWarning":true,"dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"\\\"How to Live\\\" by Derek Sivers\",\"datePublished\":\"2023-06-13\",\"dateModified\":\"2023-06-13\",\"description\":\"Favorite quotes from 27 conflicting answers and one weird conclusion.\",\"image\":\"https://pranshu28.github.io/blog/how-to-live-derek-sivers/opengraph-image\",\"url\":\"https://pranshu28.github.io/blog/how-to-live-derek-sivers\",\"author\":{\"@type\":\"Person\",\"name\":\"Pranshu Malviya\",\"url\":\"https://pranshu28.github.io/\",\"sameAs\":[\"https://scholar.google.com/citations?user=VET8VMcAAAAJ\",\"https://github.com/pranshu28\",\"https://www.linkedin.com/in/pranshumalviya2\",\"https://twitter.com/pranshumalviya8\",\"https://medium.com/@pranshumalviya\",\"https://www.goodreads.com/user/show/49705608-pranshu-malviya\"]},\"publisher\":{\"@type\":\"Person\",\"name\":\"Pranshu Malviya\",\"url\":\"https://pranshu28.github.io/\"},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://pranshu28.github.io/blog/how-to-live-derek-sivers\"}}"}}],["$","div",null,{"className":"fixed top-32 left-6 z-10 hidden xl:block","children":["$","$L2",null,{"content":"$3"}]}],"$L4","$L5"]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"OD0BBfcJ78vmHvk1gTim1"}
+7:Td7c,<p>Some of my favorite quotes from the book:</p>
+<h2 id="be-independent">Be independent</h2>
+<ul>
+<li>All misery comes from dependency.</li>
+<li>When you know what you're doing, you won't care what anyone else is doing.</li>
+<li>Never agree with anything the same day you hear it, because some ideas are persuasively hypnotic.</li>
+<li>Just like you can't read something if it's pushed up against your face, or too far away, you should keep your friends at arm's length — close but not too close.</li>
+</ul>
+<h2 id="commit">Commit</h2>
+<ul>
+<li>Stop seeking the best option. Pick one and irreversibly commit.</li>
+<li>Word 'decide' comes from Latin <em>'to cut off'</em>.</li>
+<li>Enthusiasm is common. Endurance is rare.</li>
+</ul>
+<h2 id="do-nothing">Do nothing</h2>
+<ul>
+<li>Desire is the opposite of peace.</li>
+<li>Shallow rivers are noisy. Deep lakes are silent.</li>
+<li>Most actions are a pursuit of emotions.</li>
+<li>Wisdom comes from removing the junk, lies, and obstacles to clear thinking.</li>
+<li>The stock market takes money from the active traders and gives it to the patient.</li>
+</ul>
+<h2 id="think-super-long-term">Think super-long-term</h2>
+<ul>
+<li>Actions amplify through time to have a massive impact on the future.</li>
+<li>Eat mostly vegetables. Exercise always. Get preventative health checkups. Make time for your relationships.</li>
+<li>Imagine your future self judging your current life choices.</li>
+</ul>
+<h2 id="make-memories">Make memories</h2>
+<ul>
+<li>Monotony is the enemy. Novelty is the solution.</li>
+<li>The more memories you create, the longer and richer your life feels.</li>
+<li>You do it for the journey, not the destination.</li>
+</ul>
+<h2 id="master-something">Master something</h2>
+<ul>
+<li>Mastery is the best goal because the rich can't buy it, the impatient can't rush it, the privileged can't inherit it, and nobody can steal it.</li>
+<li>Goals don't improve your future. Goals only improve your present actions.</li>
+</ul>
+<h2 id="pursue-pain">Pursue pain</h2>
+<ul>
+<li>If you avoid pain, you avoid improvement. Avoid embarrassment, and you avoid success. Avoid risk, and you avoid reward.</li>
+<li><em>'Passion'</em> comes from the Latin word <em>'pati'</em>, meaning <em>'to suffer or endure'</em>.</li>
+</ul>
+<h2 id="learn">Learn</h2>
+<ul>
+<li>Confidence is usually ignorance.</li>
+<li>Be surprised by something every day.</li>
+<li>If you can't explain it yourself, you don't know it.</li>
+</ul>
+<h2 id="prepare-for-the-worst">Prepare for the worst</h2>
+<ul>
+<li>A caveman would say, "Oh my god! A glass! What a great invention! I can see what I'm about to drink! This is amazing!"</li>
+<li>Fulfillment is more fun than fun.</li>
+</ul>
+<h2 id="create">Create</h2>
+<ul>
+<li>You can improve something bad. You can't improve nothing.</li>
+<li>Creativity is a magic coin. The more you spend, the more you have.</li>
+<li>Originality just means hiding your sources.</li>
+</ul>
+<h2 id="make-a-million-mistakes">Make a million mistakes</h2>
+<ul>
+<li>A mistake only counts as experience if you learn from it.</li>
+<li>Share your stories from all your mistakes for the benefit of the world.</li>
+</ul>
+<hr>
+<p><em>Originally published on <a href="https://pranshumalviya.medium.com/how-to-live-27-conflicting-answers-and-one-weird-conclusion-by-derek-sivers-8c950a7b6659">Medium</a>. Check out my bookshelf on <a href="https://www.goodreads.com/user/show/49705608-pranshu-malviya">Goodreads</a>.</em></p>4:["$","$L6",null,{"content":"$7"}]
+5:["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]

@@ -1,0 +1,62 @@
+1:"$Sreact.fragment"
+2:I[98162,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js","/_next/static/chunks/0xtpy8d6l8z35.js"],"TableOfContents"]
+6:I[86551,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js","/_next/static/chunks/0xtpy8d6l8z35.js"],"MobileTOC"]
+8:I[93659,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js"],"default"]
+9:I[9321,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js"],"default"]
+3:T9c5,<p>Vaclav Smil is the kind of author who makes you feel simultaneously informed and humbled. <em>How the World Really Works</em> is his attempt to distill decades of quantitative analysis into an accessible account of how modern civilization actually functions — through energy, food, materials, and the numbers behind them.</p>
+<h2 id="the-four-pillars">The four pillars</h2>
+<p>Modern civilization rests on four materials: <strong>ammonia</strong>, <strong>steel</strong>, <strong>cement</strong>, and <strong>plastics</strong>. None of them can be produced at the required scale without fossil fuels. This is the inconvenient foundation that most energy transition narratives skip over.</p>
+<h2 id="energy-transitions-are-slow">Energy transitions are slow</h2>
+<ul>
+<li>The shift from biomass to coal took centuries. Coal to oil took decades. We are still early in the shift away from fossil fuels.</li>
+<li>Wind and solar are growing fast, but from a small base. Capacity factors matter: wind ~35%, nuclear ~90%.</li>
+<li>Until the energies used to <em>produce</em> wind turbines and solar cells come from renewables, we remain fundamentally dependent on fossil carbon.</li>
+</ul>
+<h2 id="food-and-the-nitrogen-problem">Food and the nitrogen problem</h2>
+<ul>
+<li>Synthetic ammonia (Haber-Bosch process) feeds roughly half the world's population. Without it, billions would starve.</li>
+<li>Globally, at least one-third of all harvested food is wasted. The US wastes ~40%.</li>
+<li>The Mediterranean diet consistently outperforms in health outcomes.</li>
+</ul>
+<h2 id="growth-is-not-guaranteed">Growth is not guaranteed</h2>
+<ul>
+<li>GDP per capita tells you less about quality of life than infant mortality rates.</li>
+<li>Japan's trajectory — from postwar misery to economic superpower to demographic stagnation — may preview what awaits China.</li>
+<li>The mean duration of empires was 220 years.</li>
+</ul>
+<h2 id="the-takeaway">The takeaway</h2>
+<p>Smil doesn't offer solutions. He offers clarity. The world runs on materials and energy, not narratives. Understanding the scale of what we've built is the prerequisite to changing it responsibly.</p>
+<blockquote>
+<p>An informed judging of absolute values requires some relative, comparative perspectives.</p>
+</blockquote>
+<hr>
+<p><em>Originally published on <a href="https://pranshumalviya.medium.com/">Medium</a>. Check out my bookshelf on <a href="https://www.goodreads.com/user/show/49705608-pranshu-malviya">Goodreads</a>.</em></p>0:{"rsc":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0xtpy8d6l8z35.js","async":true}]],["$","main",null,{"id":"blog","className":"pt-16 pb-12 sm:pt-24 sm:pb-14 md:pt-32 md:pb-16 lg:pt-36 xl:pt-40","children":[["$","script",null,{"type":"application/ld+json","suppressHydrationWarning":true,"dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"\\\"How the World Really Works\\\" by Vaclav Smil\",\"datePublished\":\"2023-06-12\",\"dateModified\":\"2023-06-12\",\"description\":\"Notes and highlights from a book that replaces opinions with numbers.\",\"image\":\"https://pranshu28.github.io/blog/how-the-world-really-works-vaclav-smil/opengraph-image\",\"url\":\"https://pranshu28.github.io/blog/how-the-world-really-works-vaclav-smil\",\"author\":{\"@type\":\"Person\",\"name\":\"Pranshu Malviya\",\"url\":\"https://pranshu28.github.io/\",\"sameAs\":[\"https://scholar.google.com/citations?user=VET8VMcAAAAJ\",\"https://github.com/pranshu28\",\"https://www.linkedin.com/in/pranshumalviya2\",\"https://twitter.com/pranshumalviya8\",\"https://medium.com/@pranshumalviya\",\"https://www.goodreads.com/user/show/49705608-pranshu-malviya\"]},\"publisher\":{\"@type\":\"Person\",\"name\":\"Pranshu Malviya\",\"url\":\"https://pranshu28.github.io/\"},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://pranshu28.github.io/blog/how-the-world-really-works-vaclav-smil\"}}"}}],["$","div",null,{"className":"fixed top-32 left-6 z-10 hidden xl:block","children":["$","$L2",null,{"content":"$3"}]}],"$L4","$L5"]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"OD0BBfcJ78vmHvk1gTim1"}
+7:T9c5,<p>Vaclav Smil is the kind of author who makes you feel simultaneously informed and humbled. <em>How the World Really Works</em> is his attempt to distill decades of quantitative analysis into an accessible account of how modern civilization actually functions — through energy, food, materials, and the numbers behind them.</p>
+<h2 id="the-four-pillars">The four pillars</h2>
+<p>Modern civilization rests on four materials: <strong>ammonia</strong>, <strong>steel</strong>, <strong>cement</strong>, and <strong>plastics</strong>. None of them can be produced at the required scale without fossil fuels. This is the inconvenient foundation that most energy transition narratives skip over.</p>
+<h2 id="energy-transitions-are-slow">Energy transitions are slow</h2>
+<ul>
+<li>The shift from biomass to coal took centuries. Coal to oil took decades. We are still early in the shift away from fossil fuels.</li>
+<li>Wind and solar are growing fast, but from a small base. Capacity factors matter: wind ~35%, nuclear ~90%.</li>
+<li>Until the energies used to <em>produce</em> wind turbines and solar cells come from renewables, we remain fundamentally dependent on fossil carbon.</li>
+</ul>
+<h2 id="food-and-the-nitrogen-problem">Food and the nitrogen problem</h2>
+<ul>
+<li>Synthetic ammonia (Haber-Bosch process) feeds roughly half the world's population. Without it, billions would starve.</li>
+<li>Globally, at least one-third of all harvested food is wasted. The US wastes ~40%.</li>
+<li>The Mediterranean diet consistently outperforms in health outcomes.</li>
+</ul>
+<h2 id="growth-is-not-guaranteed">Growth is not guaranteed</h2>
+<ul>
+<li>GDP per capita tells you less about quality of life than infant mortality rates.</li>
+<li>Japan's trajectory — from postwar misery to economic superpower to demographic stagnation — may preview what awaits China.</li>
+<li>The mean duration of empires was 220 years.</li>
+</ul>
+<h2 id="the-takeaway">The takeaway</h2>
+<p>Smil doesn't offer solutions. He offers clarity. The world runs on materials and energy, not narratives. Understanding the scale of what we've built is the prerequisite to changing it responsibly.</p>
+<blockquote>
+<p>An informed judging of absolute values requires some relative, comparative perspectives.</p>
+</blockquote>
+<hr>
+<p><em>Originally published on <a href="https://pranshumalviya.medium.com/">Medium</a>. Check out my bookshelf on <a href="https://www.goodreads.com/user/show/49705608-pranshu-malviya">Goodreads</a>.</em></p>4:["$","$L6",null,{"content":"$7"}]
+5:["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]

@@ -1,0 +1,32 @@
+1:"$Sreact.fragment"
+3:I[32030,["/_next/static/chunks/0uo7v82k-wb7q.js","/_next/static/chunks/0~tl61bf647if.js","/_next/static/chunks/0ckeh97bhe.v-.js","/_next/static/chunks/0y-bjpsmzb2a8.js","/_next/static/chunks/0_het1pjg7qk-.js","/_next/static/chunks/14fn.z6hes.8r.js","/_next/static/chunks/03z7~iyhl_ix~.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+2:T9c5,<p>Vaclav Smil is the kind of author who makes you feel simultaneously informed and humbled. <em>How the World Really Works</em> is his attempt to distill decades of quantitative analysis into an accessible account of how modern civilization actually functions — through energy, food, materials, and the numbers behind them.</p>
+<h2 id="the-four-pillars">The four pillars</h2>
+<p>Modern civilization rests on four materials: <strong>ammonia</strong>, <strong>steel</strong>, <strong>cement</strong>, and <strong>plastics</strong>. None of them can be produced at the required scale without fossil fuels. This is the inconvenient foundation that most energy transition narratives skip over.</p>
+<h2 id="energy-transitions-are-slow">Energy transitions are slow</h2>
+<ul>
+<li>The shift from biomass to coal took centuries. Coal to oil took decades. We are still early in the shift away from fossil fuels.</li>
+<li>Wind and solar are growing fast, but from a small base. Capacity factors matter: wind ~35%, nuclear ~90%.</li>
+<li>Until the energies used to <em>produce</em> wind turbines and solar cells come from renewables, we remain fundamentally dependent on fossil carbon.</li>
+</ul>
+<h2 id="food-and-the-nitrogen-problem">Food and the nitrogen problem</h2>
+<ul>
+<li>Synthetic ammonia (Haber-Bosch process) feeds roughly half the world's population. Without it, billions would starve.</li>
+<li>Globally, at least one-third of all harvested food is wasted. The US wastes ~40%.</li>
+<li>The Mediterranean diet consistently outperforms in health outcomes.</li>
+</ul>
+<h2 id="growth-is-not-guaranteed">Growth is not guaranteed</h2>
+<ul>
+<li>GDP per capita tells you less about quality of life than infant mortality rates.</li>
+<li>Japan's trajectory — from postwar misery to economic superpower to demographic stagnation — may preview what awaits China.</li>
+<li>The mean duration of empires was 220 years.</li>
+</ul>
+<h2 id="the-takeaway">The takeaway</h2>
+<p>Smil doesn't offer solutions. He offers clarity. The world runs on materials and energy, not narratives. Understanding the scale of what we've built is the prerequisite to changing it responsibly.</p>
+<blockquote>
+<p>An informed judging of absolute values requires some relative, comparative perspectives.</p>
+</blockquote>
+<hr>
+<p><em>Originally published on <a href="https://pranshumalviya.medium.com/">Medium</a>. Check out my bookshelf on <a href="https://www.goodreads.com/user/show/49705608-pranshu-malviya">Goodreads</a>.</em></p>0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"mx-auto w-full max-w-3xl px-6 sm:px-8 md:px-10","children":[["$","h1",null,{"className":"font-page-heading text-3xl font-semibold tracking-tight md:text-4xl mb-3","children":"\"How the World Really Works\" by Vaclav Smil"}],["$","div",null,{"className":"mb-8 flex items-center justify-between text-sm","children":["$","div",null,{"className":"flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400","children":[["$","p",null,{"children":"June 12, 2023 (2y ago)"}],["$","span",null,{"className":"mx-1","children":"·"}],["$","p",null,{"children":"2 min read"}]]}]}],["$","article",null,{"className":"prose dark:prose-invert","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"OD0BBfcJ78vmHvk1gTim1"}
+5:null
