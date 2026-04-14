@@ -205,7 +205,7 @@
       {
         "title": "Fast CSP and Learning-based Minesweeper Solver",
         "dates": "2017",
-        "authors": "AI solver using CSP, XGBoost, and Deep Q-Learning (92% win rate on standard boards).",
+        "authors": "AI solver using CSP, XGBoost, and Deep Q-Learning.",
         "href": "/papers/minesweeper-csp.pdf"
       }
     ]
