@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
   Suspense,
@@ -29,7 +29,7 @@ import {
   usesCombinedPhotosLayout,
 } from "@/data/photo-catalog";
 import { BLUR_FADE_DELAY } from "@/data/site";
-import { Link as I18nLink, usePathname, useRouter } from "@/i18n/routing";
+import { Link as I18nLink } from "@/i18n/routing";
 import { resolveAlbumGridSrc } from "@/lib/album-image-src";
 import { pageTitleClass, sectionHeadingClass } from "@/lib/page-typography";
 import { resolvePhotoSrc } from "@/lib/resolve-photo-src";
@@ -53,7 +53,11 @@ function buildPhotosHref(
     else sp.set(k, v);
   }
   const q = sp.toString();
-  return q ? `${pathname}?${q}` : pathname;
+  if (!q) return pathname;
+  // Match `trailingSlash: true` so Next does not redirect away from `?g=` / `?p=` (can drop the query).
+  const base =
+    pathname === "/" ? "/" : pathname.endsWith("/") ? pathname : `${pathname}/`;
+  return `${base}?${q}`;
 }
 
 function parseLightboxIndex(
@@ -612,7 +616,9 @@ function PhotosPageContent() {
 
   const replaceQuery = useCallback(
     (updates: Record<string, string | null | undefined>) => {
-      router.replace(buildPhotosHref(pathname, searchParams, updates));
+      router.replace(buildPhotosHref(pathname, searchParams, updates), {
+        scroll: false,
+      });
     },
     [pathname, queryKey, router, searchParams],
   );

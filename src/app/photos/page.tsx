@@ -12,7 +12,7 @@ function LegacyPhotosRedirectBody() {
 
   useEffect(() => {
     const q = searchParams.toString();
-    const target = `/beyond-work/${q ? `?${q}` : ""}`;
+    const target = q ? `/beyond-work/?${q}` : "/beyond-work/";
     router.replace(target);
   }, [router, searchParams]);
 
