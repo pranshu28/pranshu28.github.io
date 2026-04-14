@@ -8,17 +8,20 @@ on:
   schedule:
     - cron: "0 6,18 * * *"
 
-# Push orphan branch gh-pages (needs write). Ensure repo Settings → Actions → General → Workflow
-# permissions allows “Read and write permissions” for GITHUB_TOKEN.
+# Deploy via GitHub Pages “GitHub Actions” source (upload-pages-artifact + deploy-pages).
+# Repo Settings → Pages → Build and deployment → Source must be **GitHub Actions** (not branch gh-pages),
+# or the live site can stay stale while the gh-pages branch updates.
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  build-and-publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,10 +43,16 @@ jobs:
         env:
           NEXT_PUBLIC_PHOTOS_CDN: ${{ vars.PHOTOS_CDN_BASE }}
 
-      # Static Next export (includes .nojekyll). Serves correctly when Pages uses branch gh-pages / (root),
-      # instead of Jekyll on the default branch README.
-      - uses: peaceiris/actions-gh-pages@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          force_orphan: true
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
