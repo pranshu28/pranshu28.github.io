@@ -2,6 +2,18 @@ import Image from "next/image";
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 
+/**
+ * Match `trailingSlash: true` so Next does not redirect and drop `?` query params
+ * (e.g. `/beyond-work?g=sketches` → `/beyond-work/?g=sketches`).
+ */
+function normalizeStaticInternalHref(href: string): string {
+  if (href === "/" || href.startsWith("//")) return href;
+  const u = new URL(href, "https://example.invalid");
+  let p = u.pathname;
+  if (p !== "/" && !p.endsWith("/")) p = `${p}/`;
+  return `${p}${u.search}${u.hash}`;
+}
+
 /** Internal hrefs use trailing slash for static export (trailingSlash: true). */
 function MarkdownLink({
   href,
@@ -29,11 +41,12 @@ function MarkdownLink({
       </a>
     );
   }
-  let path = href;
-  const hasQueryOrHash = path.includes("?") || path.includes("#");
-  if (!hasQueryOrHash && path !== "/" && !path.endsWith("/")) {
-    path = `${path}/`;
-  }
+  const path =
+    href.includes("?") || href.includes("#")
+      ? normalizeStaticInternalHref(href)
+      : href !== "/" && !href.endsWith("/")
+        ? `${href}/`
+        : href;
   return (
     <a href={path} className="underline underline-offset-2 hover:no-underline">
       {children}
