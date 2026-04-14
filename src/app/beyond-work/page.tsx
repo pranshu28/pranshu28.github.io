@@ -21,6 +21,7 @@ import {
   type Gallery,
   getNavLandingAlbums,
   INLINE_LANDING_GALLERY_IDS,
+  isExternalNoteGalleryId,
   normalizeGalleryParam,
   type Photo,
   photoDisplayTitle,
@@ -60,7 +61,7 @@ function parseLightboxIndex(
   max: number,
   galleryId?: string | null,
 ): { open: boolean; index: number } {
-  if (galleryId === "book-notes") {
+  if (galleryId && isExternalNoteGalleryId(galleryId)) {
     return { open: false, index: 0 };
   }
   const raw = searchParams.get("p");
@@ -390,6 +391,13 @@ function AlbumDetail({
   backLabel: string;
 }) {
   const tGallery = useTranslations("galleryPage");
+  const isBookNotesAlbum = gallery.id === "book-notes";
+  const mediumBookNotePhotos = isBookNotesAlbum
+    ? displayPhotos.filter((p) => p.sortVenue !== "goodreads")
+    : displayPhotos;
+  const readingLogPhotos = isBookNotesAlbum
+    ? displayPhotos.filter((p) => p.sortVenue === "goodreads")
+    : [];
 
   return (
     <div className="w-full min-w-0">
@@ -421,7 +429,7 @@ function AlbumDetail({
         >
           {gallery.title}
         </h1>
-        {gallery.id !== "book-notes" ? (
+        {!isExternalNoteGalleryId(gallery.id) ? (
           <>
             <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5 sm:gap-3">
               <label
@@ -456,11 +464,40 @@ function AlbumDetail({
         ) : null}
       </BlurFade>
 
-      <JustifiedAlbumGrid
-        photos={displayPhotos}
-        onOpenPhoto={onOpenPhoto}
-        ariaLabel={`${gallery.title} photos`}
-      />
+      {isBookNotesAlbum ? (
+        <>
+          <JustifiedAlbumGrid
+            photos={mediumBookNotePhotos}
+            onOpenPhoto={onOpenPhoto}
+            ariaLabel={`${gallery.title} photos`}
+          />
+          {readingLogPhotos.length > 0 ? (
+            <>
+              <h2
+                className={cn(
+                  "text-foreground mt-10 mb-3 font-semibold tracking-tight sm:mt-12 sm:mb-4",
+                  sectionHeadingClass,
+                )}
+              >
+                {tGallery("readingLogHeading")}
+              </h2>
+              <JustifiedAlbumGrid
+                photos={readingLogPhotos}
+                onOpenPhoto={(i) =>
+                  onOpenPhoto(mediumBookNotePhotos.length + i)
+                }
+                ariaLabel={tGallery("readingLogHeading")}
+              />
+            </>
+          ) : null}
+        </>
+      ) : (
+        <JustifiedAlbumGrid
+          photos={displayPhotos}
+          onOpenPhoto={onOpenPhoto}
+          ariaLabel={`${gallery.title} photos`}
+        />
+      )}
 
       <PhotoLightbox
         open={lightboxOpen}
@@ -617,7 +654,7 @@ function PhotosPageContent() {
 
   useEffect(() => {
     const g = normalizeGalleryParam(searchParams.get("g"));
-    if (g !== "book-notes") return;
+    if (!g || !isExternalNoteGalleryId(g)) return;
     const p = searchParams.get("p");
     if (p == null || p === "") return;
     replaceQuery({ p: null });
@@ -632,13 +669,13 @@ function PhotosPageContent() {
 
   const sortedArchivePhotos = useMemo(() => {
     if (!active) return [];
-    if (active.id === "book-notes") return [...active.photos];
+    if (isExternalNoteGalleryId(active.id)) return [...active.photos];
     return sortGalleryPhotos(active.photos, sortMode, `${active.id}:${rs}`);
   }, [active, sortMode, rs]);
 
   const archiveDisplayedPhotos = useMemo(() => {
     if (!active) return [];
-    if (active.id === "book-notes") return [...active.photos];
+    if (isExternalNoteGalleryId(active.id)) return [...active.photos];
     return filterPhotosBySearchQuery(sortedArchivePhotos, photoSearchQuery);
   }, [active, sortedArchivePhotos, photoSearchQuery]);
 

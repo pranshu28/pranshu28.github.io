@@ -27,12 +27,12 @@
         },
         "beyondWork": {
             "title": "Beyond Work",
-            "contentMarkdown": "[Photos](/beyond-work/) from travel and hikes, [sketches](/beyond-work/?g=sketches), [book notes](/beyond-work/?g=book-notes), and a [reading log](https://www.goodreads.com/user/show/49705608-pranshu-malviya)."
+            "contentMarkdown": "[Photos](/beyond-work/) from travel and hikes, [sketches](/beyond-work/?g=sketches), [book notes](/beyond-work/?g=book-notes), and [reading log](https://www.goodreads.com/user/show/49705608-pranshu-malviya)."
         },
-        "contact": "Email",
-        "getInTouch": "Correspondence",
-        "contactDescription": "Want to chat? Feel free to reach out",
-        "viaEmail": "via email",
+        "contact": "",
+        "getInTouch": "Contact",
+        "contactDescription": "",
+        "viaEmail": "Email",
         "askQuestions": "Ask questions",
         "exploreCollaboration": "Explore collaboration opportunities",
         "coffeeChat": "Let's connect",
@@ -76,7 +76,8 @@
         "searchPlaceholder": "Titles, places…",
         "searchNoMatches": "No matching photos",
         "searchFiltered": "Showing photos that match your search",
-        "inlineFeedAriaLabel": "All photos"
+        "inlineFeedAriaLabel": "All photos",
+        "readingLogHeading": "Reading log"
     },
     "blog": {
         "title": "Blog",

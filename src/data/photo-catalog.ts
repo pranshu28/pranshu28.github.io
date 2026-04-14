@@ -19,7 +19,10 @@
  * Deleting files locally does not change production until CI deploys; see `resolve-photo-src.ts`.
  */
 
-import { BOOK_NOTE_SPECS } from "./book-notes-catalog";
+import {
+  BOOK_NOTE_SPECS,
+  GOODREADS_READING_LOG_SPEC,
+} from "./book-notes-catalog";
 import { CORE_PHOTO_CATALOG } from "./photo-catalog-core";
 import { FRAME_PHOTOS } from "./photo-catalog-frames";
 import { HISTORY_PHOTOS } from "./photo-catalog-history";
@@ -186,8 +189,17 @@ function toGalleryPhoto(p: TaggedPhoto): Photo {
   };
 }
 
-function bookNotesAsPhotos(): Photo[] {
-  return BOOK_NOTE_SPECS.map((b) => ({
+function specToPhoto(b: {
+  coverSrc: string;
+  openHref: string;
+  alt: string;
+  title: string;
+  place?: string;
+  description: string;
+  takenAt: string;
+  sortVenue?: string;
+}): Photo {
+  return {
     src: b.coverSrc,
     openHref: b.openHref,
     alt: b.alt,
@@ -198,7 +210,16 @@ function bookNotesAsPhotos(): Photo[] {
     sortPlace: "books",
     sortCity: "notes",
     sortVenue: b.sortVenue ?? "medium",
-  }));
+  };
+}
+
+function bookNotesAsPhotos(): Photo[] {
+  return BOOK_NOTE_SPECS.map(specToPhoto);
+}
+
+/** Book notes tiles open Medium / Goodreads (no image lightbox). */
+export function isExternalNoteGalleryId(id: string): boolean {
+  return id === "book-notes";
 }
 
 /** Lightbox / UI headline: `title` when set, otherwise `alt`. */
@@ -254,7 +275,7 @@ const LANDING_ALBUM_SPECS = [
     id: "book-notes",
     title: "Book notes",
     tag: "__book_notes__",
-    cover: "/photos/book-notes/goodreads-collage.jpg",
+    cover: GOODREADS_READING_LOG_SPEC.coverSrc,
   },
   {
     id: "hiking",
@@ -430,6 +451,7 @@ export function normalizeGalleryParam(gParam: string | null): string | null {
   if (gParam === "sketching") return "sketches";
   if (gParam === "travelling") return "travel";
   if (gParam === "nature") return "travel";
+  if (gParam === "reading-log") return "book-notes";
   return gParam;
 }
 
