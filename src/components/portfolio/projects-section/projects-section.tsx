@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 
@@ -31,6 +31,7 @@ interface ProjectsSectionProps {
   mobileDisplayCount?: number;
   desktopDisplayCount?: number;
   showAllText?: string;
+  showLessText?: string;
   expandedContent?: ReactNode;
 }
 
@@ -39,6 +40,7 @@ export default function ProjectsSection({
   mobileDisplayCount = 6,
   desktopDisplayCount = 6,
   showAllText = "Show All",
+  showLessText = "Show Less",
   expandedContent,
 }: ProjectsSectionProps) {
   const [showAll, setShowAll] = useState(false);
@@ -106,16 +108,25 @@ export default function ProjectsSection({
       {showAll && expandedContent ? (
         <div className="col-span-full">{expandedContent}</div>
       ) : null}
-      {hasMore && !showAll && (
+      {hasMore && (
         <div className="col-span-full flex justify-center pt-1">
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setShowAll(true)}
+            onClick={() => setShowAll((value) => !value)}
             className="flex items-center gap-2"
           >
-            <ChevronDown className="h-4 w-4" />
-            {showAllText}
+            {showAll ? (
+              <>
+                <ChevronUp className="h-4 w-4" />
+                {showLessText}
+              </>
+            ) : (
+              <>
+                <ChevronDown className="h-4 w-4" />
+                {showAllText}
+              </>
+            )}
           </Button>
         </div>
       )}

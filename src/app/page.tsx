@@ -198,6 +198,7 @@ export default async function Page() {
               mobileDisplayCount={6}
               desktopDisplayCount={6}
               showAllText={t("showAll")}
+              showLessText={t("showLess")}
               expandedContent={
                 preprintItems.length > 0 ? (
                   <PreprintsOthers
