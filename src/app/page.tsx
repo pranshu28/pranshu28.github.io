@@ -198,19 +198,20 @@ export default async function Page() {
               mobileDisplayCount={6}
               desktopDisplayCount={6}
               showAllText={t("showAll")}
+              expandedContent={
+                preprintItems.length > 0 ? (
+                  <PreprintsOthers
+                    items={preprintItems}
+                    title={t("sections.publications.othersTitle")}
+                    subtitle={t("sections.publications.othersSubtitle")}
+                    showAllText={t("showAll")}
+                    showLessText={t("showLess")}
+                    delay={BLUR_FADE_DELAY}
+                    initialVisible={preprintItems.length}
+                  />
+                ) : null
+              }
             />
-
-            {preprintItems.length > 0 && (
-              <PreprintsOthers
-                items={preprintItems}
-                title={t("sections.publications.othersTitle")}
-                subtitle={t("sections.publications.othersSubtitle")}
-                showAllText={t("showAll")}
-                showLessText={t("showLess")}
-                delay={BLUR_FADE_DELAY}
-                initialVisible={4}
-              />
-            )}
           </div>
         </section>
       )}

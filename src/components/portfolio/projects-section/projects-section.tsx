@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 
 import { ProjectCard } from "@/components/portfolio/projects-section/project-card";
@@ -30,6 +31,7 @@ interface ProjectsSectionProps {
   mobileDisplayCount?: number;
   desktopDisplayCount?: number;
   showAllText?: string;
+  expandedContent?: ReactNode;
 }
 
 export default function ProjectsSection({
@@ -37,6 +39,7 @@ export default function ProjectsSection({
   mobileDisplayCount = 6,
   desktopDisplayCount = 6,
   showAllText = "Show All",
+  expandedContent,
 }: ProjectsSectionProps) {
   const [showAll, setShowAll] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -61,7 +64,7 @@ export default function ProjectsSection({
   }, [mobileDisplayCount, desktopDisplayCount]);
 
   const displayed = showAll ? projects : projects.slice(0, displayCount);
-  const hasMore = projects.length > displayCount;
+  const hasMore = projects.length > displayCount || Boolean(expandedContent);
 
   if (!mounted) {
     return (
@@ -100,6 +103,9 @@ export default function ProjectsSection({
           authors={project.authors}
         />
       ))}
+      {showAll && expandedContent ? (
+        <div className="col-span-full">{expandedContent}</div>
+      ) : null}
       {hasMore && !showAll && (
         <div className="col-span-full flex justify-center pt-1">
           <Button
