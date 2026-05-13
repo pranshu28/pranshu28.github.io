@@ -2,6 +2,11 @@
   "news": {
     "items": [
       {
+        "date": "2026.05",
+        "title": "Defended PhD thesis at [Mila](https://mila.quebec/en/) / [Polytechnique Montreal](https://www.polymtl.ca/)",
+        "content": "Completed my PhD with Prof. Sarath Chandar and moving to [DRW](https://drw.com/) as an AI Research Scientist."
+      },
+      {
         "date": "2026.03",
         "title": "New preprint: [CoPeP](https://arxiv.org/abs/2603.00253) on continual pretraining for protein language models",
         "content": "Benchmarking how protein language models handle continual pretraining -- with Darshan Patil, Mathieu Reymond, Quentin Fournier, and Sarath Chandar."
@@ -218,7 +223,7 @@
         "degree": "PhD in Computer Engineering (Advisor: Prof. Sarath Chandar)",
         "logoUrl": "/logos/mila.png",
         "start": "2022",
-        "end": "2026 (expected)"
+        "end": "2026"
       },
       {
         "school": "Indian Institute of Technology Madras",
@@ -245,11 +250,22 @@
         "href": "https://drw.com/",
         "badges": [],
         "location": "Montreal, Canada",
+        "title": "AI Research Scientist",
+        "logoUrl": "/logos/drw.png",
+        "start": "May 2026",
+        "end": "Present",
+        "description": "AI/ML research in quantitative finance."
+      },
+      {
+        "company": "DRW",
+        "href": "https://drw.com/",
+        "badges": [],
+        "location": "Montreal, Canada",
         "title": "AI Research Scientist Intern",
         "logoUrl": "/logos/drw.png",
         "start": "Sep 2025",
-        "end": "Present",
-        "description": "AI/ML research in quantitative finance."
+        "end": "May 2026",
+        "description": "AI/ML research internship in quantitative finance."
       },
       {
         "company": "DRW",
@@ -406,7 +422,7 @@
     },
     "email": {
       "name": "Email",
-      "url": "mailto:pranshu.malviya@mila.quebec",
+      "url": "mailto:pranshumalviya2@gmail.com",
       "icon": "email",
       "navbar": false,
       "content": true,

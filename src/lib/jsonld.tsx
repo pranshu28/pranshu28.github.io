@@ -103,7 +103,7 @@ async function getAddress(
   locale: Locale = DEFAULT_LOCALE,
 ): Promise<PostalAddress> {
   const t = await getTranslations({ locale });
-  const addressCountry: Country = { "@type": "Country", name: "Singapore" };
+  const addressCountry: Country = { "@type": "Country", name: "Canada" };
   const address: PostalAddress = {
     "@type": "PostalAddress",
     addressLocality: t("location.name"),
