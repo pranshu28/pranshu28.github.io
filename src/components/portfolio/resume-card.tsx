@@ -21,6 +21,7 @@ interface ResumeCardProps {
   period: string;
   description?: string;
   useMarkdown?: boolean;
+  subtitleUseMarkdown?: boolean;
   location?: string;
 }
 export const ResumeCard = ({
@@ -33,6 +34,7 @@ export const ResumeCard = ({
   period,
   description,
   useMarkdown = false,
+  subtitleUseMarkdown = useMarkdown,
   location,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -109,7 +111,7 @@ export const ResumeCard = ({
           </div>
           {subtitle && (
             <div className="font-sans text-xs">
-              {useMarkdown ? (
+              {subtitleUseMarkdown ? (
                 <CustomReactMarkdown>{subtitle}</CustomReactMarkdown>
               ) : (
                 subtitle

@@ -27,6 +27,7 @@ export default function Education({ educations }: EducationProps) {
           subtitle={education.degree}
           period={`${education.start} - ${education.end}`}
           location={education.location}
+          subtitleUseMarkdown
         />
       ))}
     </div>
